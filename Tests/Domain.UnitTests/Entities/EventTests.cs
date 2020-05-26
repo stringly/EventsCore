@@ -1,4 +1,5 @@
 ﻿using EventsCore.Domain.Entities;
+using EventsCore.Domain.Exceptions;
 using EventsCore.Domain.ValueObjects;
 using System;
 using System.Collections.Generic;
@@ -30,6 +31,28 @@ namespace EventsCore.Domain.UnitTests.Entities
             Assert.Equal("new title", e.Title);
             Assert.Equal("new description",e.Description);
             Assert.Equal(eventDates, e.Dates);
+        }
+        [Fact]
+        public void Should_Throw_EventArgumentException_For_Empty_Event_Title()
+        {
+            // Arrange
+
+
+            // Act/Assert
+            Assert.Throws<EventDatesInvalidException>(() => new Event(/* add parameters here */));
+
+        }
+
+        [Fact]
+        public void Should_Throw_EventArgumentException_For_Empty_Event_Description()
+        {
+            // Arrange
+
+
+
+
+            // Act/Assert
+            Assert.Throws<EventDatesInvalidException>(() => new Event(/* add parameters here */));
         }
     }
 }

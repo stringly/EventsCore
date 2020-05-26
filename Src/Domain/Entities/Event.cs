@@ -24,7 +24,9 @@ namespace EventsCore.Domain.Entities
             UpdateTitle(title);
             UpdateDescription(description);
             UpdateEventDates(dates);
+            
         }
+
         public int Id { get; private set; }
 
         /// <summary>
@@ -61,6 +63,7 @@ namespace EventsCore.Domain.Entities
         public DateTime EndDate => Dates.EndDate;
         public DateTime RegistrationStartDate => Dates.RegistrationStartDate;
         public DateTime RegistrationEndDate => Dates.RegistrationEndDate;
+        
 
         public void UpdateTitle(string newTitle)
         {
@@ -80,11 +83,7 @@ namespace EventsCore.Domain.Entities
         }
         public void UpdateEventDates(EventDates newDates)
         {
-            if (newDates == null)
-            {
-                throw new EventArgumentException("Cannot update Event: parameter must not be null.", nameof(newDates));
-            }
-            Dates = newDates;
+            Dates = newDates ?? throw new EventArgumentException("Cannot update Event: parameter must not be null.", nameof(newDates));
         }
     }
 }

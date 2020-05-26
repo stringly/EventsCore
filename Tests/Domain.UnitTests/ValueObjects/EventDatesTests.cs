@@ -25,9 +25,9 @@ namespace EventsCore.Domain.UnitTests.ValueObjects
             Assert.Equal(eventDates.StartDate, eventStart);
             Assert.Equal(eventDates.EndDate, eventEnd);
             Assert.Equal(eventDates.RegistrationStartDate, regStart);
-            Assert.Equal(eventDates.RegistrationEndDate, regEnd);
-
+            Assert.Equal(eventDates.RegistrationEndDate, regEnd);            
         }
+
         [Fact]
         public void Should_Throw_EventDatesInvalidException_For_StartDate_In_Past()
         {
