@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using EventsCore.Domain.Exceptions;
 using EventsCore.Domain.ValueObjects;
-using EventsCore.Domain.Exceptions;
 using Xunit;
 
 namespace EventsCore.Domain.UnitTests.ValueObjects

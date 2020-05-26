@@ -20,9 +20,16 @@ namespace EventsCore.Domain.Common
         {
             return !(EqualOperator(left, right));
         }
-
+        /// <summary>
+        /// Enumerates the ValueObject's properties as a collection.
+        /// </summary>
+        /// <returns></returns>
         protected abstract IEnumerable<object> GetAtomicValues();
-
+        /// <summary>
+        /// Determines equality
+        /// </summary>
+        /// <param name="obj">The object being compared.</param>
+        /// <returns></returns>
         public override bool Equals(object obj)
         {
             if (obj == null || obj.GetType() != GetType())
@@ -50,7 +57,10 @@ namespace EventsCore.Domain.Common
 
             return !thisValues.MoveNext() && !otherValues.MoveNext();
         }
-
+        /// <summary>
+        /// Gets the Hash Code.
+        /// </summary>
+        /// <returns>An integer HashCode.</returns>
         public override int GetHashCode()
         {
             return GetAtomicValues()

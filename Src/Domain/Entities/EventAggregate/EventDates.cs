@@ -1,9 +1,9 @@
 ﻿using EventsCore.Domain.Common;
-using EventsCore.Domain.Exceptions;
+using EventsCore.Domain.Exceptions.EventAggregate;
 using System;
 using System.Collections.Generic;
 
-namespace EventsCore.Domain.ValueObjects
+namespace EventsCore.Domain.Entities.EventAggregate
 {
     /// <summary>
     /// Value Object class that stores a collection of dates for an Event
