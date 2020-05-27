@@ -1,8 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
-namespace EventsCore.Domain.Exceptions
+namespace EventsCore.Domain.Exceptions.ValueObjects
 {
     public class AddressInvalidException : Exception
     {

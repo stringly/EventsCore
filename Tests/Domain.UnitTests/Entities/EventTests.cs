@@ -1,9 +1,9 @@
-﻿using EventsCore.Domain.Entities.EventAggregate;
-using EventsCore.Domain.Exceptions.EventAggregate;
+﻿using EventsCore.Domain.Entities;
+using EventsCore.Domain.Entities.ValueObjects;
 using System;
 using Xunit;
 
-namespace EventsCore.Domain.UnitTests.Entities.EventAggregate
+namespace EventsCore.Domain.UnitTests.Entities
 {
     public class EventTests
     {
@@ -22,7 +22,7 @@ namespace EventsCore.Domain.UnitTests.Entities.EventAggregate
             EventRegistrationRules regRules = new EventRegistrationRules(10);
 
             // Act
-            Event e = new Event(newTitle, newDescription, eventDates, regRules);
+            Event e = new Event(newTitle, newDescription, eventDates, regRules, 1);
 
 
             // Assert
@@ -30,6 +30,8 @@ namespace EventsCore.Domain.UnitTests.Entities.EventAggregate
             Assert.Equal("new description",e.Description);
             Assert.Equal(eventDates, e.Dates);
             Assert.Equal(regRules, e.Rules);
+            Assert.Equal(1, e.EventTypeId);
+            Assert.Null(e.EventSeriesId);
         }
         [Fact]
         public void Should_Throw_EventArgumentException_For_Empty_Event_Title()

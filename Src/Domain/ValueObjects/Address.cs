@@ -1,5 +1,5 @@
 ﻿using EventsCore.Domain.Common;
-using EventsCore.Domain.Exceptions;
+using EventsCore.Domain.Exceptions.ValueObjects;
 using System;
 using System.Collections.Generic;
 

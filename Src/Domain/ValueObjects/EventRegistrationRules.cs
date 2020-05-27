@@ -1,8 +1,8 @@
 ﻿using EventsCore.Domain.Common;
-using EventsCore.Domain.Exceptions.EventAggregate;
+using EventsCore.Domain.Exceptions.ValueObjects;
 using System.Collections.Generic;
 
-namespace EventsCore.Domain.Entities.EventAggregate
+namespace EventsCore.Domain.Entities.ValueObjects
 {
     /// <summary>
     /// Class that creates and stores Event Registration rules for an Event.
@@ -15,7 +15,7 @@ namespace EventsCore.Domain.Entities.EventAggregate
     /// MaxRegistrations: An unsigned integer number representing the Maximum Registrations allowed for the Event. This property is always required.
     /// </description>
     /// </item>
-    /// /// <item>
+    /// <item>
     /// <description>
     /// MinRegistrations: An unsigned integer number representing the minimum Registrations required for the Event. This property is optional, and defaults to 1.
     /// </description>
@@ -42,7 +42,7 @@ namespace EventsCore.Domain.Entities.EventAggregate
             // uint will prevent negative integers, but zero still requires a guard
             if (maxRegistrations == 0)
             {
-                throw new EventRegistrationRulesInvalidException("Cannot create Event Ruleset: parameter must be greater than 0", nameof(maxRegistrations));
+                throw new EventRegistrationRulesArgumentException("Cannot create Event Ruleset: parameter must be greater than 0", nameof(maxRegistrations));
             } 
             MaxRegistrations = maxRegistrations;
             MinRegistrations = 1;
@@ -57,11 +57,11 @@ namespace EventsCore.Domain.Entities.EventAggregate
         {
             if (maxRegistrations == 0)
             {
-                throw new EventRegistrationRulesInvalidException("Cannot create Event Ruleset: parameter must be greater than 0", nameof(maxRegistrations));
+                throw new EventRegistrationRulesArgumentException("Cannot create Event Ruleset: parameter must be greater than 0", nameof(maxRegistrations));
             }
             else if(minRegistrations > maxRegistrations)
             {
-                throw new EventRegistrationRulesInvalidException("Cannot create Registration ruleset: maxRegistration parameter must be greater than minRegistration", nameof(minRegistrations));
+                throw new EventRegistrationRulesArgumentException("Cannot create Registration ruleset: maxRegistration parameter must be greater than minRegistration", nameof(minRegistrations));
             }
             MaxRegistrations = maxRegistrations;
             MinRegistrations = minRegistrations;
@@ -78,11 +78,11 @@ namespace EventsCore.Domain.Entities.EventAggregate
         {
             if(maxRegistrations == 0)
             {
-                throw new EventRegistrationRulesInvalidException("Cannot create Event Ruleset: parameter must be greater than 0", nameof(maxRegistrations));
+                throw new EventRegistrationRulesArgumentException("Cannot create Event Ruleset: parameter must be greater than 0", nameof(maxRegistrations));
             }
             else if(minRegistrations > maxRegistrations)
             {
-                throw new EventRegistrationRulesInvalidException("Cannot create Registration ruleset: maxRegistration parameter must be greater than minRegistration", nameof(minRegistrations));
+                throw new EventRegistrationRulesArgumentException("Cannot create Registration ruleset: maxRegistration parameter must be greater than minRegistration", nameof(minRegistrations));
             }
             MaxRegistrations = maxRegistrations;
             MinRegistrations = minRegistrations;

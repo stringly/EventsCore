@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using System.Text;
 using Xunit;
 
-namespace EventsCore.Domain.UnitTests.Entities.EventAggregate
-{
+namespace EventsCore.Domain.UnitTests.Entities.ValueObjects 
+{ 
     public class EventRegistrationRulesTests
     {
         [Fact]

@@ -1,8 +1,6 @@
 ﻿using EventsCore.Domain.Common;
-using EventsCore.Domain.Exceptions;
-using System;
+using EventsCore.Domain.Exceptions.ValueObjects;
 using System.Collections.Generic;
-using System.Text;
 
 namespace EventsCore.Domain.ValueObjects
 {

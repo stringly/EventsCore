@@ -1,4 +1,4 @@
-﻿using EventsCore.Domain.Exceptions;
+﻿using EventsCore.Domain.Exceptions.ValueObjects;
 using Xunit;
 
 namespace EventsCore.Domain.ValueObjects
