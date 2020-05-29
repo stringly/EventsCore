@@ -13,9 +13,9 @@ namespace EventsCore.Domain.Entities.EventRegistrationsAggregate
         private EventRegistrations() { }
         public EventRegistrations(int eventId, EventDates eventDates, EventRegistrationRules registrationRules)
         {
-            EventId = eventId != 0 ? eventId : throw new ArgumentException("Cannot create Event: eventId is invalid.", nameof(eventId));
-            EventDates = eventDates ?? throw new ArgumentException("Cannot create Event: eventDates cannot be null.", nameof(eventDates));
-            Rules = registrationRules ?? throw new ArgumentException("Cannot create Event: registrationRules cannot be null", nameof(registrationRules));
+            EventId = eventId != 0 ? eventId : throw new EventRegistrationAggregateArgumentException("Cannot create Event: eventId is invalid.", nameof(eventId));
+            EventDates = eventDates ?? throw new EventRegistrationAggregateArgumentException("Cannot create Event: eventDates cannot be null.", nameof(eventDates));
+            Rules = registrationRules ?? throw new EventRegistrationAggregateArgumentException("Cannot create Event: registrationRules cannot be null", nameof(registrationRules));
             _registrations = new List<Registration>();
         }
         public int EventId { get; private set; }
