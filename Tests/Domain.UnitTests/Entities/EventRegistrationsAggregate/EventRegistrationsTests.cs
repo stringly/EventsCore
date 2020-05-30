@@ -1,6 +1,8 @@
-﻿using EventsCore.Domain.Entities.EventRegistrationsAggregate;
+﻿using EventsCore.Domain.Common;
+using EventsCore.Domain.Entities.EventRegistrationsAggregate;
 using EventsCore.Domain.Entities.ValueObjects;
 using EventsCore.Domain.Exceptions.EventRegistrationsAggregate;
+using EventsCore.Domain.UnitTests.Common;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -10,6 +12,11 @@ namespace EventsCore.Domain.UnitTests.Entities.EventRegistrationsAggregate
 {
     public class EventRegistrationsTests
     {
+        private readonly IDateTime _dateTime;
+        public EventRegistrationsTests()
+        {
+            _dateTime = new DateTimeTestProvider();
+        }
         [Fact]
         public void EventRegistrations_Given_Valid_Values_Is_Valid()
         {
@@ -19,7 +26,8 @@ namespace EventsCore.Domain.UnitTests.Entities.EventRegistrationsAggregate
                 new DateTime(3000, 2, 1),
                 new DateTime(3000, 2, 2),
                 new DateTime(3000, 1, 1),
-                new DateTime(3000, 1, 2));
+                new DateTime(3000, 1, 2),
+                _dateTime);
             var RegistrationRules = new EventRegistrationRules(10);
 
             // Act
@@ -40,7 +48,8 @@ namespace EventsCore.Domain.UnitTests.Entities.EventRegistrationsAggregate
                 new DateTime(3000, 2, 1),
                 new DateTime(3000, 2, 2),
                 new DateTime(3000, 1, 1),
-                new DateTime(3000, 1, 2));
+                new DateTime(3000, 1, 2),                
+                _dateTime);
             var RegistrationRules = new EventRegistrationRules(10);
 
             // Act/Assert
@@ -66,7 +75,8 @@ namespace EventsCore.Domain.UnitTests.Entities.EventRegistrationsAggregate
                 new DateTime(3000, 2, 1),
                 new DateTime(3000, 2, 2),
                 new DateTime(3000, 1, 1),
-                new DateTime(3000, 1, 2));
+                new DateTime(3000, 1, 2),
+                _dateTime);
             EventRegistrationRules registrationRules = null;
 
             // Act/Assert
@@ -81,7 +91,8 @@ namespace EventsCore.Domain.UnitTests.Entities.EventRegistrationsAggregate
                 new DateTime(3000, 2, 1),
                 new DateTime(3000, 2, 2),
                 new DateTime(3000, 1, 1), // registration period start date is in future
-                new DateTime(3000, 1, 2));
+                new DateTime(3000, 1, 2),
+                _dateTime);
             var registrationRules = new EventRegistrationRules(10);
             var eventRegistrations = new EventRegistrations(eventId, eventDates, registrationRules);
 

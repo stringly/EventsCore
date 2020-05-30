@@ -1,5 +1,7 @@
-﻿using EventsCore.Domain.Entities;
+﻿using EventsCore.Domain.Common;
+using EventsCore.Domain.Entities;
 using EventsCore.Domain.Entities.ValueObjects;
+using EventsCore.Domain.UnitTests.Common;
 using System;
 using Xunit;
 
@@ -7,6 +9,11 @@ namespace EventsCore.Domain.UnitTests.Entities
 {
     public class EventTests
     {
+        private readonly IDateTime _dateTime;
+        public EventTests()
+        {
+            _dateTime = new DateTimeTestProvider();
+        }
         [Fact]
         public void Event_Given_Valid_Values_Is_Valid()
         {
@@ -18,7 +25,7 @@ namespace EventsCore.Domain.UnitTests.Entities
             DateTime regStart = new DateTime(3000, 1, 1);
             DateTime regEnd = new DateTime(3000, 1, 2);
 
-            EventDates eventDates = new EventDates(eventStart, eventEnd, regStart, regEnd);
+            EventDates eventDates = new EventDates(eventStart, eventEnd, regStart, regEnd, _dateTime);
             EventRegistrationRules regRules = new EventRegistrationRules(10);
 
             // Act

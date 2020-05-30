@@ -29,12 +29,13 @@ namespace EventsCore.Domain.Entities.ValueObjects
         /// <param name="evEnd">DateTime object representing the Date/Time the Event is to end. Must be after Start Date.</param>
         /// <param name="rgStart">DateTime object representing the Date/Time the Registration Period for the Event is to begin. Must be before Event Start Date.</param>
         /// <param name="rgEnd">DateTime object representing the Date/Time the Registration Period for the Event is to end. Must be before Event Start Date and after Registration Start Date.</param>        
-        public EventDates(DateTime evStart, DateTime evEnd, DateTime rgStart, DateTime rgEnd)
+        public EventDates(DateTime evStart, DateTime evEnd, DateTime rgStart, DateTime rgEnd, IDateTime dateTimeProvider)
         {
-            if (evStart < DateTime.Now)
+            _dateTime = dateTimeProvider;
+            if (evStart < _dateTime.Now)
             {
                 // reject; event can't start in the past
-                throw new EventDatesInvalidException($"Event Start Date cannot be in the past: Start Date: {evStart.ToString()} | System Date: {DateTime.Now.ToString()}");
+                throw new EventDatesInvalidException($"Event Start Date cannot be in the past: Start Date: {evStart.ToString()} | System Date: {_dateTime.Now.ToString()}");
             }
             else if (evStart > evEnd)
             {
@@ -51,11 +52,13 @@ namespace EventsCore.Domain.Entities.ValueObjects
                 // reject; event can't have registration period end before it starts
                 throw new EventDatesInvalidException($"Event Registration Period Start Date cannot be after Registration Period End Date: Registration Period Start Date: {rgStart.ToString()} | Event Start Date: {rgEnd.ToString()}");
             }
+            
             StartDate = evStart;
             EndDate = evEnd;
             RegistrationStartDate = rgStart;
             RegistrationEndDate = rgEnd;            
         }
+        private readonly IDateTime _dateTime;
         public DateTime StartDate { get; private set; }
         public DateTime EndDate { get; private set; }
         public DateTime RegistrationStartDate { get; private set; }

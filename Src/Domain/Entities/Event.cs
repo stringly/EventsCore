@@ -23,7 +23,8 @@ namespace EventsCore.Domain.Entities
             UpdateTitle(title);
             UpdateDescription(description);
             UpdateEventDates(dates);
-            UpdateRegistrationRules(rules);            
+            UpdateRegistrationRules(rules);   
+            UpdateEventType(eventTypeId);
         }
         /// <summary>
         /// Event's Primary Key
