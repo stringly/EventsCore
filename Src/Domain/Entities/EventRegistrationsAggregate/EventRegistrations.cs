@@ -8,17 +8,48 @@ using System.Text;
 
 namespace EventsCore.Domain.Entities.EventRegistrationsAggregate
 {
+    /// <summary>
+    /// EventRegistrations Aggregate
+    /// </summary>
+    /// <remarks>
+    /// Aggregate that is used to control Registration operations for an <see cref="Event">Event.</see>
+    /// </remarks>
     public class EventRegistrations : IAggregateRoot
     {
+        /// <summary>
+        /// Parameterless constructor for EF
+        /// </summary>
         private EventRegistrations() { }
-        public EventRegistrations(int eventId, EventDates eventDates, EventRegistrationRules registrationRules)
+        /// <summary>
+        /// Creates a new instance of EventRegistrations
+        /// </summary>
+        /// <param name="eventId">The Id of the <see cref="Event">associated with this instance</see></param>
+        /// <param name="eventDates">A instance of <see cref="EventDates">EventDates</see> that contains the dates associated with this event.</param>
+        /// <param name="registrationRules">An instance of <see cref="EventRegistrationRules">RegistrationRules</see> that contain the Registration Rules for this event.</param>
+        /// <param name="dateTimeProvider">An instance of <see cref="IDateTime"></see></param>
+        public EventRegistrations(int eventId, EventDates eventDates, EventRegistrationRules registrationRules, IDateTime dateTimeProvider)
         {
+            _dateTime = dateTimeProvider;
             EventId = eventId != 0 ? eventId : throw new EventRegistrationAggregateArgumentException("Cannot create Event: eventId is invalid.", nameof(eventId));
             EventDates = eventDates ?? throw new EventRegistrationAggregateArgumentException("Cannot create Event: eventDates cannot be null.", nameof(eventDates));
             Rules = registrationRules ?? throw new EventRegistrationAggregateArgumentException("Cannot create Event: registrationRules cannot be null", nameof(registrationRules));
             _registrations = new List<Registration>();
         }
+        /// <summary>
+        /// Private IDateTime date provider
+        /// </summary>
+        private readonly IDateTime _dateTime;
+
+        /// <summary>
+        /// The ID of the Event associated with this instance
+        /// </summary>
         public int EventId { get; private set; }
+        /// <summary>
+        /// An ValueObject instance of the Dates associated with this event
+        /// </summary>
+        /// <remarks>
+        /// An instance of <see cref="EventDates">EventDates</see>
+        /// </remarks>
         public EventDates EventDates { get; private set; }
         /// <summary>
         /// The Event's Start Date, obtained from the Event.Dates ruleset.
@@ -36,12 +67,21 @@ namespace EventsCore.Domain.Entities.EventRegistrationsAggregate
         /// The Event's Registration Period End Date, obtained from the Event.Dates ruleset.
         /// </summary>
         public DateTime RegistrationEndDate => EventDates.RegistrationEndDate;
+        /// <summary>
+        /// The Event's Registration Ruleset
+        /// </summary>
+        /// <remarks>
+        /// This is an instance of <see cref="EventRegistrationRules"></see>
+        /// </remarks>
         public EventRegistrationRules Rules { get; private set; }
         /// <summary>
         /// The Maximum number of registrations, obtained from the Event.Rules ruleset.
         /// </summary>
         public uint MaxRegistrations => Rules.MaxRegistrations;
         private readonly List<Registration> _registrations;
+        /// <summary>
+        /// Readonly collection of <see cref="Registration"> Registrations </see>for this event.
+        /// </summary>
         public IReadOnlyCollection<Registration> Registrations => _registrations;
         /// <summary>
         /// Count of "Accepted" registrations in the Event._registrations Collection
@@ -71,15 +111,15 @@ namespace EventsCore.Domain.Entities.EventRegistrationsAggregate
         /// </remarks>
         public bool IsAcceptingRegistrations {
             get {
-                if (StartDate < DateTime.Now)
+                if (IsExpired)
                 {
                     return false;
                 }
-                else if (RegistrationStartDate > DateTime.Now || RegistrationEndDate < DateTime.Now)
+                else if (RegistrationStartDate > _dateTime.Now || RegistrationEndDate < _dateTime.Now)
                 {
                     return false;
                 }
-                else if (MaxRegistrations >= CurrentAttendeesCount)
+                else if (CurrentAttendeesCount >= MaxRegistrations)
                 {
                     return false;
                 }
@@ -89,6 +129,55 @@ namespace EventsCore.Domain.Entities.EventRegistrationsAggregate
                 }
             }
         }
+        /// <summary>
+        /// Returns the event's expiration status
+        /// </summary>
+        /// <remarks>
+        /// Returns true if the Event's End Date is in the past, otherwise false.
+        /// </remarks>
+        public bool IsExpired {
+            get { return EndDate < _dateTime.Now; }
+        }
+        /// <summary>
+        /// Returns the event's active status
+        /// </summary>
+        /// <remarks>
+        /// Returns true if the event's StartDate is in the past, but the event's end date is in the future.
+        /// </remarks>
+        public bool IsActive {
+            get { return StartDate <= _dateTime.Now && EndDate >= _dateTime.Now;}
+        } 
+        /// <summary>
+        /// Returns whether registrations can be placed on "Stanby" for the event
+        /// </summary>
+        /// <remarks>
+        /// Returns true if the Maximum Standby registrations count has not been reached, otherwise false.
+        /// </remarks>
+        public bool IsStandByAvailable {
+            get { return Rules.MaxStandbyRegistrations > 0 && CurrentStandbyCount < Rules.MaxStandbyRegistrations;}
+        }
+        /// <summary>
+        /// Creates a new <see cref="Registration">Registration</see> and adds it to the Event's Registrations collection.
+        /// </summary>
+        /// <param name="userId">The integer Id of the User.</param>
+        /// <param name="userName">A string containing the Display Name of the User.</param>
+        /// <param name="email">A string containing the User's email address.</param>
+        /// <param name="contact">A string containing the User's primary contact phone number.</param>
+        /// <exception cref="EventRegistrationAggregateInvalidOperationException">
+        /// Throw when:
+        /// <list>
+        ///     <item>Event is not accepting registrations</item>
+        ///     <Item>When the UserId parameter is already registered for the Event</Item> 
+        /// </list> 
+        /// </exception>
+        /// <exception cref="EventRegistrationAggregateArgumentException">
+        /// Thrown when :
+        /// <list>
+        ///     <item>The userId parameter is 0 or out of range</item>
+        ///     <item>The userName parameter is empty/whitespace string</item>
+        ///     <item>The email parameter is empty/whitespace string</item>
+        /// </list>
+        /// </exception>
         public void RegisterUser(int userId, string userName, string email, string contact)
         {
             if (!IsAcceptingRegistrations)
@@ -114,7 +203,14 @@ namespace EventsCore.Domain.Entities.EventRegistrationsAggregate
 
             _registrations.Add(new Registration(userId, userName, email, contact));
         }
-        public void UnregisterUserByUserId(int userId)
+        /// <summary>
+        /// Removes a Registration with the provided UserId from the Event's registration collection 
+        /// </summary>
+        /// <param name="userId">The integer ID for the User to whom the registration belongs</param>
+        /// <exception cref="EventRegistrationAggregateArgumentException">
+        /// Thrown when no <see cref="Registration">Registration</see> for the given UserId was found in the Event's Registration collection.
+        /// </exception>
+        public void DeleteRegistrationByUserId(int userId)
         {
             var registrationForUser = _registrations.FirstOrDefault(x => x.UserId == userId);
 
@@ -124,18 +220,13 @@ namespace EventsCore.Domain.Entities.EventRegistrationsAggregate
             }
             _registrations.Remove(registrationForUser);
         }
-        public void UnregisterUserByRegistrationId(int registrationId)
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="userId"></param>
+        public void AcceptRegistrationByUserId(int userId)
         {
-            var registrationWithGivenId = _registrations.FirstOrDefault(x => x.Id == registrationId);
-            if (registrationWithGivenId == null)
-            {
-                throw new EventRegistrationAggregateArgumentException("Cannot remove registration: no registration with the given id was found.", nameof(registrationId));
-            }
-            _registrations.Remove(registrationWithGivenId);
-        }
-        public void AcceptRegistrationById(int registrationId)
-        {
-            if (StartDate < DateTime.Now)
+            if (IsExpired)
             {
                 throw new EventRegistrationAggregateInvalidOperationException("Cannot accept registration: Event has expired.");
             }
@@ -143,12 +234,48 @@ namespace EventsCore.Domain.Entities.EventRegistrationsAggregate
             {
                 throw new EventRegistrationAggregateInvalidOperationException("Cannot accept registration: Event is at Max Registrations");
             }
-            var registrationWithGivenId = _registrations.FirstOrDefault(x => x.Id == registrationId);
-            if (registrationWithGivenId == null)
+            var registrationForUserId = _registrations.FirstOrDefault(x => x.UserId == userId);
+            if (registrationForUserId == null)
             {
-                throw new EventRegistrationAggregateArgumentException("Cannot accept registration: no registration with the given id was found.", nameof(registrationId));
+                throw new EventRegistrationAggregateArgumentException("Cannot accept registration: no registration with the given id was found.", nameof(userId));
             }
-            registrationWithGivenId.UpdateStatusAccepted();
+            registrationForUserId.UpdateStatusAccepted();
         }
+        public void RejectRegistrationByUserId(int userId)
+        {
+            if (IsExpired)
+            {
+                throw new EventRegistrationAggregateInvalidOperationException("Cannot reject registration: Event has expired.");
+            }
+            else
+            {
+                var registrationForUserId = _registrations.FirstOrDefault(x => x.UserId == userId);
+                if(registrationForUserId == null)
+                {
+                    throw new EventRegistrationAggregateArgumentException("Cannot reject registration: no registration with the given id was found.", nameof(userId));
+                }
+                else
+                {
+                    registrationForUserId.UpdateStatusRejected();
+                }
+            }
+        }
+        public void StandbyRegistrationByUserId(int userId)
+        {
+            if (IsExpired)
+            {
+                throw new EventRegistrationAggregateInvalidOperationException("Cannot standby registration: Event has expired.");
+            }
+            else if(!IsStandByAvailable)
+            {
+                throw new EventRegistrationAggregateInvalidOperationException("Cannot standby registration: Standby status not available for this Event.");
+            }
+            var registrationForUserId = _registrations.FirstOrDefault(x => x.UserId == userId);
+            if (registrationForUserId == null)
+            {
+                throw new EventRegistrationAggregateArgumentException("Cannot standby registration: no registration with the given id was found.", nameof(userId));
+            }
+            registrationForUserId.UpdateStatusStandby();
+        }        
     }
 }

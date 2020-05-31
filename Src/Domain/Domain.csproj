@@ -6,4 +6,8 @@
     <AssemblyName>EventsCore.Domain</AssemblyName>
   </PropertyGroup>
 
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DocumentationFile>C:\Users\jcs30\source\repos\EventsCore\Src\Domain\EventsCore.Domain.xml</DocumentationFile>
+  </PropertyGroup>
+
 </Project>

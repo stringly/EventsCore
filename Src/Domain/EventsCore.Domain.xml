@@ -1,0 +1,492 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>EventsCore.Domain</name>
+    </assembly>
+    <members>
+        <member name="T:EventsCore.Domain.Common.DateTimeProvider">
+            <summary>
+            An implementation of <see cref="T:EventsCore.Domain.Common.IDateTime">IDateTime</see> that is used to inject the System time.
+            </summary>
+        </member>
+        <member name="P:EventsCore.Domain.Common.DateTimeProvider.Now">
+            <summary>
+            Returns the current Date
+            </summary>
+        </member>
+        <member name="M:EventsCore.Domain.Common.ValueObject.GetAtomicValues">
+            <summary>
+            Enumerates the ValueObject's properties as a collection.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:EventsCore.Domain.Common.ValueObject.Equals(System.Object)">
+            <summary>
+            Determines equality
+            </summary>
+            <param name="obj">The object being compared.</param>
+            <returns></returns>
+        </member>
+        <member name="M:EventsCore.Domain.Common.ValueObject.GetHashCode">
+            <summary>
+            Gets the Hash Code.
+            </summary>
+            <returns>An integer HashCode.</returns>
+        </member>
+        <member name="T:EventsCore.Domain.Entities.Event">
+            <summary>
+            Domain Entity that represents an Event for which Users can register.
+            </summary>
+        </member>
+        <member name="M:EventsCore.Domain.Entities.Event.#ctor(System.String,System.String,EventsCore.Domain.Entities.ValueObjects.EventDates,EventsCore.Domain.Entities.ValueObjects.EventRegistrationRules,System.Int32,System.Int32)">
+            <summary>
+            Creates a new Event object
+            </summary>
+            <param name="title">A string containing the Event's Title. Must not be null or only whitespace.</param>
+            <param name="description">A string containing the Event's Description. Must not be null or only whitespace.</param>
+            <param name="dates">An <see cref="T:EventsCore.Domain.Entities.ValueObjects.EventDates"> object</see> containing the Event's Date information.</param>
+            <param name="rules">A <see cref="T:EventsCore.Domain.Entities.ValueObjects.EventRegistrationRules"> object</see> containing the Registration rules for the event.</param>
+        </member>
+        <member name="P:EventsCore.Domain.Entities.Event.Id">
+            <summary>
+            Event's Primary Key
+            </summary>
+        </member>
+        <member name="F:EventsCore.Domain.Entities.Event._title">
+            <summary>
+            A string that represents the Event's title. 
+            </summary>
+            <remarks>
+            This is a private field that can only be set via the .UpdateTitle() method.
+            </remarks>
+        </member>
+        <member name="P:EventsCore.Domain.Entities.Event.Title">
+            <summary>
+            Returns a string containing the Event's Title
+            </summary>
+        </member>
+        <member name="F:EventsCore.Domain.Entities.Event._description">
+            <summary>
+            A string containing the Event's Description.
+            </summary>
+            <remarks>
+            This is a private field that can only be assigned or changed via the .UpdateDescription() method.
+            </remarks>
+        </member>
+        <member name="P:EventsCore.Domain.Entities.Event.Description">
+            <summary>
+            Returns a string containing the Event's Description.
+            </summary>
+        </member>
+        <member name="P:EventsCore.Domain.Entities.Event.Dates">
+            <summary>
+            The Dates associated with this Event.
+            </summary>
+            <remarks>
+            This uses the <seealso cref="T:EventsCore.Domain.Entities.ValueObjects.EventDates"/>EventDates value object, which encapsulates and validates the event's Start Date/Time, End Date/Time,
+            Registration Period Start Date/Time, and Registration Period End Date/Time.
+            </remarks>
+        </member>
+        <member name="P:EventsCore.Domain.Entities.Event.StartDate">
+            <summary>
+            The Event's Start Date, obtained from the Event.Dates ruleset.
+            </summary>
+        </member>
+        <member name="P:EventsCore.Domain.Entities.Event.EndDate">
+            <summary>
+            The Event's End Date, obtained from the Event.Dates ruleset.
+            </summary>
+        </member>
+        <member name="P:EventsCore.Domain.Entities.Event.RegistrationStartDate">
+            <summary>
+            The Event's Registration Period Start Date, obtained from the Event.Dates ruleset.
+            </summary>
+        </member>
+        <member name="P:EventsCore.Domain.Entities.Event.RegistrationEndDate">
+            <summary>
+            The Event's Registration Period End Date, obtained from the Event.Dates ruleset.
+            </summary>
+        </member>
+        <member name="P:EventsCore.Domain.Entities.Event.Rules">
+            <summary>
+            The Event's Registration Rules ruleset.
+            </summary>
+        </member>
+        <member name="P:EventsCore.Domain.Entities.Event.MaxRegistrations">
+            <summary>
+            The Maximum number of registrations, obtained from the Event.Rules ruleset.
+            </summary>
+        </member>
+        <member name="M:EventsCore.Domain.Entities.Event.UpdateTitle(System.String)">
+            <summary>
+            Updates the Event's Title Property.
+            </summary>
+            <param name="newTitle">A non-empty, non-whitespace string containing the new Title.</param>
+            <exception cref="T:EventsCore.Domain.Exceptions.Event.EventArgumentException">Thrown when the newTitle string parameter is null or whitespace.</exception>
+        </member>
+        <member name="M:EventsCore.Domain.Entities.Event.UpdateDescription(System.String)">
+            <summary>
+            Updates the Event's Description property.
+            </summary>
+            <param name="newDescription">A non-empty, non-whitespace string containing the new Description.</param>
+            <exception cref="T:EventsCore.Domain.Exceptions.Event.EventArgumentException">Thrown when the newDescription string parameter is null or whitespace.</exception>
+        </member>
+        <member name="M:EventsCore.Domain.Entities.Event.UpdateEventDates(EventsCore.Domain.Entities.ValueObjects.EventDates)">
+            <summary>
+            Updates the Event's Dates property.
+            </summary>
+            <param name="newDates">A <see cref="T:EventsCore.Domain.Entities.ValueObjects.EventDates"> object</see> containing the new Date set.</param>
+            <exception cref="T:EventsCore.Domain.Exceptions.Event.EventArgumentException">Thrown when the newDates parameter is null.</exception>
+        </member>
+        <member name="T:EventsCore.Domain.Entities.EventRegistrationsAggregate.EventRegistrations">
+            <summary>
+            EventRegistrations Aggregate
+            </summary>
+            <remarks>
+            Aggregate that is used to control Registration operations for an <see cref="T:EventsCore.Domain.Entities.Event">Event.</see>
+            </remarks>
+        </member>
+        <member name="M:EventsCore.Domain.Entities.EventRegistrationsAggregate.EventRegistrations.#ctor">
+            <summary>
+            Parameterless constructor for EF
+            </summary>
+        </member>
+        <member name="M:EventsCore.Domain.Entities.EventRegistrationsAggregate.EventRegistrations.#ctor(System.Int32,EventsCore.Domain.Entities.ValueObjects.EventDates,EventsCore.Domain.Entities.ValueObjects.EventRegistrationRules,EventsCore.Domain.Common.IDateTime)">
+            <summary>
+            Creates a new instance of EventRegistrations
+            </summary>
+            <param name="eventId">The Id of the <see cref="T:EventsCore.Domain.Entities.Event">associated with this instance</see></param>
+            <param name="eventDates">A instance of <see cref="P:EventsCore.Domain.Entities.EventRegistrationsAggregate.EventRegistrations.EventDates">EventDates</see> that contains the dates associated with this event.</param>
+            <param name="registrationRules">An instance of <see cref="T:EventsCore.Domain.Entities.ValueObjects.EventRegistrationRules">RegistrationRules</see> that contain the Registration Rules for this event.</param>
+            <param name="dateTimeProvider">An instance of <see cref="T:EventsCore.Domain.Common.IDateTime"></see></param>
+        </member>
+        <member name="F:EventsCore.Domain.Entities.EventRegistrationsAggregate.EventRegistrations._dateTime">
+            <summary>
+            Private IDateTime date provider
+            </summary>
+        </member>
+        <member name="P:EventsCore.Domain.Entities.EventRegistrationsAggregate.EventRegistrations.EventId">
+            <summary>
+            The ID of the Event associated with this instance
+            </summary>
+        </member>
+        <member name="P:EventsCore.Domain.Entities.EventRegistrationsAggregate.EventRegistrations.EventDates">
+            <summary>
+            An ValueObject instance of the Dates associated with this event
+            </summary>
+            <remarks>
+            An instance of <see cref="P:EventsCore.Domain.Entities.EventRegistrationsAggregate.EventRegistrations.EventDates">EventDates</see>
+            </remarks>
+        </member>
+        <member name="P:EventsCore.Domain.Entities.EventRegistrationsAggregate.EventRegistrations.StartDate">
+            <summary>
+            The Event's Start Date, obtained from the Event.Dates ruleset.
+            </summary>
+        </member>
+        <member name="P:EventsCore.Domain.Entities.EventRegistrationsAggregate.EventRegistrations.EndDate">
+            <summary>
+            The Event's End Date, obtained from the Event.Dates ruleset.
+            </summary>
+        </member>
+        <member name="P:EventsCore.Domain.Entities.EventRegistrationsAggregate.EventRegistrations.RegistrationStartDate">
+            <summary>
+            The Event's Registration Period Start Date, obtained from the Event.Dates ruleset.
+            </summary>
+        </member>
+        <member name="P:EventsCore.Domain.Entities.EventRegistrationsAggregate.EventRegistrations.RegistrationEndDate">
+            <summary>
+            The Event's Registration Period End Date, obtained from the Event.Dates ruleset.
+            </summary>
+        </member>
+        <member name="P:EventsCore.Domain.Entities.EventRegistrationsAggregate.EventRegistrations.Rules">
+            <summary>
+            The Event's Registration Ruleset
+            </summary>
+            <remarks>
+            This is an instance of <see cref="T:EventsCore.Domain.Entities.ValueObjects.EventRegistrationRules"></see>
+            </remarks>
+        </member>
+        <member name="P:EventsCore.Domain.Entities.EventRegistrationsAggregate.EventRegistrations.MaxRegistrations">
+            <summary>
+            The Maximum number of registrations, obtained from the Event.Rules ruleset.
+            </summary>
+        </member>
+        <member name="P:EventsCore.Domain.Entities.EventRegistrationsAggregate.EventRegistrations.Registrations">
+            <summary>
+            Readonly collection of <see cref="T:EventsCore.Domain.Entities.EventRegistrationsAggregate.Registration"> Registrations </see>for this event.
+            </summary>
+        </member>
+        <member name="P:EventsCore.Domain.Entities.EventRegistrationsAggregate.EventRegistrations.CurrentAttendeesCount">
+            <summary>
+            Count of "Accepted" registrations in the Event._registrations Collection
+            </summary>
+        </member>
+        <member name="P:EventsCore.Domain.Entities.EventRegistrationsAggregate.EventRegistrations.CurrentStandbyCount">
+            <summary>
+            Count of "Standby" registrations in the Event._registrations collection
+            </summary>
+        </member>
+        <member name="P:EventsCore.Domain.Entities.EventRegistrationsAggregate.EventRegistrations.IsAcceptingRegistrations">
+            <summary>
+            Returns true if the Event is accepting new Registrations
+            </summary>
+            <remarks>
+            This property will test the following conditions:
+            <list type="bullet">
+            <item>
+            <description>
+            Will return false if the Event's Start Date is in the Past.
+            </description>
+            </item>
+            <item>
+            <description>
+            Will return false if the number of "Accepted" registrations in the Event's collection is not less than the MaxRegistrations in the Event.Rules.
+            </description>
+            </item>
+            </list>
+            </remarks>
+        </member>
+        <member name="P:EventsCore.Domain.Entities.EventRegistrationsAggregate.EventRegistrations.IsExpired">
+            <summary>
+            Returns the event's expiration status
+            </summary>
+            <remarks>
+            Returns true if the Event's End Date is in the past, otherwise false.
+            </remarks>
+        </member>
+        <member name="P:EventsCore.Domain.Entities.EventRegistrationsAggregate.EventRegistrations.IsActive">
+            <summary>
+            Returns the event's active status
+            </summary>
+            <remarks>
+            Returns true if the event's StartDate is in the past, but the event's end date is in the future.
+            </remarks>
+        </member>
+        <member name="P:EventsCore.Domain.Entities.EventRegistrationsAggregate.EventRegistrations.IsStandByAvailable">
+            <summary>
+            Returns whether registrations can be placed on "Stanby" for the event
+            </summary>
+            <remarks>
+            Returns true if the Maximum Standby registrations count has not been reached, otherwise false.
+            </remarks>
+        </member>
+        <member name="M:EventsCore.Domain.Entities.EventRegistrationsAggregate.EventRegistrations.RegisterUser(System.Int32,System.String,System.String,System.String)">
+            <summary>
+            Creates a new <see cref="T:EventsCore.Domain.Entities.EventRegistrationsAggregate.Registration">Registration</see> and adds it to the Event's Registrations collection.
+            </summary>
+            <param name="userId">The integer Id of the User.</param>
+            <param name="userName">A string containing the Display Name of the User.</param>
+            <param name="email">A string containing the User's email address.</param>
+            <param name="contact">A string containing the User's primary contact phone number.</param>
+            <exception cref="T:EventsCore.Domain.Exceptions.EventRegistrationsAggregate.EventRegistrationAggregateInvalidOperationException">
+            Throw when:
+            <list>
+                <item>Event is not accepting registrations</item>
+                <Item>When the UserId parameter is already registered for the Event</Item> 
+            </list> 
+            </exception>
+            <exception cref="T:EventsCore.Domain.Exceptions.EventRegistrationsAggregate.EventRegistrationAggregateArgumentException">
+            Thrown when :
+            <list>
+                <item>The userId parameter is 0 or out of range</item>
+                <item>The userName parameter is empty/whitespace string</item>
+                <item>The email parameter is empty/whitespace string</item>
+            </list>
+            </exception>
+        </member>
+        <member name="M:EventsCore.Domain.Entities.EventRegistrationsAggregate.EventRegistrations.DeleteRegistrationByUserId(System.Int32)">
+            <summary>
+            Removes a Registration with the provided UserId from the Event's registration collection 
+            </summary>
+            <param name="userId">The integer ID for the User to whom the registration belongs</param>
+            <exception cref="T:EventsCore.Domain.Exceptions.EventRegistrationsAggregate.EventRegistrationAggregateArgumentException">
+            Thrown when no <see cref="T:EventsCore.Domain.Entities.EventRegistrationsAggregate.Registration">Registration</see> for the given UserId was found in the Event's Registration collection.
+            </exception>
+        </member>
+        <member name="M:EventsCore.Domain.Entities.EventRegistrationsAggregate.EventRegistrations.AcceptRegistrationByUserId(System.Int32)">
+            <summary>
+            
+            </summary>
+            <param name="userId"></param>
+        </member>
+        <member name="T:EventsCore.Domain.Entities.ValueObjects.EventDates">
+            <summary>
+            Value Object class that stores a collection of dates for an Event
+            </summary>
+            <remarks>
+            This object contains the Start/End Dates for an Event, as well as the Registration Period Start/End Dates. These are encapsulated in this object so that the dates can be validated.
+            </remarks>
+        </member>
+        <member name="M:EventsCore.Domain.Entities.ValueObjects.EventDates.#ctor">
+            <summary>
+            Private, parameterless constructor implemented for EF purposes. This object cannot be created with no parameters.
+            </summary>
+        </member>
+        <member name="M:EventsCore.Domain.Entities.ValueObjects.EventDates.#ctor(System.DateTime,System.DateTime,System.DateTime,System.DateTime,EventsCore.Domain.Common.IDateTime)">
+            <summary>
+            Constructor for the EventDates argument.
+            </summary>
+            <remarks>
+            The constructor enforces the rule that an Event cannot have a Start Date for any date in the past. This check is performed against the System time. Keep this requirement in mind for testing.
+            </remarks>
+            <param name="evStart">DateTime object representing the Date/Time the Event is to begin. Must be before End Date.</param>
+            <param name="evEnd">DateTime object representing the Date/Time the Event is to end. Must be after Start Date.</param>
+            <param name="rgStart">DateTime object representing the Date/Time the Registration Period for the Event is to begin. Must be before Event Start Date.</param>
+            <param name="rgEnd">DateTime object representing the Date/Time the Registration Period for the Event is to end. Must be before Event Start Date and after Registration Start Date.</param>        
+        </member>
+        <member name="T:EventsCore.Domain.Entities.ValueObjects.EventRegistrationRules">
+            <summary>
+            Class that creates and stores Event Registration rules for an Event.
+            </summary>
+            <remarks>
+            This class contains the following properties:
+            <list type="bullet">
+            <item>
+            <description>
+            MaxRegistrations: An unsigned integer number representing the Maximum Registrations allowed for the Event. This property is always required.
+            </description>
+            </item>
+            <item>
+            <description>
+            MinRegistrations: An unsigned integer number representing the minimum Registrations required for the Event. This property is optional, and defaults to 1.
+            </description>
+            </item>
+            <item>
+            <description>
+            MaxStandbyRegistrations: An unsigned integer number representing the Maximum number of Standby Registrations allowed for the Event. This property is optional and defaults to zero.
+            </description>
+            </item>
+            </list>
+            </remarks>
+        </member>
+        <member name="M:EventsCore.Domain.Entities.ValueObjects.EventRegistrationRules.#ctor">
+            <summary>
+            Private, parameterless constructor; implemented for EF purposes. This object cannot be created with no paramaters.
+            </summary>
+        </member>
+        <member name="M:EventsCore.Domain.Entities.ValueObjects.EventRegistrationRules.#ctor(System.UInt32)">
+            <summary>
+            Creates a new EventRegistrationRules object with the provided Maximum Registration count.
+            </summary>
+            <param name="maxRegistrations">An unsigned, non-zero integer representing the Maximum number of Registrations allowed for this Event.</param>
+        </member>
+        <member name="M:EventsCore.Domain.Entities.ValueObjects.EventRegistrationRules.#ctor(System.UInt32,System.UInt32)">
+            <summary>
+            Creates a new EventRegistrationRules object with the provided Maximum and Minimum Registration count.
+            </summary>
+            <param name="maxRegistrations">An unsigned, non-zero integer representing the Maximum number of Registrations allowed for this Event.</param>
+            <param name="minRegistrations">An unsigned integer representing the Minimum number of Registrations required for this event. This value must be less than or equal to the maxRegistrations parameter.</param>
+        </member>
+        <member name="M:EventsCore.Domain.Entities.ValueObjects.EventRegistrationRules.#ctor(System.UInt32,System.UInt32,System.UInt32)">
+            <summary>
+            Creates a new EventRegistrationRules object with the provided Maximum and Minimum Registration count and the provided number of Standby Registrations allowed.
+            </summary>
+            <param name="maxRegistrations">An unsigned, non-zero integer representing the Maximum number of Registrations allowed for this Event.</param>
+            <param name="minRegistrations">An unsigned integer representing the Minimum number of Registrations required for this event. This value must be less than or equal to the maxRegistrations parameter.</param>
+            <param name="maxStandbyRegistrations">An unsigned integer representing the Maximum number of Standy Registrations allowed for this event. If this is set to zero, no Standby Registrations will be allowed.</param>
+        </member>
+        <member name="P:EventsCore.Domain.Entities.ValueObjects.EventRegistrationRules.MaxRegistrations">
+            <summary>
+            The Maximum number of Registrations allowed.
+            </summary>
+        </member>
+        <member name="P:EventsCore.Domain.Entities.ValueObjects.EventRegistrationRules.MinRegistrations">
+            <summary>
+            The Minimum number of Registrations permitted. 
+            </summary>
+            <remarks>
+            If no Minimum Registrations value is provided by constructor, this property defaults to 1.
+            </remarks>
+        </member>
+        <member name="P:EventsCore.Domain.Entities.ValueObjects.EventRegistrationRules.MaxStandbyRegistrations">
+            <summary>
+            The Maximum number of Standby Registrations allowed. 
+            </summary>
+            <remarks>
+            If no Maximum number of Standby Registrations is provided by constructor, this defaults to 0 and standby Registrations are prohibited.
+            </remarks>
+        </member>
+        <member name="T:EventsCore.Domain.ValueObjects.Address">
+            <summary>
+             Value object that stores an Address
+            </summary>
+        </member>
+        <member name="P:EventsCore.Domain.ValueObjects.Address.Street">
+            <summary>
+            The Street Address, eg "123 Anywhere St."
+            </summary>
+        </member>
+        <member name="P:EventsCore.Domain.ValueObjects.Address.Suite">
+            <summary>
+            The Suite/Apartment/Room Number, optional field
+            </summary>
+        </member>
+        <member name="P:EventsCore.Domain.ValueObjects.Address.City">
+            <summary>
+            The City Name
+            </summary>
+        </member>
+        <member name="P:EventsCore.Domain.ValueObjects.Address.State">
+            <summary>
+            The Postal Abbrevation for the State
+            </summary>
+        </member>
+        <member name="P:EventsCore.Domain.ValueObjects.Address.ZipCode">
+            <summary>
+            The 5-digit ZIP Code
+            </summary>
+        </member>
+        <member name="M:EventsCore.Domain.ValueObjects.Address.#ctor">
+            <summary>
+            Private, parameterless constructor implemented for EF purposes. This object cannot be created with no parameters.
+            </summary>
+        </member>
+        <member name="M:EventsCore.Domain.ValueObjects.Address.#ctor(System.String,System.String,System.String,System.String,System.String)">
+            <summary>
+            Creates a new Address instance from the provided parameters.
+            </summary>
+            <param name="street">The street address, e.g. "123 Anywhere St." Required, cannot be null/whitespace/empty string.</param>
+            <param name="suite">The suite/apartment/room number. This is an optional field.</param>
+            <param name="city">The name of the city in which the address is located. Required, cannot be null/whitespace/empty string.</param>
+            <param name="state">The 2-digit Postal Abbreviation for the state in which the address is located. Required, cannot be null/whitespace/empty string.</param>        
+            <param name="zipcode">The 5-digit ZIP code for the address. Required, cannot be null/whitespace/empty string.</param>
+        </member>
+        <member name="T:EventsCore.Domain.ValueObjects.PersonFullName">
+            <summary>
+            Value object that stores a person's First and Last Name
+            </summary>    
+        </member>
+        <member name="M:EventsCore.Domain.ValueObjects.PersonFullName.#ctor">
+            <summary>
+            Private, parameterless constructor implemented for EF. This object cannot be created with no parameters
+            </summary>
+        </member>
+        <member name="M:EventsCore.Domain.ValueObjects.PersonFullName.#ctor(System.String,System.String)">
+            <summary>
+            Constructor for the PersonFullName object.
+            </summary>
+            <param name="first">A string containing the Person's First or Given Name. Required.</param>
+            <param name="last">A string containing the Person's Last or Surname. Required.</param>
+        </member>
+        <member name="P:EventsCore.Domain.ValueObjects.PersonFullName.First">
+            <summary>
+            Person's First/Given Name
+            </summary>
+        </member>
+        <member name="P:EventsCore.Domain.ValueObjects.PersonFullName.Last">
+            <summary>
+            Person's Last/Surname
+            </summary>
+        </member>
+        <member name="P:EventsCore.Domain.ValueObjects.PersonFullName.FullName">
+            <summary>
+            Returns the person's full name in the format "First Last"
+            </summary>
+        </member>
+        <member name="P:EventsCore.Domain.ValueObjects.PersonFullName.FullNameReverse">
+            <summary>
+            Returns the person's full name in the format "Last, First"
+            </summary>
+        </member>
+    </members>
+</doc>

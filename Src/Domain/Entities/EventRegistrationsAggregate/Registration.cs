@@ -9,7 +9,7 @@ namespace EventsCore.Domain.Entities.EventRegistrationsAggregate
         private Registration() { }
         public Registration(int userId, string userName, string email, string contact)
         {
-            Id = userId != 0 ? userId : throw new EventRegistrationAggregateArgumentException("Cannot create Event Registration: Invalid user Id", nameof(userId));
+            UserId = userId != 0 ? userId : throw new EventRegistrationAggregateArgumentException("Cannot create Event Registration: Invalid user Id", nameof(userId));
             UserName = !string.IsNullOrWhiteSpace(userName) ? userName : throw new EventRegistrationAggregateArgumentException("Cannot create Event Registration: user name cannot be null/empty string", nameof(userName));
             Email = !string.IsNullOrWhiteSpace(email) ? email : throw new EventRegistrationAggregateArgumentException("Cannot create Event Registration: user email cannot be null/empty string", nameof(email));
             Contact = contact;

@@ -3,8 +3,11 @@ using EventsCore.Domain.Entities;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace NetCore.Application.Common.Interfaces
+namespace EventsCore.Application.Common.Interfaces
 {
+    /// <summary>
+    /// Interface 
+    /// </summary>
     public interface EventsCoreDbContext
     {
         Task<int> SaveChangesAsync(CancellationToken cancellationToken);

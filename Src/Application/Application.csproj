@@ -2,8 +2,12 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp2.2</TargetFramework>
-    <RootNamespace>NetCore.Application</RootNamespace>
-    <AssemblyName>NetCore.Application</AssemblyName>
+    <RootNamespace>EventsCore.Application</RootNamespace>
+    <AssemblyName>EventsCore.Application</AssemblyName>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DocumentationFile>C:\Users\jcs30\source\repos\EventsCore\Src\Application\EventsCore.Application.xml</DocumentationFile>
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="3.1.4"></PackageReference>
