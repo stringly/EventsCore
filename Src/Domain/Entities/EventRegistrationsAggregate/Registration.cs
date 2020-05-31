@@ -9,7 +9,17 @@ namespace EventsCore.Domain.Entities.EventRegistrationsAggregate
     /// </summary>
     public class Registration : IEntity
     {
+        /// <summary>
+        /// Parameterless constructor for EF
+        /// </summary>
         private Registration() { }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="userId"></param>
+        /// <param name="userName"></param>
+        /// <param name="email"></param>
+        /// <param name="contact"></param>
         public Registration(int userId, string userName, string email, string contact)
         {
             UserId = userId != 0 ? userId : throw new EventRegistrationAggregateArgumentException("Cannot create Event Registration: Invalid user Id", nameof(userId));
