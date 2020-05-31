@@ -4,6 +4,9 @@ using System;
 
 namespace EventsCore.Domain.Entities.EventRegistrationsAggregate
 {
+    /// <summary>
+    /// Entity that represents a User Registration for an Event
+    /// </summary>
     public class Registration : IEntity
     {
         private Registration() { }
