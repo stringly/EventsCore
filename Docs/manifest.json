@@ -1,0 +1,810 @@
+{
+  "homepages": [],
+  "source_base_path": "C:/Users/jcs30/source/repos/EventsCore/Docs/docfx_project",
+  "xrefmap": "xrefmap.yml",
+  "files": [
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Application/EventsCore.Application.Common.Interfaces.EventsCoreDbContext.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Application/EventsCore.Application.Common.Interfaces.EventsCoreDbContext.html",
+          "hash": "OhZzUXDlRSz5gXHLyRsysw=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Application/EventsCore.Application.Common.Interfaces.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Application/EventsCore.Application.Common.Interfaces.html",
+          "hash": "f/2PVNyT8KLCty9FmoSxIQ=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "api/Application/index.md",
+      "output": {
+        ".html": {
+          "relative_path": "api/Application/index.html",
+          "hash": "Vy2ybI7Yh2XLgGlqBWyfSg=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "api/Application/toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Application/toc.html",
+          "hash": "88NvxxN66eSz4vptEsVc9Q=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Domain/EventsCore.Domain.Common.DateTimeProvider.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Domain/EventsCore.Domain.Common.DateTimeProvider.html",
+          "hash": "8tL9tdBttjLktIU5IG95mQ=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Domain/EventsCore.Domain.Common.IAggregateRoot.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Domain/EventsCore.Domain.Common.IAggregateRoot.html",
+          "hash": "lXTCMfFYQ11O2PR1F49mvg=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Domain/EventsCore.Domain.Common.IDateTime.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Domain/EventsCore.Domain.Common.IDateTime.html",
+          "hash": "CRej+Lkdzi0wshMgCwaGDQ=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Domain/EventsCore.Domain.Common.IEntity.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Domain/EventsCore.Domain.Common.IEntity.html",
+          "hash": "knqjuy2wIWLRH1YsabzJYA=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Domain/EventsCore.Domain.Common.ValueObject.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Domain/EventsCore.Domain.Common.ValueObject.html",
+          "hash": "Fksb0y9Kz0YvZaeovd10zg=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Domain/EventsCore.Domain.Common.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Domain/EventsCore.Domain.Common.html",
+          "hash": "u1WUQSa971bsfwjmWzJTeg=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Domain/EventsCore.Domain.Entities.Event.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Domain/EventsCore.Domain.Entities.Event.html",
+          "hash": "1KQWdlqINb1wsvbe/eHx0w=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Domain/EventsCore.Domain.Entities.EventModulesAggregate.EventModules.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Domain/EventsCore.Domain.Entities.EventModulesAggregate.EventModules.html",
+          "hash": "co1PkVyrThiOBttounLz3Q=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Domain/EventsCore.Domain.Entities.EventModulesAggregate.Module.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Domain/EventsCore.Domain.Entities.EventModulesAggregate.Module.html",
+          "hash": "YyT4vDUiReYyhPjidwMjIg=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Domain/EventsCore.Domain.Entities.EventModulesAggregate.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Domain/EventsCore.Domain.Entities.EventModulesAggregate.html",
+          "hash": "OtrsK/CcCeoq89XBGgrvTw=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Domain/EventsCore.Domain.Entities.EventRegistrationsAggregate.EventRegistrations.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Domain/EventsCore.Domain.Entities.EventRegistrationsAggregate.EventRegistrations.html",
+          "hash": "bJ5k1+4CorV6bgxsNb9dEQ=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Domain/EventsCore.Domain.Entities.EventRegistrationsAggregate.Registration.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Domain/EventsCore.Domain.Entities.EventRegistrationsAggregate.Registration.html",
+          "hash": "P8r48IfDZsD7OZSByFboSQ=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Domain/EventsCore.Domain.Entities.EventRegistrationsAggregate.RegistrationStatus.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Domain/EventsCore.Domain.Entities.EventRegistrationsAggregate.RegistrationStatus.html",
+          "hash": "DI1t8T3HNNIxw1Oyb9Yy7w=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Domain/EventsCore.Domain.Entities.EventRegistrationsAggregate.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Domain/EventsCore.Domain.Entities.EventRegistrationsAggregate.html",
+          "hash": "v5kYEw1okFOp9UKTm810IA=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Domain/EventsCore.Domain.Entities.EventSeries.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Domain/EventsCore.Domain.Entities.EventSeries.html",
+          "hash": "EFQg9KigfUAoGYtsTP+qQA=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Domain/EventsCore.Domain.Entities.EventType.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Domain/EventsCore.Domain.Entities.EventType.html",
+          "hash": "tlH5sVsV/Q6AVglo8ePH1w=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Domain/EventsCore.Domain.Entities.Rank.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Domain/EventsCore.Domain.Entities.Rank.html",
+          "hash": "RZQrHUJr2yHpR3gZa2WFQg=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Domain/EventsCore.Domain.Entities.User.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Domain/EventsCore.Domain.Entities.User.html",
+          "hash": "k+zu74CxojaDJIFjpMtBeg=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Domain/EventsCore.Domain.Entities.ValueObjects.EventDates.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Domain/EventsCore.Domain.Entities.ValueObjects.EventDates.html",
+          "hash": "FwiScSouKgdT3wMuOD+KDQ=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Domain/EventsCore.Domain.Entities.ValueObjects.EventRegistrationRules.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Domain/EventsCore.Domain.Entities.ValueObjects.EventRegistrationRules.html",
+          "hash": "UNhRTT1f4cmfTazcg6XTNA=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Domain/EventsCore.Domain.Entities.ValueObjects.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Domain/EventsCore.Domain.Entities.ValueObjects.html",
+          "hash": "30HSKQ4rcnEtPSCc8CXLRA=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Domain/EventsCore.Domain.Entities.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Domain/EventsCore.Domain.Entities.html",
+          "hash": "oH19qDbMpb/UvssJes3gVg=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Domain/EventsCore.Domain.Exceptions.Event.EventArgumentException.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Domain/EventsCore.Domain.Exceptions.Event.EventArgumentException.html",
+          "hash": "rU2FTcDaaOC6ZyzP1RY8wg=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Domain/EventsCore.Domain.Exceptions.Event.EventInvalidOperationException.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Domain/EventsCore.Domain.Exceptions.Event.EventInvalidOperationException.html",
+          "hash": "FHGnPg8NfoMNOLTvCaHzxA=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Domain/EventsCore.Domain.Exceptions.Event.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Domain/EventsCore.Domain.Exceptions.Event.html",
+          "hash": "fRc3P9ERkRGK1CIThLCLQA=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Domain/EventsCore.Domain.Exceptions.EventModulesAggregate.EventModulesAggregateArgumentException.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Domain/EventsCore.Domain.Exceptions.EventModulesAggregate.EventModulesAggregateArgumentException.html",
+          "hash": "0rz3xoxNxGLplORSPEaRsg=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Domain/EventsCore.Domain.Exceptions.EventModulesAggregate.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Domain/EventsCore.Domain.Exceptions.EventModulesAggregate.html",
+          "hash": "YPLv8lhdPCe/gh66tXFztg=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Domain/EventsCore.Domain.Exceptions.EventRegistrationsAggregate.EventRegistrationAggregateArgumentException.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Domain/EventsCore.Domain.Exceptions.EventRegistrationsAggregate.EventRegistrationAggregateArgumentException.html",
+          "hash": "yner8GPALEJXFpdH2Qlqsw=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Domain/EventsCore.Domain.Exceptions.EventRegistrationsAggregate.EventRegistrationAggregateInvalidOperationException.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Domain/EventsCore.Domain.Exceptions.EventRegistrationsAggregate.EventRegistrationAggregateInvalidOperationException.html",
+          "hash": "up2N8iZf2M0l8LbgQTAUVQ=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Domain/EventsCore.Domain.Exceptions.EventRegistrationsAggregate.EventRegistrationAggregateInvalidRegistrantException.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Domain/EventsCore.Domain.Exceptions.EventRegistrationsAggregate.EventRegistrationAggregateInvalidRegistrantException.html",
+          "hash": "1aEW4UiOUoiifgzohqMnQA=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Domain/EventsCore.Domain.Exceptions.EventRegistrationsAggregate.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Domain/EventsCore.Domain.Exceptions.EventRegistrationsAggregate.html",
+          "hash": "MnroyZyv2k8jWhq55mzNrg=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Domain/EventsCore.Domain.Exceptions.EventSeries.EventSeriesArgumentException.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Domain/EventsCore.Domain.Exceptions.EventSeries.EventSeriesArgumentException.html",
+          "hash": "Jme42naEoCcgBQVtP0NCDg=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Domain/EventsCore.Domain.Exceptions.EventSeries.EventSeriesInvalidOperationException.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Domain/EventsCore.Domain.Exceptions.EventSeries.EventSeriesInvalidOperationException.html",
+          "hash": "GSTj85KlGPPUftpcsjeuhg=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Domain/EventsCore.Domain.Exceptions.EventSeries.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Domain/EventsCore.Domain.Exceptions.EventSeries.html",
+          "hash": "Zy59QD/5Rhz6il0yWKyOEw=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Domain/EventsCore.Domain.Exceptions.EventType.EventTypeArgumentException.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Domain/EventsCore.Domain.Exceptions.EventType.EventTypeArgumentException.html",
+          "hash": "nvGF3+S3JBcLxLFa2R7yFg=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Domain/EventsCore.Domain.Exceptions.EventType.EventTypeInvalidOperationException.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Domain/EventsCore.Domain.Exceptions.EventType.EventTypeInvalidOperationException.html",
+          "hash": "QU/BU4AhVVYBPzYHzhsEiw=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Domain/EventsCore.Domain.Exceptions.EventType.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Domain/EventsCore.Domain.Exceptions.EventType.html",
+          "hash": "MqJvKoJctMwGzPuFlCElgg=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Domain/EventsCore.Domain.Exceptions.Rank.RankArgumentException.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Domain/EventsCore.Domain.Exceptions.Rank.RankArgumentException.html",
+          "hash": "WKi2ixPPbYT5qF8vol4GTQ=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Domain/EventsCore.Domain.Exceptions.Rank.RankInvalidOperationException.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Domain/EventsCore.Domain.Exceptions.Rank.RankInvalidOperationException.html",
+          "hash": "gX1i1biCp6AmV3IJlSC3DQ=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Domain/EventsCore.Domain.Exceptions.Rank.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Domain/EventsCore.Domain.Exceptions.Rank.html",
+          "hash": "S+qG0zJy1WJV+j+RPcteHA=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Domain/EventsCore.Domain.Exceptions.User.UserArgumentException.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Domain/EventsCore.Domain.Exceptions.User.UserArgumentException.html",
+          "hash": "bLOLWmekBIizZzKhXLBLRg=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Domain/EventsCore.Domain.Exceptions.User.UserInvalidOperationException.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Domain/EventsCore.Domain.Exceptions.User.UserInvalidOperationException.html",
+          "hash": "B7/t9Pqyi29tJoGTFMOaQA=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Domain/EventsCore.Domain.Exceptions.User.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Domain/EventsCore.Domain.Exceptions.User.html",
+          "hash": "L6GccNCa5jTuSSU+3dJZqA=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Domain/EventsCore.Domain.Exceptions.ValueObjects.AddressInvalidException.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Domain/EventsCore.Domain.Exceptions.ValueObjects.AddressInvalidException.html",
+          "hash": "CerFNSK1ldh27qVI9PQBCQ=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Domain/EventsCore.Domain.Exceptions.ValueObjects.EventDatesInvalidException.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Domain/EventsCore.Domain.Exceptions.ValueObjects.EventDatesInvalidException.html",
+          "hash": "i30JeQ4e0bq6lfPciSAqfw=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Domain/EventsCore.Domain.Exceptions.ValueObjects.EventRegistrationRulesArgumentException.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Domain/EventsCore.Domain.Exceptions.ValueObjects.EventRegistrationRulesArgumentException.html",
+          "hash": "3INlc8I4Dd8UKkJKBWMsFA=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Domain/EventsCore.Domain.Exceptions.ValueObjects.PersonFullNameException.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Domain/EventsCore.Domain.Exceptions.ValueObjects.PersonFullNameException.html",
+          "hash": "vrkQ2uEyTf7Un1snp5m1YQ=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Domain/EventsCore.Domain.Exceptions.ValueObjects.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Domain/EventsCore.Domain.Exceptions.ValueObjects.html",
+          "hash": "iIOkW5OmDiiCQUN8YFr+YA=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Domain/EventsCore.Domain.ValueObjects.Address.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Domain/EventsCore.Domain.ValueObjects.Address.html",
+          "hash": "rJew+ZNIrC+345LXcQIQBw=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Domain/EventsCore.Domain.ValueObjects.PersonFullName.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Domain/EventsCore.Domain.ValueObjects.PersonFullName.html",
+          "hash": "XHG4zHvxKdb+4YtyhebgqQ=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Domain/EventsCore.Domain.ValueObjects.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Domain/EventsCore.Domain.ValueObjects.html",
+          "hash": "PQCOZFKr+16alLcKB/iyPA=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "api/Domain/index.md",
+      "output": {
+        ".html": {
+          "relative_path": "api/Domain/index.html",
+          "hash": "lw5K+18svuozS2Lw8guZeg=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "api/Domain/toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Domain/toc.html",
+          "hash": "vCmDiFfL3KP5ab2RA5x64w=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "api/index.md",
+      "output": {
+        ".html": {
+          "relative_path": "api/index.html",
+          "hash": "uSgef1HarsA0kAxul9LWYw=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "api/toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/toc.html",
+          "hash": "GJSNnkSEHx1GU4iAov79qg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/intro.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/intro.html",
+          "hash": "R4KFe4Ks5gG9/PxbFoKpUA=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "articles/toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "articles/toc.html",
+          "hash": "gB8AESyvNru97tzIZofEEg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "index.md",
+      "output": {
+        ".html": {
+          "relative_path": "index.html",
+          "hash": "AlA/XvsVfjAeLWTdK4FMig=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "toc.html",
+          "hash": "WzOZWGgLM0eFdRC3elrICw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    }
+  ],
+  "incremental_info": [
+    {
+      "status": {
+        "can_incremental": true,
+        "incrementalPhase": "build",
+        "total_file_count": 0,
+        "skipped_file_count": 0
+      },
+      "processors": {
+        "ConceptualDocumentProcessor": {
+          "can_incremental": true,
+          "incrementalPhase": "build",
+          "total_file_count": 5,
+          "skipped_file_count": 5
+        },
+        "ManagedReferenceDocumentProcessor": {
+          "can_incremental": true,
+          "incrementalPhase": "build",
+          "total_file_count": 53,
+          "skipped_file_count": 53
+        },
+        "TocDocumentProcessor": {
+          "can_incremental": false,
+          "details": "Processor TocDocumentProcessor cannot support incremental build because the processor doesn't implement ISupportIncrementalDocumentProcessor interface.",
+          "incrementalPhase": "build",
+          "total_file_count": 0,
+          "skipped_file_count": 0
+        }
+      }
+    },
+    {
+      "status": {
+        "can_incremental": true,
+        "details": "Can support incremental post processing.",
+        "incrementalPhase": "postProcessing",
+        "total_file_count": 0,
+        "skipped_file_count": 0
+      },
+      "processors": {}
+    }
+  ],
+  "version_info": {},
+  "groups": [
+    {
+      "xrefmap": "xrefmap.yml"
+    }
+  ]
+}
