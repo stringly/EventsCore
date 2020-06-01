@@ -18,6 +18,7 @@ namespace EventsCore.Domain.Entities.EventRegistrationsAggregate
         /// </summary>
         /// <remarks>
         /// The Registration Entity exists as a part of the <see cref="EventRegistrations">EventRegistrations</see> aggregate root. Registrations can only be created/update/removed from the aggregate root.
+        /// Registrations will be created with the default status of "Pending."
         /// </remarks>
         /// <param name="userId">An integer Id of the User associated with the registration</param>
         /// <param name="userName">A string containing the User's display name.</param>
@@ -26,9 +27,9 @@ namespace EventsCore.Domain.Entities.EventRegistrationsAggregate
         /// <exception cref="EventRegistrationAggregateArgumentException">
         /// Thrown when:
         /// <list type="bullet">
-        /// <item>The provided userId parameter is 0 or out of range.</item>
-        /// <item>The provided userName parameter is empty/whitespace.</item>
-        /// <item>The provided email parameter is empty/whitespace.</item>
+        /// <item><description>The provided userId parameter is 0 or out of range.</description></item>
+        /// <item><description>The provided userName parameter is empty/whitespace.</description></item>
+        /// <item><description>The provided email parameter is empty/whitespace.</description></item>
         /// </list>
         /// </exception>
         public Registration(int userId, string userName, string email, string contact)
@@ -41,30 +42,77 @@ namespace EventsCore.Domain.Entities.EventRegistrationsAggregate
             Registered = DateTime.Now;
             StatusChanged = DateTime.Now;
         }
+        /// <summary>
+        /// The Registration Id of the Registration instance.
+        /// </summary>
         public int Id { get; private set; }
+        /// <summary>
+        /// The UserId of the User associated with this Registration instance.
+        /// </summary>
         public int UserId { get; private set; }
+        /// <summary>
+        /// The Display name of the User associated with this Registration instance.
+        /// </summary>
         public string UserName { get; private set; }
+        /// <summary>
+        /// The Email address of the User associated with this Registration instance.
+        /// </summary>
         public string Email { get; private set; }
+        /// <summary>
+        /// The contact number of the User associated with this Registration instance.
+        /// </summary>
         public string Contact { get; private set; }
+        /// <summary>
+        /// The current <see cref="RegistrationStatus"></see> of this Registration instance.
+        /// </summary>
         public RegistrationStatus Status { get; private set; }
+        /// <summary>
+        /// Timestamp for when this Registration instance was created.
+        /// </summary>
         public DateTime Registered { get; private set; }
+        /// <summary>
+        /// Timestamp for when this Registration's <see cref="RegistrationStatus"></see> was last changed.
+        /// </summary>
         public DateTime StatusChanged { get; private set; }
-
+        /// <summary>
+        /// Method that changes the <see cref="RegistrationStatus"></see> of this instance to <see cref="RegistrationStatus.Accepted"></see>
+        /// </summary>
+        /// <remarks>
+        /// This method will also update the timestamp of <see cref="StatusChanged"></see>
+        /// </remarks>
         public void UpdateStatusAccepted()
         {
             Status = RegistrationStatus.Accepted;
             StatusChanged = DateTime.Now;
         }
+        /// <summary>
+        /// Method that changes the <see cref="RegistrationStatus"></see> of this instance to <see cref="RegistrationStatus.Pending"></see>
+        /// </summary>
+        /// <remarks>
+        /// This method will also update the timestamp of <see cref="StatusChanged"></see>
+        /// </remarks>
         public void UpdateStatusPending()
         {
             Status = RegistrationStatus.Pending;
             StatusChanged = DateTime.Now;
         }
+        /// <summary>
+        /// Method that changes the <see cref="RegistrationStatus"></see> of this instance to <see cref="RegistrationStatus.Standby"></see>
+        /// </summary>
+        /// <remarks>
+        /// This method will also update the timestamp of <see cref="StatusChanged"></see>
+        /// </remarks>
         public void UpdateStatusStandby()
         {
             Status = RegistrationStatus.Standby;
             StatusChanged = DateTime.Now;
         }
+        /// <summary>
+        /// Method that changes the <see cref="RegistrationStatus"></see> of this instance to <see cref="RegistrationStatus.Rejected"></see>
+        /// </summary>
+        /// <remarks>
+        /// This method will also update the timestamp of <see cref="StatusChanged"></see>
+        /// </remarks>
         public void UpdateStatusRejected()
         {
             Status = RegistrationStatus.Rejected;

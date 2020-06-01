@@ -178,11 +178,11 @@ references:
   commentId: T:EventsCore.Domain.Entities.Event
   fullName: EventsCore.Domain.Entities.Event
   nameWithType: Event
-- uid: EventsCore.Domain.Entities.Event.#ctor(System.String,System.String,EventsCore.Domain.Entities.ValueObjects.EventDates,EventsCore.Domain.Entities.ValueObjects.EventRegistrationRules,System.Int32,System.Int32)
+- uid: EventsCore.Domain.Entities.Event.#ctor(System.String,System.String,EventsCore.Domain.ValueObjects.EventDates,EventsCore.Domain.ValueObjects.EventRegistrationRules,System.Int32,System.Int32)
   name: Event(String, String, EventDates, EventRegistrationRules, Int32, Int32)
-  href: api/Domain/EventsCore.Domain.Entities.Event.html#EventsCore_Domain_Entities_Event__ctor_System_String_System_String_EventsCore_Domain_Entities_ValueObjects_EventDates_EventsCore_Domain_Entities_ValueObjects_EventRegistrationRules_System_Int32_System_Int32_
-  commentId: M:EventsCore.Domain.Entities.Event.#ctor(System.String,System.String,EventsCore.Domain.Entities.ValueObjects.EventDates,EventsCore.Domain.Entities.ValueObjects.EventRegistrationRules,System.Int32,System.Int32)
-  fullName: EventsCore.Domain.Entities.Event.Event(System.String, System.String, EventsCore.Domain.Entities.ValueObjects.EventDates, EventsCore.Domain.Entities.ValueObjects.EventRegistrationRules, System.Int32, System.Int32)
+  href: api/Domain/EventsCore.Domain.Entities.Event.html#EventsCore_Domain_Entities_Event__ctor_System_String_System_String_EventsCore_Domain_ValueObjects_EventDates_EventsCore_Domain_ValueObjects_EventRegistrationRules_System_Int32_System_Int32_
+  commentId: M:EventsCore.Domain.Entities.Event.#ctor(System.String,System.String,EventsCore.Domain.ValueObjects.EventDates,EventsCore.Domain.ValueObjects.EventRegistrationRules,System.Int32,System.Int32)
+  fullName: EventsCore.Domain.Entities.Event.Event(System.String, System.String, EventsCore.Domain.ValueObjects.EventDates, EventsCore.Domain.ValueObjects.EventRegistrationRules, System.Int32, System.Int32)
   nameWithType: Event.Event(String, String, EventDates, EventRegistrationRules, Int32, Int32)
 - uid: EventsCore.Domain.Entities.Event.#ctor*
   name: Event
@@ -412,11 +412,11 @@ references:
   isSpec: "True"
   fullName: EventsCore.Domain.Entities.Event.UpdateDescription
   nameWithType: Event.UpdateDescription
-- uid: EventsCore.Domain.Entities.Event.UpdateEventDates(EventsCore.Domain.Entities.ValueObjects.EventDates)
+- uid: EventsCore.Domain.Entities.Event.UpdateEventDates(EventsCore.Domain.ValueObjects.EventDates)
   name: UpdateEventDates(EventDates)
-  href: api/Domain/EventsCore.Domain.Entities.Event.html#EventsCore_Domain_Entities_Event_UpdateEventDates_EventsCore_Domain_Entities_ValueObjects_EventDates_
-  commentId: M:EventsCore.Domain.Entities.Event.UpdateEventDates(EventsCore.Domain.Entities.ValueObjects.EventDates)
-  fullName: EventsCore.Domain.Entities.Event.UpdateEventDates(EventsCore.Domain.Entities.ValueObjects.EventDates)
+  href: api/Domain/EventsCore.Domain.Entities.Event.html#EventsCore_Domain_Entities_Event_UpdateEventDates_EventsCore_Domain_ValueObjects_EventDates_
+  commentId: M:EventsCore.Domain.Entities.Event.UpdateEventDates(EventsCore.Domain.ValueObjects.EventDates)
+  fullName: EventsCore.Domain.Entities.Event.UpdateEventDates(EventsCore.Domain.ValueObjects.EventDates)
   nameWithType: Event.UpdateEventDates(EventDates)
 - uid: EventsCore.Domain.Entities.Event.UpdateEventDates*
   name: UpdateEventDates
@@ -438,11 +438,11 @@ references:
   isSpec: "True"
   fullName: EventsCore.Domain.Entities.Event.UpdateEventType
   nameWithType: Event.UpdateEventType
-- uid: EventsCore.Domain.Entities.Event.UpdateRegistrationRules(EventsCore.Domain.Entities.ValueObjects.EventRegistrationRules)
+- uid: EventsCore.Domain.Entities.Event.UpdateRegistrationRules(EventsCore.Domain.ValueObjects.EventRegistrationRules)
   name: UpdateRegistrationRules(EventRegistrationRules)
-  href: api/Domain/EventsCore.Domain.Entities.Event.html#EventsCore_Domain_Entities_Event_UpdateRegistrationRules_EventsCore_Domain_Entities_ValueObjects_EventRegistrationRules_
-  commentId: M:EventsCore.Domain.Entities.Event.UpdateRegistrationRules(EventsCore.Domain.Entities.ValueObjects.EventRegistrationRules)
-  fullName: EventsCore.Domain.Entities.Event.UpdateRegistrationRules(EventsCore.Domain.Entities.ValueObjects.EventRegistrationRules)
+  href: api/Domain/EventsCore.Domain.Entities.Event.html#EventsCore_Domain_Entities_Event_UpdateRegistrationRules_EventsCore_Domain_ValueObjects_EventRegistrationRules_
+  commentId: M:EventsCore.Domain.Entities.Event.UpdateRegistrationRules(EventsCore.Domain.ValueObjects.EventRegistrationRules)
+  fullName: EventsCore.Domain.Entities.Event.UpdateRegistrationRules(EventsCore.Domain.ValueObjects.EventRegistrationRules)
   nameWithType: Event.UpdateRegistrationRules(EventRegistrationRules)
 - uid: EventsCore.Domain.Entities.Event.UpdateRegistrationRules*
   name: UpdateRegistrationRules
@@ -476,12 +476,6 @@ references:
   commentId: T:EventsCore.Domain.Entities.EventModulesAggregate.EventModules
   fullName: EventsCore.Domain.Entities.EventModulesAggregate.EventModules
   nameWithType: EventModules
-- uid: EventsCore.Domain.Entities.EventModulesAggregate.EventModules.#ctor
-  name: EventModules()
-  href: api/Domain/EventsCore.Domain.Entities.EventModulesAggregate.EventModules.html#EventsCore_Domain_Entities_EventModulesAggregate_EventModules__ctor
-  commentId: M:EventsCore.Domain.Entities.EventModulesAggregate.EventModules.#ctor
-  fullName: EventsCore.Domain.Entities.EventModulesAggregate.EventModules.EventModules()
-  nameWithType: EventModules.EventModules()
 - uid: EventsCore.Domain.Entities.EventModulesAggregate.EventModules.#ctor(System.Int32)
   name: EventModules(Int32)
   href: api/Domain/EventsCore.Domain.Entities.EventModulesAggregate.EventModules.html#EventsCore_Domain_Entities_EventModulesAggregate_EventModules__ctor_System_Int32_
@@ -617,11 +611,11 @@ references:
   commentId: T:EventsCore.Domain.Entities.EventRegistrationsAggregate.EventRegistrations
   fullName: EventsCore.Domain.Entities.EventRegistrationsAggregate.EventRegistrations
   nameWithType: EventRegistrations
-- uid: EventsCore.Domain.Entities.EventRegistrationsAggregate.EventRegistrations.#ctor(System.Int32,EventsCore.Domain.Entities.ValueObjects.EventDates,EventsCore.Domain.Entities.ValueObjects.EventRegistrationRules,EventsCore.Domain.Common.IDateTime)
+- uid: EventsCore.Domain.Entities.EventRegistrationsAggregate.EventRegistrations.#ctor(System.Int32,EventsCore.Domain.ValueObjects.EventDates,EventsCore.Domain.ValueObjects.EventRegistrationRules,EventsCore.Domain.Common.IDateTime)
   name: EventRegistrations(Int32, EventDates, EventRegistrationRules, IDateTime)
-  href: api/Domain/EventsCore.Domain.Entities.EventRegistrationsAggregate.EventRegistrations.html#EventsCore_Domain_Entities_EventRegistrationsAggregate_EventRegistrations__ctor_System_Int32_EventsCore_Domain_Entities_ValueObjects_EventDates_EventsCore_Domain_Entities_ValueObjects_EventRegistrationRules_EventsCore_Domain_Common_IDateTime_
-  commentId: M:EventsCore.Domain.Entities.EventRegistrationsAggregate.EventRegistrations.#ctor(System.Int32,EventsCore.Domain.Entities.ValueObjects.EventDates,EventsCore.Domain.Entities.ValueObjects.EventRegistrationRules,EventsCore.Domain.Common.IDateTime)
-  fullName: EventsCore.Domain.Entities.EventRegistrationsAggregate.EventRegistrations.EventRegistrations(System.Int32, EventsCore.Domain.Entities.ValueObjects.EventDates, EventsCore.Domain.Entities.ValueObjects.EventRegistrationRules, EventsCore.Domain.Common.IDateTime)
+  href: api/Domain/EventsCore.Domain.Entities.EventRegistrationsAggregate.EventRegistrations.html#EventsCore_Domain_Entities_EventRegistrationsAggregate_EventRegistrations__ctor_System_Int32_EventsCore_Domain_ValueObjects_EventDates_EventsCore_Domain_ValueObjects_EventRegistrationRules_EventsCore_Domain_Common_IDateTime_
+  commentId: M:EventsCore.Domain.Entities.EventRegistrationsAggregate.EventRegistrations.#ctor(System.Int32,EventsCore.Domain.ValueObjects.EventDates,EventsCore.Domain.ValueObjects.EventRegistrationRules,EventsCore.Domain.Common.IDateTime)
+  fullName: EventsCore.Domain.Entities.EventRegistrationsAggregate.EventRegistrations.EventRegistrations(System.Int32, EventsCore.Domain.ValueObjects.EventDates, EventsCore.Domain.ValueObjects.EventRegistrationRules, EventsCore.Domain.Common.IDateTime)
   nameWithType: EventRegistrations.EventRegistrations(Int32, EventDates, EventRegistrationRules, IDateTime)
 - uid: EventsCore.Domain.Entities.EventRegistrationsAggregate.EventRegistrations.#ctor*
   name: EventRegistrations
@@ -1574,179 +1568,6 @@ references:
   isSpec: "True"
   fullName: EventsCore.Domain.Entities.User.UpdateRank
   nameWithType: User.UpdateRank
-- uid: EventsCore.Domain.Entities.ValueObjects
-  name: EventsCore.Domain.Entities.ValueObjects
-  href: api/Domain/EventsCore.Domain.Entities.ValueObjects.html
-  commentId: N:EventsCore.Domain.Entities.ValueObjects
-  fullName: EventsCore.Domain.Entities.ValueObjects
-  nameWithType: EventsCore.Domain.Entities.ValueObjects
-- uid: EventsCore.Domain.Entities.ValueObjects.EventDates
-  name: EventDates
-  href: api/Domain/EventsCore.Domain.Entities.ValueObjects.EventDates.html
-  commentId: T:EventsCore.Domain.Entities.ValueObjects.EventDates
-  fullName: EventsCore.Domain.Entities.ValueObjects.EventDates
-  nameWithType: EventDates
-- uid: EventsCore.Domain.Entities.ValueObjects.EventDates.#ctor(System.DateTime,System.DateTime,System.DateTime,System.DateTime,EventsCore.Domain.Common.IDateTime)
-  name: EventDates(DateTime, DateTime, DateTime, DateTime, IDateTime)
-  href: api/Domain/EventsCore.Domain.Entities.ValueObjects.EventDates.html#EventsCore_Domain_Entities_ValueObjects_EventDates__ctor_System_DateTime_System_DateTime_System_DateTime_System_DateTime_EventsCore_Domain_Common_IDateTime_
-  commentId: M:EventsCore.Domain.Entities.ValueObjects.EventDates.#ctor(System.DateTime,System.DateTime,System.DateTime,System.DateTime,EventsCore.Domain.Common.IDateTime)
-  fullName: EventsCore.Domain.Entities.ValueObjects.EventDates.EventDates(System.DateTime, System.DateTime, System.DateTime, System.DateTime, EventsCore.Domain.Common.IDateTime)
-  nameWithType: EventDates.EventDates(DateTime, DateTime, DateTime, DateTime, IDateTime)
-- uid: EventsCore.Domain.Entities.ValueObjects.EventDates.#ctor*
-  name: EventDates
-  href: api/Domain/EventsCore.Domain.Entities.ValueObjects.EventDates.html#EventsCore_Domain_Entities_ValueObjects_EventDates__ctor_
-  commentId: Overload:EventsCore.Domain.Entities.ValueObjects.EventDates.#ctor
-  isSpec: "True"
-  fullName: EventsCore.Domain.Entities.ValueObjects.EventDates.EventDates
-  nameWithType: EventDates.EventDates
-- uid: EventsCore.Domain.Entities.ValueObjects.EventDates.EndDate
-  name: EndDate
-  href: api/Domain/EventsCore.Domain.Entities.ValueObjects.EventDates.html#EventsCore_Domain_Entities_ValueObjects_EventDates_EndDate
-  commentId: P:EventsCore.Domain.Entities.ValueObjects.EventDates.EndDate
-  fullName: EventsCore.Domain.Entities.ValueObjects.EventDates.EndDate
-  nameWithType: EventDates.EndDate
-- uid: EventsCore.Domain.Entities.ValueObjects.EventDates.EndDate*
-  name: EndDate
-  href: api/Domain/EventsCore.Domain.Entities.ValueObjects.EventDates.html#EventsCore_Domain_Entities_ValueObjects_EventDates_EndDate_
-  commentId: Overload:EventsCore.Domain.Entities.ValueObjects.EventDates.EndDate
-  isSpec: "True"
-  fullName: EventsCore.Domain.Entities.ValueObjects.EventDates.EndDate
-  nameWithType: EventDates.EndDate
-- uid: EventsCore.Domain.Entities.ValueObjects.EventDates.GetAtomicValues
-  name: GetAtomicValues()
-  href: api/Domain/EventsCore.Domain.Entities.ValueObjects.EventDates.html#EventsCore_Domain_Entities_ValueObjects_EventDates_GetAtomicValues
-  commentId: M:EventsCore.Domain.Entities.ValueObjects.EventDates.GetAtomicValues
-  fullName: EventsCore.Domain.Entities.ValueObjects.EventDates.GetAtomicValues()
-  nameWithType: EventDates.GetAtomicValues()
-- uid: EventsCore.Domain.Entities.ValueObjects.EventDates.GetAtomicValues*
-  name: GetAtomicValues
-  href: api/Domain/EventsCore.Domain.Entities.ValueObjects.EventDates.html#EventsCore_Domain_Entities_ValueObjects_EventDates_GetAtomicValues_
-  commentId: Overload:EventsCore.Domain.Entities.ValueObjects.EventDates.GetAtomicValues
-  isSpec: "True"
-  fullName: EventsCore.Domain.Entities.ValueObjects.EventDates.GetAtomicValues
-  nameWithType: EventDates.GetAtomicValues
-- uid: EventsCore.Domain.Entities.ValueObjects.EventDates.RegistrationEndDate
-  name: RegistrationEndDate
-  href: api/Domain/EventsCore.Domain.Entities.ValueObjects.EventDates.html#EventsCore_Domain_Entities_ValueObjects_EventDates_RegistrationEndDate
-  commentId: P:EventsCore.Domain.Entities.ValueObjects.EventDates.RegistrationEndDate
-  fullName: EventsCore.Domain.Entities.ValueObjects.EventDates.RegistrationEndDate
-  nameWithType: EventDates.RegistrationEndDate
-- uid: EventsCore.Domain.Entities.ValueObjects.EventDates.RegistrationEndDate*
-  name: RegistrationEndDate
-  href: api/Domain/EventsCore.Domain.Entities.ValueObjects.EventDates.html#EventsCore_Domain_Entities_ValueObjects_EventDates_RegistrationEndDate_
-  commentId: Overload:EventsCore.Domain.Entities.ValueObjects.EventDates.RegistrationEndDate
-  isSpec: "True"
-  fullName: EventsCore.Domain.Entities.ValueObjects.EventDates.RegistrationEndDate
-  nameWithType: EventDates.RegistrationEndDate
-- uid: EventsCore.Domain.Entities.ValueObjects.EventDates.RegistrationStartDate
-  name: RegistrationStartDate
-  href: api/Domain/EventsCore.Domain.Entities.ValueObjects.EventDates.html#EventsCore_Domain_Entities_ValueObjects_EventDates_RegistrationStartDate
-  commentId: P:EventsCore.Domain.Entities.ValueObjects.EventDates.RegistrationStartDate
-  fullName: EventsCore.Domain.Entities.ValueObjects.EventDates.RegistrationStartDate
-  nameWithType: EventDates.RegistrationStartDate
-- uid: EventsCore.Domain.Entities.ValueObjects.EventDates.RegistrationStartDate*
-  name: RegistrationStartDate
-  href: api/Domain/EventsCore.Domain.Entities.ValueObjects.EventDates.html#EventsCore_Domain_Entities_ValueObjects_EventDates_RegistrationStartDate_
-  commentId: Overload:EventsCore.Domain.Entities.ValueObjects.EventDates.RegistrationStartDate
-  isSpec: "True"
-  fullName: EventsCore.Domain.Entities.ValueObjects.EventDates.RegistrationStartDate
-  nameWithType: EventDates.RegistrationStartDate
-- uid: EventsCore.Domain.Entities.ValueObjects.EventDates.StartDate
-  name: StartDate
-  href: api/Domain/EventsCore.Domain.Entities.ValueObjects.EventDates.html#EventsCore_Domain_Entities_ValueObjects_EventDates_StartDate
-  commentId: P:EventsCore.Domain.Entities.ValueObjects.EventDates.StartDate
-  fullName: EventsCore.Domain.Entities.ValueObjects.EventDates.StartDate
-  nameWithType: EventDates.StartDate
-- uid: EventsCore.Domain.Entities.ValueObjects.EventDates.StartDate*
-  name: StartDate
-  href: api/Domain/EventsCore.Domain.Entities.ValueObjects.EventDates.html#EventsCore_Domain_Entities_ValueObjects_EventDates_StartDate_
-  commentId: Overload:EventsCore.Domain.Entities.ValueObjects.EventDates.StartDate
-  isSpec: "True"
-  fullName: EventsCore.Domain.Entities.ValueObjects.EventDates.StartDate
-  nameWithType: EventDates.StartDate
-- uid: EventsCore.Domain.Entities.ValueObjects.EventRegistrationRules
-  name: EventRegistrationRules
-  href: api/Domain/EventsCore.Domain.Entities.ValueObjects.EventRegistrationRules.html
-  commentId: T:EventsCore.Domain.Entities.ValueObjects.EventRegistrationRules
-  fullName: EventsCore.Domain.Entities.ValueObjects.EventRegistrationRules
-  nameWithType: EventRegistrationRules
-- uid: EventsCore.Domain.Entities.ValueObjects.EventRegistrationRules.#ctor(System.UInt32)
-  name: EventRegistrationRules(UInt32)
-  href: api/Domain/EventsCore.Domain.Entities.ValueObjects.EventRegistrationRules.html#EventsCore_Domain_Entities_ValueObjects_EventRegistrationRules__ctor_System_UInt32_
-  commentId: M:EventsCore.Domain.Entities.ValueObjects.EventRegistrationRules.#ctor(System.UInt32)
-  fullName: EventsCore.Domain.Entities.ValueObjects.EventRegistrationRules.EventRegistrationRules(System.UInt32)
-  nameWithType: EventRegistrationRules.EventRegistrationRules(UInt32)
-- uid: EventsCore.Domain.Entities.ValueObjects.EventRegistrationRules.#ctor(System.UInt32,System.UInt32)
-  name: EventRegistrationRules(UInt32, UInt32)
-  href: api/Domain/EventsCore.Domain.Entities.ValueObjects.EventRegistrationRules.html#EventsCore_Domain_Entities_ValueObjects_EventRegistrationRules__ctor_System_UInt32_System_UInt32_
-  commentId: M:EventsCore.Domain.Entities.ValueObjects.EventRegistrationRules.#ctor(System.UInt32,System.UInt32)
-  fullName: EventsCore.Domain.Entities.ValueObjects.EventRegistrationRules.EventRegistrationRules(System.UInt32, System.UInt32)
-  nameWithType: EventRegistrationRules.EventRegistrationRules(UInt32, UInt32)
-- uid: EventsCore.Domain.Entities.ValueObjects.EventRegistrationRules.#ctor(System.UInt32,System.UInt32,System.UInt32)
-  name: EventRegistrationRules(UInt32, UInt32, UInt32)
-  href: api/Domain/EventsCore.Domain.Entities.ValueObjects.EventRegistrationRules.html#EventsCore_Domain_Entities_ValueObjects_EventRegistrationRules__ctor_System_UInt32_System_UInt32_System_UInt32_
-  commentId: M:EventsCore.Domain.Entities.ValueObjects.EventRegistrationRules.#ctor(System.UInt32,System.UInt32,System.UInt32)
-  fullName: EventsCore.Domain.Entities.ValueObjects.EventRegistrationRules.EventRegistrationRules(System.UInt32, System.UInt32, System.UInt32)
-  nameWithType: EventRegistrationRules.EventRegistrationRules(UInt32, UInt32, UInt32)
-- uid: EventsCore.Domain.Entities.ValueObjects.EventRegistrationRules.#ctor*
-  name: EventRegistrationRules
-  href: api/Domain/EventsCore.Domain.Entities.ValueObjects.EventRegistrationRules.html#EventsCore_Domain_Entities_ValueObjects_EventRegistrationRules__ctor_
-  commentId: Overload:EventsCore.Domain.Entities.ValueObjects.EventRegistrationRules.#ctor
-  isSpec: "True"
-  fullName: EventsCore.Domain.Entities.ValueObjects.EventRegistrationRules.EventRegistrationRules
-  nameWithType: EventRegistrationRules.EventRegistrationRules
-- uid: EventsCore.Domain.Entities.ValueObjects.EventRegistrationRules.GetAtomicValues
-  name: GetAtomicValues()
-  href: api/Domain/EventsCore.Domain.Entities.ValueObjects.EventRegistrationRules.html#EventsCore_Domain_Entities_ValueObjects_EventRegistrationRules_GetAtomicValues
-  commentId: M:EventsCore.Domain.Entities.ValueObjects.EventRegistrationRules.GetAtomicValues
-  fullName: EventsCore.Domain.Entities.ValueObjects.EventRegistrationRules.GetAtomicValues()
-  nameWithType: EventRegistrationRules.GetAtomicValues()
-- uid: EventsCore.Domain.Entities.ValueObjects.EventRegistrationRules.GetAtomicValues*
-  name: GetAtomicValues
-  href: api/Domain/EventsCore.Domain.Entities.ValueObjects.EventRegistrationRules.html#EventsCore_Domain_Entities_ValueObjects_EventRegistrationRules_GetAtomicValues_
-  commentId: Overload:EventsCore.Domain.Entities.ValueObjects.EventRegistrationRules.GetAtomicValues
-  isSpec: "True"
-  fullName: EventsCore.Domain.Entities.ValueObjects.EventRegistrationRules.GetAtomicValues
-  nameWithType: EventRegistrationRules.GetAtomicValues
-- uid: EventsCore.Domain.Entities.ValueObjects.EventRegistrationRules.MaxRegistrations
-  name: MaxRegistrations
-  href: api/Domain/EventsCore.Domain.Entities.ValueObjects.EventRegistrationRules.html#EventsCore_Domain_Entities_ValueObjects_EventRegistrationRules_MaxRegistrations
-  commentId: P:EventsCore.Domain.Entities.ValueObjects.EventRegistrationRules.MaxRegistrations
-  fullName: EventsCore.Domain.Entities.ValueObjects.EventRegistrationRules.MaxRegistrations
-  nameWithType: EventRegistrationRules.MaxRegistrations
-- uid: EventsCore.Domain.Entities.ValueObjects.EventRegistrationRules.MaxRegistrations*
-  name: MaxRegistrations
-  href: api/Domain/EventsCore.Domain.Entities.ValueObjects.EventRegistrationRules.html#EventsCore_Domain_Entities_ValueObjects_EventRegistrationRules_MaxRegistrations_
-  commentId: Overload:EventsCore.Domain.Entities.ValueObjects.EventRegistrationRules.MaxRegistrations
-  isSpec: "True"
-  fullName: EventsCore.Domain.Entities.ValueObjects.EventRegistrationRules.MaxRegistrations
-  nameWithType: EventRegistrationRules.MaxRegistrations
-- uid: EventsCore.Domain.Entities.ValueObjects.EventRegistrationRules.MaxStandbyRegistrations
-  name: MaxStandbyRegistrations
-  href: api/Domain/EventsCore.Domain.Entities.ValueObjects.EventRegistrationRules.html#EventsCore_Domain_Entities_ValueObjects_EventRegistrationRules_MaxStandbyRegistrations
-  commentId: P:EventsCore.Domain.Entities.ValueObjects.EventRegistrationRules.MaxStandbyRegistrations
-  fullName: EventsCore.Domain.Entities.ValueObjects.EventRegistrationRules.MaxStandbyRegistrations
-  nameWithType: EventRegistrationRules.MaxStandbyRegistrations
-- uid: EventsCore.Domain.Entities.ValueObjects.EventRegistrationRules.MaxStandbyRegistrations*
-  name: MaxStandbyRegistrations
-  href: api/Domain/EventsCore.Domain.Entities.ValueObjects.EventRegistrationRules.html#EventsCore_Domain_Entities_ValueObjects_EventRegistrationRules_MaxStandbyRegistrations_
-  commentId: Overload:EventsCore.Domain.Entities.ValueObjects.EventRegistrationRules.MaxStandbyRegistrations
-  isSpec: "True"
-  fullName: EventsCore.Domain.Entities.ValueObjects.EventRegistrationRules.MaxStandbyRegistrations
-  nameWithType: EventRegistrationRules.MaxStandbyRegistrations
-- uid: EventsCore.Domain.Entities.ValueObjects.EventRegistrationRules.MinRegistrations
-  name: MinRegistrations
-  href: api/Domain/EventsCore.Domain.Entities.ValueObjects.EventRegistrationRules.html#EventsCore_Domain_Entities_ValueObjects_EventRegistrationRules_MinRegistrations
-  commentId: P:EventsCore.Domain.Entities.ValueObjects.EventRegistrationRules.MinRegistrations
-  fullName: EventsCore.Domain.Entities.ValueObjects.EventRegistrationRules.MinRegistrations
-  nameWithType: EventRegistrationRules.MinRegistrations
-- uid: EventsCore.Domain.Entities.ValueObjects.EventRegistrationRules.MinRegistrations*
-  name: MinRegistrations
-  href: api/Domain/EventsCore.Domain.Entities.ValueObjects.EventRegistrationRules.html#EventsCore_Domain_Entities_ValueObjects_EventRegistrationRules_MinRegistrations_
-  commentId: Overload:EventsCore.Domain.Entities.ValueObjects.EventRegistrationRules.MinRegistrations
-  isSpec: "True"
-  fullName: EventsCore.Domain.Entities.ValueObjects.EventRegistrationRules.MinRegistrations
-  nameWithType: EventRegistrationRules.MinRegistrations
 - uid: EventsCore.Domain.Exceptions.Event
   name: EventsCore.Domain.Exceptions.Event
   href: api/Domain/EventsCore.Domain.Exceptions.Event.html
@@ -2240,6 +2061,173 @@ references:
   isSpec: "True"
   fullName: EventsCore.Domain.ValueObjects.Address.ZipCode
   nameWithType: Address.ZipCode
+- uid: EventsCore.Domain.ValueObjects.EventDates
+  name: EventDates
+  href: api/Domain/EventsCore.Domain.ValueObjects.EventDates.html
+  commentId: T:EventsCore.Domain.ValueObjects.EventDates
+  fullName: EventsCore.Domain.ValueObjects.EventDates
+  nameWithType: EventDates
+- uid: EventsCore.Domain.ValueObjects.EventDates.#ctor(System.DateTime,System.DateTime,System.DateTime,System.DateTime,EventsCore.Domain.Common.IDateTime)
+  name: EventDates(DateTime, DateTime, DateTime, DateTime, IDateTime)
+  href: api/Domain/EventsCore.Domain.ValueObjects.EventDates.html#EventsCore_Domain_ValueObjects_EventDates__ctor_System_DateTime_System_DateTime_System_DateTime_System_DateTime_EventsCore_Domain_Common_IDateTime_
+  commentId: M:EventsCore.Domain.ValueObjects.EventDates.#ctor(System.DateTime,System.DateTime,System.DateTime,System.DateTime,EventsCore.Domain.Common.IDateTime)
+  fullName: EventsCore.Domain.ValueObjects.EventDates.EventDates(System.DateTime, System.DateTime, System.DateTime, System.DateTime, EventsCore.Domain.Common.IDateTime)
+  nameWithType: EventDates.EventDates(DateTime, DateTime, DateTime, DateTime, IDateTime)
+- uid: EventsCore.Domain.ValueObjects.EventDates.#ctor*
+  name: EventDates
+  href: api/Domain/EventsCore.Domain.ValueObjects.EventDates.html#EventsCore_Domain_ValueObjects_EventDates__ctor_
+  commentId: Overload:EventsCore.Domain.ValueObjects.EventDates.#ctor
+  isSpec: "True"
+  fullName: EventsCore.Domain.ValueObjects.EventDates.EventDates
+  nameWithType: EventDates.EventDates
+- uid: EventsCore.Domain.ValueObjects.EventDates.EndDate
+  name: EndDate
+  href: api/Domain/EventsCore.Domain.ValueObjects.EventDates.html#EventsCore_Domain_ValueObjects_EventDates_EndDate
+  commentId: P:EventsCore.Domain.ValueObjects.EventDates.EndDate
+  fullName: EventsCore.Domain.ValueObjects.EventDates.EndDate
+  nameWithType: EventDates.EndDate
+- uid: EventsCore.Domain.ValueObjects.EventDates.EndDate*
+  name: EndDate
+  href: api/Domain/EventsCore.Domain.ValueObjects.EventDates.html#EventsCore_Domain_ValueObjects_EventDates_EndDate_
+  commentId: Overload:EventsCore.Domain.ValueObjects.EventDates.EndDate
+  isSpec: "True"
+  fullName: EventsCore.Domain.ValueObjects.EventDates.EndDate
+  nameWithType: EventDates.EndDate
+- uid: EventsCore.Domain.ValueObjects.EventDates.GetAtomicValues
+  name: GetAtomicValues()
+  href: api/Domain/EventsCore.Domain.ValueObjects.EventDates.html#EventsCore_Domain_ValueObjects_EventDates_GetAtomicValues
+  commentId: M:EventsCore.Domain.ValueObjects.EventDates.GetAtomicValues
+  fullName: EventsCore.Domain.ValueObjects.EventDates.GetAtomicValues()
+  nameWithType: EventDates.GetAtomicValues()
+- uid: EventsCore.Domain.ValueObjects.EventDates.GetAtomicValues*
+  name: GetAtomicValues
+  href: api/Domain/EventsCore.Domain.ValueObjects.EventDates.html#EventsCore_Domain_ValueObjects_EventDates_GetAtomicValues_
+  commentId: Overload:EventsCore.Domain.ValueObjects.EventDates.GetAtomicValues
+  isSpec: "True"
+  fullName: EventsCore.Domain.ValueObjects.EventDates.GetAtomicValues
+  nameWithType: EventDates.GetAtomicValues
+- uid: EventsCore.Domain.ValueObjects.EventDates.RegistrationEndDate
+  name: RegistrationEndDate
+  href: api/Domain/EventsCore.Domain.ValueObjects.EventDates.html#EventsCore_Domain_ValueObjects_EventDates_RegistrationEndDate
+  commentId: P:EventsCore.Domain.ValueObjects.EventDates.RegistrationEndDate
+  fullName: EventsCore.Domain.ValueObjects.EventDates.RegistrationEndDate
+  nameWithType: EventDates.RegistrationEndDate
+- uid: EventsCore.Domain.ValueObjects.EventDates.RegistrationEndDate*
+  name: RegistrationEndDate
+  href: api/Domain/EventsCore.Domain.ValueObjects.EventDates.html#EventsCore_Domain_ValueObjects_EventDates_RegistrationEndDate_
+  commentId: Overload:EventsCore.Domain.ValueObjects.EventDates.RegistrationEndDate
+  isSpec: "True"
+  fullName: EventsCore.Domain.ValueObjects.EventDates.RegistrationEndDate
+  nameWithType: EventDates.RegistrationEndDate
+- uid: EventsCore.Domain.ValueObjects.EventDates.RegistrationStartDate
+  name: RegistrationStartDate
+  href: api/Domain/EventsCore.Domain.ValueObjects.EventDates.html#EventsCore_Domain_ValueObjects_EventDates_RegistrationStartDate
+  commentId: P:EventsCore.Domain.ValueObjects.EventDates.RegistrationStartDate
+  fullName: EventsCore.Domain.ValueObjects.EventDates.RegistrationStartDate
+  nameWithType: EventDates.RegistrationStartDate
+- uid: EventsCore.Domain.ValueObjects.EventDates.RegistrationStartDate*
+  name: RegistrationStartDate
+  href: api/Domain/EventsCore.Domain.ValueObjects.EventDates.html#EventsCore_Domain_ValueObjects_EventDates_RegistrationStartDate_
+  commentId: Overload:EventsCore.Domain.ValueObjects.EventDates.RegistrationStartDate
+  isSpec: "True"
+  fullName: EventsCore.Domain.ValueObjects.EventDates.RegistrationStartDate
+  nameWithType: EventDates.RegistrationStartDate
+- uid: EventsCore.Domain.ValueObjects.EventDates.StartDate
+  name: StartDate
+  href: api/Domain/EventsCore.Domain.ValueObjects.EventDates.html#EventsCore_Domain_ValueObjects_EventDates_StartDate
+  commentId: P:EventsCore.Domain.ValueObjects.EventDates.StartDate
+  fullName: EventsCore.Domain.ValueObjects.EventDates.StartDate
+  nameWithType: EventDates.StartDate
+- uid: EventsCore.Domain.ValueObjects.EventDates.StartDate*
+  name: StartDate
+  href: api/Domain/EventsCore.Domain.ValueObjects.EventDates.html#EventsCore_Domain_ValueObjects_EventDates_StartDate_
+  commentId: Overload:EventsCore.Domain.ValueObjects.EventDates.StartDate
+  isSpec: "True"
+  fullName: EventsCore.Domain.ValueObjects.EventDates.StartDate
+  nameWithType: EventDates.StartDate
+- uid: EventsCore.Domain.ValueObjects.EventRegistrationRules
+  name: EventRegistrationRules
+  href: api/Domain/EventsCore.Domain.ValueObjects.EventRegistrationRules.html
+  commentId: T:EventsCore.Domain.ValueObjects.EventRegistrationRules
+  fullName: EventsCore.Domain.ValueObjects.EventRegistrationRules
+  nameWithType: EventRegistrationRules
+- uid: EventsCore.Domain.ValueObjects.EventRegistrationRules.#ctor(System.UInt32)
+  name: EventRegistrationRules(UInt32)
+  href: api/Domain/EventsCore.Domain.ValueObjects.EventRegistrationRules.html#EventsCore_Domain_ValueObjects_EventRegistrationRules__ctor_System_UInt32_
+  commentId: M:EventsCore.Domain.ValueObjects.EventRegistrationRules.#ctor(System.UInt32)
+  fullName: EventsCore.Domain.ValueObjects.EventRegistrationRules.EventRegistrationRules(System.UInt32)
+  nameWithType: EventRegistrationRules.EventRegistrationRules(UInt32)
+- uid: EventsCore.Domain.ValueObjects.EventRegistrationRules.#ctor(System.UInt32,System.UInt32)
+  name: EventRegistrationRules(UInt32, UInt32)
+  href: api/Domain/EventsCore.Domain.ValueObjects.EventRegistrationRules.html#EventsCore_Domain_ValueObjects_EventRegistrationRules__ctor_System_UInt32_System_UInt32_
+  commentId: M:EventsCore.Domain.ValueObjects.EventRegistrationRules.#ctor(System.UInt32,System.UInt32)
+  fullName: EventsCore.Domain.ValueObjects.EventRegistrationRules.EventRegistrationRules(System.UInt32, System.UInt32)
+  nameWithType: EventRegistrationRules.EventRegistrationRules(UInt32, UInt32)
+- uid: EventsCore.Domain.ValueObjects.EventRegistrationRules.#ctor(System.UInt32,System.UInt32,System.UInt32)
+  name: EventRegistrationRules(UInt32, UInt32, UInt32)
+  href: api/Domain/EventsCore.Domain.ValueObjects.EventRegistrationRules.html#EventsCore_Domain_ValueObjects_EventRegistrationRules__ctor_System_UInt32_System_UInt32_System_UInt32_
+  commentId: M:EventsCore.Domain.ValueObjects.EventRegistrationRules.#ctor(System.UInt32,System.UInt32,System.UInt32)
+  fullName: EventsCore.Domain.ValueObjects.EventRegistrationRules.EventRegistrationRules(System.UInt32, System.UInt32, System.UInt32)
+  nameWithType: EventRegistrationRules.EventRegistrationRules(UInt32, UInt32, UInt32)
+- uid: EventsCore.Domain.ValueObjects.EventRegistrationRules.#ctor*
+  name: EventRegistrationRules
+  href: api/Domain/EventsCore.Domain.ValueObjects.EventRegistrationRules.html#EventsCore_Domain_ValueObjects_EventRegistrationRules__ctor_
+  commentId: Overload:EventsCore.Domain.ValueObjects.EventRegistrationRules.#ctor
+  isSpec: "True"
+  fullName: EventsCore.Domain.ValueObjects.EventRegistrationRules.EventRegistrationRules
+  nameWithType: EventRegistrationRules.EventRegistrationRules
+- uid: EventsCore.Domain.ValueObjects.EventRegistrationRules.GetAtomicValues
+  name: GetAtomicValues()
+  href: api/Domain/EventsCore.Domain.ValueObjects.EventRegistrationRules.html#EventsCore_Domain_ValueObjects_EventRegistrationRules_GetAtomicValues
+  commentId: M:EventsCore.Domain.ValueObjects.EventRegistrationRules.GetAtomicValues
+  fullName: EventsCore.Domain.ValueObjects.EventRegistrationRules.GetAtomicValues()
+  nameWithType: EventRegistrationRules.GetAtomicValues()
+- uid: EventsCore.Domain.ValueObjects.EventRegistrationRules.GetAtomicValues*
+  name: GetAtomicValues
+  href: api/Domain/EventsCore.Domain.ValueObjects.EventRegistrationRules.html#EventsCore_Domain_ValueObjects_EventRegistrationRules_GetAtomicValues_
+  commentId: Overload:EventsCore.Domain.ValueObjects.EventRegistrationRules.GetAtomicValues
+  isSpec: "True"
+  fullName: EventsCore.Domain.ValueObjects.EventRegistrationRules.GetAtomicValues
+  nameWithType: EventRegistrationRules.GetAtomicValues
+- uid: EventsCore.Domain.ValueObjects.EventRegistrationRules.MaxRegistrations
+  name: MaxRegistrations
+  href: api/Domain/EventsCore.Domain.ValueObjects.EventRegistrationRules.html#EventsCore_Domain_ValueObjects_EventRegistrationRules_MaxRegistrations
+  commentId: P:EventsCore.Domain.ValueObjects.EventRegistrationRules.MaxRegistrations
+  fullName: EventsCore.Domain.ValueObjects.EventRegistrationRules.MaxRegistrations
+  nameWithType: EventRegistrationRules.MaxRegistrations
+- uid: EventsCore.Domain.ValueObjects.EventRegistrationRules.MaxRegistrations*
+  name: MaxRegistrations
+  href: api/Domain/EventsCore.Domain.ValueObjects.EventRegistrationRules.html#EventsCore_Domain_ValueObjects_EventRegistrationRules_MaxRegistrations_
+  commentId: Overload:EventsCore.Domain.ValueObjects.EventRegistrationRules.MaxRegistrations
+  isSpec: "True"
+  fullName: EventsCore.Domain.ValueObjects.EventRegistrationRules.MaxRegistrations
+  nameWithType: EventRegistrationRules.MaxRegistrations
+- uid: EventsCore.Domain.ValueObjects.EventRegistrationRules.MaxStandbyRegistrations
+  name: MaxStandbyRegistrations
+  href: api/Domain/EventsCore.Domain.ValueObjects.EventRegistrationRules.html#EventsCore_Domain_ValueObjects_EventRegistrationRules_MaxStandbyRegistrations
+  commentId: P:EventsCore.Domain.ValueObjects.EventRegistrationRules.MaxStandbyRegistrations
+  fullName: EventsCore.Domain.ValueObjects.EventRegistrationRules.MaxStandbyRegistrations
+  nameWithType: EventRegistrationRules.MaxStandbyRegistrations
+- uid: EventsCore.Domain.ValueObjects.EventRegistrationRules.MaxStandbyRegistrations*
+  name: MaxStandbyRegistrations
+  href: api/Domain/EventsCore.Domain.ValueObjects.EventRegistrationRules.html#EventsCore_Domain_ValueObjects_EventRegistrationRules_MaxStandbyRegistrations_
+  commentId: Overload:EventsCore.Domain.ValueObjects.EventRegistrationRules.MaxStandbyRegistrations
+  isSpec: "True"
+  fullName: EventsCore.Domain.ValueObjects.EventRegistrationRules.MaxStandbyRegistrations
+  nameWithType: EventRegistrationRules.MaxStandbyRegistrations
+- uid: EventsCore.Domain.ValueObjects.EventRegistrationRules.MinRegistrations
+  name: MinRegistrations
+  href: api/Domain/EventsCore.Domain.ValueObjects.EventRegistrationRules.html#EventsCore_Domain_ValueObjects_EventRegistrationRules_MinRegistrations
+  commentId: P:EventsCore.Domain.ValueObjects.EventRegistrationRules.MinRegistrations
+  fullName: EventsCore.Domain.ValueObjects.EventRegistrationRules.MinRegistrations
+  nameWithType: EventRegistrationRules.MinRegistrations
+- uid: EventsCore.Domain.ValueObjects.EventRegistrationRules.MinRegistrations*
+  name: MinRegistrations
+  href: api/Domain/EventsCore.Domain.ValueObjects.EventRegistrationRules.html#EventsCore_Domain_ValueObjects_EventRegistrationRules_MinRegistrations_
+  commentId: Overload:EventsCore.Domain.ValueObjects.EventRegistrationRules.MinRegistrations
+  isSpec: "True"
+  fullName: EventsCore.Domain.ValueObjects.EventRegistrationRules.MinRegistrations
+  nameWithType: EventRegistrationRules.MinRegistrations
 - uid: EventsCore.Domain.ValueObjects.PersonFullName
   name: PersonFullName
   href: api/Domain/EventsCore.Domain.ValueObjects.PersonFullName.html

@@ -1,10 +1,9 @@
 ﻿using EventsCore.Domain.Common;
-using EventsCore.Domain.Entities.ValueObjects;
+using EventsCore.Domain.ValueObjects;
 using EventsCore.Domain.Exceptions.EventRegistrationsAggregate;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 
 namespace EventsCore.Domain.Entities.EventRegistrationsAggregate
 {
@@ -27,6 +26,14 @@ namespace EventsCore.Domain.Entities.EventRegistrationsAggregate
         /// <param name="eventDates">A instance of <see cref="EventDates">EventDates</see> that contains the dates associated with this event.</param>
         /// <param name="registrationRules">An instance of <see cref="EventRegistrationRules">RegistrationRules</see> that contain the Registration Rules for this event.</param>
         /// <param name="dateTimeProvider">An instance of <see cref="IDateTime"></see></param>
+        /// <exception cref="EventRegistrationAggregateArgumentException">
+        /// Thrown when:
+        /// <list type="bullet">
+        /// <item><description>The EventId parameter is invalid or out of range.</description></item>
+        /// <item><description>The EventDates parameter is null.</description></item>
+        /// <item><description>The EventRegistrationRules parameter is null.</description></item>
+        /// </list>
+        /// </exception>
         public EventRegistrations(int eventId, EventDates eventDates, EventRegistrationRules registrationRules, IDateTime dateTimeProvider)
         {
             _dateTime = dateTimeProvider;
@@ -38,6 +45,9 @@ namespace EventsCore.Domain.Entities.EventRegistrationsAggregate
         /// <summary>
         /// Private IDateTime date provider
         /// </summary>
+        /// <remarks>
+        /// This should be an Implementation of the <see cref="IDateTime"></see> interface.
+        /// </remarks>
         private readonly IDateTime _dateTime;
 
         /// <summary>
@@ -164,7 +174,7 @@ namespace EventsCore.Domain.Entities.EventRegistrationsAggregate
         /// <param name="email">A string containing the User's email address.</param>
         /// <param name="contact">A string containing the User's primary contact phone number.</param>
         /// <exception cref="EventRegistrationAggregateInvalidOperationException">
-        /// Throw when:
+        /// Thrown when:
         /// <list type="bullet">
         ///     <item><description>Event is not accepting registrations</description></item>
         ///     <Item><description>When the UserId parameter is already registered for the Event</description></Item> 
@@ -221,7 +231,7 @@ namespace EventsCore.Domain.Entities.EventRegistrationsAggregate
             _registrations.Remove(registrationForUser);
         }
         /// <summary>
-        /// Updates the <see cref="RegistrationStatus"></see> of a Registration to "Accepted" by the id of the UserId associated with the <see cref="Registration"></see>
+        /// Updates the <see cref="RegistrationStatus"></see> of a Registration to "Accepted" by the id UserId associated with the <see cref="Registration"></see>
         /// </summary>
         /// <param name="userId">The UserId of the <see cref="User"></see> associated with the <see cref="Registration"></see></param>
         /// <exception cref="EventRegistrationAggregateInvalidOperationException">
@@ -231,7 +241,7 @@ namespace EventsCore.Domain.Entities.EventRegistrationsAggregate
         /// <item><description>the <see cref="Event"></see> is at Maximum allowed "Accepted" registrations.</description></item>
         /// </list>
         /// </exception>
-        /// <exception cref="EventRegistrationAggregateArgumentException">Thrown when no Registration with the given UserId parameter could be found in the <see cref="EventRegistrations._registrations"></see> collection.</exception>
+        /// <exception cref="EventRegistrationAggregateArgumentException">Thrown when no Registration with the given UserId parameter could be found in the <see cref="_registrations"></see> collection.</exception>
         public void AcceptRegistrationByUserId(int userId)
         {
             if (IsExpired)
@@ -249,6 +259,17 @@ namespace EventsCore.Domain.Entities.EventRegistrationsAggregate
             }
             registrationForUserId.UpdateStatusAccepted();
         }
+
+        /// <summary>
+        /// Updates the <see cref="RegistrationStatus"></see> of a Registration to "Rejected" by the id UserId associated with the <see cref="Registration"></see>
+        /// </summary>
+        /// <param name="userId">The UserId of the <see cref="User"></see> associated with the <see cref="Registration"></see></param>
+        /// <exception cref="EventRegistrationAggregateInvalidOperationException">
+        /// Thrown when the associated Event has expired.
+        /// </exception>
+        /// <exception cref="EventRegistrationAggregateArgumentException">
+        /// Thrown when no Registration with the provided UserId parameter was found in the <see cref="_registrations"> collection.</see>
+        /// </exception>
         public void RejectRegistrationByUserId(int userId)
         {
             if (IsExpired)
@@ -268,6 +289,20 @@ namespace EventsCore.Domain.Entities.EventRegistrationsAggregate
                 }
             }
         }
+        /// <summary>
+        /// Updates the <see cref="RegistrationStatus"></see> of a Registration to "Standby" by the id UserId associated with the <see cref="Registration"></see>
+        /// </summary>
+        /// <param name="userId">The UserId of the <see cref="User"></see> associated with the <see cref="Registration"></see></param>
+        /// <exception cref="EventRegistrationAggregateInvalidOperationException">
+        /// Thrown when:
+        /// <list type="bullet">
+        /// <item><description>The associated Event has expired.</description></item>
+        /// <item><description>The associated Event has reached its maximum number of Standby Registrations.</description></item>
+        /// </list>
+        /// </exception>
+        /// <exception cref="EventRegistrationAggregateArgumentException">
+        /// Thrown when no Registration with the provided UserId parameter was found in the <see cref="_registrations"> collection.</see>
+        /// </exception>
         public void StandbyRegistrationByUserId(int userId)
         {
             if (IsExpired)

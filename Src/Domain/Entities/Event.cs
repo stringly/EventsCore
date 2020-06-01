@@ -1,5 +1,5 @@
 ﻿using EventsCore.Domain.Common;
-using EventsCore.Domain.Entities.ValueObjects;
+using EventsCore.Domain.ValueObjects;
 using EventsCore.Domain.Exceptions.Event;
 using System;
 
@@ -18,6 +18,8 @@ namespace EventsCore.Domain.Entities
         /// <param name="description">A string containing the Event's Description. Must not be null or only whitespace.</param>
         /// <param name="dates">An <see cref="EventDates"> object</see> containing the Event's Date information.</param>
         /// <param name="rules">A <see cref="EventRegistrationRules"> object</see> containing the Registration rules for the event.</param>
+        /// <param name="eventTypeId">An integer representing the <see cref="EventType"></see> Id of the event.</param>
+        /// <param name="eventSeriesId">An optional integer representing the <see cref="EventSeries"> Id of the EventSeries to which the new event will belong.</see></param>
         public Event(string title, string description, EventDates dates, EventRegistrationRules rules, int eventTypeId, int eventSeriesId = 0)
         {
             UpdateTitle(title);
@@ -25,12 +27,15 @@ namespace EventsCore.Domain.Entities
             UpdateEventDates(dates);
             UpdateRegistrationRules(rules);   
             UpdateEventType(eventTypeId);
+            if (eventSeriesId != 0)
+            {
+                AddEventToSeries(eventSeriesId);
+            }
         }
         /// <summary>
         /// Event's Primary Key
         /// </summary>
         public int Id { get; private set; }
-
         /// <summary>
         /// A string that represents the Event's title. 
         /// </summary>
@@ -53,10 +58,21 @@ namespace EventsCore.Domain.Entities
         /// Returns a string containing the Event's Description.
         /// </summary>
         public string Description => _description;
+        /// <summary>
+        /// The Id of the <see cref="EventSeries"></see> to which the Event belongs.
+        /// </summary>
         public int? EventSeriesId { get; private set; }
+        /// <summary>
+        /// The <see cref="EventSeries"></see> to which the event belongs.
+        /// </summary>
         public EventSeries EventSeries { get; private set; }
-
+        /// <summary>
+        /// The Id of the <see cref="EventType"></see> to which the Event belongs.
+        /// </summary>
         public int EventTypeId {get; private set; }
+        /// <summary>
+        /// The <see cref="EventType"></see> to which the Event belongs.
+        /// </summary>
         public EventType EventType { get; private set; }
         /// <summary>
         /// The Dates associated with this Event.
@@ -117,6 +133,10 @@ namespace EventsCore.Domain.Entities
             }
             _description = newDescription;
         }
+        /// <summary>
+        /// Adds the Event to the <see cref="EventSeries"></see> with the given Id.
+        /// </summary>
+        /// <param name="eventSeriesId">The Id of the <see cref="EventSeries"></see> to which the Event should be assigned.</param>
         public void AddEventToSeries(int eventSeriesId)
         {
             if (eventSeriesId == 0)
@@ -128,10 +148,18 @@ namespace EventsCore.Domain.Entities
                 EventSeriesId = eventSeriesId;
             }
         }
+        /// <summary>
+        /// Removes the Event from it's <see cref="EventSeries"></see>
+        /// </summary>
         public void RemoveEventFromSeries()
         {
             EventSeriesId = null;
         }
+        /// <summary>
+        /// Updates the Event's <see cref="EventType"></see>
+        /// </summary>
+        /// <param name="newEventTypeId">The Id of the <see cref="EventType"></see> to assign to this Event.</param>
+        /// <exception cref="EventArgumentException">Thrown when the EventTypeId is 0 or out of range.</exception>
         public void UpdateEventType(int newEventTypeId)
         {
             EventTypeId = newEventTypeId != 0 ? newEventTypeId : throw new EventArgumentException("Cannot update Event Type: parameter cannot be 0.", nameof(newEventTypeId));
@@ -145,13 +173,14 @@ namespace EventsCore.Domain.Entities
         {
             Dates = newDates ?? throw new EventArgumentException("Cannot update Event: parameter must not be null.", nameof(newDates));
         }
+        /// <summary>
+        /// Updates the Event's <see cref="EventRegistrationRules"></see> ruleset.
+        /// </summary>
+        /// <param name="newRules">An <see cref="EventRegistrationRules"></see> object containing the new rules to assign to the Event.</param>
+        /// <exception cref="EventArgumentException">Thrown when the newRules parameter is null.</exception>
         public void UpdateRegistrationRules(EventRegistrationRules newRules)
         {
-            if(newRules == null)
-            {
-                throw new EventArgumentException("Cannot update Event: parameter must not be null", nameof(newRules));
-            }
-            Rules = newRules;
-        }       
+            Rules = newRules ?? throw new EventArgumentException("Cannot update Event: parameter must not be null", nameof(newRules));
+        }        
     }
 }

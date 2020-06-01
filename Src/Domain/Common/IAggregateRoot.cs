@@ -1,9 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace EventsCore.Domain.Common
+﻿namespace EventsCore.Domain.Common
 {
+    /// <summary>
+    /// Marker Interface for Aggregate Root objects
+    /// </summary>
     public interface IAggregateRoot
     {
     }

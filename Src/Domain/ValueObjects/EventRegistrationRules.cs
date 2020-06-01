@@ -2,7 +2,7 @@
 using EventsCore.Domain.Exceptions.ValueObjects;
 using System.Collections.Generic;
 
-namespace EventsCore.Domain.Entities.ValueObjects
+namespace EventsCore.Domain.ValueObjects
 {
     /// <summary>
     /// Class that creates and stores Event Registration rules for an Event.
@@ -37,10 +37,11 @@ namespace EventsCore.Domain.Entities.ValueObjects
         /// Creates a new EventRegistrationRules object with the provided Maximum Registration count.
         /// </summary>
         /// <param name="maxRegistrations">An unsigned, non-zero integer representing the Maximum number of Registrations allowed for this Event.</param>
+        /// <exception cref="EventRegistrationRulesArgumentException">Thrown when the maxRegistrations parameter is less than 1.</exception>
         public EventRegistrationRules(uint maxRegistrations)
         {
             // uint will prevent negative integers, but zero still requires a guard
-            if (maxRegistrations == 0)
+            if (maxRegistrations < 1)
             {
                 throw new EventRegistrationRulesArgumentException("Cannot create Event Ruleset: parameter must be greater than 0", nameof(maxRegistrations));
             } 
@@ -53,9 +54,16 @@ namespace EventsCore.Domain.Entities.ValueObjects
         /// </summary>
         /// <param name="maxRegistrations">An unsigned, non-zero integer representing the Maximum number of Registrations allowed for this Event.</param>
         /// <param name="minRegistrations">An unsigned integer representing the Minimum number of Registrations required for this event. This value must be less than or equal to the maxRegistrations parameter.</param>
+        /// <exception cref="EventRegistrationRulesArgumentException">
+        /// Thrown when:
+        /// <list type="bullet">
+        /// <item><description>The maxRegistrations parameter is less than 1.</description></item>
+        /// <item><description>The maxRegistrations parameter is less than the minRegistrations parameter.</description></item>
+        /// </list>
+        /// </exception>
         public EventRegistrationRules(uint maxRegistrations, uint minRegistrations)
         {
-            if (maxRegistrations == 0)
+            if (maxRegistrations < 1)
             {
                 throw new EventRegistrationRulesArgumentException("Cannot create Event Ruleset: parameter must be greater than 0", nameof(maxRegistrations));
             }
@@ -74,6 +82,13 @@ namespace EventsCore.Domain.Entities.ValueObjects
         /// <param name="maxRegistrations">An unsigned, non-zero integer representing the Maximum number of Registrations allowed for this Event.</param>
         /// <param name="minRegistrations">An unsigned integer representing the Minimum number of Registrations required for this event. This value must be less than or equal to the maxRegistrations parameter.</param>
         /// <param name="maxStandbyRegistrations">An unsigned integer representing the Maximum number of Standy Registrations allowed for this event. If this is set to zero, no Standby Registrations will be allowed.</param>
+        /// <exception cref="EventRegistrationRulesArgumentException">
+        /// Thrown when:
+        /// <list type="bullet">
+        /// <item><description>The maxRegistrations parameter is less than 1.</description></item>
+        /// <item><description>The maxRegistrations parameter is less than the minRegistrations parameter.</description></item>
+        /// </list>
+        /// </exception>
         public EventRegistrationRules(uint maxRegistrations, uint minRegistrations, uint maxStandbyRegistrations)
         {
             if(maxRegistrations == 0)
@@ -106,7 +121,10 @@ namespace EventsCore.Domain.Entities.ValueObjects
         /// If no Maximum number of Standby Registrations is provided by constructor, this defaults to 0 and standby Registrations are prohibited.
         /// </remarks>
         public uint MaxStandbyRegistrations { get; private set; }
-        
+        /// <summary>
+        /// Enumerates the values in the object.
+        /// </summary>
+        /// <returns>An <see cref="System.Collections.IEnumerable"></see> containing the values in the object.</returns>
         protected override IEnumerable<object> GetAtomicValues()
         {
             // Using a yield return statement to return each element one at a time

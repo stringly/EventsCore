@@ -3,7 +3,7 @@ using EventsCore.Domain.Exceptions.ValueObjects;
 using System;
 using System.Collections.Generic;
 
-namespace EventsCore.Domain.Entities.ValueObjects
+namespace EventsCore.Domain.ValueObjects
 {
     /// <summary>
     /// Value Object class that stores a collection of dates for an Event
@@ -28,7 +28,17 @@ namespace EventsCore.Domain.Entities.ValueObjects
         /// <param name="evStart">DateTime object representing the Date/Time the Event is to begin. Must be before End Date.</param>
         /// <param name="evEnd">DateTime object representing the Date/Time the Event is to end. Must be after Start Date.</param>
         /// <param name="rgStart">DateTime object representing the Date/Time the Registration Period for the Event is to begin. Must be before Event Start Date.</param>
-        /// <param name="rgEnd">DateTime object representing the Date/Time the Registration Period for the Event is to end. Must be before Event Start Date and after Registration Start Date.</param>        
+        /// <param name="rgEnd">DateTime object representing the Date/Time the Registration Period for the Event is to end. Must be before Event Start Date and after Registration Start Date.</param>
+        /// <param name="dateTimeProvider">An implemementation of <see cref="IDateTime"></see> used to access the system time.</param>        
+        /// <exception cref="EventDatesInvalidException">
+        /// Thrown when:
+        /// <list type="bullet">
+        /// <item><description>The evStart parameter is in the past.</description></item>
+        /// <item><description>The evStart parameter is a date after the evEnd parameter in the past.</description></item>
+        /// <item><description>The rgStart parameter is a date after the evStart parameter.</description></item>
+        /// <item><description>The rgStart parameter is a date after the rgEnd parameter.</description></item>
+        /// </list>
+        /// </exception>
         public EventDates(DateTime evStart, DateTime evEnd, DateTime rgStart, DateTime rgEnd, IDateTime dateTimeProvider)
         {
             _dateTime = dateTimeProvider;
@@ -59,10 +69,26 @@ namespace EventsCore.Domain.Entities.ValueObjects
             RegistrationEndDate = rgEnd;            
         }
         private readonly IDateTime _dateTime;
+        /// <summary>
+        /// The Event's start date/time
+        /// </summary>
         public DateTime StartDate { get; private set; }
+        /// <summary>
+        /// The Event's end date/time
+        /// </summary>
         public DateTime EndDate { get; private set; }
+        /// <summary>
+        /// The Event's registration period start date
+        /// </summary>
         public DateTime RegistrationStartDate { get; private set; }
+        /// <summary>
+        /// The Event's registration period end date
+        /// </summary>
         public DateTime RegistrationEndDate { get; private set; }
+        /// <summary>
+        /// Enumerates the values in the object
+        /// </summary>
+        /// <returns>A <see cref="System.Collections.IEnumerable"></see> containing the values in the object.</returns>
         protected override IEnumerable<object> GetAtomicValues()
         {
             // Using a yield return statement to return each element one at a time

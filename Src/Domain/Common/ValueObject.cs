@@ -3,9 +3,17 @@ using System.Linq;
 
 namespace EventsCore.Domain.Common
 {
+    /// <summary>
+    /// Abstract base class for a ValueObject object
+    /// </summary>
     public abstract class ValueObject
     {
-        
+        /// <summary>
+        /// Determines if two ValueObjects are equal
+        /// </summary>
+        /// <param name="left">The left ValueObject in the comparison</param>
+        /// <param name="right">The right ValueObject in the comparison</param>
+        /// <returns></returns>
         protected static bool EqualOperator(ValueObject left, ValueObject right)
         {
             if (left is null ^ right is null)
@@ -15,7 +23,12 @@ namespace EventsCore.Domain.Common
 
             return left?.Equals(right) != false;
         }
-
+        /// <summary>
+        /// Determines if two ValueObjects are unequal
+        /// </summary>
+        /// <param name="left">The left ValueObject in the comparison</param>
+        /// <param name="right">The right ValueObject in the comparison</param>
+        /// <returns></returns>
         protected static bool NotEqualOperator(ValueObject left, ValueObject right)
         {
             return !(EqualOperator(left, right));

@@ -41,7 +41,16 @@ namespace EventsCore.Domain.ValueObjects
         /// <param name="suite">The suite/apartment/room number. This is an optional field.</param>
         /// <param name="city">The name of the city in which the address is located. Required, cannot be null/whitespace/empty string.</param>
         /// <param name="state">The 2-digit Postal Abbreviation for the state in which the address is located. Required, cannot be null/whitespace/empty string.</param>        
-        /// <param name="zipcode">The 5-digit ZIP code for the address. Required, cannot be null/whitespace/empty string.</param>
+        /// <param name="zipCode">The 5-digit ZIP code for the address. Required, cannot be null/whitespace/empty string.</param>
+        /// <exception cref="AddressInvalidException">
+        /// Thrown when:
+        /// <list type="bullet">
+        /// <item><description>The street parameter is null/whitespace</description></item>
+        /// <item><description>The city parameter is null/whitespace</description></item>
+        /// <item><description>The state parameter is null/whitespace</description></item>
+        /// <item><description>The zipCode parameter is null/whitespace</description></item>
+        /// </list>
+        /// </exception>
         public Address(string street, string suite, string city, string state, string zipCode)
         {
             if (string.IsNullOrWhiteSpace(street))
@@ -67,6 +76,10 @@ namespace EventsCore.Domain.ValueObjects
             State = state;            
             ZipCode = zipCode;
         }
+        /// <summary>
+        /// Enumerates the Values in the object.
+        /// </summary>
+        /// <returns>An <see cref="System.Collections.IEnumerable"/> containing the values in the object.</returns>
         protected override IEnumerable<object> GetAtomicValues()
         {
             // Using a yield return statement to return each element one at a time

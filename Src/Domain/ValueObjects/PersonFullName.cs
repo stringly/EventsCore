@@ -19,6 +19,13 @@ namespace EventsCore.Domain.ValueObjects
         /// </summary>
         /// <param name="first">A string containing the Person's First or Given Name. Required.</param>
         /// <param name="last">A string containing the Person's Last or Surname. Required.</param>
+        /// <exception cref="PersonFullNameException">
+        /// Thrown when:
+        /// <list type="bullet">
+        /// <item><description>The first parameter is null/whitespace</description></item>
+        /// <item><description>The last parameter is null/whitespace</description></item>
+        /// </list>
+        /// </exception>
         public PersonFullName(string first, string last)
         {
             if (string.IsNullOrWhiteSpace(first))
@@ -51,7 +58,10 @@ namespace EventsCore.Domain.ValueObjects
         /// Returns the person's full name in the format "Last, First"
         /// </summary>
         public string FullNameReverse => $"{Last}, {First}";
-
+        /// <summary>
+        /// Enumerates the values in the object
+        /// </summary>
+        /// <returns>An <see cref="System.Collections.IEnumerable"></see> containing the values in the object.</returns>
         protected override IEnumerable<object> GetAtomicValues()
         {
             // Using a yield return statement to return each element one at a time

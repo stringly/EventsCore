@@ -1,11 +1,15 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace EventsCore.Domain.Common
 {
+    /// <summary>
+    /// Interface that defines a DateTime provider
+    /// </summary>
     public interface IDateTime    
-    {       
+    {
+        /// <summary>
+        /// Returns the current System Time
+        /// </summary>
         DateTime Now { get; }
     }
 }

@@ -5,9 +5,9 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>PLACEHOLDER </title>
+    <title>EventsCore API Reference </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="PLACEHOLDER ">
+    <meta name="title" content="EventsCore API Reference ">
     <meta name="generator" content="docfx 2.54.0.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
@@ -67,9 +67,24 @@
         <div class="article row grid-right">
           <div class="col-md-10">
             <article class="content wrap" id="_content" data-uid="">
-<h1 id="placeholder">PLACEHOLDER</h1>
+<h1 id="eventscore-api-reference">EventsCore API Reference</h1>
 
-<p>TODO: Add .NET projects to the <em>src</em> folder and run <code>docfx</code> to generate <strong>REAL</strong> <em>API Documentation</em>!</p>
+<p>Use the pane on the left to browse the documentation for the APIs in this project.</p>
+<h2 id="namespaces">Namespaces</h2>
+<p>I&#39;m using this project to develop my understanding of Clean Architecture principals. I&#39;ve modeled the structure of the application based on the recommendations in <a href="https://github.com/jasontaylordev/NorthwindTraders">Jason Taylor&#39;s Northwind Application</a>.
+The project is currently separated into 6 separate namespaces:</p>
+<h3 id="application">Application</h3>
+<p>This layer contains all application logic. It is dependent on the domain layer, but has no dependencies on any other layer or project. This layer defines interfaces that are implemented by outside layers. For example, if the application need to access a notification service, a new interface would be added to application and an implementation would be created within infrastructure.</p>
+<h3 id="domain">Domain</h3>
+<p>This will contain all entities, enums, exceptions, types and logic specific to the domain. The Entity Framework related classes are abstract, and should be considered in the same light as .NET Core.</p>
+<h3 id="common">Common</h3>
+<p>This will contain all cross-cutting concerns.</p>
+<h3 id="infrastructure">Infrastructure</h3>
+<p>This layer contains classes for accessing external resources such as file systems, web services, smtp, and so on. These classes should be based on interfaces defined within the application layer.</p>
+<h3 id="persistence">Persistence</h3>
+<p>This layer will contain all EF-specific implementations.</p>
+<h3 id="webui">WebUI</h3>
+<p>This layer will contain the MVC Core web application user interface.</p>
 </article>
           </div>
           
@@ -78,7 +93,7 @@
               <div class="contribution">
                 <ul class="nav">
                   <li>
-                    <a href="https://github.com/stringly/EventsCore/blob/master/Docs/docfx_project/api/index.md/#L1" class="contribution-link">Improve this Doc</a>
+                    <a href="https://github.com/stringly/EventsCore/blob/master/docs/docfx_project/api/index.md/#L1" class="contribution-link">Improve this Doc</a>
                   </li>
                 </ul>
               </div>

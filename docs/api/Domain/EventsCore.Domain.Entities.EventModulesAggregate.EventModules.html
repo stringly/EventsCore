@@ -73,7 +73,8 @@
   
   <h1 id="EventsCore_Domain_Entities_EventModulesAggregate_EventModules" data-uid="EventsCore.Domain.Entities.EventModulesAggregate.EventModules" class="text-break">Class EventModules
   </h1>
-  <div class="markdown level0 summary"></div>
+  <div class="markdown level0 summary"><p>Aggregate root Entity that controls adding/removing/updating an <a class="xref" href="EventsCore.Domain.Entities.Event.html">Event</a>&apos;s <a class="xref" href="EventsCore.Domain.Entities.EventModulesAggregate.EventModules.html">EventModules</a></p>
+</div>
   <div class="markdown level0 conceptual"></div>
   <div class="inheritance">
     <h5>Inheritance</h5>
@@ -118,29 +119,15 @@
   </h3>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/stringly/EventsCore/new/master/apiSpec/new?filename=EventsCore_Domain_Entities_EventModulesAggregate_EventModules__ctor.md&amp;value=---%0Auid%3A%20EventsCore.Domain.Entities.EventModulesAggregate.EventModules.%23ctor%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/stringly/EventsCore/blob/master/src/Domain/Entities/EventModulesAggregate/EventModules.cs/#L14">View Source</a>
-  </span>
-  <a id="EventsCore_Domain_Entities_EventModulesAggregate_EventModules__ctor_" data-uid="EventsCore.Domain.Entities.EventModulesAggregate.EventModules.#ctor*"></a>
-  <h4 id="EventsCore_Domain_Entities_EventModulesAggregate_EventModules__ctor" data-uid="EventsCore.Domain.Entities.EventModulesAggregate.EventModules.#ctor">EventModules()</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">protected EventModules()</code></pre>
-  </div>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
     <a href="https://github.com/stringly/EventsCore/new/master/apiSpec/new?filename=EventsCore_Domain_Entities_EventModulesAggregate_EventModules__ctor_System_Int32_.md&amp;value=---%0Auid%3A%20EventsCore.Domain.Entities.EventModulesAggregate.EventModules.%23ctor(System.Int32)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/stringly/EventsCore/blob/master/src/Domain/Entities/EventModulesAggregate/EventModules.cs/#L18">View Source</a>
+    <a href="https://github.com/stringly/EventsCore/blob/master/src/Domain/Entities/EventModulesAggregate/EventModules.cs/#L34">View Source</a>
   </span>
   <a id="EventsCore_Domain_Entities_EventModulesAggregate_EventModules__ctor_" data-uid="EventsCore.Domain.Entities.EventModulesAggregate.EventModules.#ctor*"></a>
   <h4 id="EventsCore_Domain_Entities_EventModulesAggregate_EventModules__ctor_System_Int32_" data-uid="EventsCore.Domain.Entities.EventModulesAggregate.EventModules.#ctor(System.Int32)">EventModules(Int32)</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Creates a new Instance of <a class="xref" href="EventsCore.Domain.Entities.EventModulesAggregate.EventModules.html">EventModules</a></p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
@@ -159,7 +146,24 @@
       <tr>
         <td><span class="xref">System.Int32</span></td>
         <td><span class="parametername">eventId</span></td>
-        <td></td>
+        <td><p>The Id of the <a class="xref" href="EventsCore.Domain.Entities.Event.html">Event</a> associated with this aggregate.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="EventsCore.Domain.Exceptions.EventModulesAggregate.EventModulesAggregateArgumentException.html">EventModulesAggregateArgumentException</a></td>
+        <td><p>Thrown when the eventId parameter is 0 or out of range.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -170,11 +174,12 @@
     <a href="https://github.com/stringly/EventsCore/new/master/apiSpec/new?filename=EventsCore_Domain_Entities_EventModulesAggregate_EventModules_EventId.md&amp;value=---%0Auid%3A%20EventsCore.Domain.Entities.EventModulesAggregate.EventModules.EventId%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/stringly/EventsCore/blob/master/src/Domain/Entities/EventModulesAggregate/EventModules.cs/#L10">View Source</a>
+    <a href="https://github.com/stringly/EventsCore/blob/master/src/Domain/Entities/EventModulesAggregate/EventModules.cs/#L16">View Source</a>
   </span>
   <a id="EventsCore_Domain_Entities_EventModulesAggregate_EventModules_EventId_" data-uid="EventsCore.Domain.Entities.EventModulesAggregate.EventModules.EventId*"></a>
   <h4 id="EventsCore_Domain_Entities_EventModulesAggregate_EventModules_EventId" data-uid="EventsCore.Domain.Entities.EventModulesAggregate.EventModules.EventId">EventId</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>The Id of the <a class="xref" href="EventsCore.Domain.Entities.Event.html">Event</a> associated with this aggregate.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
@@ -200,11 +205,12 @@
     <a href="https://github.com/stringly/EventsCore/new/master/apiSpec/new?filename=EventsCore_Domain_Entities_EventModulesAggregate_EventModules_Modules.md&amp;value=---%0Auid%3A%20EventsCore.Domain.Entities.EventModulesAggregate.EventModules.Modules%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/stringly/EventsCore/blob/master/src/Domain/Entities/EventModulesAggregate/EventModules.cs/#L12">View Source</a>
+    <a href="https://github.com/stringly/EventsCore/blob/master/src/Domain/Entities/EventModulesAggregate/EventModules.cs/#L21">View Source</a>
   </span>
   <a id="EventsCore_Domain_Entities_EventModulesAggregate_EventModules_Modules_" data-uid="EventsCore.Domain.Entities.EventModulesAggregate.EventModules.Modules*"></a>
   <h4 id="EventsCore_Domain_Entities_EventModulesAggregate_EventModules_Modules" data-uid="EventsCore.Domain.Entities.EventModulesAggregate.EventModules.Modules">Modules</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>A readonly list of <a class="xref" href="EventsCore.Domain.Entities.EventModulesAggregate.Module.html">Module</a>s associated with the <a class="xref" href="EventsCore.Domain.Entities.Event.html">Event</a></p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
@@ -232,11 +238,12 @@
     <a href="https://github.com/stringly/EventsCore/new/master/apiSpec/new?filename=EventsCore_Domain_Entities_EventModulesAggregate_EventModules_AddModule_System_String_System_String_.md&amp;value=---%0Auid%3A%20EventsCore.Domain.Entities.EventModulesAggregate.EventModules.AddModule(System.String%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/stringly/EventsCore/blob/master/src/Domain/Entities/EventModulesAggregate/EventModules.cs/#L22">View Source</a>
+    <a href="https://github.com/stringly/EventsCore/blob/master/src/Domain/Entities/EventModulesAggregate/EventModules.cs/#L44">View Source</a>
   </span>
   <a id="EventsCore_Domain_Entities_EventModulesAggregate_EventModules_AddModule_" data-uid="EventsCore.Domain.Entities.EventModulesAggregate.EventModules.AddModule*"></a>
   <h4 id="EventsCore_Domain_Entities_EventModulesAggregate_EventModules_AddModule_System_String_System_String_" data-uid="EventsCore.Domain.Entities.EventModulesAggregate.EventModules.AddModule(System.String,System.String)">AddModule(String, String)</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Creates a new <a class="xref" href="EventsCore.Domain.Entities.EventModulesAggregate.Module.html">Module</a> and adds it to the aggregate&apos;s <a class="xref" href="EventsCore.Domain.Entities.EventModulesAggregate.EventModules.html#EventsCore_Domain_Entities_EventModulesAggregate_EventModules_Modules">Modules</a> collection.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
@@ -255,12 +262,30 @@
       <tr>
         <td><span class="xref">System.String</span></td>
         <td><span class="parametername">moduleName</span></td>
-        <td></td>
+        <td><p>A string containing the name of the module to be added.</p>
+</td>
       </tr>
       <tr>
         <td><span class="xref">System.String</span></td>
         <td><span class="parametername">moduleDescription</span></td>
-        <td></td>
+        <td><p>A string containing the description of the module to be added.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="EventsCore.Domain.Exceptions.EventModulesAggregate.EventModulesAggregateArgumentException.html">EventModulesAggregateArgumentException</a></td>
+        <td><p>Thrown when a Module already exists with the given moduleName parameter.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -269,11 +294,12 @@
     <a href="https://github.com/stringly/EventsCore/new/master/apiSpec/new?filename=EventsCore_Domain_Entities_EventModulesAggregate_EventModules_RemoveModuleById_System_Int32_.md&amp;value=---%0Auid%3A%20EventsCore.Domain.Entities.EventModulesAggregate.EventModules.RemoveModuleById(System.Int32)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/stringly/EventsCore/blob/master/src/Domain/Entities/EventModulesAggregate/EventModules.cs/#L31">View Source</a>
+    <a href="https://github.com/stringly/EventsCore/blob/master/src/Domain/Entities/EventModulesAggregate/EventModules.cs/#L58">View Source</a>
   </span>
   <a id="EventsCore_Domain_Entities_EventModulesAggregate_EventModules_RemoveModuleById_" data-uid="EventsCore.Domain.Entities.EventModulesAggregate.EventModules.RemoveModuleById*"></a>
   <h4 id="EventsCore_Domain_Entities_EventModulesAggregate_EventModules_RemoveModuleById_System_Int32_" data-uid="EventsCore.Domain.Entities.EventModulesAggregate.EventModules.RemoveModuleById(System.Int32)">RemoveModuleById(Int32)</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Removes a module by Id</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
@@ -292,7 +318,24 @@
       <tr>
         <td><span class="xref">System.Int32</span></td>
         <td><span class="parametername">moduleId</span></td>
-        <td></td>
+        <td><p>The Id of the module to be removed.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="EventsCore.Domain.Exceptions.EventModulesAggregate.EventModulesAggregateArgumentException.html">EventModulesAggregateArgumentException</a></td>
+        <td><p>Thrown when no module with the given moduleId parameter exists in the aggregate&apos;s <a class="xref" href="EventsCore.Domain.Entities.EventModulesAggregate.EventModules.html#EventsCore_Domain_Entities_EventModulesAggregate_EventModules_Modules">Modules</a> collection.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -311,7 +354,7 @@
                     <a href="https://github.com/stringly/EventsCore/new/master/apiSpec/new?filename=EventsCore_Domain_Entities_EventModulesAggregate_EventModules.md&amp;value=---%0Auid%3A%20EventsCore.Domain.Entities.EventModulesAggregate.EventModules%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
                   </li>
                   <li>
-                    <a href="https://github.com/stringly/EventsCore/blob/master/src/Domain/Entities/EventModulesAggregate/EventModules.cs/#L8" class="contribution-link">View Source</a>
+                    <a href="https://github.com/stringly/EventsCore/blob/master/src/Domain/Entities/EventModulesAggregate/EventModules.cs/#L11" class="contribution-link">View Source</a>
                   </li>
                 </ul>
               </div>
