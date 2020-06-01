@@ -16,10 +16,10 @@ namespace EventsCore.Domain.Entities
         /// </summary>
         /// <param name="title">A string containing the Event's Title. Must not be null or only whitespace.</param>
         /// <param name="description">A string containing the Event's Description. Must not be null or only whitespace.</param>
-        /// <param name="dates">An <see cref="EventDates"> object</see> containing the Event's Date information.</param>
-        /// <param name="rules">A <see cref="EventRegistrationRules"> object</see> containing the Registration rules for the event.</param>
+        /// <param name="dates">An <see cref="EventDates"></see> ValueObject containing the Event's Date information.</param>
+        /// <param name="rules">A <see cref="EventRegistrationRules"></see> ValueObject containing the Registration rules for the event.</param>
         /// <param name="eventTypeId">An integer representing the <see cref="EventType"></see> Id of the event.</param>
-        /// <param name="eventSeriesId">An optional integer representing the <see cref="EventSeries"> Id of the EventSeries to which the new event will belong.</see></param>
+        /// <param name="eventSeriesId">An optional integer representing the <see cref="EventSeries"></see> Id of the EventSeries to which the new event will belong.</param>
         public Event(string title, string description, EventDates dates, EventRegistrationRules rules, int eventTypeId, int eventSeriesId = 0)
         {
             UpdateTitle(title);
@@ -78,7 +78,7 @@ namespace EventsCore.Domain.Entities
         /// The Dates associated with this Event.
         /// </summary>
         /// <remarks>
-        /// This uses the <seealso cref="EventDates"/>EventDates value object, which encapsulates and validates the event's Start Date/Time, End Date/Time,
+        /// This uses the <seealso cref="EventDates"/> ValueObject, which encapsulates and validates the event's Start Date/Time, End Date/Time,
         /// Registration Period Start Date/Time, and Registration Period End Date/Time.
         /// </remarks>
         public EventDates Dates { get; private set;}
