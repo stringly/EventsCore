@@ -165,17 +165,17 @@ namespace EventsCore.Domain.Entities.EventRegistrationsAggregate
         /// <param name="contact">A string containing the User's primary contact phone number.</param>
         /// <exception cref="EventRegistrationAggregateInvalidOperationException">
         /// Throw when:
-        /// <list>
-        ///     <item>Event is not accepting registrations</item>
-        ///     <Item>When the UserId parameter is already registered for the Event</Item> 
+        /// <list type="bullet">
+        ///     <item><description>Event is not accepting registrations</description></item>
+        ///     <Item><description>When the UserId parameter is already registered for the Event</description></Item> 
         /// </list> 
         /// </exception>
         /// <exception cref="EventRegistrationAggregateArgumentException">
-        /// Thrown when :
-        /// <list>
-        ///     <item>The userId parameter is 0 or out of range</item>
-        ///     <item>The userName parameter is empty/whitespace string</item>
-        ///     <item>The email parameter is empty/whitespace string</item>
+        /// Thrown when:
+        /// <list type="bullet">
+        ///     <item><description>The userId parameter is 0 or out of range</description></item>
+        ///     <item><description>The userName parameter is empty/whitespace string</description></item>
+        ///     <item><description>The email parameter is empty/whitespace string</description></item>
         /// </list>
         /// </exception>
         public void RegisterUser(int userId, string userName, string email, string contact)
@@ -221,9 +221,17 @@ namespace EventsCore.Domain.Entities.EventRegistrationsAggregate
             _registrations.Remove(registrationForUser);
         }
         /// <summary>
-        /// 
+        /// Updates the <see cref="RegistrationStatus"></see> of a Registration to "Accepted" by the id of the UserId associated with the <see cref="Registration"></see>
         /// </summary>
-        /// <param name="userId"></param>
+        /// <param name="userId">The UserId of the <see cref="User"></see> associated with the <see cref="Registration"></see></param>
+        /// <exception cref="EventRegistrationAggregateInvalidOperationException">
+        /// Thrown when 
+        /// <list type="bullet">
+        /// <item><description>the <see cref="Event"></see> is expired.</description></item>
+        /// <item><description>the <see cref="Event"></see> is at Maximum allowed "Accepted" registrations.</description></item>
+        /// </list>
+        /// </exception>
+        /// <exception cref="EventRegistrationAggregateArgumentException">Thrown when no Registration with the given UserId parameter could be found in the <see cref="EventRegistrations._registrations"></see> collection.</exception>
         public void AcceptRegistrationByUserId(int userId)
         {
             if (IsExpired)

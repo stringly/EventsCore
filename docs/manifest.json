@@ -1,6 +1,6 @@
 {
   "homepages": [],
-  "source_base_path": "C:/Users/jcs30/source/repos/EventsCore/Docs/docfx_project",
+  "source_base_path": "C:/Users/jcs30/source/repos/EventsCore/docs/docfx_project",
   "xrefmap": "xrefmap.yml",
   "files": [
     {
@@ -9,10 +9,10 @@
       "output": {
         ".html": {
           "relative_path": "api/Application/EventsCore.Application.Common.Interfaces.EventsCoreDbContext.html",
-          "hash": "OhZzUXDlRSz5gXHLyRsysw=="
+          "hash": "cPZkCwwGd4QXdUX131QL8g=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -24,7 +24,7 @@
           "hash": "f/2PVNyT8KLCty9FmoSxIQ=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -57,10 +57,10 @@
       "output": {
         ".html": {
           "relative_path": "api/Domain/EventsCore.Domain.Common.DateTimeProvider.html",
-          "hash": "8tL9tdBttjLktIU5IG95mQ=="
+          "hash": "C1TvECZoFjv8noFkG53dbw=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -69,10 +69,10 @@
       "output": {
         ".html": {
           "relative_path": "api/Domain/EventsCore.Domain.Common.IAggregateRoot.html",
-          "hash": "lXTCMfFYQ11O2PR1F49mvg=="
+          "hash": "Que5cTlyVlCFQOr4E2NK2A=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -81,10 +81,10 @@
       "output": {
         ".html": {
           "relative_path": "api/Domain/EventsCore.Domain.Common.IDateTime.html",
-          "hash": "CRej+Lkdzi0wshMgCwaGDQ=="
+          "hash": "oxFvLc/0kp7CJpWdXLwOSA=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -93,10 +93,10 @@
       "output": {
         ".html": {
           "relative_path": "api/Domain/EventsCore.Domain.Common.IEntity.html",
-          "hash": "knqjuy2wIWLRH1YsabzJYA=="
+          "hash": "9FBa2p2hubPztBZp2LjB2Q=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -105,10 +105,10 @@
       "output": {
         ".html": {
           "relative_path": "api/Domain/EventsCore.Domain.Common.ValueObject.html",
-          "hash": "Fksb0y9Kz0YvZaeovd10zg=="
+          "hash": "ZI8ZUlEDBWQCKyGsxapOWA=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -120,7 +120,7 @@
           "hash": "u1WUQSa971bsfwjmWzJTeg=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -129,10 +129,10 @@
       "output": {
         ".html": {
           "relative_path": "api/Domain/EventsCore.Domain.Entities.Event.html",
-          "hash": "1KQWdlqINb1wsvbe/eHx0w=="
+          "hash": "TVGlMqPtInXkoAu65AxS7g=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -141,10 +141,10 @@
       "output": {
         ".html": {
           "relative_path": "api/Domain/EventsCore.Domain.Entities.EventModulesAggregate.EventModules.html",
-          "hash": "co1PkVyrThiOBttounLz3Q=="
+          "hash": "16wxf9zhrGEtF5nIKHSMlw=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -153,10 +153,10 @@
       "output": {
         ".html": {
           "relative_path": "api/Domain/EventsCore.Domain.Entities.EventModulesAggregate.Module.html",
-          "hash": "YyT4vDUiReYyhPjidwMjIg=="
+          "hash": "veBI2/U0ZFANB8saqKQ97Q=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -168,7 +168,7 @@
           "hash": "OtrsK/CcCeoq89XBGgrvTw=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -177,10 +177,10 @@
       "output": {
         ".html": {
           "relative_path": "api/Domain/EventsCore.Domain.Entities.EventRegistrationsAggregate.EventRegistrations.html",
-          "hash": "bJ5k1+4CorV6bgxsNb9dEQ=="
+          "hash": "0H1BdIsnfOUJear0dZPUNQ=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -189,10 +189,10 @@
       "output": {
         ".html": {
           "relative_path": "api/Domain/EventsCore.Domain.Entities.EventRegistrationsAggregate.Registration.html",
-          "hash": "P8r48IfDZsD7OZSByFboSQ=="
+          "hash": "/xccIbqHaTLJQR4cGbjyKQ=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -201,10 +201,10 @@
       "output": {
         ".html": {
           "relative_path": "api/Domain/EventsCore.Domain.Entities.EventRegistrationsAggregate.RegistrationStatus.html",
-          "hash": "DI1t8T3HNNIxw1Oyb9Yy7w=="
+          "hash": "IxjvLonXlD8a5JSM07DJ8A=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -213,10 +213,10 @@
       "output": {
         ".html": {
           "relative_path": "api/Domain/EventsCore.Domain.Entities.EventRegistrationsAggregate.html",
-          "hash": "v5kYEw1okFOp9UKTm810IA=="
+          "hash": "2eqFKDuYjs2qwKrj/E/opg=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -225,10 +225,10 @@
       "output": {
         ".html": {
           "relative_path": "api/Domain/EventsCore.Domain.Entities.EventSeries.html",
-          "hash": "EFQg9KigfUAoGYtsTP+qQA=="
+          "hash": "Pr0zeHFiOWRVdWINEzVJUA=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -237,10 +237,10 @@
       "output": {
         ".html": {
           "relative_path": "api/Domain/EventsCore.Domain.Entities.EventType.html",
-          "hash": "tlH5sVsV/Q6AVglo8ePH1w=="
+          "hash": "2fd2O6ZMKYjmKoEeNSpGWw=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -249,10 +249,10 @@
       "output": {
         ".html": {
           "relative_path": "api/Domain/EventsCore.Domain.Entities.Rank.html",
-          "hash": "RZQrHUJr2yHpR3gZa2WFQg=="
+          "hash": "Bbp6wDDdYLUUhFxYyUl6iA=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -261,10 +261,10 @@
       "output": {
         ".html": {
           "relative_path": "api/Domain/EventsCore.Domain.Entities.User.html",
-          "hash": "k+zu74CxojaDJIFjpMtBeg=="
+          "hash": "csZfDQ9WTbgZXDe0F00hPw=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -273,10 +273,10 @@
       "output": {
         ".html": {
           "relative_path": "api/Domain/EventsCore.Domain.Entities.ValueObjects.EventDates.html",
-          "hash": "FwiScSouKgdT3wMuOD+KDQ=="
+          "hash": "rlDnlynRjDDbQNHZ+nv+Pg=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -285,10 +285,10 @@
       "output": {
         ".html": {
           "relative_path": "api/Domain/EventsCore.Domain.Entities.ValueObjects.EventRegistrationRules.html",
-          "hash": "UNhRTT1f4cmfTazcg6XTNA=="
+          "hash": "ZMRFbCryVXt/fK9XyXxjdA=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -300,7 +300,7 @@
           "hash": "30HSKQ4rcnEtPSCc8CXLRA=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -312,7 +312,7 @@
           "hash": "oH19qDbMpb/UvssJes3gVg=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -321,10 +321,10 @@
       "output": {
         ".html": {
           "relative_path": "api/Domain/EventsCore.Domain.Exceptions.Event.EventArgumentException.html",
-          "hash": "rU2FTcDaaOC6ZyzP1RY8wg=="
+          "hash": "jsArcCUMxP0ypwd74CxY3A=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -333,10 +333,10 @@
       "output": {
         ".html": {
           "relative_path": "api/Domain/EventsCore.Domain.Exceptions.Event.EventInvalidOperationException.html",
-          "hash": "FHGnPg8NfoMNOLTvCaHzxA=="
+          "hash": "L2W+DqN7PH40oqkBqmyrLw=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -348,7 +348,7 @@
           "hash": "fRc3P9ERkRGK1CIThLCLQA=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -357,10 +357,10 @@
       "output": {
         ".html": {
           "relative_path": "api/Domain/EventsCore.Domain.Exceptions.EventModulesAggregate.EventModulesAggregateArgumentException.html",
-          "hash": "0rz3xoxNxGLplORSPEaRsg=="
+          "hash": "V4ZyRp1jgEhSNTitX2QhGg=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -372,7 +372,7 @@
           "hash": "YPLv8lhdPCe/gh66tXFztg=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -381,10 +381,10 @@
       "output": {
         ".html": {
           "relative_path": "api/Domain/EventsCore.Domain.Exceptions.EventRegistrationsAggregate.EventRegistrationAggregateArgumentException.html",
-          "hash": "yner8GPALEJXFpdH2Qlqsw=="
+          "hash": "jD404Alfi8O/jH0dvy5WeQ=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -393,10 +393,10 @@
       "output": {
         ".html": {
           "relative_path": "api/Domain/EventsCore.Domain.Exceptions.EventRegistrationsAggregate.EventRegistrationAggregateInvalidOperationException.html",
-          "hash": "up2N8iZf2M0l8LbgQTAUVQ=="
+          "hash": "IGtSlOjGECBSp4bkdx2/qw=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -405,10 +405,10 @@
       "output": {
         ".html": {
           "relative_path": "api/Domain/EventsCore.Domain.Exceptions.EventRegistrationsAggregate.EventRegistrationAggregateInvalidRegistrantException.html",
-          "hash": "1aEW4UiOUoiifgzohqMnQA=="
+          "hash": "kxEGL2iFJu1pBj3ZK+Vnlw=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -420,7 +420,7 @@
           "hash": "MnroyZyv2k8jWhq55mzNrg=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -429,10 +429,10 @@
       "output": {
         ".html": {
           "relative_path": "api/Domain/EventsCore.Domain.Exceptions.EventSeries.EventSeriesArgumentException.html",
-          "hash": "Jme42naEoCcgBQVtP0NCDg=="
+          "hash": "o3FUD14zra4+Ot7fzGX5Jg=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -441,10 +441,10 @@
       "output": {
         ".html": {
           "relative_path": "api/Domain/EventsCore.Domain.Exceptions.EventSeries.EventSeriesInvalidOperationException.html",
-          "hash": "GSTj85KlGPPUftpcsjeuhg=="
+          "hash": "Dodb8r0e87RXKo4+muIA5g=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -456,7 +456,7 @@
           "hash": "Zy59QD/5Rhz6il0yWKyOEw=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -465,10 +465,10 @@
       "output": {
         ".html": {
           "relative_path": "api/Domain/EventsCore.Domain.Exceptions.EventType.EventTypeArgumentException.html",
-          "hash": "nvGF3+S3JBcLxLFa2R7yFg=="
+          "hash": "bCLtwx8UhFAP0JJKTHp9lg=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -477,10 +477,10 @@
       "output": {
         ".html": {
           "relative_path": "api/Domain/EventsCore.Domain.Exceptions.EventType.EventTypeInvalidOperationException.html",
-          "hash": "QU/BU4AhVVYBPzYHzhsEiw=="
+          "hash": "huajlbqqT9xKcQmBDwr32A=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -492,7 +492,7 @@
           "hash": "MqJvKoJctMwGzPuFlCElgg=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -501,10 +501,10 @@
       "output": {
         ".html": {
           "relative_path": "api/Domain/EventsCore.Domain.Exceptions.Rank.RankArgumentException.html",
-          "hash": "WKi2ixPPbYT5qF8vol4GTQ=="
+          "hash": "xB+9XYwh0UizDSGeo7utzQ=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -513,10 +513,10 @@
       "output": {
         ".html": {
           "relative_path": "api/Domain/EventsCore.Domain.Exceptions.Rank.RankInvalidOperationException.html",
-          "hash": "gX1i1biCp6AmV3IJlSC3DQ=="
+          "hash": "94DBA4+Ri8vNqYmpASdeJw=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -528,7 +528,7 @@
           "hash": "S+qG0zJy1WJV+j+RPcteHA=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -537,10 +537,10 @@
       "output": {
         ".html": {
           "relative_path": "api/Domain/EventsCore.Domain.Exceptions.User.UserArgumentException.html",
-          "hash": "bLOLWmekBIizZzKhXLBLRg=="
+          "hash": "lMdJWDvVT+Pyju+s6/lh5Q=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -549,10 +549,10 @@
       "output": {
         ".html": {
           "relative_path": "api/Domain/EventsCore.Domain.Exceptions.User.UserInvalidOperationException.html",
-          "hash": "B7/t9Pqyi29tJoGTFMOaQA=="
+          "hash": "TBfkxe83uU4/eQn533uyqQ=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -564,7 +564,7 @@
           "hash": "L6GccNCa5jTuSSU+3dJZqA=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -573,10 +573,10 @@
       "output": {
         ".html": {
           "relative_path": "api/Domain/EventsCore.Domain.Exceptions.ValueObjects.AddressInvalidException.html",
-          "hash": "CerFNSK1ldh27qVI9PQBCQ=="
+          "hash": "jBxkEFmQMhF0qSXEvNo8BQ=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -585,10 +585,10 @@
       "output": {
         ".html": {
           "relative_path": "api/Domain/EventsCore.Domain.Exceptions.ValueObjects.EventDatesInvalidException.html",
-          "hash": "i30JeQ4e0bq6lfPciSAqfw=="
+          "hash": "1MZQqyVH+RgLoZqxKCnEkQ=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -597,10 +597,10 @@
       "output": {
         ".html": {
           "relative_path": "api/Domain/EventsCore.Domain.Exceptions.ValueObjects.EventRegistrationRulesArgumentException.html",
-          "hash": "3INlc8I4Dd8UKkJKBWMsFA=="
+          "hash": "elzbqmmQx+WKqLtWc6kbsg=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -609,10 +609,10 @@
       "output": {
         ".html": {
           "relative_path": "api/Domain/EventsCore.Domain.Exceptions.ValueObjects.PersonFullNameException.html",
-          "hash": "vrkQ2uEyTf7Un1snp5m1YQ=="
+          "hash": "Er64uImXMUswyUsuC+5maA=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -624,7 +624,7 @@
           "hash": "iIOkW5OmDiiCQUN8YFr+YA=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -633,10 +633,10 @@
       "output": {
         ".html": {
           "relative_path": "api/Domain/EventsCore.Domain.ValueObjects.Address.html",
-          "hash": "rJew+ZNIrC+345LXcQIQBw=="
+          "hash": "deG1hZJgHVJVBsxkouaa1g=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -645,10 +645,10 @@
       "output": {
         ".html": {
           "relative_path": "api/Domain/EventsCore.Domain.ValueObjects.PersonFullName.html",
-          "hash": "XHG4zHvxKdb+4YtyhebgqQ=="
+          "hash": "n1+GGnkCI89LUwIVS48+CA=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -660,7 +660,7 @@
           "hash": "PQCOZFKr+16alLcKB/iyPA=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -779,7 +779,7 @@
           "can_incremental": true,
           "incrementalPhase": "build",
           "total_file_count": 53,
-          "skipped_file_count": 53
+          "skipped_file_count": 15
         },
         "TocDocumentProcessor": {
           "can_incremental": false,

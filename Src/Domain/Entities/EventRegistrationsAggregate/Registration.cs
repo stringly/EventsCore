@@ -14,12 +14,23 @@ namespace EventsCore.Domain.Entities.EventRegistrationsAggregate
         /// </summary>
         private Registration() { }
         /// <summary>
-        /// 
+        /// Creates a new Registration for an Event with the given parameters
         /// </summary>
-        /// <param name="userId"></param>
-        /// <param name="userName"></param>
-        /// <param name="email"></param>
-        /// <param name="contact"></param>
+        /// <remarks>
+        /// The Registration Entity exists as a part of the <see cref="EventRegistrations">EventRegistrations</see> aggregate root. Registrations can only be created/update/removed from the aggregate root.
+        /// </remarks>
+        /// <param name="userId">An integer Id of the User associated with the registration</param>
+        /// <param name="userName">A string containing the User's display name.</param>
+        /// <param name="email">A string containing the User's email address.</param>
+        /// <param name="contact">A string containing the User's primary contact number.</param>
+        /// <exception cref="EventRegistrationAggregateArgumentException">
+        /// Thrown when:
+        /// <list type="bullet">
+        /// <item>The provided userId parameter is 0 or out of range.</item>
+        /// <item>The provided userName parameter is empty/whitespace.</item>
+        /// <item>The provided email parameter is empty/whitespace.</item>
+        /// </list>
+        /// </exception>
         public Registration(int userId, string userName, string email, string contact)
         {
             UserId = userId != 0 ? userId : throw new EventRegistrationAggregateArgumentException("Cannot create Event Registration: Invalid user Id", nameof(userId));

@@ -280,17 +280,17 @@
             <param name="contact">A string containing the User's primary contact phone number.</param>
             <exception cref="T:EventsCore.Domain.Exceptions.EventRegistrationsAggregate.EventRegistrationAggregateInvalidOperationException">
             Throw when:
-            <list>
-                <item>Event is not accepting registrations</item>
-                <Item>When the UserId parameter is already registered for the Event</Item> 
+            <list type="bullet">
+                <item><description>Event is not accepting registrations</description></item>
+                <Item><description>When the UserId parameter is already registered for the Event</description></Item> 
             </list> 
             </exception>
             <exception cref="T:EventsCore.Domain.Exceptions.EventRegistrationsAggregate.EventRegistrationAggregateArgumentException">
-            Thrown when :
-            <list>
-                <item>The userId parameter is 0 or out of range</item>
-                <item>The userName parameter is empty/whitespace string</item>
-                <item>The email parameter is empty/whitespace string</item>
+            Thrown when:
+            <list type="bullet">
+                <item><description>The userId parameter is 0 or out of range</description></item>
+                <item><description>The userName parameter is empty/whitespace string</description></item>
+                <item><description>The email parameter is empty/whitespace string</description></item>
             </list>
             </exception>
         </member>
@@ -305,9 +305,47 @@
         </member>
         <member name="M:EventsCore.Domain.Entities.EventRegistrationsAggregate.EventRegistrations.AcceptRegistrationByUserId(System.Int32)">
             <summary>
-            
+            Updates the <see cref="T:EventsCore.Domain.Entities.EventRegistrationsAggregate.RegistrationStatus"></see> of a Registration to "Accepted" by the id of the UserId associated with the <see cref="T:EventsCore.Domain.Entities.EventRegistrationsAggregate.Registration"></see>
             </summary>
-            <param name="userId"></param>
+            <param name="userId">The UserId of the <see cref="T:EventsCore.Domain.Entities.User"></see> associated with the <see cref="T:EventsCore.Domain.Entities.EventRegistrationsAggregate.Registration"></see></param>
+            <exception cref="T:EventsCore.Domain.Exceptions.EventRegistrationsAggregate.EventRegistrationAggregateInvalidOperationException">
+            Thrown when 
+            <list type="bullet">
+            <item><description>the <see cref="T:EventsCore.Domain.Entities.Event"></see> is expired.</description></item>
+            <item><description>the <see cref="T:EventsCore.Domain.Entities.Event"></see> is at Maximum allowed "Accepted" registrations.</description></item>
+            </list>
+            </exception>
+            <exception cref="T:EventsCore.Domain.Exceptions.EventRegistrationsAggregate.EventRegistrationAggregateArgumentException">Thrown when no Registration with the given UserId parameter could be found in the <see cref="F:EventsCore.Domain.Entities.EventRegistrationsAggregate.EventRegistrations._registrations"></see> collection.</exception>
+        </member>
+        <member name="T:EventsCore.Domain.Entities.EventRegistrationsAggregate.Registration">
+            <summary>
+            Entity that represents a User Registration for an Event
+            </summary>
+        </member>
+        <member name="M:EventsCore.Domain.Entities.EventRegistrationsAggregate.Registration.#ctor">
+            <summary>
+            Parameterless constructor for EF
+            </summary>
+        </member>
+        <member name="M:EventsCore.Domain.Entities.EventRegistrationsAggregate.Registration.#ctor(System.Int32,System.String,System.String,System.String)">
+            <summary>
+            Creates a new Registration for an Event with the given parameters
+            </summary>
+            <remarks>
+            The Registration Entity exists as a part of the <see cref="T:EventsCore.Domain.Entities.EventRegistrationsAggregate.EventRegistrations">EventRegistrations</see> aggregate root. Registrations can only be created/update/removed from the aggregate root.
+            </remarks>
+            <param name="userId">An integer Id of the User associated with the registration</param>
+            <param name="userName">A string containing the User's display name.</param>
+            <param name="email">A string containing the User's email address.</param>
+            <param name="contact">A string containing the User's primary contact number.</param>
+            <exception cref="T:EventsCore.Domain.Exceptions.EventRegistrationsAggregate.EventRegistrationAggregateArgumentException">
+            Thrown when:
+            <list type="bullet">
+            <item>The provided userId parameter is 0 or out of range.</item>
+            <item>The provided userName parameter is empty/whitespace.</item>
+            <item>The provided email parameter is empty/whitespace.</item>
+            </list>
+            </exception>
         </member>
         <member name="T:EventsCore.Domain.Entities.ValueObjects.EventDates">
             <summary>
