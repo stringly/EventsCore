@@ -211,7 +211,7 @@ namespace EventsCore.Domain.Entities.EventRegistrationsAggregate
                 throw new EventRegistrationAggregateInvalidOperationException("Cannot add Registration: User is already registered for this event.");
             }
 
-            _registrations.Add(new Registration(userId, userName, email, contact));
+            _registrations.Add(new Registration(userId, userName, email, contact, _dateTime));
         }
         /// <summary>
         /// Removes a Registration with the provided UserId from the Event's registration collection 

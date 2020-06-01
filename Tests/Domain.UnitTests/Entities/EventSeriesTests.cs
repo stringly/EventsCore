@@ -4,7 +4,7 @@ using System.Text;
 
 namespace EventsCore.Domain.UnitTests.Entities
 {
-    class EventSeriesTests
+    public class EventSeriesTests
     {
     }
 }

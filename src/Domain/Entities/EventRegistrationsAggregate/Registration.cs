@@ -24,6 +24,7 @@ namespace EventsCore.Domain.Entities.EventRegistrationsAggregate
         /// <param name="userName">A string containing the User's display name.</param>
         /// <param name="email">A string containing the User's email address.</param>
         /// <param name="contact">A string containing the User's primary contact number.</param>
+        /// <param name="dateTime">An implementation if <see cref="IDateTime"></see> used to obtain the system time.</param>
         /// <exception cref="EventRegistrationAggregateArgumentException">
         /// Thrown when:
         /// <list type="bullet">
@@ -32,16 +33,18 @@ namespace EventsCore.Domain.Entities.EventRegistrationsAggregate
         /// <item><description>The provided email parameter is empty/whitespace.</description></item>
         /// </list>
         /// </exception>
-        public Registration(int userId, string userName, string email, string contact)
+        public Registration(int userId, string userName, string email, string contact, IDateTime dateTime)
         {
+            _dateTime = dateTime;
             UserId = userId != 0 ? userId : throw new EventRegistrationAggregateArgumentException("Cannot create Event Registration: Invalid user Id", nameof(userId));
             UserName = !string.IsNullOrWhiteSpace(userName) ? userName : throw new EventRegistrationAggregateArgumentException("Cannot create Event Registration: user name cannot be null/empty string", nameof(userName));
             Email = !string.IsNullOrWhiteSpace(email) ? email : throw new EventRegistrationAggregateArgumentException("Cannot create Event Registration: user email cannot be null/empty string", nameof(email));
             Contact = contact;
             Status = RegistrationStatus.Pending;
-            Registered = DateTime.Now;
-            StatusChanged = DateTime.Now;
+            Registered = _dateTime.Now;
+            StatusChanged = _dateTime.Now;
         }
+        private readonly IDateTime _dateTime;
         /// <summary>
         /// The Registration Id of the Registration instance.
         /// </summary>
@@ -83,7 +86,7 @@ namespace EventsCore.Domain.Entities.EventRegistrationsAggregate
         public void UpdateStatusAccepted()
         {
             Status = RegistrationStatus.Accepted;
-            StatusChanged = DateTime.Now;
+            StatusChanged = _dateTime.Now;
         }
         /// <summary>
         /// Method that changes the <see cref="RegistrationStatus"></see> of this instance to <see cref="RegistrationStatus.Pending"></see>
@@ -94,7 +97,7 @@ namespace EventsCore.Domain.Entities.EventRegistrationsAggregate
         public void UpdateStatusPending()
         {
             Status = RegistrationStatus.Pending;
-            StatusChanged = DateTime.Now;
+            StatusChanged = _dateTime.Now;
         }
         /// <summary>
         /// Method that changes the <see cref="RegistrationStatus"></see> of this instance to <see cref="RegistrationStatus.Standby"></see>
@@ -105,7 +108,7 @@ namespace EventsCore.Domain.Entities.EventRegistrationsAggregate
         public void UpdateStatusStandby()
         {
             Status = RegistrationStatus.Standby;
-            StatusChanged = DateTime.Now;
+            StatusChanged = _dateTime.Now;
         }
         /// <summary>
         /// Method that changes the <see cref="RegistrationStatus"></see> of this instance to <see cref="RegistrationStatus.Rejected"></see>
@@ -116,7 +119,7 @@ namespace EventsCore.Domain.Entities.EventRegistrationsAggregate
         public void UpdateStatusRejected()
         {
             Status = RegistrationStatus.Rejected;
-            StatusChanged = DateTime.Now;
+            StatusChanged = _dateTime.Now;
         }
     }
 }

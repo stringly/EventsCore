@@ -1,12 +1,10 @@
 ﻿using EventsCore.Domain.Common;
 using EventsCore.Domain.Entities.EventRegistrationsAggregate;
-using EventsCore.Domain.Entities.ValueObjects;
 using EventsCore.Domain.Exceptions.EventRegistrationsAggregate;
 using EventsCore.Domain.UnitTests.Common;
+using EventsCore.Domain.ValueObjects;
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using Xunit;
 
 namespace EventsCore.Domain.UnitTests.Entities.EventRegistrationsAggregate

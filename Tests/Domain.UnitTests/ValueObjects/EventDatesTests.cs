@@ -1,7 +1,7 @@
 ﻿using EventsCore.Domain.Exceptions;
 using System;
 using Xunit;
-using EventsCore.Domain.Entities.ValueObjects;
+using EventsCore.Domain.ValueObjects;
 using EventsCore.Domain.Exceptions.ValueObjects;
 using EventsCore.Domain.UnitTests.Common;
 using EventsCore.Domain.Common;

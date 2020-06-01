@@ -1,6 +1,6 @@
 ﻿using EventsCore.Domain.Common;
 using EventsCore.Domain.Entities;
-using EventsCore.Domain.Entities.ValueObjects;
+using EventsCore.Domain.ValueObjects;
 using EventsCore.Domain.UnitTests.Common;
 using System;
 using Xunit;
