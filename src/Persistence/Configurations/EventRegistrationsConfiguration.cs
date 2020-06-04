@@ -5,12 +5,18 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace EventsCore.Persistence.Configurations
 {
+    /// <summary>
+    /// Implements <see cref="IEntityTypeConfiguration{TEntity}"></see> to configure the <see cref="EventRegistrations"></see> entity
+    /// </summary>
     public class EventRegistrationsConfiguration : IEntityTypeConfiguration<EventRegistrations>
     {
+        /// <summary>
+        /// Configures the Entity
+        /// </summary>
+        /// <param name="builder"></param>
         public void Configure(EntityTypeBuilder<EventRegistrations> builder)
         {
             builder.ToTable("Events");
-            //builder.HasOne<Event>().WithOne().HasForeignKey<Event>(e => e.Id);
 
             builder.OwnsOne(p => p.EventDates);
             builder.OwnsOne(p => p.Rules);

@@ -23,4 +23,7 @@
     <ProjectReference Include="..\..\Src\Application\Application.csproj" />
     <ProjectReference Include="..\..\Src\Persistence\Persistence.csproj" />
   </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Events\Queries\" />
+  </ItemGroup>
 </Project>

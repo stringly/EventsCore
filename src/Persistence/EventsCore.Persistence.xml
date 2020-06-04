@@ -1,0 +1,318 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>EventsCore.Persistence</name>
+    </assembly>
+    <members>
+        <member name="T:EventsCore.Persistence.Configurations.EventAttendanceConfiguration">
+            <summary>
+            Implements <see cref="T:Microsoft.EntityFrameworkCore.IEntityTypeConfiguration`1"></see> to configure the <see cref="T:EventsCore.Domain.Entities.EventAttendanceAggregate.EventAttendance"></see> entity
+            </summary>
+        </member>
+        <member name="M:EventsCore.Persistence.Configurations.EventAttendanceConfiguration.Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder{EventsCore.Domain.Entities.EventAttendanceAggregate.EventAttendance})">
+            <summary>
+            Configures the Entity
+            </summary>
+            <param name="builder"></param>
+        </member>
+        <member name="T:EventsCore.Persistence.Configurations.EventConfiguration">
+            <summary>
+            Implements <see cref="T:Microsoft.EntityFrameworkCore.IEntityTypeConfiguration`1"></see> to configure the <see cref="T:EventsCore.Domain.Entities.Event"></see> entity
+            </summary>
+        </member>
+        <member name="M:EventsCore.Persistence.Configurations.EventConfiguration.Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder{EventsCore.Domain.Entities.Event})">
+            <summary>
+            Configures the Entity
+            </summary>
+            <param name="builder"></param>
+        </member>
+        <member name="T:EventsCore.Persistence.Configurations.EventModulesConfiguration">
+            <summary>
+            Implements <see cref="T:Microsoft.EntityFrameworkCore.IEntityTypeConfiguration`1"></see> to configure the <see cref="T:EventsCore.Domain.Entities.EventModulesAggregate.EventModules"></see> entity
+            </summary>
+        </member>
+        <member name="M:EventsCore.Persistence.Configurations.EventModulesConfiguration.Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder{EventsCore.Domain.Entities.EventModulesAggregate.EventModules})">
+            <summary>
+            Configures the Entity
+            </summary>
+            <param name="builder"></param>
+        </member>
+        <member name="T:EventsCore.Persistence.Configurations.EventRegistrationsConfiguration">
+            <summary>
+            Implements <see cref="T:Microsoft.EntityFrameworkCore.IEntityTypeConfiguration`1"></see> to configure the <see cref="T:EventsCore.Domain.Entities.EventRegistrationsAggregate.EventRegistrations"></see> entity
+            </summary>
+        </member>
+        <member name="M:EventsCore.Persistence.Configurations.EventRegistrationsConfiguration.Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder{EventsCore.Domain.Entities.EventRegistrationsAggregate.EventRegistrations})">
+            <summary>
+            Configures the Entity
+            </summary>
+            <param name="builder"></param>
+        </member>
+        <member name="T:EventsCore.Persistence.Configurations.EventSeriesConfiguration">
+            <summary>
+            Implements <see cref="T:Microsoft.EntityFrameworkCore.IEntityTypeConfiguration`1"></see> to configure the <see cref="T:EventsCore.Domain.Entities.EventSeries"></see> entity
+            </summary>
+        </member>
+        <member name="M:EventsCore.Persistence.Configurations.EventSeriesConfiguration.Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder{EventsCore.Domain.Entities.EventSeries})">
+            <summary>
+            Configures the Entity
+            </summary>
+            <param name="builder"></param>
+        </member>
+        <member name="T:EventsCore.Persistence.Configurations.EventTypeConfiguration">
+            <summary>
+            Implements <see cref="T:Microsoft.EntityFrameworkCore.IEntityTypeConfiguration`1"></see> to configure the <see cref="T:EventsCore.Domain.Entities.EventType"></see> entity
+            </summary>
+        </member>
+        <member name="M:EventsCore.Persistence.Configurations.EventTypeConfiguration.Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder{EventsCore.Domain.Entities.EventType})">
+            <summary>
+            Configures the Entity
+            </summary>
+            <param name="builder"></param>
+        </member>
+        <member name="T:EventsCore.Persistence.Configurations.ModuleConfiguration">
+            <summary>
+            Implements <see cref="T:Microsoft.EntityFrameworkCore.IEntityTypeConfiguration`1"></see> to configure the <see cref="T:EventsCore.Domain.Entities.Module"></see> entity
+            </summary>
+        </member>
+        <member name="M:EventsCore.Persistence.Configurations.ModuleConfiguration.Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder{EventsCore.Domain.Entities.Module})">
+            <summary>
+            Configures the Entity
+            </summary>
+            <param name="builder"></param>
+        </member>
+        <member name="T:EventsCore.Persistence.Configurations.RankConfiguration">
+            <summary>
+            Implements <see cref="T:Microsoft.EntityFrameworkCore.IEntityTypeConfiguration`1"></see> to configure the <see cref="T:EventsCore.Domain.Entities.Rank"></see> entity
+            </summary>
+        </member>
+        <member name="M:EventsCore.Persistence.Configurations.RankConfiguration.Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder{EventsCore.Domain.Entities.Rank})">
+            <summary>
+            Configures the Entity
+            </summary>
+            <param name="builder"></param>
+        </member>
+        <member name="T:EventsCore.Persistence.Configurations.UserConfiguration">
+            <summary>
+            Implements <see cref="T:Microsoft.EntityFrameworkCore.IEntityTypeConfiguration`1"></see> to configure the <see cref="T:EventsCore.Domain.Entities.User"></see> entity
+            </summary>
+        </member>
+        <member name="M:EventsCore.Persistence.Configurations.UserConfiguration.Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder{EventsCore.Domain.Entities.User})">
+            <summary>
+            Configures the Entity
+            </summary>
+            <param name="builder"></param>
+        </member>
+        <member name="T:EventsCore.Persistence.DependencyInjection">
+            <summary>
+            Configures the service dependencies used in the Persistence layer
+            </summary>
+        </member>
+        <member name="M:EventsCore.Persistence.DependencyInjection.AddPersistence(Microsoft.Extensions.DependencyInjection.IServiceCollection,Microsoft.Extensions.Configuration.IConfiguration)">
+            <summary>
+            Configures the service collection
+            </summary>
+            <param name="services">An implementation of <see cref="T:Microsoft.Extensions.DependencyInjection.IServiceCollection"></see></param>
+            <param name="configuration">An implementation of <see cref="T:Microsoft.Extensions.Configuration.IConfiguration"></see></param>
+            <returns></returns>
+        </member>
+        <member name="T:EventsCore.Persistence.DesignTimeDbContextFactoryBase`1">
+            <summary>
+            Abstract class that implements <see cref="T:Microsoft.EntityFrameworkCore.Design.IDesignTimeDbContextFactory`1"></see> to configure the DbContext
+            </summary>
+            <typeparam name="TContext"></typeparam>
+        </member>
+        <member name="M:EventsCore.Persistence.DesignTimeDbContextFactoryBase`1.CreateDbContext(System.String[])">
+            <summary>
+            Creates the Context.
+            </summary>
+            <param name="args">An array of strings containing the arguments.</param>
+            <returns></returns>
+        </member>
+        <member name="M:EventsCore.Persistence.DesignTimeDbContextFactoryBase`1.CreateNewInstance(Microsoft.EntityFrameworkCore.DbContextOptions{`0})">
+            <summary>
+            Creates an new instance of the Context.
+            </summary>
+            <param name="options">A <see cref="T:Microsoft.EntityFrameworkCore.DbContextOptions"></see></param>
+            <returns></returns>
+        </member>
+        <member name="T:EventsCore.Persistence.EfRepository`1">
+            <summary>
+            Implementation of <see cref="T:EventsCore.Application.Common.Interfaces.IAsyncRepository`1"></see> for <see cref="T:EventsCore.Domain.Common.BaseEntity"></see> derived classes.
+            </summary>
+            <typeparam name="T"></typeparam>
+        </member>
+        <member name="M:EventsCore.Persistence.EfRepository`1.#ctor(EventsCore.Persistence.EventsCoreDbContext)">
+            <summary>
+            Creates a new instance of the Repository
+            </summary>
+            <param name="context">An <see cref="T:EventsCore.Persistence.EventsCoreDbContext"></see></param>
+        </member>
+        <member name="M:EventsCore.Persistence.EfRepository`1.GetByIdAsync(System.Int32)">
+            <summary>
+            Retrieves and Entity by it's Id.
+            </summary>
+            <param name="id">The integer Id of the Entity</param>
+            <returns></returns>
+        </member>
+        <member name="M:EventsCore.Persistence.EfRepository`1.ListAllAsync">
+            <summary>
+            Retrieves a Read-only list of the Entities in the repository.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:EventsCore.Persistence.EfRepository`1.ListAsync(EventsCore.Application.Common.Interfaces.ISpecification{`0})">
+            <summary>
+            Retrieves a read-only list of the Entities in the repository based on a specification.
+            </summary>
+            <param name="spec">An implementation of <see cref="T:EventsCore.Application.Common.Interfaces.ISpecification`1"></see></param>
+            <returns></returns>
+        </member>
+        <member name="M:EventsCore.Persistence.EfRepository`1.CountAsync(EventsCore.Application.Common.Interfaces.ISpecification{`0})">
+            <summary>
+            Returns a count of the entities that match the specification
+            </summary>
+            <param name="spec">An implementation of <see cref="T:EventsCore.Application.Common.Interfaces.ISpecification`1"></see> containing the specifications for the count.</param>
+            <returns></returns>
+        </member>
+        <member name="M:EventsCore.Persistence.EfRepository`1.AddAsync(`0)">
+            <summary>
+            Adds an entity to the Repository.
+            </summary>
+            <param name="entity">The entity to add.</param>
+            <returns></returns>
+        </member>
+        <member name="M:EventsCore.Persistence.EfRepository`1.UpdateAsync(`0)">
+            <summary>
+            Updates an entity.
+            </summary>
+            <param name="entity">The entity to update.</param>
+            <returns></returns>
+        </member>
+        <member name="M:EventsCore.Persistence.EfRepository`1.DeleteAsync(`0)">
+            <summary>
+            Deletes an entity.
+            </summary>
+            <param name="entity">The entity to delete.</param>
+            <returns></returns>
+        </member>
+        <member name="M:EventsCore.Persistence.EfRepository`1.FirstAsync(EventsCore.Application.Common.Interfaces.ISpecification{`0})">
+            <summary>
+            Returns the first entity that matches the specification.
+            </summary>
+            <param name="spec">An implementation of <see cref="T:EventsCore.Application.Common.Interfaces.ISpecification`1"></see> containing the specifications.</param>
+            <returns></returns>
+        </member>
+        <member name="M:EventsCore.Persistence.EfRepository`1.FirstOrDefaultAsync(EventsCore.Application.Common.Interfaces.ISpecification{`0})">
+            <summary>
+            Returns the first entity that matches the specification, or null if none is found.
+            </summary>
+            <param name="spec">An implementation of <see cref="T:EventsCore.Application.Common.Interfaces.ISpecification`1"></see> containing the specifications.</param>
+            <returns></returns>
+        </member>
+        <member name="M:EventsCore.Persistence.EfRepository`1.ApplySpecification(EventsCore.Application.Common.Interfaces.ISpecification{`0})">
+            <summary>
+            Applies the specifications.
+            </summary>
+            <param name="spec">An implementation of <see cref="T:EventsCore.Application.Common.Interfaces.ISpecification`1"></see></param>
+            <returns></returns>
+        </member>
+        <member name="T:EventsCore.Persistence.EventsCoreDbContext">
+            <summary>
+            An implementation of <see cref="T:EventsCore.Application.Common.Interfaces.IEventsCoreDbContext"></see> containing the Entities used in the EventsCore solution.
+            </summary>
+        </member>
+        <member name="M:EventsCore.Persistence.EventsCoreDbContext.#ctor(Microsoft.EntityFrameworkCore.DbContextOptions{EventsCore.Persistence.EventsCoreDbContext})">
+            <summary>
+            Creates a new instance of the <see cref="T:EventsCore.Persistence.EventsCoreDbContext"></see>
+            </summary>
+            <param name="options"></param>
+        </member>
+        <member name="M:EventsCore.Persistence.EventsCoreDbContext.#ctor(Microsoft.EntityFrameworkCore.DbContextOptions{EventsCore.Persistence.EventsCoreDbContext},EventsCore.Domain.Common.IDateTime)">
+            <summary>
+            Creates a new instance of the <see cref="T:EventsCore.Persistence.EventsCoreDbContext"></see>
+            </summary>
+            <param name="options"></param>
+            <param name="dateTime"></param>
+        </member>
+        <member name="P:EventsCore.Persistence.EventsCoreDbContext.EventAttendance">
+            <summary>
+            A <see cref="T:Microsoft.EntityFrameworkCore.DbSet`1"></see> of <see cref="T:EventsCore.Domain.Entities.EventAttendanceAggregate.EventAttendance"></see>
+            </summary>
+        </member>
+        <member name="P:EventsCore.Persistence.EventsCoreDbContext.EventModules">
+            <summary>
+            A <see cref="T:Microsoft.EntityFrameworkCore.DbSet`1"></see> of <see cref="T:EventsCore.Domain.Entities.EventModulesAggregate.EventModules"></see>
+            </summary>
+        </member>
+        <member name="P:EventsCore.Persistence.EventsCoreDbContext.EventRegistrations">
+            <summary>
+            A <see cref="T:Microsoft.EntityFrameworkCore.DbSet`1"></see> of <see cref="T:EventsCore.Domain.Entities.EventRegistrationsAggregate.EventRegistrations"></see>
+            </summary>
+        </member>
+        <member name="P:EventsCore.Persistence.EventsCoreDbContext.Events">
+            <summary>
+            A <see cref="T:Microsoft.EntityFrameworkCore.DbSet`1"></see> of <see cref="T:EventsCore.Domain.Entities.Event"></see>
+            </summary>
+        </member>
+        <member name="P:EventsCore.Persistence.EventsCoreDbContext.EventSeries">
+            <summary>
+            A <see cref="T:Microsoft.EntityFrameworkCore.DbSet`1"></see> of <see cref="T:EventsCore.Domain.Entities.EventSeries"></see>
+            </summary>
+        </member>
+        <member name="P:EventsCore.Persistence.EventsCoreDbContext.EventTypes">
+            <summary>
+            A <see cref="T:Microsoft.EntityFrameworkCore.DbSet`1"></see> of <see cref="T:EventsCore.Domain.Entities.EventType"></see>
+            </summary>
+        </member>
+        <member name="P:EventsCore.Persistence.EventsCoreDbContext.Ranks">
+            <summary>
+            A <see cref="T:Microsoft.EntityFrameworkCore.DbSet`1"></see> of <see cref="P:EventsCore.Persistence.EventsCoreDbContext.Ranks"></see>
+            </summary>
+        </member>
+        <member name="P:EventsCore.Persistence.EventsCoreDbContext.Users">
+            <summary>
+            A <see cref="T:Microsoft.EntityFrameworkCore.DbSet`1"></see> of <see cref="P:EventsCore.Persistence.EventsCoreDbContext.Users"></see>
+            </summary>
+        </member>
+        <member name="M:EventsCore.Persistence.EventsCoreDbContext.SaveChangesAsync(System.Threading.CancellationToken)">
+            <summary>
+            Saves changes to the context.
+            </summary>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EventsCore.Persistence.EventsCoreDbContext.OnModelCreating(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <summary>
+            Executes instructions when the model is created.
+            </summary>
+            <param name="modelBuilder"></param>
+        </member>
+        <member name="T:EventsCore.Persistence.EventsCoreDbContextFactory">
+            <summary>
+            Implemention of <see cref="T:EventsCore.Persistence.DesignTimeDbContextFactoryBase`1"></see>
+            </summary>
+        </member>
+        <member name="M:EventsCore.Persistence.EventsCoreDbContextFactory.CreateNewInstance(Microsoft.EntityFrameworkCore.DbContextOptions{EventsCore.Persistence.EventsCoreDbContext})">
+            <summary>
+            Creates a new instance of the <see cref="T:EventsCore.Persistence.EventsCoreDbContext"></see>
+            </summary>
+            <param name="options">A <see cref="T:Microsoft.EntityFrameworkCore.DbContextOptions"></see> object.</param>
+            <returns></returns>
+        </member>
+        <member name="T:EventsCore.Persistence.SpecificationEvaluator`1">
+            <summary>
+            Evaluates a <see cref="T:EventsCore.Application.Common.Interfaces.ISpecification`1"></see>
+            </summary>
+            <typeparam name="T"></typeparam>
+        </member>
+        <member name="M:EventsCore.Persistence.SpecificationEvaluator`1.GetQuery(System.Linq.IQueryable{`0},EventsCore.Application.Common.Interfaces.ISpecification{`0})">
+            <summary>
+            Assembles the Query with the provided specifications
+            </summary>
+            <param name="inputQuery">An <see cref="T:System.Linq.IQueryable`1"></see></param>
+            <param name="specification">An <see cref="T:EventsCore.Application.Common.Interfaces.ISpecification`1"></see></param>
+            <returns></returns>
+        </member>
+    </members>
+</doc>

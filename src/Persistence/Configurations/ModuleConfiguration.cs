@@ -7,8 +7,15 @@ using System.Text;
 
 namespace EventsCore.Persistence.Configurations
 {
+    /// <summary>
+    /// Implements <see cref="IEntityTypeConfiguration{TEntity}"></see> to configure the <see cref="Module"></see> entity
+    /// </summary>
     public class ModuleConfiguration : IEntityTypeConfiguration<Module>
     {
+        /// <summary>
+        /// Configures the Entity
+        /// </summary>
+        /// <param name="builder"></param>
         public void Configure(EntityTypeBuilder<Module> builder)
         {
             builder.Property(x => x.Description)

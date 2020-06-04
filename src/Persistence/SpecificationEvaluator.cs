@@ -5,8 +5,18 @@ using System.Linq;
 
 namespace EventsCore.Persistence
 {
+    /// <summary>
+    /// Evaluates a <see cref="ISpecification{T}"></see>
+    /// </summary>
+    /// <typeparam name="T"></typeparam>
     public class SpecificationEvaluator<T> where T : BaseEntity
     {
+        /// <summary>
+        /// Assembles the Query with the provided specifications
+        /// </summary>
+        /// <param name="inputQuery">An <see cref="IQueryable{T}"></see></param>
+        /// <param name="specification">An <see cref="ISpecification{T}"></see></param>
+        /// <returns></returns>
         public static IQueryable<T> GetQuery(IQueryable<T> inputQuery, ISpecification<T> specification)
         {
             var query = inputQuery;

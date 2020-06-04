@@ -7,8 +7,15 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace EventsCore.Persistence.Configurations
 {
+    /// <summary>
+    /// Implements <see cref="IEntityTypeConfiguration{TEntity}"></see> to configure the <see cref="Domain.Entities.Event"></see> entity
+    /// </summary>
     public class EventConfiguration : IEntityTypeConfiguration<Event>
     {
+        /// <summary>
+        /// Configures the Entity
+        /// </summary>
+        /// <param name="builder"></param>
         public void Configure(EntityTypeBuilder<Event> builder)
         {
             //builder.Property(e => e.Id).HasColumnName("EventID");

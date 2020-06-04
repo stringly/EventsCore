@@ -5,6 +5,10 @@
     <RootNamespace>EventsCore.Persistence</RootNamespace>
     <AssemblyName>EventsCore.Persistence</AssemblyName>
   </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DocumentationFile>C:\Users\jcs30\source\repos\EventsCore\Src\Persistence\EventsCore.Persistence.xml</DocumentationFile>
+  </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="3.0.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="3.0.0">

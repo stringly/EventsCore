@@ -251,6 +251,23 @@
             <param name="cancellationToken">A <see cref="T:System.Threading.CancellationToken"></see></param>
             <returns></returns>
         </member>
+        <member name="T:EventsCore.Application.Common.Interfaces.IEventsRepository">
+            <summary>
+            Defines an implementation of <see cref="T:EventsCore.Application.Common.Interfaces.IAsyncRepository`1"></see> for the <see cref="T:EventsCore.Domain.Entities.Event"></see> entity
+            </summary>
+        </member>
+        <member name="T:EventsCore.Application.Common.Interfaces.INotificationService">
+            <summary>
+            Defines an interface used to send messages
+            </summary>
+        </member>
+        <member name="M:EventsCore.Application.Common.Interfaces.INotificationService.SendAsync(EventsCore.Application.Notifications.Models.MessageDto)">
+            <summary>
+            Sends a message
+            </summary>
+            <param name="message">A <see cref="T:EventsCore.Application.Notifications.Models.MessageDto"></see> containing the message information.</param>
+            <returns></returns>
+        </member>
         <member name="T:EventsCore.Application.Common.Interfaces.ISpecification`1">
             <summary>
             Defines a Specification used to filter queries
@@ -301,6 +318,32 @@
             <summary>
             Indicates whether paging is enabled.
             </summary>
+        </member>
+        <member name="T:EventsCore.Application.Common.Interfaces.IUserManager">
+            <summary>
+            Defines a User Manager Interface
+            </summary>
+        </member>
+        <member name="M:EventsCore.Application.Common.Interfaces.IUserManager.CreateUserAsync(System.String,System.UInt32,System.String,System.String,System.String,System.String,System.String,System.Int32)">
+            <summary>
+            Adds a User
+            </summary>
+            <param name="LDAPName">A string containing the User's LDAP name.</param>
+            <param name="blueDeckId">A unsigned integer containing the User's BlueDeck Id.</param>
+            <param name="firstName">A string containing the User's first name.</param>
+            <param name="lastName">A string containing the User's last name.</param>
+            <param name="idNumber">A string containing the User's Id Number.</param>
+            <param name="email">A string containing the User's email address.</param>
+            <param name="contactNumber">A string containing the User's contact number.</param>
+            <param name="rankId">An integer containing the Id of the User's <see cref="T:EventsCore.Domain.Entities.Rank"></see> Rank.</param>
+            <returns></returns>
+        </member>
+        <member name="M:EventsCore.Application.Common.Interfaces.IUserManager.DeleteUserAsync(System.Int32)">
+            <summary>
+            Deletes a User
+            </summary>
+            <param name="UserId">The Id of the User to delete.</param>
+            <returns></returns>
         </member>
         <member name="T:EventsCore.Application.Common.Mappings.IMapFrom`1">
             <summary>
@@ -594,6 +637,17 @@
             <param name="cancellationToken">A <see cref="T:System.Threading.CancellationToken"></see></param>
             <returns>A <see cref="T:EventsCore.Application.EventSerieses.Queries.GetEventSeriesesList.EventSeriesesListVm"></see> containing the list of <see cref="T:EventsCore.Domain.Entities.EventSeries"></see> projected to <see cref="T:EventsCore.Application.EventSerieses.Queries.GetEventSeriesesList.EventSeriesDto"></see></returns>
         </member>
+        <member name="T:EventsCore.Application.Events.Commands.CreateEvent.CreateEventCommandValidator">
+            <summary>
+            Implemenation of <see cref="T:FluentValidation.AbstractValidator`1"></see> used in the <see cref="T:EventsCore.Application.Events.Commands.CreateEvent.CreateEventCommand"/>
+            </summary>
+        </member>
+        <member name="M:EventsCore.Application.Events.Commands.CreateEvent.CreateEventCommandValidator.#ctor(EventsCore.Domain.Common.IDateTime)">
+            <summary>
+            Creates a new instance of the Validator
+            </summary>
+            <param name="dateTime">An implementation of <see cref="T:EventsCore.Domain.Common.IDateTime"></see></param>
+        </member>
         <member name="T:EventsCore.Application.EventTypes.Commands.DeleteEventType.DeleteEventTypeCommand">
             <summary>
             An implementation of <see cref="T:MediatR.IRequest"></see> that handles a request to remove an <see cref="T:EventsCore.Domain.Entities.EventType"></see>
@@ -731,6 +785,31 @@
             <param name="request">A <see cref="T:EventsCore.Application.EventTypes.Queries.GetEventTypesList.GetEventTypeListQuery"></see> request object.</param>
             <param name="cancellationToken">A <see cref="T:System.Threading.CancellationToken"></see></param>
             <returns>A <see cref="T:EventsCore.Application.EventTypes.Queries.GetEventTypesList.EventTypeListVm"></see> containing the list of <see cref="N:EventsCore.Application.EventTypes"></see> projected to <see cref="T:EventsCore.Application.EventTypes.Queries.GetEventTypesList.EventTypeDto"></see></returns>
+        </member>
+        <member name="T:EventsCore.Application.Notifications.Models.MessageDto">
+            <summary>
+            Data Transfer object used to send Notification Messages
+            </summary>
+        </member>
+        <member name="P:EventsCore.Application.Notifications.Models.MessageDto.From">
+            <summary>
+            The message sender
+            </summary>
+        </member>
+        <member name="P:EventsCore.Application.Notifications.Models.MessageDto.To">
+            <summary>
+            The message recipient address
+            </summary>
+        </member>
+        <member name="P:EventsCore.Application.Notifications.Models.MessageDto.Subject">
+            <summary>
+            The message subject line
+            </summary>
+        </member>
+        <member name="P:EventsCore.Application.Notifications.Models.MessageDto.Body">
+            <summary>
+            The message body.
+            </summary>
         </member>
         <member name="T:EventsCore.Application.Ranks.Commands.DeleteRank.DeleteRankCommand">
             <summary>

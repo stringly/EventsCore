@@ -1,12 +1,18 @@
-﻿using EventsCore.Domain.Entities;
-using EventsCore.Domain.Entities.EventModulesAggregate;
+﻿using EventsCore.Domain.Entities.EventModulesAggregate;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace EventsCore.Persistence.Configurations
 {
+    /// <summary>
+    /// Implements <see cref="IEntityTypeConfiguration{TEntity}"></see> to configure the <see cref="EventModules"></see> entity
+    /// </summary>
     public class EventModulesConfiguration : IEntityTypeConfiguration<EventModules>
     {
+        /// <summary>
+        /// Configures the Entity
+        /// </summary>
+        /// <param name="builder"></param>
         public void Configure(EntityTypeBuilder<EventModules> builder)
         {
             builder.ToTable("Events");
@@ -16,13 +22,6 @@ namespace EventsCore.Persistence.Configurations
             navigation1.SetPropertyAccessMode(PropertyAccessMode.Field);
             builder.HasMany(x => x.Modules).WithOne().HasForeignKey("EventId");
 
-            //builder.HasMany(m => m.Modules, m => {                
-            //    m.WithOwner().HasForeignKey("EventId");
-            //    m.Property(x => x.Description)
-            //        .HasField("_description");
-            //    m.Property(x => x.ModuleName)
-            //        .HasField("_moduleName");
-            //});
         }
     }
 }

@@ -9,6 +9,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace EventsCore.Persistence.Migrations
 {
+#pragma warning disable CS1591 // Missing XML comment for publicly visible type or member
     [DbContext(typeof(EventsCoreDbContext))]
     [Migration("20200604024531_initial")]
     partial class initial
@@ -470,4 +471,5 @@ namespace EventsCore.Persistence.Migrations
 #pragma warning restore 612, 618
         }
     }
+#pragma warning restore CS1591 // Missing XML comment for publicly visible type or member
 }
