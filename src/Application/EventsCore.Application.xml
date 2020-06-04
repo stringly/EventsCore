@@ -4,9 +4,886 @@
         <name>EventsCore.Application</name>
     </assembly>
     <members>
-        <member name="T:EventsCore.Application.Common.Interfaces.EventsCoreDbContext">
+        <member name="T:EventsCore.Application.Common.Behaviours.RequestLogger`1">
             <summary>
-            Interface 
+            Logs incoming requests.
+            </summary>
+            <typeparam name="TRequest"></typeparam>
+        </member>
+        <member name="M:EventsCore.Application.Common.Behaviours.RequestLogger`1.#ctor(Microsoft.Extensions.Logging.ILogger{`0},EventsCore.Application.Common.Interfaces.ICurrentUserService)">
+            <summary>
+            Creates a new instance of the logger
+            </summary>
+            <param name="logger"></param>
+            <param name="currentUserService"></param>
+        </member>
+        <member name="M:EventsCore.Application.Common.Behaviours.RequestLogger`1.Process(`0,System.Threading.CancellationToken)">
+            <summary>
+            Processes the Request into logging
+            </summary>
+            <param name="request"></param>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+        </member>
+        <member name="T:EventsCore.Application.Common.Behaviours.RequestPerformanceBehaviour`2">
+            <summary>
+            Implements <see cref="T:MediatR.IPipelineBehavior`2"></see> to log performance of Requests
+            </summary>
+            <typeparam name="TRequest">The Request</typeparam>
+            <typeparam name="TResponse">The Response</typeparam>
+        </member>
+        <member name="M:EventsCore.Application.Common.Behaviours.RequestPerformanceBehaviour`2.#ctor(Microsoft.Extensions.Logging.ILogger{`0},EventsCore.Application.Common.Interfaces.ICurrentUserService)">
+            <summary>
+            Creates a new Instance of the Class
+            </summary>
+            <param name="logger">An implementation of <see cref="T:Microsoft.Extensions.Logging.ILogger"></see></param>
+            <param name="currentUserService">An implementation of <see cref="T:EventsCore.Application.Common.Interfaces.ICurrentUserService"></see></param>
+        </member>
+        <member name="M:EventsCore.Application.Common.Behaviours.RequestPerformanceBehaviour`2.Handle(`0,System.Threading.CancellationToken,MediatR.RequestHandlerDelegate{`1})">
+            <summary>
+            Handles the request.
+            </summary>
+            <param name="request">The request</param>
+            <param name="cancellation">A cancellation token</param>
+            <param name="next"></param>
+            <returns></returns>
+        </member>
+        <member name="T:EventsCore.Application.Common.Behaviours.RequestValidationBehavior`2">
+            <summary>
+            Adds Fluent Validation to the pipeline
+            </summary>
+            <typeparam name="TRequest"></typeparam>
+            <typeparam name="TResponse"></typeparam>
+        </member>
+        <member name="M:EventsCore.Application.Common.Behaviours.RequestValidationBehavior`2.#ctor(System.Collections.Generic.IEnumerable{FluentValidation.IValidator{`0}})">
+            <summary>
+            Creates a new instance of the class
+            </summary>
+            <param name="validators"></param>
+        </member>
+        <member name="M:EventsCore.Application.Common.Behaviours.RequestValidationBehavior`2.Handle(`0,System.Threading.CancellationToken,MediatR.RequestHandlerDelegate{`1})">
+            <summary>
+            Handles the request.
+            </summary>
+            <param name="request"></param>
+            <param name="cancellationToken"></param>
+            <param name="next"></param>
+            <returns></returns>
+        </member>
+        <member name="T:EventsCore.Application.Common.Exceptions.DeleteFailureException">
+            <summary>
+            Implementation of <see cref="T:System.Exception"></see> used in the Application namespace when a Delete operation fails.
+            </summary>
+        </member>
+        <member name="M:EventsCore.Application.Common.Exceptions.DeleteFailureException.#ctor(System.String,System.Object,System.String)">
+            <summary>
+            Creates a new instance of the exception
+            </summary>
+            <param name="name">The Name of the Entity.</param>
+            <param name="key">The key of the Entity.</param>
+            <param name="message">A string containing the message.</param>
+        </member>
+        <member name="T:EventsCore.Application.Common.Exceptions.NotFoundException">
+            <summary>
+            An implementation of <see cref="T:System.Exception"></see> used in the EventsCore.Application namespace
+            </summary>
+        </member>
+        <member name="M:EventsCore.Application.Common.Exceptions.NotFoundException.#ctor(System.String,System.Object)">
+            <summary>
+            Creates a new instance of the exception
+            </summary>
+            <param name="name">The name of the Entity</param>
+            <param name="key">The key of the Entity that was not found.</param>
+        </member>
+        <member name="T:EventsCore.Application.Common.Exceptions.ValidationException">
+            <summary>
+            Implementation of <see cref="T:System.Exception"></see> used in the application namespace
+            </summary>
+        </member>
+        <member name="M:EventsCore.Application.Common.Exceptions.ValidationException.#ctor">
+            <summary>
+            Creates a new Instance of the Exception
+            </summary>
+        </member>
+        <member name="M:EventsCore.Application.Common.Exceptions.ValidationException.#ctor(System.Collections.Generic.List{FluentValidation.Results.ValidationFailure})">
+            <summary>
+            
+            </summary>
+            <param name="failures"></param>
+        </member>
+        <member name="P:EventsCore.Application.Common.Exceptions.ValidationException.Failures">
+            <summary>
+            Contains the list of failed validation key/values
+            </summary>
+        </member>
+        <member name="T:EventsCore.Application.Common.Interfaces.IAsyncRepository`1">
+            <summary>
+            Defines an async Repository
+            </summary>
+            <typeparam name="T"></typeparam>
+        </member>
+        <member name="M:EventsCore.Application.Common.Interfaces.IAsyncRepository`1.GetByIdAsync(System.Int32)">
+            <summary>
+            Retrieves an entity by Id
+            </summary>
+            <param name="id">The Id of the entity</param>
+            <returns></returns>
+        </member>
+        <member name="M:EventsCore.Application.Common.Interfaces.IAsyncRepository`1.ListAllAsync">
+            <summary>
+            Returns a readonly list of all of the Entities
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:EventsCore.Application.Common.Interfaces.IAsyncRepository`1.ListAsync(EventsCore.Application.Common.Interfaces.ISpecification{`0})">
+            <summary>
+            Returns a readonly list of the Entities that match the specification
+            </summary>
+            <param name="spec">An implementation of <see cref="T:EventsCore.Application.Common.Interfaces.ISpecification`1"></see></param>
+            <returns></returns>
+        </member>
+        <member name="M:EventsCore.Application.Common.Interfaces.IAsyncRepository`1.AddAsync(`0)">
+            <summary>
+            Adds an entity to the repository
+            </summary>
+            <param name="entity">The entity to add</param>
+            <returns></returns>
+        </member>
+        <member name="M:EventsCore.Application.Common.Interfaces.IAsyncRepository`1.UpdateAsync(`0)">
+            <summary>
+            Updates and entity in the repository
+            </summary>
+            <param name="entity">The entity to update</param>
+            <returns></returns>
+        </member>
+        <member name="M:EventsCore.Application.Common.Interfaces.IAsyncRepository`1.DeleteAsync(`0)">
+            <summary>
+            Deletes an entity from the repository
+            </summary>
+            <param name="entity">The entity to delete</param>
+            <returns></returns>
+        </member>
+        <member name="M:EventsCore.Application.Common.Interfaces.IAsyncRepository`1.CountAsync(EventsCore.Application.Common.Interfaces.ISpecification{`0})">
+            <summary>
+            Counts the number of entities that match the specification
+            </summary>
+            <param name="spec">An implementation of <see cref="T:EventsCore.Application.Common.Interfaces.ISpecification`1"></see></param>
+            <returns></returns>
+        </member>
+        <member name="M:EventsCore.Application.Common.Interfaces.IAsyncRepository`1.FirstAsync(EventsCore.Application.Common.Interfaces.ISpecification{`0})">
+            <summary>
+            Returns the first entity that matches the specification
+            </summary>
+            <param name="spec">An implementation of <see cref="T:EventsCore.Application.Common.Interfaces.ISpecification`1"></see></param>
+            <returns></returns>
+        </member>
+        <member name="M:EventsCore.Application.Common.Interfaces.IAsyncRepository`1.FirstOrDefaultAsync(EventsCore.Application.Common.Interfaces.ISpecification{`0})">
+            <summary>
+            Returns the first entity that matches the specification, or null if none is found
+            </summary>
+            <param name="spec">An implementation of <see cref="T:EventsCore.Application.Common.Interfaces.ISpecification`1"></see></param>
+            <returns></returns>
+        </member>
+        <member name="T:EventsCore.Application.Common.Interfaces.ICurrentUserService">
+            <summary>
+            Defines a service to retrieve information about the current user.
+            </summary>
+        </member>
+        <member name="P:EventsCore.Application.Common.Interfaces.ICurrentUserService.UserId">
+            <summary>
+            The current User's Id
+            </summary>
+        </member>
+        <member name="P:EventsCore.Application.Common.Interfaces.ICurrentUserService.IsAuthenticated">
+            <summary>
+            Whether the current user is authenticated.
+            </summary>
+        </member>
+        <member name="T:EventsCore.Application.Common.Interfaces.IEventsCoreDbContext">
+            <summary>
+            Interface that set defines the contract for the DbContext used in the application
+            </summary>
+        </member>
+        <member name="P:EventsCore.Application.Common.Interfaces.IEventsCoreDbContext.EventAttendance">
+            <summary>
+            A <see cref="T:Microsoft.EntityFrameworkCore.DbSet`1"></see>
+            </summary>
+        </member>
+        <member name="P:EventsCore.Application.Common.Interfaces.IEventsCoreDbContext.EventModules">
+            <summary>
+            A <see cref="T:Microsoft.EntityFrameworkCore.DbSet`1"></see>
+            </summary>
+        </member>
+        <member name="P:EventsCore.Application.Common.Interfaces.IEventsCoreDbContext.EventRegistrations">
+            <summary>
+            A <see cref="T:Microsoft.EntityFrameworkCore.DbSet`1"></see>
+            </summary>
+        </member>
+        <member name="P:EventsCore.Application.Common.Interfaces.IEventsCoreDbContext.Events">
+            <summary>
+            A <see cref="T:Microsoft.EntityFrameworkCore.DbSet`1"></see>
+            </summary>
+        </member>
+        <member name="P:EventsCore.Application.Common.Interfaces.IEventsCoreDbContext.EventSeries">
+            <summary>
+            A <see cref="T:Microsoft.EntityFrameworkCore.DbSet`1"></see>
+            </summary>
+        </member>
+        <member name="P:EventsCore.Application.Common.Interfaces.IEventsCoreDbContext.EventTypes">
+            <summary>
+            A <see cref="T:Microsoft.EntityFrameworkCore.DbSet`1"></see>
+            </summary>
+        </member>
+        <member name="P:EventsCore.Application.Common.Interfaces.IEventsCoreDbContext.Ranks">
+            <summary>
+            A <see cref="T:Microsoft.EntityFrameworkCore.DbSet`1"></see>
+            </summary>
+        </member>
+        <member name="P:EventsCore.Application.Common.Interfaces.IEventsCoreDbContext.Users">
+            <summary>
+            A <see cref="T:Microsoft.EntityFrameworkCore.DbSet`1"></see>
+            </summary>
+        </member>
+        <member name="M:EventsCore.Application.Common.Interfaces.IEventsCoreDbContext.SaveChangesAsync(System.Threading.CancellationToken)">
+            <summary>
+            Saves the changes to the Context
+            </summary>
+            <param name="cancellationToken">A <see cref="T:System.Threading.CancellationToken"></see></param>
+            <returns></returns>
+        </member>
+        <member name="T:EventsCore.Application.Common.Interfaces.ISpecification`1">
+            <summary>
+            Defines a Specification used to filter queries
+            </summary>
+            <typeparam name="T"></typeparam>
+        </member>
+        <member name="P:EventsCore.Application.Common.Interfaces.ISpecification`1.Criteria">
+            <summary>
+            An expression containing filtering criteria
+            </summary>
+        </member>
+        <member name="P:EventsCore.Application.Common.Interfaces.ISpecification`1.Includes">
+            <summary>
+            An expression containing Includes
+            </summary>
+        </member>
+        <member name="P:EventsCore.Application.Common.Interfaces.ISpecification`1.IncludeStrings">
+            <summary>
+            A List of strings containing include specifications
+            </summary>
+        </member>
+        <member name="P:EventsCore.Application.Common.Interfaces.ISpecification`1.OrderBy">
+            <summary>
+            An expression containing ordering criteria
+            </summary>
+        </member>
+        <member name="P:EventsCore.Application.Common.Interfaces.ISpecification`1.OrderByDescending">
+            <summary>
+            An expression containing descending ordering criteria
+            </summary>
+        </member>
+        <member name="P:EventsCore.Application.Common.Interfaces.ISpecification`1.GroupBy">
+            <summary>
+            An expression containing grouping criteria
+            </summary>
+        </member>
+        <member name="P:EventsCore.Application.Common.Interfaces.ISpecification`1.Take">
+            <summary>
+            Integer used to determine the number of results to return in a paging operation
+            </summary>
+        </member>
+        <member name="P:EventsCore.Application.Common.Interfaces.ISpecification`1.Skip">
+            <summary>
+            Integer used to determine how many items to skip as part of a paging operation
+            </summary>
+        </member>
+        <member name="P:EventsCore.Application.Common.Interfaces.ISpecification`1.IsPagingEnabled">
+            <summary>
+            Indicates whether paging is enabled.
+            </summary>
+        </member>
+        <member name="T:EventsCore.Application.Common.Mappings.IMapFrom`1">
+            <summary>
+            Defines a mapping 
+            </summary>
+            <typeparam name="T"></typeparam>
+        </member>
+        <member name="M:EventsCore.Application.Common.Mappings.IMapFrom`1.Mapping(AutoMapper.Profile)">
+            <summary>
+            Sets the mapping profile.
+            </summary>
+            <param name="profile"></param>
+        </member>
+        <member name="T:EventsCore.Application.Common.Mappings.MappingProfile">
+            <summary>
+            Class that implements <see cref="T:AutoMapper.Profile"></see> to map objects
+            </summary>
+        </member>
+        <member name="M:EventsCore.Application.Common.Mappings.MappingProfile.#ctor">
+            <summary>
+            Creates a new instance of MappingProfile
+            </summary>
+        </member>
+        <member name="T:EventsCore.Application.Common.Models.Result">
+            <summary>
+            Class that collects a request's results
+            </summary>
+        </member>
+        <member name="P:EventsCore.Application.Common.Models.Result.Succeeded">
+            <summary>
+            Indicates whether the request succeeded
+            </summary>
+        </member>
+        <member name="P:EventsCore.Application.Common.Models.Result.Errors">
+            <summary>
+            Contains any validation error messages
+            </summary>
+        </member>
+        <member name="M:EventsCore.Application.Common.Models.Result.Success">
+            <summary>
+            Success result
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:EventsCore.Application.Common.Models.Result.Failure(System.Collections.Generic.IEnumerable{System.String})">
+            <summary>
+            Failure result
+            </summary>
+            <param name="errors"></param>
+            <returns></returns>
+        </member>
+        <member name="T:EventsCore.Application.DependencyInjection">
+            <summary>
+            Configures Dependency Injection for the Application 
+            </summary>
+        </member>
+        <member name="M:EventsCore.Application.DependencyInjection.AddApplication(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+            Configures services for the Application layer
+            </summary>
+            <param name="services"></param>
+            <returns></returns>
+        </member>
+        <member name="T:EventsCore.Application.EventSerieses.Commands.DeleteEventSeries.DeleteEventSeriesesCommand">
+            <summary>
+            An implementation of <see cref="T:MediatR.IRequest"></see> that handles a request to remove a <see cref="T:EventsCore.Domain.Entities.EventSeries"></see>
+            </summary>
+        </member>
+        <member name="P:EventsCore.Application.EventSerieses.Commands.DeleteEventSeries.DeleteEventSeriesesCommand.Id">
+            <summary>
+            The Id of the Event Series to be removed.
+            </summary>
+        </member>
+        <member name="T:EventsCore.Application.EventSerieses.Commands.DeleteEventSeries.DeleteEventSeriesesCommandHandler">
+            <summary>
+            An implementation of <see cref="T:MediatR.IRequestHandler`1"></see> that deletes an <see cref="T:EventsCore.Domain.Entities.EventSeries"></see>
+            </summary>
+        </member>
+        <member name="M:EventsCore.Application.EventSerieses.Commands.DeleteEventSeries.DeleteEventSeriesesCommandHandler.#ctor(EventsCore.Application.Common.Interfaces.IEventsCoreDbContext)">
+            <summary>
+            Creates a new instance of the Handler
+            </summary>
+            <param name="context">An implementation of <see cref="T:EventsCore.Application.Common.Interfaces.IEventsCoreDbContext"></see></param>
+        </member>
+        <member name="M:EventsCore.Application.EventSerieses.Commands.DeleteEventSeries.DeleteEventSeriesesCommandHandler.Handle(EventsCore.Application.EventSerieses.Commands.DeleteEventSeries.DeleteEventSeriesesCommand,System.Threading.CancellationToken)">
+            <summary>
+            Handles the request
+            </summary>
+            <param name="request">A <see cref="T:EventsCore.Application.EventSerieses.Commands.DeleteEventSeries.DeleteEventSeriesesCommand"></see> request object.</param>
+            <param name="cancellationToken">A <see cref="T:System.Threading.CancellationToken"></see></param>        
+            <returns>A <see cref="T:MediatR.Unit"></see> containing the results of the operation.</returns>
+            <exception cref="T:EventsCore.Application.Common.Exceptions.NotFoundException">Thrown when no <see cref="T:EventsCore.Domain.Entities.EventSeries"></see> with the request Id parameter was found.</exception>
+            <exception cref="T:EventsCore.Application.Common.Exceptions.DeleteFailureException">Thrown when the <see cref="T:EventsCore.Domain.Entities.EventSeries"></see> being deleted has <see cref="T:EventsCore.Domain.Entities.Event"></see>s.</exception>
+        </member>
+        <member name="T:EventsCore.Application.EventSerieses.Commands.UpsertEventSeries.UpsertEventSeriesesCommand">
+            <summary>
+            Implementation of <see cref="T:MediatR.IRequest"></see> that creates/updates a <see cref="T:EventsCore.Domain.Entities.EventSeries"/>
+            </summary>
+        </member>
+        <member name="P:EventsCore.Application.EventSerieses.Commands.UpsertEventSeries.UpsertEventSeriesesCommand.Id">
+            <summary>
+            The Id of the <see cref="T:EventsCore.Domain.Entities.EventSeries"></see> being upserted. Will be null if an EvenSeries is being created.
+            </summary>
+        </member>
+        <member name="P:EventsCore.Application.EventSerieses.Commands.UpsertEventSeries.UpsertEventSeriesesCommand.Title">
+            <summary>
+            The Name of the <see cref="T:EventsCore.Domain.Entities.EventSeries"></see> being upserted.
+            </summary>
+        </member>
+        <member name="P:EventsCore.Application.EventSerieses.Commands.UpsertEventSeries.UpsertEventSeriesesCommand.Description">
+            <summary>
+            The description of the <see cref="T:EventsCore.Domain.Entities.EventSeries"></see> being upserted.
+            </summary>
+        </member>
+        <member name="T:EventsCore.Application.EventSerieses.Commands.UpsertEventSeries.UpsertEventSeriesesCommandHandler">
+            <summary>
+            Implementation of <see cref="T:MediatR.IRequestHandler`2"></see> that handles requests to update/create an Event Series
+            </summary>
+        </member>
+        <member name="M:EventsCore.Application.EventSerieses.Commands.UpsertEventSeries.UpsertEventSeriesesCommandHandler.#ctor(EventsCore.Application.Common.Interfaces.IEventsCoreDbContext)">
+            <summary>
+            Creates a new instance of the handler
+            </summary>
+            <param name="context">An implementation of <see cref="T:EventsCore.Application.Common.Interfaces.IEventsCoreDbContext"></see></param>
+        </member>
+        <member name="M:EventsCore.Application.EventSerieses.Commands.UpsertEventSeries.UpsertEventSeriesesCommandHandler.Handle(EventsCore.Application.EventSerieses.Commands.UpsertEventSeries.UpsertEventSeriesesCommand,System.Threading.CancellationToken)">
+            <summary>
+            Handles the request to insert or update the <see cref="T:EventsCore.Domain.Entities.EventSeries"></see>
+            </summary>
+            <param name="request">The command</param>
+            <param name="cancellationToken">The cancellationToken</param>
+            <returns>A <see cref="T:System.Threading.Tasks.Task"> containing the Integer Id of the upserted entity.</see></returns>
+            <exception cref="T:EventsCore.Application.Common.Exceptions.ValidationException">Throw when the "Title" property of the request parameter is in use by another <see cref="T:EventsCore.Domain.Entities.EventSeries"></see></exception>
+            <exception cref="T:EventsCore.Application.Common.Exceptions.NotFoundException">Throw when the "Id" property of the request parameter is present, but does not match the Id of any existing <see cref="T:EventsCore.Domain.Entities.EventSeries"></see></exception>
+        </member>
+        <member name="T:EventsCore.Application.EventSerieses.Commands.UpsertEventSeries.UpsertEventSeriesesCommandValidator">
+            <summary>
+            Implemenation of <see cref="T:FluentValidation.AbstractValidator`1"></see> used in the <see cref="T:EventsCore.Application.EventSerieses.Commands.UpsertEventSeries.UpsertEventSeriesesCommand"/>
+            </summary>
+        </member>
+        <member name="M:EventsCore.Application.EventSerieses.Commands.UpsertEventSeries.UpsertEventSeriesesCommandValidator.#ctor">
+            <summary>
+            Creates a new instance of the Validator
+            </summary>
+        </member>
+        <member name="T:EventsCore.Application.EventSerieses.Queries.GetEventSeriesesDetail.EventSeriesDetailVm">
+            <summary>
+            Viewmodel class to show details for an <see cref="T:EventsCore.Domain.Entities.EventSeries"></see>
+            </summary>
+        </member>
+        <member name="P:EventsCore.Application.EventSerieses.Queries.GetEventSeriesesDetail.EventSeriesDetailVm.Id">
+            <summary>
+            The Id of the EventSeries
+            </summary>
+        </member>
+        <member name="P:EventsCore.Application.EventSerieses.Queries.GetEventSeriesesDetail.EventSeriesDetailVm.Title">
+            <summary>
+            The Title of the EventSeries
+            </summary>
+        </member>
+        <member name="P:EventsCore.Application.EventSerieses.Queries.GetEventSeriesesDetail.EventSeriesDetailVm.Description">
+            <summary>
+            The Description of the EventSeries
+            </summary>
+        </member>
+        <member name="P:EventsCore.Application.EventSerieses.Queries.GetEventSeriesesDetail.EventSeriesDetailVm.Events">
+            <summary>
+            A list of <see cref="T:EventsCore.Application.EventSerieses.Queries.GetEventSeriesesDetail.EventSeriesEventDto"></see> for any <see cref="T:EventsCore.Domain.Entities.Event"></see>s in this Event Series
+            </summary>
+        </member>
+        <member name="M:EventsCore.Application.EventSerieses.Queries.GetEventSeriesesDetail.EventSeriesDetailVm.Mapping(AutoMapper.Profile)">
+            <summary>
+            Creates a mapping profile between the <see cref="T:EventsCore.Domain.Entities.EventSeries"></see> and the <see cref="T:EventsCore.Application.EventSerieses.Queries.GetEventSeriesesDetail.EventSeriesDetailVm"></see>
+            </summary>
+            <param name="profile"></param>
+        </member>
+        <member name="T:EventsCore.Application.EventSerieses.Queries.GetEventSeriesesDetail.EventSeriesEventDto">
+            <summary>
+            Data transfer class for an <see cref="T:EventsCore.Domain.Entities.Event"></see> that is part of an <see cref="T:EventsCore.Application.EventSerieses.Queries.GetEventSeriesesDetail.EventSeriesDetailVm"/>
+            </summary>
+        </member>
+        <member name="P:EventsCore.Application.EventSerieses.Queries.GetEventSeriesesDetail.EventSeriesEventDto.Id">
+            <summary>
+            The Id of the <see cref="T:EventsCore.Domain.Entities.Event"></see>
+            </summary>
+        </member>
+        <member name="P:EventsCore.Application.EventSerieses.Queries.GetEventSeriesesDetail.EventSeriesEventDto.Title">
+            <summary>
+            The Title of the <see cref="T:EventsCore.Domain.Entities.Event"></see> 
+            </summary>
+        </member>
+        <member name="P:EventsCore.Application.EventSerieses.Queries.GetEventSeriesesDetail.EventSeriesEventDto.StartDate">
+            <summary>
+            The StartDate of the <see cref="T:EventsCore.Domain.Entities.Event"></see>
+            </summary>
+        </member>
+        <member name="M:EventsCore.Application.EventSerieses.Queries.GetEventSeriesesDetail.EventSeriesEventDto.Mapping(AutoMapper.Profile)">
+            <summary>
+            Creates a mapping profile between the <see cref="T:EventsCore.Domain.Entities.Event"></see> and the <see cref="T:EventsCore.Application.EventSerieses.Queries.GetEventSeriesesDetail.EventSeriesEventDto"></see>
+            </summary>
+            <param name="profile"></param>
+        </member>
+        <member name="T:EventsCore.Application.EventSerieses.Queries.GetEventSeriesesDetail.GetEventSeriesDetailQuery">
+            <summary>
+            Implementation of <see cref="T:MediatR.IRequest"></see> that returns a list of <see cref="T:EventsCore.Application.EventSerieses.Queries.GetEventSeriesesDetail.EventSeriesDetailVm"></see>
+            </summary>
+        </member>
+        <member name="P:EventsCore.Application.EventSerieses.Queries.GetEventSeriesesDetail.GetEventSeriesDetailQuery.Id">
+            <summary>
+            The Id of the Entity
+            </summary>
+        </member>
+        <member name="T:EventsCore.Application.EventSerieses.Queries.GetEventSeriesesDetail.GetEventSeriesDetailQueryHandler">
+            <summary>
+            Implementation of <see cref="T:MediatR.IRequestHandler`2"></see> that handles requests for a list of <see cref="T:EventsCore.Domain.Entities.EventSeries"></see>
+            </summary>
+        </member>
+        <member name="M:EventsCore.Application.EventSerieses.Queries.GetEventSeriesesDetail.GetEventSeriesDetailQueryHandler.#ctor(EventsCore.Application.Common.Interfaces.IEventsCoreDbContext,AutoMapper.IMapper)">
+            <summary>
+            Creates a new instance of the Handler
+            </summary>
+            <param name="context">An implementation of <see cref="T:EventsCore.Application.Common.Interfaces.IEventsCoreDbContext"></see></param>
+            <param name="mapper">An implementation of <see cref="T:AutoMapper.IMapper"></see></param>
+        </member>
+        <member name="M:EventsCore.Application.EventSerieses.Queries.GetEventSeriesesDetail.GetEventSeriesDetailQueryHandler.Handle(EventsCore.Application.EventSerieses.Queries.GetEventSeriesesDetail.GetEventSeriesDetailQuery,System.Threading.CancellationToken)">
+            <summary>
+            Handles the Request
+            </summary>
+            <param name="request">A <see cref="T:EventsCore.Application.EventSerieses.Queries.GetEventSeriesesDetail.GetEventSeriesDetailQuery"></see> request object.</param>
+            <param name="cancellationToken">A <see cref="T:System.Threading.CancellationToken"></see></param>
+            <returns>A <see cref="T:EventsCore.Application.EventSerieses.Queries.GetEventSeriesesDetail.EventSeriesDetailVm"></see> containing the details for a <see cref="T:EventsCore.Domain.Entities.EventSeries"></see></returns>
+        </member>
+        <member name="T:EventsCore.Application.EventSerieses.Queries.GetEventSeriesesList.EventSeriesDto">
+            <summary>
+            Data Transfer Class for the <see cref="T:EventsCore.Domain.Entities.EventSeries"></see> entity
+            </summary>
+        </member>
+        <member name="P:EventsCore.Application.EventSerieses.Queries.GetEventSeriesesList.EventSeriesDto.Id">
+            <summary>
+            The entity Id
+            </summary>
+        </member>
+        <member name="P:EventsCore.Application.EventSerieses.Queries.GetEventSeriesesList.EventSeriesDto.Title">
+            <summary>
+            The entity's title
+            </summary>
+        </member>
+        <member name="M:EventsCore.Application.EventSerieses.Queries.GetEventSeriesesList.EventSeriesDto.Mapping(AutoMapper.Profile)">
+            <summary>
+            Creates a mapping between the base <see cref="T:EventsCore.Domain.Entities.EventSeries"></see> and the Dto <see cref="T:EventsCore.Application.EventSerieses.Queries.GetEventSeriesesList.EventSeriesDto"></see>
+            </summary>
+            <param name="profile"></param>
+        </member>
+        <member name="T:EventsCore.Application.EventSerieses.Queries.GetEventSeriesesList.EventSeriesesListVm">
+            <summary>
+            Class that serves as a Viewmodel for a list of <see cref="T:EventsCore.Domain.Entities.EventSeries"></see> entities
+            </summary>
+        </member>
+        <member name="P:EventsCore.Application.EventSerieses.Queries.GetEventSeriesesList.EventSeriesesListVm.EventSerieses">
+            <summary>
+            A list of <see cref="T:EventsCore.Application.EventSerieses.Queries.GetEventSeriesesList.EventSeriesDto"></see> objects.
+            </summary>
+        </member>
+        <member name="P:EventsCore.Application.EventSerieses.Queries.GetEventSeriesesList.EventSeriesesListVm.Count">
+            <summary>
+            The count of entities in the list
+            </summary>
+        </member>
+        <member name="T:EventsCore.Application.EventSerieses.Queries.GetEventSeriesesList.GetEventSeriesesListQuery">
+            <summary>
+            Implementation of <see cref="T:MediatR.IRequest"></see> that returns a list of <see cref="T:EventsCore.Application.EventSerieses.Queries.GetEventSeriesesList.EventSeriesDto"></see> in an <see cref="T:EventsCore.Application.EventSerieses.Queries.GetEventSeriesesList.EventSeriesesListVm"/>
+            </summary>
+        </member>
+        <member name="T:EventsCore.Application.EventSerieses.Queries.GetEventSeriesesList.GetEventSeriesesListQueryHandler">
+            <summary>
+            Implementation of <see cref="T:MediatR.IRequestHandler`2"></see> that handles requests for a list of <see cref="T:EventsCore.Domain.Entities.EventSeries"></see>
+            </summary>
+        </member>
+        <member name="M:EventsCore.Application.EventSerieses.Queries.GetEventSeriesesList.GetEventSeriesesListQueryHandler.#ctor(EventsCore.Application.Common.Interfaces.IEventsCoreDbContext,AutoMapper.IMapper)">
+            <summary>
+            Creates a new instance of the Handler
+            </summary>
+            <param name="context">An implementation of <see cref="T:EventsCore.Application.Common.Interfaces.IEventsCoreDbContext"></see></param>
+            <param name="mapper">An implementation of <see cref="T:AutoMapper.IMapper"></see></param>
+        </member>
+        <member name="M:EventsCore.Application.EventSerieses.Queries.GetEventSeriesesList.GetEventSeriesesListQueryHandler.Handle(EventsCore.Application.EventSerieses.Queries.GetEventSeriesesList.GetEventSeriesesListQuery,System.Threading.CancellationToken)">
+            <summary>
+            Handles the Request
+            </summary>
+            <param name="request">A <see cref="T:EventsCore.Application.EventSerieses.Queries.GetEventSeriesesList.GetEventSeriesesListQuery"></see> request object.</param>
+            <param name="cancellationToken">A <see cref="T:System.Threading.CancellationToken"></see></param>
+            <returns>A <see cref="T:EventsCore.Application.EventSerieses.Queries.GetEventSeriesesList.EventSeriesesListVm"></see> containing the list of <see cref="T:EventsCore.Domain.Entities.EventSeries"></see> projected to <see cref="T:EventsCore.Application.EventSerieses.Queries.GetEventSeriesesList.EventSeriesDto"></see></returns>
+        </member>
+        <member name="T:EventsCore.Application.EventTypes.Commands.DeleteEventType.DeleteEventTypeCommand">
+            <summary>
+            An implementation of <see cref="T:MediatR.IRequest"></see> that handles a request to remove an <see cref="T:EventsCore.Domain.Entities.EventType"></see>
+            </summary>
+        </member>
+        <member name="P:EventsCore.Application.EventTypes.Commands.DeleteEventType.DeleteEventTypeCommand.Id">
+            <summary>
+            The Id of the EventType to be removed
+            </summary>
+        </member>
+        <member name="T:EventsCore.Application.EventTypes.Commands.DeleteEventType.DeleteEventTypeCommandHandler">
+            <summary>
+            Implements <see cref="T:MediatR.IRequestHandler`1"></see> to Delete an Event Type.
+            </summary>
+        </member>
+        <member name="M:EventsCore.Application.EventTypes.Commands.DeleteEventType.DeleteEventTypeCommandHandler.#ctor(EventsCore.Application.Common.Interfaces.IEventsCoreDbContext)">
+            <summary>
+            Creates a new instance of the handler.
+            </summary>
+            <param name="context">An implementation of <see cref="T:EventsCore.Application.Common.Interfaces.IEventsCoreDbContext"></see></param>
+        </member>
+        <member name="M:EventsCore.Application.EventTypes.Commands.DeleteEventType.DeleteEventTypeCommandHandler.Handle(EventsCore.Application.EventTypes.Commands.DeleteEventType.DeleteEventTypeCommand,System.Threading.CancellationToken)">
+            <summary>
+            Handles the request
+            </summary>
+            <param name="request">The request.</param>
+            <param name="cancellationToken">A <see cref="T:System.Threading.CancellationToken"></see></param>
+            <returns>A <see cref="T:MediatR.Unit"></see> containing the results of the operation.</returns>
+            <exception cref="T:EventsCore.Application.Common.Exceptions.NotFoundException">Thrown when no <see cref="T:EventsCore.Domain.Entities.EventType"></see> with the request Id parameter was found.</exception>
+            <exception cref="T:EventsCore.Application.Common.Exceptions.DeleteFailureException">Thrown when the <see cref="T:EventsCore.Domain.Entities.EventType"></see> being deleted has <see cref="T:EventsCore.Domain.Entities.Event"></see>s.</exception>
+        </member>
+        <member name="T:EventsCore.Application.EventTypes.Commands.UpsertEventType.UpsertEventTypeCommand">
+            <summary>
+            Implementation of <see cref="T:MediatR.IRequest"></see> that creates/updates a <see cref="T:EventsCore.Domain.Entities.EventType"></see>
+            </summary>
+        </member>
+        <member name="P:EventsCore.Application.EventTypes.Commands.UpsertEventType.UpsertEventTypeCommand.Id">
+            <summary>
+            The Id of the <see cref="T:EventsCore.Domain.Entities.EventType"></see> being upserted
+            </summary>
+        </member>
+        <member name="P:EventsCore.Application.EventTypes.Commands.UpsertEventType.UpsertEventTypeCommand.Name">
+            <summary>
+            The Name of the <see cref="T:EventsCore.Domain.Entities.EventType"></see> being upserted.
+            </summary>
+        </member>
+        <member name="T:EventsCore.Application.EventTypes.Commands.UpsertEventType.UpsertEventTypeCommandHandler">
+            <summary>
+            Implements <see cref="T:MediatR.IRequestHandler`2"></see> to handle a request to update/insert an Event Type.
+            </summary>
+        </member>
+        <member name="M:EventsCore.Application.EventTypes.Commands.UpsertEventType.UpsertEventTypeCommandHandler.#ctor(EventsCore.Application.Common.Interfaces.IEventsCoreDbContext)">
+            <summary>
+            Creates a new instance of the Handler
+            </summary>
+            <param name="context">An implementation of <see cref="T:EventsCore.Application.Common.Interfaces.IEventsCoreDbContext"></see></param>
+        </member>
+        <member name="M:EventsCore.Application.EventTypes.Commands.UpsertEventType.UpsertEventTypeCommandHandler.Handle(EventsCore.Application.EventTypes.Commands.UpsertEventType.UpsertEventTypeCommand,System.Threading.CancellationToken)">
+            <summary>
+            Handles the request to insert or update the <see cref="T:EventsCore.Domain.Entities.EventType"></see>
+            </summary>
+            <param name="request">The command</param>
+            <param name="cancellationToken">The cancellationToken</param>
+            <returns>A <see cref="T:System.Threading.Tasks.Task"> containing the Integer Id of the upserted entity.</see></returns>
+            <exception cref="T:EventsCore.Application.Common.Exceptions.ValidationException">Throw when the "Name" property of the request parameter is in use by another <see cref="T:EventsCore.Domain.Entities.EventType"></see></exception>
+            <exception cref="T:EventsCore.Application.Common.Exceptions.NotFoundException">Throw when the "Id" property of the request parameter is present, but does not match the Id of any existing <see cref="T:EventsCore.Domain.Entities.EventType"></see></exception>
+        </member>
+        <member name="T:EventsCore.Application.EventTypes.Commands.UpsertEventType.UpsertEventTypeCommandValidator">
+            <summary>
+            Implemenation of <see cref="T:FluentValidation.AbstractValidator`1"></see> used in the <see cref="T:EventsCore.Application.EventTypes.Commands.UpsertEventType.UpsertEventTypeCommand"/>
+            </summary>
+        </member>
+        <member name="M:EventsCore.Application.EventTypes.Commands.UpsertEventType.UpsertEventTypeCommandValidator.#ctor">
+            <summary>
+            Creates a new instance of the Validator
+            </summary>
+        </member>
+        <member name="T:EventsCore.Application.EventTypes.Queries.GetEventTypesList.EventTypeDto">
+            <summary>
+            Data Transfer Class for the <see cref="T:EventsCore.Domain.Entities.EventType"></see> entity
+            </summary>
+        </member>
+        <member name="P:EventsCore.Application.EventTypes.Queries.GetEventTypesList.EventTypeDto.Id">
+            <summary>
+            The entity Id
+            </summary>
+        </member>
+        <member name="P:EventsCore.Application.EventTypes.Queries.GetEventTypesList.EventTypeDto.Name">
+            <summary>
+            The entity Name
+            </summary>
+        </member>
+        <member name="M:EventsCore.Application.EventTypes.Queries.GetEventTypesList.EventTypeDto.Mapping(AutoMapper.Profile)">
+            <summary>
+            Creates a mapping profile
+            </summary>
+            <param name="profile">The <see cref="T:AutoMapper.Profile"></see></param>
+        </member>
+        <member name="T:EventsCore.Application.EventTypes.Queries.GetEventTypesList.EventTypeListVm">
+            <summary>
+            Class that serves as a Viewmodel for a list of <see cref="T:EventsCore.Domain.Entities.EventType"></see> entities
+            </summary>
+        </member>
+        <member name="P:EventsCore.Application.EventTypes.Queries.GetEventTypesList.EventTypeListVm.EventTypes">
+            <summary>
+            A list of <see cref="T:EventsCore.Application.EventTypes.Queries.GetEventTypesList.EventTypeDto"></see> objects
+            </summary>
+        </member>
+        <member name="P:EventsCore.Application.EventTypes.Queries.GetEventTypesList.EventTypeListVm.Count">
+            <summary>
+            The count of entities in the list.
+            </summary>
+        </member>
+        <member name="T:EventsCore.Application.EventTypes.Queries.GetEventTypesList.GetEventTypeListQuery">
+            <summary>
+            Implementation of <see cref="T:MediatR.IRequest"></see> that returns a list of <see cref="T:EventsCore.Application.EventTypes.Queries.GetEventTypesList.EventTypeDto"></see> in an <see cref="T:EventsCore.Application.EventTypes.Queries.GetEventTypesList.EventTypeListVm"/>
+            </summary>
+        </member>
+        <member name="T:EventsCore.Application.EventTypes.Queries.GetEventTypesList.GetEventTypeListQueryHandler">
+            <summary>
+            Implementation of <see cref="T:MediatR.IRequestHandler`2"></see> that handles requests for a list of <see cref="T:EventsCore.Domain.Entities.EventType"></see>
+            </summary>
+        </member>
+        <member name="M:EventsCore.Application.EventTypes.Queries.GetEventTypesList.GetEventTypeListQueryHandler.#ctor(EventsCore.Application.Common.Interfaces.IEventsCoreDbContext,AutoMapper.IMapper)">
+            <summary>
+            Creates a new instance of the Handler
+            </summary>
+            <param name="context">An implementation of <see cref="T:EventsCore.Application.Common.Interfaces.IEventsCoreDbContext"></see></param>
+            <param name="mapper">An implementation of <see cref="T:AutoMapper.IMapper"></see></param>
+        </member>
+        <member name="M:EventsCore.Application.EventTypes.Queries.GetEventTypesList.GetEventTypeListQueryHandler.Handle(EventsCore.Application.EventTypes.Queries.GetEventTypesList.GetEventTypeListQuery,System.Threading.CancellationToken)">
+            <summary>
+            Handles the Request
+            </summary>
+            <param name="request">A <see cref="T:EventsCore.Application.EventTypes.Queries.GetEventTypesList.GetEventTypeListQuery"></see> request object.</param>
+            <param name="cancellationToken">A <see cref="T:System.Threading.CancellationToken"></see></param>
+            <returns>A <see cref="T:EventsCore.Application.EventTypes.Queries.GetEventTypesList.EventTypeListVm"></see> containing the list of <see cref="N:EventsCore.Application.EventTypes"></see> projected to <see cref="T:EventsCore.Application.EventTypes.Queries.GetEventTypesList.EventTypeDto"></see></returns>
+        </member>
+        <member name="T:EventsCore.Application.Ranks.Commands.DeleteRank.DeleteRankCommand">
+            <summary>
+            An implementation of <see cref="T:MediatR.IRequest"></see> that handles a request to remove a <see cref="T:EventsCore.Domain.Entities.Rank"></see>
+            </summary>
+        </member>
+        <member name="P:EventsCore.Application.Ranks.Commands.DeleteRank.DeleteRankCommand.Id">
+            <summary>
+            The Id of the Rank to be removed
+            </summary>
+        </member>
+        <member name="T:EventsCore.Application.Ranks.Commands.DeleteRank.DeleteRankCommandHandler">
+            <summary>
+            Implements <see cref="T:MediatR.IRequestHandler`1"></see> to Delete a Rank.
+            </summary>
+        </member>
+        <member name="M:EventsCore.Application.Ranks.Commands.DeleteRank.DeleteRankCommandHandler.#ctor(EventsCore.Application.Common.Interfaces.IEventsCoreDbContext)">
+            <summary>
+            Creates a new instance of the handler.
+            </summary>
+            <param name="context">An implementation of <see cref="T:EventsCore.Application.Common.Interfaces.IEventsCoreDbContext"></see></param>
+        </member>
+        <member name="M:EventsCore.Application.Ranks.Commands.DeleteRank.DeleteRankCommandHandler.Handle(EventsCore.Application.Ranks.Commands.DeleteRank.DeleteRankCommand,System.Threading.CancellationToken)">
+            <summary>
+            Handles the request
+            </summary>
+            <param name="request">The request.</param>
+            <param name="cancellationToken">A <see cref="T:System.Threading.CancellationToken"></see></param>
+            <returns>A <see cref="T:MediatR.Unit"></see> containing the results of the operation.</returns>
+            <exception cref="T:EventsCore.Application.Common.Exceptions.NotFoundException">Thrown when no <see cref="T:EventsCore.Domain.Entities.Rank"></see> with the request Id parameter was found.</exception>
+            <exception cref="T:EventsCore.Application.Common.Exceptions.DeleteFailureException">Thrown when the <see cref="T:EventsCore.Domain.Entities.Rank"></see> being deleted has <see cref="T:EventsCore.Domain.Entities.User"></see>s.</exception>
+        </member>
+        <member name="T:EventsCore.Application.Ranks.Commands.UpsertRank.UpsertRankCommand">
+            <summary>
+            Implementation of <see cref="T:MediatR.IRequest"></see> that creates/updates a <see cref="T:EventsCore.Domain.Entities.Rank"></see>
+            </summary>
+        </member>
+        <member name="P:EventsCore.Application.Ranks.Commands.UpsertRank.UpsertRankCommand.Id">
+            <summary>
+            The Id of the <see cref="T:EventsCore.Domain.Entities.Rank"></see> being upserted. Will be null for a new Rank
+            </summary>
+        </member>
+        <member name="P:EventsCore.Application.Ranks.Commands.UpsertRank.UpsertRankCommand.Abbrev">
+            <summary>
+            The Abbreviation for the Rank
+            </summary>
+        </member>
+        <member name="P:EventsCore.Application.Ranks.Commands.UpsertRank.UpsertRankCommand.FullName">
+            <summary>
+            The Full name of the <see cref="T:EventsCore.Domain.Entities.Rank"></see> being upserted
+            </summary>
+        </member>
+        <member name="T:EventsCore.Application.Ranks.Commands.UpsertRank.UpsertRankCommandHandler">
+            <summary>
+            Implements <see cref="T:MediatR.IRequestHandler`2"></see> to handle a request to update/insert a Rank.
+            </summary>
+        </member>
+        <member name="M:EventsCore.Application.Ranks.Commands.UpsertRank.UpsertRankCommandHandler.#ctor(EventsCore.Application.Common.Interfaces.IEventsCoreDbContext)">
+            <summary>
+            Creates a new instance of the Handler
+            </summary>
+            <param name="context">An implementation of <see cref="T:EventsCore.Application.Common.Interfaces.IEventsCoreDbContext"></see></param>
+        </member>
+        <member name="M:EventsCore.Application.Ranks.Commands.UpsertRank.UpsertRankCommandHandler.Handle(EventsCore.Application.Ranks.Commands.UpsertRank.UpsertRankCommand,System.Threading.CancellationToken)">
+            <summary>
+            Handles the request to insert or update the <see cref="T:EventsCore.Domain.Entities.Rank"></see>
+            </summary>
+            <param name="request">The command</param>
+            <param name="cancellationToken">The cancellationToken</param>
+            <returns>A <see cref="T:System.Threading.Tasks.Task"> containing the Integer Id of the upserted entity.</see></returns>
+            <exception cref="T:EventsCore.Application.Common.Exceptions.ValidationException">
+            Throw when:
+            <list type="bullet">
+            <item><description>the "FullName" property of the request parameter is in use by another <see cref="T:EventsCore.Domain.Entities.Rank"></see></description></item>
+            <item><description>the "Abbrev" property of the request parameter is in use by another <see cref="T:EventsCore.Domain.Entities.Rank"></see></description></item>
+            </list>
+            </exception>
+            <exception cref="T:EventsCore.Application.Common.Exceptions.NotFoundException">Throw when the "Id" property of the request parameter is present, but does not match the Id of any existing <see cref="T:EventsCore.Domain.Entities.Rank"></see></exception>
+        </member>
+        <member name="T:EventsCore.Application.Ranks.Commands.UpsertRank.UpsertRankCommandValidator">
+            <summary>
+            Implemenation of <see cref="T:FluentValidation.AbstractValidator`1"></see> used in the <see cref="T:EventsCore.Application.Ranks.Commands.UpsertRank.UpsertRankCommand"/>
+            </summary>
+        </member>
+        <member name="M:EventsCore.Application.Ranks.Commands.UpsertRank.UpsertRankCommandValidator.#ctor">
+            <summary>
+            Creates a new instance of the Validator
+            </summary>
+        </member>
+        <member name="T:EventsCore.Application.Ranks.Queries.GetRankList.GetRankListQuery">
+            <summary>
+            Implementation of <see cref="T:MediatR.IRequest"></see> that returns a list of <see cref="T:EventsCore.Application.Ranks.Queries.GetRankList.RankDto"></see> in an <see cref="T:EventsCore.Application.Ranks.Queries.GetRankList.RankListVm"/>
+            </summary>
+        </member>
+        <member name="T:EventsCore.Application.Ranks.Queries.GetRankList.GetRankListQueryHandler">
+            <summary>
+            Implementation of <see cref="T:MediatR.IRequestHandler`2"></see> that handles requests for a list of <see cref="T:EventsCore.Domain.Entities.Rank"></see>
+            </summary>
+        </member>
+        <member name="M:EventsCore.Application.Ranks.Queries.GetRankList.GetRankListQueryHandler.#ctor(EventsCore.Application.Common.Interfaces.IEventsCoreDbContext,AutoMapper.IMapper)">
+            <summary>
+            Creates a new instance of the Handler
+            </summary>
+            <param name="context">An implementation of <see cref="T:EventsCore.Application.Common.Interfaces.IEventsCoreDbContext"></see></param>
+            <param name="mapper">An implementation of <see cref="T:AutoMapper.IMapper"></see></param>
+        </member>
+        <member name="M:EventsCore.Application.Ranks.Queries.GetRankList.GetRankListQueryHandler.Handle(EventsCore.Application.Ranks.Queries.GetRankList.GetRankListQuery,System.Threading.CancellationToken)">
+            <summary>
+            Handles the Request
+            </summary>
+            <param name="request">A <see cref="T:EventsCore.Application.Ranks.Queries.GetRankList.GetRankListQuery"></see> request object.</param>
+            <param name="cancellationToken">A <see cref="T:System.Threading.CancellationToken"></see></param>
+            <returns>A <see cref="T:EventsCore.Application.Ranks.Queries.GetRankList.RankListVm"></see> containing the list of <see cref="T:EventsCore.Domain.Entities.Rank"></see> projected to <see cref="T:EventsCore.Application.Ranks.Queries.GetRankList.RankDto"></see></returns>
+        </member>
+        <member name="T:EventsCore.Application.Ranks.Queries.GetRankList.RankDto">
+            <summary>
+            Data Transfer Class for the <see cref="T:EventsCore.Domain.Entities.Rank"></see> entity
+            </summary>
+        </member>
+        <member name="P:EventsCore.Application.Ranks.Queries.GetRankList.RankDto.Id">
+            <summary>
+            The Id of the entity
+            </summary>
+        </member>
+        <member name="P:EventsCore.Application.Ranks.Queries.GetRankList.RankDto.FullName">
+            <summary>
+            The Full Name of the Entity
+            </summary>
+        </member>
+        <member name="P:EventsCore.Application.Ranks.Queries.GetRankList.RankDto.Abbreviation">
+            <summary>
+            The abbreviation for the Entity
+            </summary>
+        </member>
+        <member name="M:EventsCore.Application.Ranks.Queries.GetRankList.RankDto.Mapping(AutoMapper.Profile)">
+            <summary>
+            Creates a mapping profile
+            </summary>
+            <param name="profile">The <see cref="T:AutoMapper.Profile"></see></param>
+        </member>
+        <member name="T:EventsCore.Application.Ranks.Queries.GetRankList.RankListVm">
+            <summary>
+            Class that serves as a Viewmodel for a list of <see cref="T:EventsCore.Domain.Entities.Rank"></see> entities
+            </summary>
+        </member>
+        <member name="P:EventsCore.Application.Ranks.Queries.GetRankList.RankListVm.Ranks">
+            <summary>
+            A list of <see cref="T:EventsCore.Application.Ranks.Queries.GetRankList.RankDto"></see> objects
+            </summary>
+        </member>
+        <member name="P:EventsCore.Application.Ranks.Queries.GetRankList.RankListVm.Count">
+            <summary>
+            The count of entites in the list
             </summary>
         </member>
     </members>

@@ -17,7 +17,7 @@ namespace EventsCore.Domain.UnitTests.Entities.EventModulesAggregate
             var eventModules = new EventModules(fakeEventId);
 
             // Assert
-            Assert.Equal(1, eventModules.EventId);
+            Assert.Equal(1, eventModules.Id);
             Assert.NotNull(eventModules.Modules);
         }
         [Fact]

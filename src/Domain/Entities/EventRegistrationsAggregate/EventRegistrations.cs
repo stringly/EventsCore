@@ -29,7 +29,7 @@ namespace EventsCore.Domain.Entities.EventRegistrationsAggregate
         /// <exception cref="EventRegistrationAggregateArgumentException">
         /// Thrown when:
         /// <list type="bullet">
-        /// <item><description>The EventId parameter is invalid or out of range.</description></item>
+        /// <item><description>The Id parameter is invalid or out of range.</description></item>
         /// <item><description>The EventDates parameter is null.</description></item>
         /// <item><description>The EventRegistrationRules parameter is null.</description></item>
         /// </list>
@@ -37,7 +37,7 @@ namespace EventsCore.Domain.Entities.EventRegistrationsAggregate
         public EventRegistrations(int eventId, EventDates eventDates, EventRegistrationRules registrationRules, IDateTime dateTimeProvider)
         {
             _dateTime = dateTimeProvider;
-            EventId = eventId != 0 ? eventId : throw new EventRegistrationAggregateArgumentException("Cannot create Event: eventId is invalid.", nameof(eventId));
+            Id = eventId != 0 ? eventId : throw new EventRegistrationAggregateArgumentException("Cannot create Event: eventId is invalid.", nameof(eventId));
             EventDates = eventDates ?? throw new EventRegistrationAggregateArgumentException("Cannot create Event: eventDates cannot be null.", nameof(eventDates));
             Rules = registrationRules ?? throw new EventRegistrationAggregateArgumentException("Cannot create Event: registrationRules cannot be null", nameof(registrationRules));
             _registrations = new List<Registration>();
@@ -53,7 +53,7 @@ namespace EventsCore.Domain.Entities.EventRegistrationsAggregate
         /// <summary>
         /// The ID of the Event associated with this instance
         /// </summary>
-        public int EventId { get; private set; }
+        public int Id { get; private set; }
         /// <summary>
         /// An ValueObject instance of the Dates associated with this event
         /// </summary>

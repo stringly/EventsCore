@@ -1,0 +1,422 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Interface ISpecification&lt;T&gt;
+   </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Interface ISpecification&lt;T&gt;
+   ">
+    <meta name="generator" content="docfx 2.54.0.0">
+    
+    <link rel="shortcut icon" href="../../favicon.ico">
+    <link rel="stylesheet" href="../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../styles/docfx.css">
+    <link rel="stylesheet" href="../../styles/main.css">
+    <meta property="docfx:navrel" content="../../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../../index.html">
+                <img id="logo" class="svg" src="../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="EventsCore.Application.Common.Interfaces.ISpecification`1">
+  
+  
+  <h1 id="EventsCore_Application_Common_Interfaces_ISpecification_1" data-uid="EventsCore.Application.Common.Interfaces.ISpecification`1" class="text-break">Interface ISpecification&lt;T&gt;
+  </h1>
+  <div class="markdown level0 summary"><p>Defines a Specification used to filter queries</p>
+</div>
+  <div class="markdown level0 conceptual"></div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="EventsCore.Application.Common.Interfaces.html">EventsCore.Application.Common.Interfaces</a></h6>
+  <h6><strong>Assembly</strong>: EventsCore.Application.dll</h6>
+  <h5 id="EventsCore_Application_Common_Interfaces_ISpecification_1_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public interface ISpecification&lt;T&gt;</code></pre>
+  </div>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">T</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="properties">Properties
+  </h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/stringly/EventsCore/new/master/apiSpec/new?filename=EventsCore_Application_Common_Interfaces_ISpecification_1_Criteria.md&amp;value=---%0Auid%3A%20EventsCore.Application.Common.Interfaces.ISpecification%601.Criteria%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/stringly/EventsCore/blob/master/src/Application/Common/Interfaces/ISpecification.cs/#L16">View Source</a>
+  </span>
+  <a id="EventsCore_Application_Common_Interfaces_ISpecification_1_Criteria_" data-uid="EventsCore.Application.Common.Interfaces.ISpecification`1.Criteria*"></a>
+  <h4 id="EventsCore_Application_Common_Interfaces_ISpecification_1_Criteria" data-uid="EventsCore.Application.Common.Interfaces.ISpecification`1.Criteria">Criteria</h4>
+  <div class="markdown level1 summary"><p>An expression containing filtering criteria</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">Expression&lt;Func&lt;T, bool&gt;&gt; Criteria { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Linq.Expressions.Expression</span>&lt;<span class="xref">System.Func</span>&lt;T, <span class="xref">System.Boolean</span>&gt;&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/stringly/EventsCore/new/master/apiSpec/new?filename=EventsCore_Application_Common_Interfaces_ISpecification_1_GroupBy.md&amp;value=---%0Auid%3A%20EventsCore.Application.Common.Interfaces.ISpecification%601.GroupBy%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/stringly/EventsCore/blob/master/src/Application/Common/Interfaces/ISpecification.cs/#L36">View Source</a>
+  </span>
+  <a id="EventsCore_Application_Common_Interfaces_ISpecification_1_GroupBy_" data-uid="EventsCore.Application.Common.Interfaces.ISpecification`1.GroupBy*"></a>
+  <h4 id="EventsCore_Application_Common_Interfaces_ISpecification_1_GroupBy" data-uid="EventsCore.Application.Common.Interfaces.ISpecification`1.GroupBy">GroupBy</h4>
+  <div class="markdown level1 summary"><p>An expression containing grouping criteria</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">Expression&lt;Func&lt;T, object&gt;&gt; GroupBy { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Linq.Expressions.Expression</span>&lt;<span class="xref">System.Func</span>&lt;T, <span class="xref">System.Object</span>&gt;&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/stringly/EventsCore/new/master/apiSpec/new?filename=EventsCore_Application_Common_Interfaces_ISpecification_1_Includes.md&amp;value=---%0Auid%3A%20EventsCore.Application.Common.Interfaces.ISpecification%601.Includes%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/stringly/EventsCore/blob/master/src/Application/Common/Interfaces/ISpecification.cs/#L20">View Source</a>
+  </span>
+  <a id="EventsCore_Application_Common_Interfaces_ISpecification_1_Includes_" data-uid="EventsCore.Application.Common.Interfaces.ISpecification`1.Includes*"></a>
+  <h4 id="EventsCore_Application_Common_Interfaces_ISpecification_1_Includes" data-uid="EventsCore.Application.Common.Interfaces.ISpecification`1.Includes">Includes</h4>
+  <div class="markdown level1 summary"><p>An expression containing Includes</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">List&lt;Expression&lt;Func&lt;T, object&gt;&gt;&gt; Includes { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.List</span>&lt;<span class="xref">System.Linq.Expressions.Expression</span>&lt;<span class="xref">System.Func</span>&lt;T, <span class="xref">System.Object</span>&gt;&gt;&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/stringly/EventsCore/new/master/apiSpec/new?filename=EventsCore_Application_Common_Interfaces_ISpecification_1_IncludeStrings.md&amp;value=---%0Auid%3A%20EventsCore.Application.Common.Interfaces.ISpecification%601.IncludeStrings%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/stringly/EventsCore/blob/master/src/Application/Common/Interfaces/ISpecification.cs/#L24">View Source</a>
+  </span>
+  <a id="EventsCore_Application_Common_Interfaces_ISpecification_1_IncludeStrings_" data-uid="EventsCore.Application.Common.Interfaces.ISpecification`1.IncludeStrings*"></a>
+  <h4 id="EventsCore_Application_Common_Interfaces_ISpecification_1_IncludeStrings" data-uid="EventsCore.Application.Common.Interfaces.ISpecification`1.IncludeStrings">IncludeStrings</h4>
+  <div class="markdown level1 summary"><p>A List of strings containing include specifications</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">List&lt;string&gt; IncludeStrings { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.List</span>&lt;<span class="xref">System.String</span>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/stringly/EventsCore/new/master/apiSpec/new?filename=EventsCore_Application_Common_Interfaces_ISpecification_1_IsPagingEnabled.md&amp;value=---%0Auid%3A%20EventsCore.Application.Common.Interfaces.ISpecification%601.IsPagingEnabled%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/stringly/EventsCore/blob/master/src/Application/Common/Interfaces/ISpecification.cs/#L48">View Source</a>
+  </span>
+  <a id="EventsCore_Application_Common_Interfaces_ISpecification_1_IsPagingEnabled_" data-uid="EventsCore.Application.Common.Interfaces.ISpecification`1.IsPagingEnabled*"></a>
+  <h4 id="EventsCore_Application_Common_Interfaces_ISpecification_1_IsPagingEnabled" data-uid="EventsCore.Application.Common.Interfaces.ISpecification`1.IsPagingEnabled">IsPagingEnabled</h4>
+  <div class="markdown level1 summary"><p>Indicates whether paging is enabled.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">bool IsPagingEnabled { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/stringly/EventsCore/new/master/apiSpec/new?filename=EventsCore_Application_Common_Interfaces_ISpecification_1_OrderBy.md&amp;value=---%0Auid%3A%20EventsCore.Application.Common.Interfaces.ISpecification%601.OrderBy%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/stringly/EventsCore/blob/master/src/Application/Common/Interfaces/ISpecification.cs/#L28">View Source</a>
+  </span>
+  <a id="EventsCore_Application_Common_Interfaces_ISpecification_1_OrderBy_" data-uid="EventsCore.Application.Common.Interfaces.ISpecification`1.OrderBy*"></a>
+  <h4 id="EventsCore_Application_Common_Interfaces_ISpecification_1_OrderBy" data-uid="EventsCore.Application.Common.Interfaces.ISpecification`1.OrderBy">OrderBy</h4>
+  <div class="markdown level1 summary"><p>An expression containing ordering criteria</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">Expression&lt;Func&lt;T, object&gt;&gt; OrderBy { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Linq.Expressions.Expression</span>&lt;<span class="xref">System.Func</span>&lt;T, <span class="xref">System.Object</span>&gt;&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/stringly/EventsCore/new/master/apiSpec/new?filename=EventsCore_Application_Common_Interfaces_ISpecification_1_OrderByDescending.md&amp;value=---%0Auid%3A%20EventsCore.Application.Common.Interfaces.ISpecification%601.OrderByDescending%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/stringly/EventsCore/blob/master/src/Application/Common/Interfaces/ISpecification.cs/#L32">View Source</a>
+  </span>
+  <a id="EventsCore_Application_Common_Interfaces_ISpecification_1_OrderByDescending_" data-uid="EventsCore.Application.Common.Interfaces.ISpecification`1.OrderByDescending*"></a>
+  <h4 id="EventsCore_Application_Common_Interfaces_ISpecification_1_OrderByDescending" data-uid="EventsCore.Application.Common.Interfaces.ISpecification`1.OrderByDescending">OrderByDescending</h4>
+  <div class="markdown level1 summary"><p>An expression containing descending ordering criteria</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">Expression&lt;Func&lt;T, object&gt;&gt; OrderByDescending { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Linq.Expressions.Expression</span>&lt;<span class="xref">System.Func</span>&lt;T, <span class="xref">System.Object</span>&gt;&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/stringly/EventsCore/new/master/apiSpec/new?filename=EventsCore_Application_Common_Interfaces_ISpecification_1_Skip.md&amp;value=---%0Auid%3A%20EventsCore.Application.Common.Interfaces.ISpecification%601.Skip%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/stringly/EventsCore/blob/master/src/Application/Common/Interfaces/ISpecification.cs/#L44">View Source</a>
+  </span>
+  <a id="EventsCore_Application_Common_Interfaces_ISpecification_1_Skip_" data-uid="EventsCore.Application.Common.Interfaces.ISpecification`1.Skip*"></a>
+  <h4 id="EventsCore_Application_Common_Interfaces_ISpecification_1_Skip" data-uid="EventsCore.Application.Common.Interfaces.ISpecification`1.Skip">Skip</h4>
+  <div class="markdown level1 summary"><p>Integer used to determine how many items to skip as part of a paging operation</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">int Skip { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/stringly/EventsCore/new/master/apiSpec/new?filename=EventsCore_Application_Common_Interfaces_ISpecification_1_Take.md&amp;value=---%0Auid%3A%20EventsCore.Application.Common.Interfaces.ISpecification%601.Take%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/stringly/EventsCore/blob/master/src/Application/Common/Interfaces/ISpecification.cs/#L40">View Source</a>
+  </span>
+  <a id="EventsCore_Application_Common_Interfaces_ISpecification_1_Take_" data-uid="EventsCore.Application.Common.Interfaces.ISpecification`1.Take*"></a>
+  <h4 id="EventsCore_Application_Common_Interfaces_ISpecification_1_Take" data-uid="EventsCore.Application.Common.Interfaces.ISpecification`1.Take">Take</h4>
+  <div class="markdown level1 summary"><p>Integer used to determine the number of results to return in a paging operation</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">int Take { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/stringly/EventsCore/new/master/apiSpec/new?filename=EventsCore_Application_Common_Interfaces_ISpecification_1.md&amp;value=---%0Auid%3A%20EventsCore.Application.Common.Interfaces.ISpecification%601%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
+                  </li>
+                  <li>
+                    <a href="https://github.com/stringly/EventsCore/blob/master/src/Application/Common/Interfaces/ISpecification.cs/#L11" class="contribution-link">View Source</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../styles/main.js"></script>
+  </body>
+</html>

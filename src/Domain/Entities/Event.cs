@@ -2,13 +2,16 @@
 using EventsCore.Domain.ValueObjects;
 using EventsCore.Domain.Exceptions.Event;
 using System;
+using EventsCore.Domain.Entities.EventAttendanceAggregate;
+using EventsCore.Domain.Entities.EventRegistrationsAggregate;
+using EventsCore.Domain.Entities.EventModulesAggregate;
 
 namespace EventsCore.Domain.Entities
 {
     /// <summary>
     /// Domain Entity that represents an Event for which Users can register.
     /// </summary>
-    public class Event : IEntity, IAggregateRoot
+    public class Event : BaseEntity, IAggregateRoot
     {
         private Event() { }
         /// <summary>
@@ -32,10 +35,6 @@ namespace EventsCore.Domain.Entities
                 AddEventToSeries(eventSeriesId);
             }
         }
-        /// <summary>
-        /// Event's Primary Key
-        /// </summary>
-        public int Id { get; private set; }
         /// <summary>
         /// A string that represents the Event's title. 
         /// </summary>
@@ -106,7 +105,18 @@ namespace EventsCore.Domain.Entities
         /// The Maximum number of registrations, obtained from the Event.Rules ruleset.
         /// </summary>
         public uint MaxRegistrations => Rules.MaxRegistrations;
-     
+        /// <summary>
+        /// The <see cref="EventAttendanceAggregate.EventAttendance"></see> aggregate built from this event
+        /// </summary>
+        public EventAttendance EventAttendance { get; private set;}
+        /// <summary>
+        /// The <see cref="EventRegistrations"></see> aggregate built from this event
+        /// </summary>
+        public EventRegistrations Registrations { get; private set;}
+        /// <summary>
+        /// THe <see cref="EventModules"></see> aggregate built from this event.
+        /// </summary>
+        public EventModules Modules { get; private set;}
         /// <summary>
         /// Updates the Event's Title Property.
         /// </summary>

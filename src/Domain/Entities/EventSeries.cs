@@ -6,7 +6,7 @@ namespace EventsCore.Domain.Entities
     /// <summary>
     /// Entity class that represents a series of <see cref="Event"></see> objects.
     /// </summary>
-    public class EventSeries: IEntity, IAggregateRoot
+    public class EventSeries: BaseEntity, IAggregateRoot
     {
         private EventSeries() { }
         /// <summary>
@@ -19,10 +19,6 @@ namespace EventsCore.Domain.Entities
             UpdateTitle(title);
             UpdateDescription(description);
         }
-        /// <summary>
-        /// The Id of the EventSeries instance.
-        /// </summary>
-        public int Id { get; private set;}
         private string _title;
         /// <summary>
         /// Returns the title of the Event Series.

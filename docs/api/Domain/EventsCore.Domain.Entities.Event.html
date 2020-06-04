@@ -79,15 +79,18 @@
   <div class="inheritance">
     <h5>Inheritance</h5>
     <div class="level0"><span class="xref">System.Object</span></div>
-    <div class="level1"><span class="xref">Event</span></div>
+    <div class="level1"><a class="xref" href="EventsCore.Domain.Common.BaseEntity.html">BaseEntity</a></div>
+    <div class="level2"><span class="xref">Event</span></div>
   </div>
   <div classs="implements">
     <h5>Implements</h5>
-    <div><a class="xref" href="EventsCore.Domain.Common.IEntity.html">IEntity</a></div>
     <div><a class="xref" href="EventsCore.Domain.Common.IAggregateRoot.html">IAggregateRoot</a></div>
   </div>
   <div class="inheritedMembers">
     <h5>Inherited Members</h5>
+    <div>
+      <a class="xref" href="EventsCore.Domain.Common.BaseEntity.html#EventsCore_Domain_Common_BaseEntity_Id">BaseEntity.Id</a>
+    </div>
     <div>
       <span class="xref">System.Object.Equals(System.Object)</span>
     </div>
@@ -114,7 +117,7 @@
   <h6><strong>Assembly</strong>: EventsCore.Domain.dll</h6>
   <h5 id="EventsCore_Domain_Entities_Event_syntax">Syntax</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public class Event : IEntity, IAggregateRoot</code></pre>
+    <pre><code class="lang-csharp hljs">public class Event : BaseEntity, IAggregateRoot</code></pre>
   </div>
   <h3 id="constructors">Constructors
   </h3>
@@ -123,7 +126,7 @@
     <a href="https://github.com/stringly/EventsCore/new/master/apiSpec/new?filename=EventsCore_Domain_Entities_Event__ctor_System_String_System_String_EventsCore_Domain_ValueObjects_EventDates_EventsCore_Domain_ValueObjects_EventRegistrationRules_System_Int32_System_Int32_.md&amp;value=---%0Auid%3A%20EventsCore.Domain.Entities.Event.%23ctor(System.String%2CSystem.String%2CEventsCore.Domain.ValueObjects.EventDates%2CEventsCore.Domain.ValueObjects.EventRegistrationRules%2CSystem.Int32%2CSystem.Int32)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/stringly/EventsCore/blob/master/src/Domain/Entities/Event.cs/#L23">View Source</a>
+    <a href="https://github.com/stringly/EventsCore/blob/master/src/Domain/Entities/Event.cs/#L26">View Source</a>
   </span>
   <a id="EventsCore_Domain_Entities_Event__ctor_" data-uid="EventsCore.Domain.Entities.Event.#ctor*"></a>
   <h4 id="EventsCore_Domain_Entities_Event__ctor_System_String_System_String_EventsCore_Domain_ValueObjects_EventDates_EventsCore_Domain_ValueObjects_EventRegistrationRules_System_Int32_System_Int32_" data-uid="EventsCore.Domain.Entities.Event.#ctor(System.String,System.String,EventsCore.Domain.ValueObjects.EventDates,EventsCore.Domain.ValueObjects.EventRegistrationRules,System.Int32,System.Int32)">Event(String, String, EventDates, EventRegistrationRules, Int32, Int32)</h4>
@@ -189,7 +192,7 @@
     <a href="https://github.com/stringly/EventsCore/new/master/apiSpec/new?filename=EventsCore_Domain_Entities_Event_Dates.md&amp;value=---%0Auid%3A%20EventsCore.Domain.Entities.Event.Dates%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/stringly/EventsCore/blob/master/src/Domain/Entities/Event.cs/#L84">View Source</a>
+    <a href="https://github.com/stringly/EventsCore/blob/master/src/Domain/Entities/Event.cs/#L83">View Source</a>
   </span>
   <a id="EventsCore_Domain_Entities_Event_Dates_" data-uid="EventsCore.Domain.Entities.Event.Dates*"></a>
   <h4 id="EventsCore_Domain_Entities_Event_Dates" data-uid="EventsCore.Domain.Entities.Event.Dates">Dates</h4>
@@ -224,7 +227,7 @@ Registration Period Start Date/Time, and Registration Period End Date/Time.</p>
     <a href="https://github.com/stringly/EventsCore/new/master/apiSpec/new?filename=EventsCore_Domain_Entities_Event_Description.md&amp;value=---%0Auid%3A%20EventsCore.Domain.Entities.Event.Description%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/stringly/EventsCore/blob/master/src/Domain/Entities/Event.cs/#L60">View Source</a>
+    <a href="https://github.com/stringly/EventsCore/blob/master/src/Domain/Entities/Event.cs/#L59">View Source</a>
   </span>
   <a id="EventsCore_Domain_Entities_Event_Description_" data-uid="EventsCore.Domain.Entities.Event.Description*"></a>
   <h4 id="EventsCore_Domain_Entities_Event_Description" data-uid="EventsCore.Domain.Entities.Event.Description">Description</h4>
@@ -255,7 +258,7 @@ Registration Period Start Date/Time, and Registration Period End Date/Time.</p>
     <a href="https://github.com/stringly/EventsCore/new/master/apiSpec/new?filename=EventsCore_Domain_Entities_Event_EndDate.md&amp;value=---%0Auid%3A%20EventsCore.Domain.Entities.Event.EndDate%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/stringly/EventsCore/blob/master/src/Domain/Entities/Event.cs/#L92">View Source</a>
+    <a href="https://github.com/stringly/EventsCore/blob/master/src/Domain/Entities/Event.cs/#L91">View Source</a>
   </span>
   <a id="EventsCore_Domain_Entities_Event_EndDate_" data-uid="EventsCore.Domain.Entities.Event.EndDate*"></a>
   <h4 id="EventsCore_Domain_Entities_Event_EndDate" data-uid="EventsCore.Domain.Entities.Event.EndDate">EndDate</h4>
@@ -283,10 +286,41 @@ Registration Period Start Date/Time, and Registration Period End Date/Time.</p>
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
+    <a href="https://github.com/stringly/EventsCore/new/master/apiSpec/new?filename=EventsCore_Domain_Entities_Event_EventAttendance.md&amp;value=---%0Auid%3A%20EventsCore.Domain.Entities.Event.EventAttendance%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/stringly/EventsCore/blob/master/src/Domain/Entities/Event.cs/#L111">View Source</a>
+  </span>
+  <a id="EventsCore_Domain_Entities_Event_EventAttendance_" data-uid="EventsCore.Domain.Entities.Event.EventAttendance*"></a>
+  <h4 id="EventsCore_Domain_Entities_Event_EventAttendance" data-uid="EventsCore.Domain.Entities.Event.EventAttendance">EventAttendance</h4>
+  <div class="markdown level1 summary"><p>The <a class="xref" href="EventsCore.Domain.Entities.EventAttendanceAggregate.EventAttendance.html">EventAttendance</a> aggregate built from this event</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public EventAttendance EventAttendance { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="EventsCore.Domain.Entities.EventAttendanceAggregate.EventAttendance.html">EventAttendance</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
     <a href="https://github.com/stringly/EventsCore/new/master/apiSpec/new?filename=EventsCore_Domain_Entities_Event_EventSeries.md&amp;value=---%0Auid%3A%20EventsCore.Domain.Entities.Event.EventSeries%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/stringly/EventsCore/blob/master/src/Domain/Entities/Event.cs/#L68">View Source</a>
+    <a href="https://github.com/stringly/EventsCore/blob/master/src/Domain/Entities/Event.cs/#L67">View Source</a>
   </span>
   <a id="EventsCore_Domain_Entities_Event_EventSeries_" data-uid="EventsCore.Domain.Entities.Event.EventSeries*"></a>
   <h4 id="EventsCore_Domain_Entities_Event_EventSeries" data-uid="EventsCore.Domain.Entities.Event.EventSeries">EventSeries</h4>
@@ -317,7 +351,7 @@ Registration Period Start Date/Time, and Registration Period End Date/Time.</p>
     <a href="https://github.com/stringly/EventsCore/new/master/apiSpec/new?filename=EventsCore_Domain_Entities_Event_EventSeriesId.md&amp;value=---%0Auid%3A%20EventsCore.Domain.Entities.Event.EventSeriesId%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/stringly/EventsCore/blob/master/src/Domain/Entities/Event.cs/#L64">View Source</a>
+    <a href="https://github.com/stringly/EventsCore/blob/master/src/Domain/Entities/Event.cs/#L63">View Source</a>
   </span>
   <a id="EventsCore_Domain_Entities_Event_EventSeriesId_" data-uid="EventsCore.Domain.Entities.Event.EventSeriesId*"></a>
   <h4 id="EventsCore_Domain_Entities_Event_EventSeriesId" data-uid="EventsCore.Domain.Entities.Event.EventSeriesId">EventSeriesId</h4>
@@ -348,7 +382,7 @@ Registration Period Start Date/Time, and Registration Period End Date/Time.</p>
     <a href="https://github.com/stringly/EventsCore/new/master/apiSpec/new?filename=EventsCore_Domain_Entities_Event_EventType.md&amp;value=---%0Auid%3A%20EventsCore.Domain.Entities.Event.EventType%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/stringly/EventsCore/blob/master/src/Domain/Entities/Event.cs/#L76">View Source</a>
+    <a href="https://github.com/stringly/EventsCore/blob/master/src/Domain/Entities/Event.cs/#L75">View Source</a>
   </span>
   <a id="EventsCore_Domain_Entities_Event_EventType_" data-uid="EventsCore.Domain.Entities.Event.EventType*"></a>
   <h4 id="EventsCore_Domain_Entities_Event_EventType" data-uid="EventsCore.Domain.Entities.Event.EventType">EventType</h4>
@@ -379,7 +413,7 @@ Registration Period Start Date/Time, and Registration Period End Date/Time.</p>
     <a href="https://github.com/stringly/EventsCore/new/master/apiSpec/new?filename=EventsCore_Domain_Entities_Event_EventTypeId.md&amp;value=---%0Auid%3A%20EventsCore.Domain.Entities.Event.EventTypeId%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/stringly/EventsCore/blob/master/src/Domain/Entities/Event.cs/#L72">View Source</a>
+    <a href="https://github.com/stringly/EventsCore/blob/master/src/Domain/Entities/Event.cs/#L71">View Source</a>
   </span>
   <a id="EventsCore_Domain_Entities_Event_EventTypeId_" data-uid="EventsCore.Domain.Entities.Event.EventTypeId*"></a>
   <h4 id="EventsCore_Domain_Entities_Event_EventTypeId" data-uid="EventsCore.Domain.Entities.Event.EventTypeId">EventTypeId</h4>
@@ -407,41 +441,10 @@ Registration Period Start Date/Time, and Registration Period End Date/Time.</p>
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/stringly/EventsCore/new/master/apiSpec/new?filename=EventsCore_Domain_Entities_Event_Id.md&amp;value=---%0Auid%3A%20EventsCore.Domain.Entities.Event.Id%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/stringly/EventsCore/blob/master/src/Domain/Entities/Event.cs/#L38">View Source</a>
-  </span>
-  <a id="EventsCore_Domain_Entities_Event_Id_" data-uid="EventsCore.Domain.Entities.Event.Id*"></a>
-  <h4 id="EventsCore_Domain_Entities_Event_Id" data-uid="EventsCore.Domain.Entities.Event.Id">Id</h4>
-  <div class="markdown level1 summary"><p>Event&apos;s Primary Key</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public int Id { get; }</code></pre>
-  </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Int32</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
     <a href="https://github.com/stringly/EventsCore/new/master/apiSpec/new?filename=EventsCore_Domain_Entities_Event_MaxRegistrations.md&amp;value=---%0Auid%3A%20EventsCore.Domain.Entities.Event.MaxRegistrations%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/stringly/EventsCore/blob/master/src/Domain/Entities/Event.cs/#L108">View Source</a>
+    <a href="https://github.com/stringly/EventsCore/blob/master/src/Domain/Entities/Event.cs/#L107">View Source</a>
   </span>
   <a id="EventsCore_Domain_Entities_Event_MaxRegistrations_" data-uid="EventsCore.Domain.Entities.Event.MaxRegistrations*"></a>
   <h4 id="EventsCore_Domain_Entities_Event_MaxRegistrations" data-uid="EventsCore.Domain.Entities.Event.MaxRegistrations">MaxRegistrations</h4>
@@ -469,10 +472,41 @@ Registration Period Start Date/Time, and Registration Period End Date/Time.</p>
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
+    <a href="https://github.com/stringly/EventsCore/new/master/apiSpec/new?filename=EventsCore_Domain_Entities_Event_Modules.md&amp;value=---%0Auid%3A%20EventsCore.Domain.Entities.Event.Modules%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/stringly/EventsCore/blob/master/src/Domain/Entities/Event.cs/#L119">View Source</a>
+  </span>
+  <a id="EventsCore_Domain_Entities_Event_Modules_" data-uid="EventsCore.Domain.Entities.Event.Modules*"></a>
+  <h4 id="EventsCore_Domain_Entities_Event_Modules" data-uid="EventsCore.Domain.Entities.Event.Modules">Modules</h4>
+  <div class="markdown level1 summary"><p>THe <a class="xref" href="EventsCore.Domain.Entities.EventModulesAggregate.EventModules.html">EventModules</a> aggregate built from this event.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public EventModules Modules { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="EventsCore.Domain.Entities.EventModulesAggregate.EventModules.html">EventModules</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
     <a href="https://github.com/stringly/EventsCore/new/master/apiSpec/new?filename=EventsCore_Domain_Entities_Event_RegistrationEndDate.md&amp;value=---%0Auid%3A%20EventsCore.Domain.Entities.Event.RegistrationEndDate%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/stringly/EventsCore/blob/master/src/Domain/Entities/Event.cs/#L100">View Source</a>
+    <a href="https://github.com/stringly/EventsCore/blob/master/src/Domain/Entities/Event.cs/#L99">View Source</a>
   </span>
   <a id="EventsCore_Domain_Entities_Event_RegistrationEndDate_" data-uid="EventsCore.Domain.Entities.Event.RegistrationEndDate*"></a>
   <h4 id="EventsCore_Domain_Entities_Event_RegistrationEndDate" data-uid="EventsCore.Domain.Entities.Event.RegistrationEndDate">RegistrationEndDate</h4>
@@ -500,10 +534,41 @@ Registration Period Start Date/Time, and Registration Period End Date/Time.</p>
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
+    <a href="https://github.com/stringly/EventsCore/new/master/apiSpec/new?filename=EventsCore_Domain_Entities_Event_Registrations.md&amp;value=---%0Auid%3A%20EventsCore.Domain.Entities.Event.Registrations%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/stringly/EventsCore/blob/master/src/Domain/Entities/Event.cs/#L115">View Source</a>
+  </span>
+  <a id="EventsCore_Domain_Entities_Event_Registrations_" data-uid="EventsCore.Domain.Entities.Event.Registrations*"></a>
+  <h4 id="EventsCore_Domain_Entities_Event_Registrations" data-uid="EventsCore.Domain.Entities.Event.Registrations">Registrations</h4>
+  <div class="markdown level1 summary"><p>The <a class="xref" href="EventsCore.Domain.Entities.EventRegistrationsAggregate.EventRegistrations.html">EventRegistrations</a> aggregate built from this event</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public EventRegistrations Registrations { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="EventsCore.Domain.Entities.EventRegistrationsAggregate.EventRegistrations.html">EventRegistrations</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
     <a href="https://github.com/stringly/EventsCore/new/master/apiSpec/new?filename=EventsCore_Domain_Entities_Event_RegistrationStartDate.md&amp;value=---%0Auid%3A%20EventsCore.Domain.Entities.Event.RegistrationStartDate%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/stringly/EventsCore/blob/master/src/Domain/Entities/Event.cs/#L96">View Source</a>
+    <a href="https://github.com/stringly/EventsCore/blob/master/src/Domain/Entities/Event.cs/#L95">View Source</a>
   </span>
   <a id="EventsCore_Domain_Entities_Event_RegistrationStartDate_" data-uid="EventsCore.Domain.Entities.Event.RegistrationStartDate*"></a>
   <h4 id="EventsCore_Domain_Entities_Event_RegistrationStartDate" data-uid="EventsCore.Domain.Entities.Event.RegistrationStartDate">RegistrationStartDate</h4>
@@ -534,7 +599,7 @@ Registration Period Start Date/Time, and Registration Period End Date/Time.</p>
     <a href="https://github.com/stringly/EventsCore/new/master/apiSpec/new?filename=EventsCore_Domain_Entities_Event_Rules.md&amp;value=---%0Auid%3A%20EventsCore.Domain.Entities.Event.Rules%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/stringly/EventsCore/blob/master/src/Domain/Entities/Event.cs/#L104">View Source</a>
+    <a href="https://github.com/stringly/EventsCore/blob/master/src/Domain/Entities/Event.cs/#L103">View Source</a>
   </span>
   <a id="EventsCore_Domain_Entities_Event_Rules_" data-uid="EventsCore.Domain.Entities.Event.Rules*"></a>
   <h4 id="EventsCore_Domain_Entities_Event_Rules" data-uid="EventsCore.Domain.Entities.Event.Rules">Rules</h4>
@@ -565,7 +630,7 @@ Registration Period Start Date/Time, and Registration Period End Date/Time.</p>
     <a href="https://github.com/stringly/EventsCore/new/master/apiSpec/new?filename=EventsCore_Domain_Entities_Event_StartDate.md&amp;value=---%0Auid%3A%20EventsCore.Domain.Entities.Event.StartDate%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/stringly/EventsCore/blob/master/src/Domain/Entities/Event.cs/#L88">View Source</a>
+    <a href="https://github.com/stringly/EventsCore/blob/master/src/Domain/Entities/Event.cs/#L87">View Source</a>
   </span>
   <a id="EventsCore_Domain_Entities_Event_StartDate_" data-uid="EventsCore.Domain.Entities.Event.StartDate*"></a>
   <h4 id="EventsCore_Domain_Entities_Event_StartDate" data-uid="EventsCore.Domain.Entities.Event.StartDate">StartDate</h4>
@@ -596,7 +661,7 @@ Registration Period Start Date/Time, and Registration Period End Date/Time.</p>
     <a href="https://github.com/stringly/EventsCore/new/master/apiSpec/new?filename=EventsCore_Domain_Entities_Event_Title.md&amp;value=---%0Auid%3A%20EventsCore.Domain.Entities.Event.Title%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/stringly/EventsCore/blob/master/src/Domain/Entities/Event.cs/#L49">View Source</a>
+    <a href="https://github.com/stringly/EventsCore/blob/master/src/Domain/Entities/Event.cs/#L48">View Source</a>
   </span>
   <a id="EventsCore_Domain_Entities_Event_Title_" data-uid="EventsCore.Domain.Entities.Event.Title*"></a>
   <h4 id="EventsCore_Domain_Entities_Event_Title" data-uid="EventsCore.Domain.Entities.Event.Title">Title</h4>
@@ -629,7 +694,7 @@ Registration Period Start Date/Time, and Registration Period End Date/Time.</p>
     <a href="https://github.com/stringly/EventsCore/new/master/apiSpec/new?filename=EventsCore_Domain_Entities_Event_AddEventToSeries_System_Int32_.md&amp;value=---%0Auid%3A%20EventsCore.Domain.Entities.Event.AddEventToSeries(System.Int32)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/stringly/EventsCore/blob/master/src/Domain/Entities/Event.cs/#L140">View Source</a>
+    <a href="https://github.com/stringly/EventsCore/blob/master/src/Domain/Entities/Event.cs/#L150">View Source</a>
   </span>
   <a id="EventsCore_Domain_Entities_Event_AddEventToSeries_" data-uid="EventsCore.Domain.Entities.Event.AddEventToSeries*"></a>
   <h4 id="EventsCore_Domain_Entities_Event_AddEventToSeries_System_Int32_" data-uid="EventsCore.Domain.Entities.Event.AddEventToSeries(System.Int32)">AddEventToSeries(Int32)</h4>
@@ -663,7 +728,7 @@ Registration Period Start Date/Time, and Registration Period End Date/Time.</p>
     <a href="https://github.com/stringly/EventsCore/new/master/apiSpec/new?filename=EventsCore_Domain_Entities_Event_RemoveEventFromSeries.md&amp;value=---%0Auid%3A%20EventsCore.Domain.Entities.Event.RemoveEventFromSeries%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/stringly/EventsCore/blob/master/src/Domain/Entities/Event.cs/#L154">View Source</a>
+    <a href="https://github.com/stringly/EventsCore/blob/master/src/Domain/Entities/Event.cs/#L164">View Source</a>
   </span>
   <a id="EventsCore_Domain_Entities_Event_RemoveEventFromSeries_" data-uid="EventsCore.Domain.Entities.Event.RemoveEventFromSeries*"></a>
   <h4 id="EventsCore_Domain_Entities_Event_RemoveEventFromSeries" data-uid="EventsCore.Domain.Entities.Event.RemoveEventFromSeries">RemoveEventFromSeries()</h4>
@@ -679,7 +744,7 @@ Registration Period Start Date/Time, and Registration Period End Date/Time.</p>
     <a href="https://github.com/stringly/EventsCore/new/master/apiSpec/new?filename=EventsCore_Domain_Entities_Event_UpdateDescription_System_String_.md&amp;value=---%0Auid%3A%20EventsCore.Domain.Entities.Event.UpdateDescription(System.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/stringly/EventsCore/blob/master/src/Domain/Entities/Event.cs/#L128">View Source</a>
+    <a href="https://github.com/stringly/EventsCore/blob/master/src/Domain/Entities/Event.cs/#L138">View Source</a>
   </span>
   <a id="EventsCore_Domain_Entities_Event_UpdateDescription_" data-uid="EventsCore.Domain.Entities.Event.UpdateDescription*"></a>
   <h4 id="EventsCore_Domain_Entities_Event_UpdateDescription_System_String_" data-uid="EventsCore.Domain.Entities.Event.UpdateDescription(System.String)">UpdateDescription(String)</h4>
@@ -729,7 +794,7 @@ Registration Period Start Date/Time, and Registration Period End Date/Time.</p>
     <a href="https://github.com/stringly/EventsCore/new/master/apiSpec/new?filename=EventsCore_Domain_Entities_Event_UpdateEventDates_EventsCore_Domain_ValueObjects_EventDates_.md&amp;value=---%0Auid%3A%20EventsCore.Domain.Entities.Event.UpdateEventDates(EventsCore.Domain.ValueObjects.EventDates)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/stringly/EventsCore/blob/master/src/Domain/Entities/Event.cs/#L172">View Source</a>
+    <a href="https://github.com/stringly/EventsCore/blob/master/src/Domain/Entities/Event.cs/#L182">View Source</a>
   </span>
   <a id="EventsCore_Domain_Entities_Event_UpdateEventDates_" data-uid="EventsCore.Domain.Entities.Event.UpdateEventDates*"></a>
   <h4 id="EventsCore_Domain_Entities_Event_UpdateEventDates_EventsCore_Domain_ValueObjects_EventDates_" data-uid="EventsCore.Domain.Entities.Event.UpdateEventDates(EventsCore.Domain.ValueObjects.EventDates)">UpdateEventDates(EventDates)</h4>
@@ -779,7 +844,7 @@ Registration Period Start Date/Time, and Registration Period End Date/Time.</p>
     <a href="https://github.com/stringly/EventsCore/new/master/apiSpec/new?filename=EventsCore_Domain_Entities_Event_UpdateEventType_System_Int32_.md&amp;value=---%0Auid%3A%20EventsCore.Domain.Entities.Event.UpdateEventType(System.Int32)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/stringly/EventsCore/blob/master/src/Domain/Entities/Event.cs/#L163">View Source</a>
+    <a href="https://github.com/stringly/EventsCore/blob/master/src/Domain/Entities/Event.cs/#L173">View Source</a>
   </span>
   <a id="EventsCore_Domain_Entities_Event_UpdateEventType_" data-uid="EventsCore.Domain.Entities.Event.UpdateEventType*"></a>
   <h4 id="EventsCore_Domain_Entities_Event_UpdateEventType_System_Int32_" data-uid="EventsCore.Domain.Entities.Event.UpdateEventType(System.Int32)">UpdateEventType(Int32)</h4>
@@ -829,7 +894,7 @@ Registration Period Start Date/Time, and Registration Period End Date/Time.</p>
     <a href="https://github.com/stringly/EventsCore/new/master/apiSpec/new?filename=EventsCore_Domain_Entities_Event_UpdateRegistrationRules_EventsCore_Domain_ValueObjects_EventRegistrationRules_.md&amp;value=---%0Auid%3A%20EventsCore.Domain.Entities.Event.UpdateRegistrationRules(EventsCore.Domain.ValueObjects.EventRegistrationRules)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/stringly/EventsCore/blob/master/src/Domain/Entities/Event.cs/#L181">View Source</a>
+    <a href="https://github.com/stringly/EventsCore/blob/master/src/Domain/Entities/Event.cs/#L191">View Source</a>
   </span>
   <a id="EventsCore_Domain_Entities_Event_UpdateRegistrationRules_" data-uid="EventsCore.Domain.Entities.Event.UpdateRegistrationRules*"></a>
   <h4 id="EventsCore_Domain_Entities_Event_UpdateRegistrationRules_EventsCore_Domain_ValueObjects_EventRegistrationRules_" data-uid="EventsCore.Domain.Entities.Event.UpdateRegistrationRules(EventsCore.Domain.ValueObjects.EventRegistrationRules)">UpdateRegistrationRules(EventRegistrationRules)</h4>
@@ -879,7 +944,7 @@ Registration Period Start Date/Time, and Registration Period End Date/Time.</p>
     <a href="https://github.com/stringly/EventsCore/new/master/apiSpec/new?filename=EventsCore_Domain_Entities_Event_UpdateTitle_System_String_.md&amp;value=---%0Auid%3A%20EventsCore.Domain.Entities.Event.UpdateTitle(System.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/stringly/EventsCore/blob/master/src/Domain/Entities/Event.cs/#L115">View Source</a>
+    <a href="https://github.com/stringly/EventsCore/blob/master/src/Domain/Entities/Event.cs/#L125">View Source</a>
   </span>
   <a id="EventsCore_Domain_Entities_Event_UpdateTitle_" data-uid="EventsCore.Domain.Entities.Event.UpdateTitle*"></a>
   <h4 id="EventsCore_Domain_Entities_Event_UpdateTitle_System_String_" data-uid="EventsCore.Domain.Entities.Event.UpdateTitle(System.String)">UpdateTitle(String)</h4>
@@ -926,9 +991,6 @@ Registration Period Start Date/Time, and Registration Period End Date/Time.</p>
   </table>
   <h3 id="implements">Implements</h3>
   <div>
-      <a class="xref" href="EventsCore.Domain.Common.IEntity.html">IEntity</a>
-  </div>
-  <div>
       <a class="xref" href="EventsCore.Domain.Common.IAggregateRoot.html">IAggregateRoot</a>
   </div>
 </article>
@@ -942,7 +1004,7 @@ Registration Period Start Date/Time, and Registration Period End Date/Time.</p>
                     <a href="https://github.com/stringly/EventsCore/new/master/apiSpec/new?filename=EventsCore_Domain_Entities_Event.md&amp;value=---%0Auid%3A%20EventsCore.Domain.Entities.Event%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
                   </li>
                   <li>
-                    <a href="https://github.com/stringly/EventsCore/blob/master/src/Domain/Entities/Event.cs/#L11" class="contribution-link">View Source</a>
+                    <a href="https://github.com/stringly/EventsCore/blob/master/src/Domain/Entities/Event.cs/#L14" class="contribution-link">View Source</a>
                   </li>
                 </ul>
               </div>

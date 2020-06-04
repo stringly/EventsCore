@@ -13,7 +13,7 @@ namespace EventsCore.Domain.Entities.EventModulesAggregate
         /// <summary>
         /// The Id of the <see cref="Event"></see> associated with this aggregate.
         /// </summary>
-        public int EventId { get; private set;}
+        public int Id { get; private set;}
         private readonly List<Module> _modules;
         /// <summary>
         /// A readonly list of <see cref="Module"></see>s associated with the <see cref="Event"></see>
@@ -33,7 +33,7 @@ namespace EventsCore.Domain.Entities.EventModulesAggregate
         /// <exception cref="EventModulesAggregateArgumentException">Thrown when the eventId parameter is 0 or out of range.</exception>
         public EventModules(int eventId) : this()
         {
-            EventId = eventId != 0 ? eventId : throw new EventModulesAggregateArgumentException("Event Id cannot be 0.", nameof(eventId));
+            Id = eventId != 0 ? eventId : throw new EventModulesAggregateArgumentException("Event Id cannot be 0.", nameof(eventId));
         }
         /// <summary>
         /// Creates a new <see cref="Module"></see> and adds it to the aggregate's <see cref="Modules"></see> collection.

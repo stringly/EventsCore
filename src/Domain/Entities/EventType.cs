@@ -6,7 +6,7 @@ namespace EventsCore.Domain.Entities
     /// <summary>
     /// Entity class that represents an Event Type.
     /// </summary>
-    public class EventType : IEntity, IAggregateRoot
+    public class EventType : BaseEntity, IAggregateRoot
     {
         private EventType() { }
         /// <summary>
@@ -17,10 +17,6 @@ namespace EventsCore.Domain.Entities
         {
             UpdateName(typeName);
         }
-        /// <summary>
-        /// An integer representing the Id of the EventType instance.
-        /// </summary>
-        public int Id { get; private set;}
         private string _name;
         /// <summary>
         /// Returns the name of the Event Type.

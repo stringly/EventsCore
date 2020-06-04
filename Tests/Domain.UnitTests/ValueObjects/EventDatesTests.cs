@@ -1,10 +1,9 @@
-﻿using EventsCore.Domain.Exceptions;
-using System;
-using Xunit;
-using EventsCore.Domain.ValueObjects;
+﻿using EventsCore.Domain.Common;
 using EventsCore.Domain.Exceptions.ValueObjects;
 using EventsCore.Domain.UnitTests.Common;
-using EventsCore.Domain.Common;
+using EventsCore.Domain.ValueObjects;
+using System;
+using Xunit;
 
 namespace EventsCore.Domain.UnitTests.ValueObjects
 {

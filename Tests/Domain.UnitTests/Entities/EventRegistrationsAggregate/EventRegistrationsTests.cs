@@ -33,7 +33,7 @@ namespace EventsCore.Domain.UnitTests.Entities.EventRegistrationsAggregate
             var evRegs = new EventRegistrations(eventId, EventDates, RegistrationRules, _dateTime);
 
             // Assert
-            Assert.Equal(1, evRegs.EventId);
+            Assert.Equal(1, evRegs.Id);
             Assert.Equal(EventDates, evRegs.EventDates);
             Assert.Equal(RegistrationRules, evRegs.Rules);
         }

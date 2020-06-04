@@ -8,14 +8,14 @@ namespace EventsCore.Domain.Entities
     /// <summary>
     /// An Entity class representing a User
     /// </summary>
-    public class User : IEntity, IAggregateRoot
+    public class User : BaseEntity, IAggregateRoot
     {
         private User() { }
         /// <summary>
         /// Creates a new instance of the User object
         /// </summary>
         /// <param name="LDAPName">A string containing the User's LDAP name.</param>
-        /// <param name="blueDeckId">A string containing the User's BlueDeck Id.</param>
+        /// <param name="blueDeckId">A unsigned integer containing the User's BlueDeck Id.</param>
         /// <param name="firstName">A string containing the User's first name.</param>
         /// <param name="lastName">A string containing the User's last name.</param>
         /// <param name="idNumber">A string containing the User's Id Number.</param>
@@ -32,10 +32,7 @@ namespace EventsCore.Domain.Entities
             UpdateContactNumber(contactNumber);
             UpdateRank(rankId);
         }
-        /// <summary>
-        /// The Id of this User's instance.
-        /// </summary>
-        public int Id { get; private set; }
+
         private string _LDAPName;
         /// <summary>
         /// Returns a string containing the User's LDAP Name.
@@ -80,7 +77,7 @@ namespace EventsCore.Domain.Entities
         /// <summary>
         /// Returns a string containing the User's Display Name
         /// </summary>
-        public string DisplayName => $"{Rank?.Abbreviation ?? ""} {Name} {(String.IsNullOrEmpty(IdNumber) ? "" : $"#{IdNumber}")}";
+        public string DisplayName => $"{(Rank?.Abbreviation != null ? Rank.Abbreviation + " " : "")}{Name} {(String.IsNullOrEmpty(IdNumber) ? "" : $"#{IdNumber}")}";
         /// <summary>
         /// Updates the User's LDAP Name
         /// </summary>
@@ -111,7 +108,7 @@ namespace EventsCore.Domain.Entities
         /// <param name="firstName">A string containing the User's new first name.</param>
         /// <param name="lastName">A string containing the User's new last name.</param>
         /// <exception cref="UserArgumentException">Thrown when both the firstName and lastName are empty/whitespace.</exception>
-        public void UpdateName(string firstName, string lastName)
+        public void UpdateName(string firstName = "", string lastName = "")
         {
             if(string.IsNullOrWhiteSpace(firstName) && string.IsNullOrWhiteSpace(lastName))
             {

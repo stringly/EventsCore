@@ -91,7 +91,7 @@ namespace EventsCore.Domain.ValueObjects
         /// </exception>
         public EventRegistrationRules(uint maxRegistrations, uint minRegistrations, uint maxStandbyRegistrations)
         {
-            if(maxRegistrations == 0)
+            if(maxRegistrations < 1)
             {
                 throw new EventRegistrationRulesArgumentException("Cannot create Event Ruleset: parameter must be greater than 0", nameof(maxRegistrations));
             }

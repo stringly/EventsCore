@@ -4,6 +4,41 @@
         <name>EventsCore.Domain</name>
     </assembly>
     <members>
+        <member name="T:EventsCore.Domain.Common.AuditableEntity">
+            <summary>
+            Abstract class for an Entity that needs audit information
+            </summary>
+        </member>
+        <member name="P:EventsCore.Domain.Common.AuditableEntity.CreatedBy">
+            <summary>
+            The Id of the User who created the Entity.
+            </summary>
+        </member>
+        <member name="P:EventsCore.Domain.Common.AuditableEntity.Created">
+            <summary>
+            The Timestamp for when the Entity was created.
+            </summary>
+        </member>
+        <member name="P:EventsCore.Domain.Common.AuditableEntity.LastModifiedBy">
+            <summary>
+            The Id of the User who last modified the Entity.
+            </summary>
+        </member>
+        <member name="P:EventsCore.Domain.Common.AuditableEntity.LastModified">
+            <summary>
+            The Timestamp for when the Entity was last modified.
+            </summary>
+        </member>
+        <member name="T:EventsCore.Domain.Common.BaseEntity">
+            <summary>
+            Abstract base class for Entity classes
+            </summary>
+        </member>
+        <member name="P:EventsCore.Domain.Common.BaseEntity.Id">
+            <summary>
+            The Id for the Entity
+            </summary>
+        </member>
         <member name="T:EventsCore.Domain.Common.DateTimeProvider">
             <summary>
             An implementation of <see cref="T:EventsCore.Domain.Common.IDateTime">IDateTime</see> that is used to inject the System time.
@@ -27,16 +62,6 @@
         <member name="P:EventsCore.Domain.Common.IDateTime.Now">
             <summary>
             Returns the current System Time
-            </summary>
-        </member>
-        <member name="T:EventsCore.Domain.Common.IEntity">
-            <summary>
-            Interface that defines an Entity object
-            </summary>
-        </member>
-        <member name="P:EventsCore.Domain.Common.IEntity.Id">
-            <summary>
-            The Id of the Entity
             </summary>
         </member>
         <member name="T:EventsCore.Domain.Common.ValueObject">
@@ -94,11 +119,6 @@
             <param name="rules">A <see cref="T:EventsCore.Domain.ValueObjects.EventRegistrationRules"></see> ValueObject containing the Registration rules for the event.</param>
             <param name="eventTypeId">An integer representing the <see cref="P:EventsCore.Domain.Entities.Event.EventType"></see> Id of the event.</param>
             <param name="eventSeriesId">An optional integer representing the <see cref="P:EventsCore.Domain.Entities.Event.EventSeries"></see> Id of the EventSeries to which the new event will belong.</param>
-        </member>
-        <member name="P:EventsCore.Domain.Entities.Event.Id">
-            <summary>
-            Event's Primary Key
-            </summary>
         </member>
         <member name="F:EventsCore.Domain.Entities.Event._title">
             <summary>
@@ -185,6 +205,21 @@
             The Maximum number of registrations, obtained from the Event.Rules ruleset.
             </summary>
         </member>
+        <member name="P:EventsCore.Domain.Entities.Event.EventAttendance">
+            <summary>
+            The <see cref="T:EventsCore.Domain.Entities.EventAttendanceAggregate.EventAttendance"></see> aggregate built from this event
+            </summary>
+        </member>
+        <member name="P:EventsCore.Domain.Entities.Event.Registrations">
+            <summary>
+            The <see cref="T:EventsCore.Domain.Entities.EventRegistrationsAggregate.EventRegistrations"></see> aggregate built from this event
+            </summary>
+        </member>
+        <member name="P:EventsCore.Domain.Entities.Event.Modules">
+            <summary>
+            THe <see cref="T:EventsCore.Domain.Entities.EventModulesAggregate.EventModules"></see> aggregate built from this event.
+            </summary>
+        </member>
         <member name="M:EventsCore.Domain.Entities.Event.UpdateTitle(System.String)">
             <summary>
             Updates the Event's Title Property.
@@ -231,19 +266,222 @@
             <param name="newRules">An <see cref="T:EventsCore.Domain.ValueObjects.EventRegistrationRules"></see> object containing the new rules to assign to the Event.</param>
             <exception cref="T:EventsCore.Domain.Exceptions.Event.EventArgumentException">Thrown when the newRules parameter is null.</exception>
         </member>
+        <member name="T:EventsCore.Domain.Entities.EventAttendanceAggregate.Attendance">
+            <summary>
+            Entity class that represents an attendance record for an Event or Event Module
+            </summary>
+        </member>
+        <member name="M:EventsCore.Domain.Entities.EventAttendanceAggregate.Attendance.#ctor(System.Int32,System.Nullable{System.Int32},System.Int32,EventsCore.Domain.Entities.EventAttendanceAggregate.AttendanceStatus,System.Double)">
+            <summary>
+            Creates a new instance of the class
+            </summary>
+            <param name="eventId">The Id of the Event associated with the Attendance record.</param>
+            <param name="moduleId">The optional Id of the Module associated with the Attendance record.</param>
+            <param name="userId">The Id of the User associated with the attendance record.</param>
+            <param name="score">A double representing the score for any exam associated with the event/module.</param>
+            <param name="status">An <see cref="T:EventsCore.Domain.Entities.EventAttendanceAggregate.AttendanceStatus"></see> enum with the desired status.</param>
+        </member>
+        <member name="P:EventsCore.Domain.Entities.EventAttendanceAggregate.Attendance.EventId">
+            <summary>
+            The Id of the Event associated with the attendance record.
+            </summary>
+        </member>
+        <member name="P:EventsCore.Domain.Entities.EventAttendanceAggregate.Attendance.ModuleId">
+            <summary>
+            The Id of the Event Module associated with the attendance record.
+            </summary>
+        </member>
+        <member name="P:EventsCore.Domain.Entities.EventAttendanceAggregate.Attendance.UserId">
+            <summary>
+            The Id of the User associated with the attendance record.
+            </summary>
+        </member>
+        <member name="P:EventsCore.Domain.Entities.EventAttendanceAggregate.Attendance.Score">
+            <summary>
+            The score the user attained for any examination associated with the Event/Module
+            </summary>
+        </member>
+        <member name="P:EventsCore.Domain.Entities.EventAttendanceAggregate.Attendance.Status">
+            <summary>
+            The <see cref="T:EventsCore.Domain.Entities.EventAttendanceAggregate.AttendanceStatus"></see> Status of the Attendance Record.
+            </summary>
+        </member>
+        <member name="M:EventsCore.Domain.Entities.EventAttendanceAggregate.Attendance.UpdateStatusPresent">
+            <summary>
+            Updates the attendance record's status to <see cref="F:EventsCore.Domain.Entities.EventAttendanceAggregate.AttendanceStatus.Present"></see>
+            </summary>
+        </member>
+        <member name="M:EventsCore.Domain.Entities.EventAttendanceAggregate.Attendance.UpdateStatusAbsent">
+            <summary>
+            Updates the attendance record's status to <see cref="F:EventsCore.Domain.Entities.EventAttendanceAggregate.AttendanceStatus.Absent"></see>
+            </summary>
+        </member>
+        <member name="M:EventsCore.Domain.Entities.EventAttendanceAggregate.Attendance.UpdateStatusExcused">
+            <summary>
+            Updates the attendance record's status to <see cref="F:EventsCore.Domain.Entities.EventAttendanceAggregate.AttendanceStatus.Excused"></see>
+            </summary>
+        </member>
+        <member name="M:EventsCore.Domain.Entities.EventAttendanceAggregate.Attendance.UpdateStatusPass(System.Double)">
+            <summary>
+            Updates the attendance record's status to <see cref="F:EventsCore.Domain.Entities.EventAttendanceAggregate.AttendanceStatus.Pass"></see>, and sets the record's score to the provided value.
+            </summary>
+            <param name="score">A double representing the score attained by the User for any exam associated with the Event/Module.</param>
+            <remarks>
+            If the "score" parameter is not provided, the score will default to 100.0.
+            </remarks>
+        </member>
+        <member name="M:EventsCore.Domain.Entities.EventAttendanceAggregate.Attendance.UpdateStatusFail(System.Double)">
+            <summary>
+            Updates the attendance record's status to <see cref="F:EventsCore.Domain.Entities.EventAttendanceAggregate.AttendanceStatus.Fail"></see>, and sets the record's score to the provided value.
+            </summary>
+            <param name="score">A doubld representing the score attained by the User for any exam associated with the Event/Module.</param>
+            <remarks>
+            If the "score" parameter is not provided, the score will default to 0.0
+            </remarks>
+        </member>
+        <member name="T:EventsCore.Domain.Entities.EventAttendanceAggregate.AttendanceStatus">
+            <summary>
+            Enumeration representing the possible statuses for a <see cref="T:EventsCore.Domain.Entities.EventAttendanceAggregate.Attendance"></see> record.
+            </summary>
+        </member>
+        <member name="F:EventsCore.Domain.Entities.EventAttendanceAggregate.AttendanceStatus.Present">
+            <summary>
+            Attendee attended as required
+            </summary>
+        </member>
+        <member name="F:EventsCore.Domain.Entities.EventAttendanceAggregate.AttendanceStatus.Absent">
+            <summary>
+            Attendee did not attend as required
+            </summary>
+        </member>
+        <member name="F:EventsCore.Domain.Entities.EventAttendanceAggregate.AttendanceStatus.Excused">
+            <summary>
+            Attendee was excused
+            </summary>
+        </member>
+        <member name="F:EventsCore.Domain.Entities.EventAttendanceAggregate.AttendanceStatus.Pass">
+            <summary>
+            Attendee met requirements
+            </summary>
+        </member>
+        <member name="F:EventsCore.Domain.Entities.EventAttendanceAggregate.AttendanceStatus.Fail">
+            <summary>
+            Attendee failed to meet requirements
+            </summary>
+        </member>
+        <member name="T:EventsCore.Domain.Entities.EventAttendanceAggregate.EventAttendance">
+            <summary>
+            Aggregate root object that controls attendance entries for an Event and it's modules.
+            </summary>
+        </member>
+        <member name="M:EventsCore.Domain.Entities.EventAttendanceAggregate.EventAttendance.#ctor">
+            <summary>
+            Private, parameterless constructor for EF 
+            </summary>
+        </member>
+        <member name="M:EventsCore.Domain.Entities.EventAttendanceAggregate.EventAttendance.#ctor(System.Int32,System.Collections.Generic.List{EventsCore.Domain.Entities.Module},System.Collections.Generic.List{EventsCore.Domain.Entities.EventAttendanceAggregate.Attendance})">
+            <summary>
+            Creates a new Instance of the EventAttendance Aggregate class
+            </summary>
+            <param name="eventId">The Id of the <see cref="T:EventsCore.Domain.Entities.Event"></see> associated with the aggregate</param>
+            <param name="modules">A list of <see cref="T:EventsCore.Domain.Entities.Module"></see>s associated with the Event</param>
+            <param name="attendance">A list of <see cref="P:EventsCore.Domain.Entities.EventAttendanceAggregate.EventAttendance.Attendance"></see> records associated with the Event or it's modules.</param>
+        </member>
+        <member name="P:EventsCore.Domain.Entities.EventAttendanceAggregate.EventAttendance.Id">
+            <summary>
+            The Id of the <see cref="T:EventsCore.Domain.Entities.Event"></see> associated with the EventAttendance aggregate root.
+            </summary>
+        </member>
+        <member name="P:EventsCore.Domain.Entities.EventAttendanceAggregate.EventAttendance.Modules">
+            <summary>
+            Returns a readonly list of the <see cref="T:EventsCore.Domain.Entities.Module"> associated with the Event.</see>
+            </summary>
+        </member>
+        <member name="P:EventsCore.Domain.Entities.EventAttendanceAggregate.EventAttendance.Attendance">
+            <summary>
+            Returns a readonly list of <see cref="P:EventsCore.Domain.Entities.EventAttendanceAggregate.EventAttendance.Attendance"></see> records associated with the Event.
+            </summary>
+        </member>
+        <member name="M:EventsCore.Domain.Entities.EventAttendanceAggregate.EventAttendance.MarkUserPresent(System.Int32,System.Nullable{System.Int32})">
+            <summary>
+            Creates or updates an existing user attendance record to <see cref="F:EventsCore.Domain.Entities.EventAttendanceAggregate.AttendanceStatus.Present"></see>
+            </summary>
+            <param name="userId">The Id of the User to mark present</param>
+            <param name="moduleId">The Id of the Module. This is required if the Event has modules</param>
+            <exception cref="T:EventsCore.Domain.Exceptions.EventAttendanceAggregate.EventAttendanceAggregateArgumentException">
+            Thrown when the userId parameter is 0 or out of range.
+            </exception>
+            <exception cref="T:EventsCore.Domain.Exceptions.EventAttendanceAggregate.EventAttendanceAggregateInvalidOperationException">
+            Thrown when the Event has modules, but no moduleId parameter is provided.
+            </exception>
+        </member>
+        <member name="M:EventsCore.Domain.Entities.EventAttendanceAggregate.EventAttendance.MarkUserAbsent(System.Int32,System.Nullable{System.Int32})">
+            <summary>
+            Creates or updates an existing user attendance record to <see cref="F:EventsCore.Domain.Entities.EventAttendanceAggregate.AttendanceStatus.Absent"></see>
+            </summary>
+            <param name="userId">The Id of the User to mark absent</param>
+            <param name="moduleId">The Id of the Module. This is required if the Event has modules</param>
+            <exception cref="T:EventsCore.Domain.Exceptions.EventAttendanceAggregate.EventAttendanceAggregateArgumentException">
+            Thrown when the userId parameter is 0 or out of range.
+            </exception>
+            <exception cref="T:EventsCore.Domain.Exceptions.EventAttendanceAggregate.EventAttendanceAggregateInvalidOperationException">
+            Thrown when the Event has modules, but no moduleId parameter is provided.
+            </exception>
+        </member>
+        <member name="M:EventsCore.Domain.Entities.EventAttendanceAggregate.EventAttendance.MarkUserExcused(System.Int32,System.Nullable{System.Int32})">
+            <summary>
+            Creates or updates an existing user attendance record to <see cref="F:EventsCore.Domain.Entities.EventAttendanceAggregate.AttendanceStatus.Excused"></see>
+            </summary>
+            <param name="userId">The Id of the User to mark excused.</param>
+            <param name="moduleId">The Id of the Module. This is required if the Event has modules</param>
+            <exception cref="T:EventsCore.Domain.Exceptions.EventAttendanceAggregate.EventAttendanceAggregateArgumentException">
+            Thrown when the userId parameter is 0 or out of range.
+            </exception>
+            <exception cref="T:EventsCore.Domain.Exceptions.EventAttendanceAggregate.EventAttendanceAggregateInvalidOperationException">
+            Thrown when the Event has modules, but no moduleId parameter is provided.
+            </exception>
+        </member>
+        <member name="M:EventsCore.Domain.Entities.EventAttendanceAggregate.EventAttendance.MarkUserPass(System.Int32,System.Nullable{System.Int32},System.Double)">
+            <summary>
+            Creates or updates an existing user attendance record to <see cref="F:EventsCore.Domain.Entities.EventAttendanceAggregate.AttendanceStatus.Pass"></see>
+            </summary>
+            <param name="userId">The Id of the User to mark Passed.</param>
+            <param name="moduleId">The Id of the Module. This is required if the Event has modules</param>
+            <param name="score">The score attained by the user on any exam associated with the Event/Module. This parameter will default to 100.0</param>
+            <exception cref="T:EventsCore.Domain.Exceptions.EventAttendanceAggregate.EventAttendanceAggregateArgumentException">
+            Thrown when the userId parameter is 0 or out of range.
+            </exception>
+            <exception cref="T:EventsCore.Domain.Exceptions.EventAttendanceAggregate.EventAttendanceAggregateInvalidOperationException">
+            Thrown when the Event has modules, but no moduleId parameter is provided.
+            </exception>
+        </member>
+        <member name="M:EventsCore.Domain.Entities.EventAttendanceAggregate.EventAttendance.MarkUserFail(System.Int32,System.Nullable{System.Int32},System.Double)">
+            <summary>
+            Creates or updates an existing user attendance record to <see cref="F:EventsCore.Domain.Entities.EventAttendanceAggregate.AttendanceStatus.Fail"></see>
+            </summary>
+            <param name="userId">The Id of the User to mark present</param>
+            <param name="moduleId">The Id of the Module. This is required if the Event has modules</param>
+            <param name="score">The score attained by the user on any exam associated with the Event/Module. This parameter will default to 0.0</param>
+            <exception cref="T:EventsCore.Domain.Exceptions.EventAttendanceAggregate.EventAttendanceAggregateArgumentException">
+            Thrown when the userId parameter is 0 or out of range.
+            </exception>
+            <exception cref="T:EventsCore.Domain.Exceptions.EventAttendanceAggregate.EventAttendanceAggregateInvalidOperationException">
+            Thrown when the Event has modules, but no moduleId parameter is provided.
+            </exception>
+        </member>
         <member name="T:EventsCore.Domain.Entities.EventModulesAggregate.EventModules">
             <summary>
             Aggregate root Entity that controls adding/removing/updating an <see cref="T:EventsCore.Domain.Entities.Event"></see>'s <see cref="T:EventsCore.Domain.Entities.EventModulesAggregate.EventModules"></see>
             </summary>
         </member>
-        <member name="P:EventsCore.Domain.Entities.EventModulesAggregate.EventModules.EventId">
+        <member name="P:EventsCore.Domain.Entities.EventModulesAggregate.EventModules.Id">
             <summary>
             The Id of the <see cref="T:EventsCore.Domain.Entities.Event"></see> associated with this aggregate.
             </summary>
         </member>
         <member name="P:EventsCore.Domain.Entities.EventModulesAggregate.EventModules.Modules">
             <summary>
-            A readonly list of <see cref="T:EventsCore.Domain.Entities.EventModulesAggregate.Module"></see>s associated with the <see cref="T:EventsCore.Domain.Entities.Event"></see>
+            A readonly list of <see cref="T:EventsCore.Domain.Entities.Module"></see>s associated with the <see cref="T:EventsCore.Domain.Entities.Event"></see>
             </summary>
         </member>
         <member name="M:EventsCore.Domain.Entities.EventModulesAggregate.EventModules.#ctor">
@@ -260,7 +498,7 @@
         </member>
         <member name="M:EventsCore.Domain.Entities.EventModulesAggregate.EventModules.AddModule(System.String,System.String)">
             <summary>
-            Creates a new <see cref="T:EventsCore.Domain.Entities.EventModulesAggregate.Module"></see> and adds it to the aggregate's <see cref="P:EventsCore.Domain.Entities.EventModulesAggregate.EventModules.Modules"></see> collection.
+            Creates a new <see cref="T:EventsCore.Domain.Entities.Module"></see> and adds it to the aggregate's <see cref="P:EventsCore.Domain.Entities.EventModulesAggregate.EventModules.Modules"></see> collection.
             </summary>
             <param name="moduleName">A string containing the name of the module to be added.</param>
             <param name="moduleDescription">A string containing the description of the module to be added.</param>
@@ -272,40 +510,6 @@
             </summary>
             <param name="moduleId">The Id of the module to be removed.</param>
             <exception cref="T:EventsCore.Domain.Exceptions.EventModulesAggregate.EventModulesAggregateArgumentException">Thrown when no module with the given moduleId parameter exists in the aggregate's <see cref="P:EventsCore.Domain.Entities.EventModulesAggregate.EventModules.Modules"></see> collection.</exception>
-        </member>
-        <member name="T:EventsCore.Domain.Entities.EventModulesAggregate.Module">
-            <summary>
-            Class that represents a module of an event
-            </summary>
-        </member>
-        <member name="M:EventsCore.Domain.Entities.EventModulesAggregate.Module.#ctor(System.String,System.String)">
-            <summary>
-            Creates a new instance of the <see cref="T:EventsCore.Domain.Entities.EventModulesAggregate.Module"></see> class.
-            </summary>
-            <param name="moduleName">A string containing the name of the module.</param>
-            <param name="moduleDescription">A string containing the name of the description.</param>
-            <exception cref="T:EventsCore.Domain.Exceptions.EventModulesAggregate.EventModulesAggregateArgumentException">
-            Thrown when:
-            <list type="bullet">
-            <item><description>The provided moduleName parameter is empty/whitespace.</description></item>
-            <item><description>The provided moduleDescription parameter is empty/whitespace.</description></item>
-            </list>
-            </exception>
-        </member>
-        <member name="P:EventsCore.Domain.Entities.EventModulesAggregate.Module.Id">
-            <summary>
-            The Id of this instance
-            </summary>
-        </member>
-        <member name="P:EventsCore.Domain.Entities.EventModulesAggregate.Module.ModuleName">
-            <summary>
-            The name of the module
-            </summary>
-        </member>
-        <member name="P:EventsCore.Domain.Entities.EventModulesAggregate.Module.Description">
-            <summary>
-            The description of the module
-            </summary>
         </member>
         <member name="T:EventsCore.Domain.Entities.EventRegistrationsAggregate.EventRegistrations">
             <summary>
@@ -331,7 +535,7 @@
             <exception cref="T:EventsCore.Domain.Exceptions.EventRegistrationsAggregate.EventRegistrationAggregateArgumentException">
             Thrown when:
             <list type="bullet">
-            <item><description>The EventId parameter is invalid or out of range.</description></item>
+            <item><description>The Id parameter is invalid or out of range.</description></item>
             <item><description>The EventDates parameter is null.</description></item>
             <item><description>The EventRegistrationRules parameter is null.</description></item>
             </list>
@@ -345,7 +549,7 @@
             This should be an Implementation of the <see cref="T:EventsCore.Domain.Common.IDateTime"></see> interface.
             </remarks>
         </member>
-        <member name="P:EventsCore.Domain.Entities.EventRegistrationsAggregate.EventRegistrations.EventId">
+        <member name="P:EventsCore.Domain.Entities.EventRegistrationsAggregate.EventRegistrations.Id">
             <summary>
             The ID of the Event associated with this instance
             </summary>
@@ -557,11 +761,6 @@
             </list>
             </exception>
         </member>
-        <member name="P:EventsCore.Domain.Entities.EventRegistrationsAggregate.Registration.Id">
-            <summary>
-            The Registration Id of the Registration instance.
-            </summary>
-        </member>
         <member name="P:EventsCore.Domain.Entities.EventRegistrationsAggregate.Registration.UserId">
             <summary>
             The UserId of the User associated with this Registration instance.
@@ -666,11 +865,6 @@
             <param name="title">A string containing the name of the Event Series</param>
             <param name="description">A string containing the description of the Event Series</param>
         </member>
-        <member name="P:EventsCore.Domain.Entities.EventSeries.Id">
-            <summary>
-            The Id of the EventSeries instance.
-            </summary>
-        </member>
         <member name="P:EventsCore.Domain.Entities.EventSeries.Title">
             <summary>
             Returns the title of the Event Series.
@@ -706,11 +900,6 @@
             </summary>
             <param name="typeName">A string containing the name of the Event Type.</param>
         </member>
-        <member name="P:EventsCore.Domain.Entities.EventType.Id">
-            <summary>
-            An integer representing the Id of the EventType instance.
-            </summary>
-        </member>
         <member name="P:EventsCore.Domain.Entities.EventType.Name">
             <summary>
             Returns the name of the Event Type.
@@ -723,6 +912,40 @@
             <param name="newName">A string containing the new Event Type.</param>
             <exception cref="T:EventsCore.Domain.Exceptions.EventType.EventTypeArgumentException">Thrown when the newName parameter is empty/whitespace.</exception>
         </member>
+        <member name="T:EventsCore.Domain.Entities.Module">
+            <summary>
+            Class that represents a module of an event
+            </summary>
+        </member>
+        <member name="M:EventsCore.Domain.Entities.Module.#ctor(System.String,System.String)">
+            <summary>
+            Creates a new instance of the <see cref="T:EventsCore.Domain.Entities.Module"></see> class.
+            </summary>
+            <param name="moduleName">A string containing the name of the module.</param>
+            <param name="moduleDescription">A string containing the name of the description.</param>
+            <exception cref="T:EventsCore.Domain.Exceptions.Module.ModuleArgumentException">
+            Thrown when:
+            <list type="bullet">
+            <item><description>The provided moduleName parameter is empty/whitespace.</description></item>
+            <item><description>The provided moduleDescription parameter is empty/whitespace.</description></item>
+            </list>
+            </exception>
+        </member>
+        <member name="P:EventsCore.Domain.Entities.Module.EventId">
+            <summary>
+            The Id of the <see cref="T:EventsCore.Domain.Entities.Event"></see>
+            </summary>
+        </member>
+        <member name="P:EventsCore.Domain.Entities.Module.ModuleName">
+            <summary>
+            The name of the module
+            </summary>
+        </member>
+        <member name="P:EventsCore.Domain.Entities.Module.Description">
+            <summary>
+            The description of the module
+            </summary>
+        </member>
         <member name="T:EventsCore.Domain.Entities.Rank">
             <summary>
             Entity class representing a User's rank
@@ -734,11 +957,6 @@
             </summary>
             <param name="abbreviation">A string containing the abbreviation for the Rank.</param>
             <param name="fullName">A string containing the full name of the Rank.</param>
-        </member>
-        <member name="P:EventsCore.Domain.Entities.Rank.Id">
-            <summary>
-            An integer Id of the Rank
-            </summary>
         </member>
         <member name="P:EventsCore.Domain.Entities.Rank.Abbreviation">
             <summary>
@@ -774,18 +992,13 @@
             Creates a new instance of the User object
             </summary>
             <param name="LDAPName">A string containing the User's LDAP name.</param>
-            <param name="blueDeckId">A string containing the User's BlueDeck Id.</param>
+            <param name="blueDeckId">A unsigned integer containing the User's BlueDeck Id.</param>
             <param name="firstName">A string containing the User's first name.</param>
             <param name="lastName">A string containing the User's last name.</param>
             <param name="idNumber">A string containing the User's Id Number.</param>
             <param name="email">A string containing the User's email address.</param>
             <param name="contactNumber">A string containing the User's contact number.</param>
             <param name="rankId">An integer containing the Id of the User's <see cref="P:EventsCore.Domain.Entities.User.Rank"></see> Rank.</param>
-        </member>
-        <member name="P:EventsCore.Domain.Entities.User.Id">
-            <summary>
-            The Id of this User's instance.
-            </summary>
         </member>
         <member name="P:EventsCore.Domain.Entities.User.LDAPName">
             <summary>
@@ -884,6 +1097,29 @@
             </summary>
             <param name="rankId">An integer representing the Id of a <see cref="P:EventsCore.Domain.Entities.User.Rank"></see></param>
             <exception cref="T:EventsCore.Domain.Exceptions.User.UserArgumentException">Thrown when the rankId parameter is 0 or out of range.</exception>
+        </member>
+        <member name="T:EventsCore.Domain.Exceptions.EventAttendanceAggregate.EventAttendanceAggregateArgumentException">
+            <summary>
+            Implementation of <see cref="T:System.ArgumentException"></see> used in the <see cref="N:EventsCore.Domain.Exceptions.EventAttendanceAggregate"></see> class.
+            </summary>
+        </member>
+        <member name="M:EventsCore.Domain.Exceptions.EventAttendanceAggregate.EventAttendanceAggregateArgumentException.#ctor(System.String,System.String)">
+            <summary>
+            Creates a new instance of the exception
+            </summary>
+            <param name="message">A string containing the error message.</param>
+            <param name="paramName">A string containing the name of the parameter that threw the exception.</param>
+        </member>
+        <member name="T:EventsCore.Domain.Exceptions.EventAttendanceAggregate.EventAttendanceAggregateInvalidOperationException">
+            <summary>
+            Implementation of <see cref="T:System.InvalidOperationException"></see> used in the <see cref="N:EventsCore.Domain.Exceptions.EventAttendanceAggregate"></see> class.
+            </summary>
+        </member>
+        <member name="M:EventsCore.Domain.Exceptions.EventAttendanceAggregate.EventAttendanceAggregateInvalidOperationException.#ctor(System.String)">
+            <summary>
+            Creates a new instance of the exception
+            </summary>
+            <param name="message">A string containing the error message.</param>
         </member>
         <member name="T:EventsCore.Domain.Exceptions.EventModulesAggregate.EventModulesAggregateArgumentException">
             <summary>
@@ -996,6 +1232,29 @@
             </summary>
         </member>
         <member name="M:EventsCore.Domain.Exceptions.Event.EventInvalidOperationException.#ctor(System.String)">
+            <summary>
+            Creates a new instance of the exception.
+            </summary>
+            <param name="message">A string containing the message.</param>
+        </member>
+        <member name="T:EventsCore.Domain.Exceptions.Module.ModuleArgumentException">
+            <summary>
+            Implementation of <see cref="T:System.ArgumentException"></see> used in the <see cref="N:EventsCore.Domain.Exceptions.Module"></see> entity
+            </summary>
+        </member>
+        <member name="M:EventsCore.Domain.Exceptions.Module.ModuleArgumentException.#ctor(System.String,System.String)">
+            <summary>
+            Creates a new instance of the exception.
+            </summary>
+            <param name="message">A string containing the message.</param>
+            <param name="paramName">A string containing the name of the parameter that threw the exception.</param>
+        </member>
+        <member name="T:EventsCore.Domain.Exceptions.Module.ModuleInvalidOperationException">
+            <summary>
+            Implementation of <see cref="T:System.InvalidOperationException"></see> used in the <see cref="N:EventsCore.Domain.Exceptions.Module"></see> entity
+            </summary>
+        </member>
+        <member name="M:EventsCore.Domain.Exceptions.Module.ModuleInvalidOperationException.#ctor(System.String)">
             <summary>
             Creates a new instance of the exception.
             </summary>

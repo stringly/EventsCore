@@ -7,7 +7,7 @@ namespace EventsCore.Domain.Entities.EventRegistrationsAggregate
     /// <summary>
     /// Entity that represents a User Registration for an Event
     /// </summary>
-    public class Registration : IEntity
+    public class Registration : BaseEntity
     {
         /// <summary>
         /// Parameterless constructor for EF
@@ -45,10 +45,6 @@ namespace EventsCore.Domain.Entities.EventRegistrationsAggregate
             StatusChanged = _dateTime.Now;
         }
         private readonly IDateTime _dateTime;
-        /// <summary>
-        /// The Registration Id of the Registration instance.
-        /// </summary>
-        public int Id { get; private set; }
         /// <summary>
         /// The UserId of the User associated with this Registration instance.
         /// </summary>

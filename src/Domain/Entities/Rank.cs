@@ -6,7 +6,7 @@ namespace EventsCore.Domain.Entities
     /// <summary>
     /// Entity class representing a User's rank
     /// </summary>
-    public class Rank : IEntity, IAggregateRoot
+    public class Rank : BaseEntity, IAggregateRoot
     {
         private Rank() { }
         /// <summary>
@@ -14,15 +14,11 @@ namespace EventsCore.Domain.Entities
         /// </summary>
         /// <param name="abbreviation">A string containing the abbreviation for the Rank.</param>
         /// <param name="fullName">A string containing the full name of the Rank.</param>
-        public Rank(string abbreviation, string fullName)
+        public Rank(string fullName, string abbreviation)
         {
             UpdateAbbreviation(abbreviation);
             UpdateFullName(fullName);
         }
-        /// <summary>
-        /// An integer Id of the Rank
-        /// </summary>
-        public int Id { get; private set; }
         private string _abbreviation;
         /// <summary>
         /// Returns a string containing the Rank's abbreviation.
