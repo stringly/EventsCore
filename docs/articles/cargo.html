@@ -1,0 +1,140 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Cargo Cult Engineering </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Cargo Cult Engineering ">
+    <meta name="generator" content="docfx 2.54.0.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="cargo-cult-engineering">Cargo Cult Engineering</h1>
+
+<p>I was randomly Googling TDD/Unit Testing best practices while avoiding productive work and I came across a question on the Software Engineering Stack Exchange where the OP asked if <a href="https://softwareengineering.stackexchange.com/questions/348295/is-there-such-a-thing-as-having-too-many-unit-tests">there is such a thing as having too many unit tests?</a></p>
+<p><a href="https://softwareengineering.stackexchange.com/a/348300">This</a> was one of the top answers:</p>
+<blockquote><p>If you have worked on large code bases created using Test Driven Development, you would already know there can be 
+such a thing as too many unittests. In some cases, most of the development effort consists of updating 
+low-quality tests that would be best implemented as invariant, precondition, and postcondition checks 
+in the relevant classes, at run-time (i.e. testing as a side effect of a higher level test).</p>
+<p>Another problem is the creation of poor quality designs, using cargo-cult driven design techniques, 
+that result in a proliferation of things to test (more classes, interfaces, etc). In this case the burden may seem to be updating the testing code, but the true problem is poor quality design.</p>
+</blockquote>
+<p><a href="https://en.wikipedia.org/wiki/Cargo_cult_programming">Cargo Cult Engineering</a> is a new term to me, so I Googled that and read the Wikipedia article, which includes this line:</p>
+<blockquote><p>The term cargo cult programmer may apply when an unskilled or novice computer programmer (or one inexperienced with the problem at hand) 
+copies some program code from one place to another with little understanding of how it works or whether it is required.</p>
+</blockquote>
+<p><img src="../images/awkward.JPG" alt="picture alt"></p>
+<p>So yeah, I am aware that this describes me exactly at this stage in this project. I&#39;ve carried over large chunks of <a href="https://github.com/jasontaylordev/NorthwindTraders/tree/master/Src">Jason Taylor&#39;s Northwind Traders Project</a> into this project with basically no understanding of what some of these parts are doing. I&#39;ve been fanatic about using XML Comments to document every public member in every class in the project, and it seems probable that some of these comments are superfluous. I also have 145 unit tests for just the Domain layer and the maybe 30% of the Application layer I&#39;ve actually written.</p>
+<h2 id="argument-for-the-defense">Argument for the Defense</h2>
+<p>Look, I know I don&#39;t know what I&#39;m doing. I&#39;m trying to know what I&#39;m doing, and in the pursuit of that knowing, I <a href="https://www.merriam-webster.com/dictionary/plagiarize">imitate</a> my betters. This process is &quot;cargo cult&quot; programming because I don&#39;t possess enough understanding to distinguish between the parts that I need and the parts that I am just copying because they are in his project.</p>
+<p>All of my past projects have bloated into these nightmarish monoliths because I don&#39;t have enough experience applying sound architecture principles... I&#39;m a competent <em>carpenter,</em> but I&#39;m no <em>architect.</em> I can build a functional wall or a set of stairs, but I can&#39;t build an actual <em>building.</em> Or, the buildings I do build end up feeling like a random assembly of walls and stairs with no coherent unifying structure. I want to build functional buildings that don&#39;t collapse the moment someone wants me to repaint one of the walls.</p>
+<p>I&#39;m aware that I am probably trying to apply too many architecture ideas in this project. As it stands, there are half-baked attempts at Onion/Layered architecture, DDD aggregates, and CQRS using Mediatr scattered throughout this project. I understand the <em>principles</em> at the core of these concepts, but I&#39;ve got quite a ways to go to grasp the application of these principles in practice. That&#39;s the whole point of this mess.</p>
+<p>Since I&#39;m thinking about it, I&#39;ll summarize the highlights so far:</p>
+<h3 id="onionlayerclean-architecture">Onion/Layer/Clean Architecture</h3>
+<p>Its probably a bad sign that I am treating these like interchangable terms, but at this point in my understanding, they <em>are</em> interchangable. All of my previous applications are bloated monoliths with exactly zero attempt at layering, which means everything depends on everything else, which means if I poke any part of the application there is a butterfly effect of cascading disasters. It&#39;s brittle, and it makes it <em>impossible</em> to quickly and confidently make changes, add features, or squash bugs. </p>
+<p>My current understanding of these principles is that they share the same general ideas:</p>
+<ol>
+<li>Isolation of the Domain/Application logic from implementation.</li>
+<li>Inversion of dependencies... the inner layers know nothing about the outer layers, and the outer layers only know about their immediate inner layer (I know this is a simplification)</li>
+</ol>
+<p>As I currently understand, the main point here is to control the cascading effect of changes. I should have to change <em>every</em> layer to accomodate a change to <em>any</em> layer. This is what I have to do for all of my past projects.</p>
+<p>These ideas are a significant (and welcome) shift from how I was doing things before. With my previous projects, the &quot;domain&quot; lives mostly in the <em>controllers</em>... which is great to &quot;get things running,&quot; but is hellish when I add anything. One of my projects has like 3 different places where the entity is added to the database, which is <em>insane,</em> considering any time I need to change a &quot;domain&quot; behavior, I have to make sure that the rules are applied in all three places (and probably a fourth and fifth place that I forgot about).</p>
+<h3 id="domain-driven-design">Domain-Driven Design</h3>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/stringly/EventsCore/blob/master/docs/docfx_project/articles/cargo.md/#L1" class="contribution-link">Improve this Doc</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>
