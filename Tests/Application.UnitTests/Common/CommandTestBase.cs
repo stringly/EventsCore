@@ -14,6 +14,5 @@ namespace EventsCore.Application.UnitTests.Common
         {
             EventsCoreContextFactory.Destroy(_context);
         }
-
     }
 }

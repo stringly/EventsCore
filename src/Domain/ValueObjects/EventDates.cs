@@ -29,7 +29,6 @@ namespace EventsCore.Domain.ValueObjects
         /// <param name="evEnd">DateTime object representing the Date/Time the Event is to end. Must be after Start Date.</param>
         /// <param name="rgStart">DateTime object representing the Date/Time the Registration Period for the Event is to begin. Must be before Event Start Date.</param>
         /// <param name="rgEnd">DateTime object representing the Date/Time the Registration Period for the Event is to end. Must be before Event Start Date and after Registration Start Date.</param>
-        /// <param name="dateTimeProvider">An implemementation of <see cref="IDateTime"></see> used to access the system time.</param>        
         /// <exception cref="EventDatesInvalidException">
         /// Thrown when:
         /// <list type="bullet">
@@ -39,15 +38,9 @@ namespace EventsCore.Domain.ValueObjects
         /// <item><description>The rgStart parameter is a date after the rgEnd parameter.</description></item>
         /// </list>
         /// </exception>
-        public EventDates(DateTime evStart, DateTime evEnd, DateTime rgStart, DateTime rgEnd, IDateTime dateTimeProvider)
+        public EventDates(DateTime evStart, DateTime evEnd, DateTime rgStart, DateTime rgEnd)
         {
-            _dateTime = dateTimeProvider;
-            if (evStart < _dateTime.Now)
-            {
-                // reject; event can't start in the past
-                throw new EventDatesInvalidException($"Event Start Date cannot be in the past: Start Date: {evStart.ToString()} | System Date: {_dateTime.Now.ToString()}");
-            }
-            else if (evStart > evEnd)
+            if (evStart > evEnd)
             {
                 // reject; event can't end before it starts
                 throw new EventDatesInvalidException($"Event Start Date cannot be after Event End Date: Start Date: {evStart.ToString()} | End Date: {evEnd.ToString()}");
@@ -68,7 +61,7 @@ namespace EventsCore.Domain.ValueObjects
             RegistrationStartDate = rgStart;
             RegistrationEndDate = rgEnd;            
         }
-        private readonly IDateTime _dateTime;
+        
         /// <summary>
         /// The Event's start date/time
         /// </summary>

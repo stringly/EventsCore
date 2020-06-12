@@ -5,6 +5,7 @@ using System;
 using EventsCore.Domain.Entities.EventAttendanceAggregate;
 using EventsCore.Domain.Entities.EventRegistrationsAggregate;
 using EventsCore.Domain.Entities.EventModulesAggregate;
+using EventsCore.Domain.Exceptions.ValueObjects;
 
 namespace EventsCore.Domain.Entities
 {
@@ -19,20 +20,36 @@ namespace EventsCore.Domain.Entities
         /// </summary>
         /// <param name="title">A string containing the Event's Title. Must not be null or only whitespace.</param>
         /// <param name="description">A string containing the Event's Description. Must not be null or only whitespace.</param>
-        /// <param name="dates">An <see cref="EventDates"></see> ValueObject containing the Event's Date information.</param>
-        /// <param name="rules">A <see cref="EventRegistrationRules"></see> ValueObject containing the Registration rules for the event.</param>
+        /// <param name="startDate"></param>
+        /// <param name="endDate"></param>
+        /// <param name="regStartDate"></param>
+        /// <param name="regEndDate"></param>
+        /// <param name="maxRegs"></param>
+        /// <param name="minRegs"></param>
+        /// <param name="maxStandby"></param>
         /// <param name="eventTypeId">An integer representing the <see cref="EventType"></see> Id of the event.</param>
         /// <param name="eventSeriesId">An optional integer representing the <see cref="EventSeries"></see> Id of the EventSeries to which the new event will belong.</param>
-        public Event(string title, string description, EventDates dates, EventRegistrationRules rules, int eventTypeId, int eventSeriesId = 0)
+        public Event(
+            string title, 
+            string description, 
+            DateTime startDate,
+            DateTime endDate, 
+            DateTime regStartDate, 
+            DateTime regEndDate,
+            int maxRegs,
+            int? minRegs,
+            int? maxStandby,
+            int eventTypeId, 
+            int? eventSeriesId)
         {
             UpdateTitle(title);
             UpdateDescription(description);
-            UpdateEventDates(dates);
-            UpdateRegistrationRules(rules);   
+            UpdateEventDates(startDate, endDate, regStartDate, regEndDate);
+            UpdateRegistrationRules(maxRegs, minRegs, maxStandby);   
             UpdateEventType(eventTypeId);
-            if (eventSeriesId != 0)
+            if (eventSeriesId != null)
             {
-                AddEventToSeries(eventSeriesId);
+                AddEventToSeries((int)eventSeriesId);
             }
         }
         /// <summary>
@@ -175,22 +192,69 @@ namespace EventsCore.Domain.Entities
             EventTypeId = newEventTypeId != 0 ? newEventTypeId : throw new EventArgumentException("Cannot update Event Type: parameter cannot be 0.", nameof(newEventTypeId));
         }
         /// <summary>
-        /// Updates the Event's Dates property.
+        /// Updates the Event's <see cref="Dates"></see>
         /// </summary>
-        /// <param name="newDates">A <see cref="EventDates"> object</see> containing the new Date set.</param>
-        /// <exception cref="EventArgumentException">Thrown when the newDates parameter is null.</exception>
-        public void UpdateEventDates(EventDates newDates)
+        /// <param name="startDate">A nullable DateTime containing the Event's start date.</param>
+        /// <param name="endDate"></param>
+        /// <param name="regStart"></param>
+        /// <param name="regEnd"></param>
+        public void UpdateEventDates(DateTime? startDate, DateTime? endDate, DateTime? regStart, DateTime? regEnd)
         {
-            Dates = newDates ?? throw new EventArgumentException("Cannot update Event: parameter must not be null.", nameof(newDates));
+            if (startDate == null && endDate == null && regStart == null && regEnd == null)
+            {
+                throw new EventArgumentException("Cannot update Event: at least one Event Date parameter is required.", nameof(Event.Dates));
+            }
+            try
+            {
+                EventDates newDates = new EventDates(
+                    startDate != null ? (DateTime)startDate : Dates.StartDate,
+                    endDate != null ? (DateTime)endDate : Dates.EndDate,
+                    regStart != null ? (DateTime)regStart : Dates.RegistrationStartDate,
+                    regEnd != null ? (DateTime)regStart : Dates.RegistrationEndDate            
+                    );
+                Dates = newDates;
+            }
+            catch(EventDatesInvalidException ex)
+            {
+                throw new EventArgumentException(ex.Message, nameof(Event.Dates));
+            }            
         }
         /// <summary>
-        /// Updates the Event's <see cref="EventRegistrationRules"></see> ruleset.
+        /// Updates the Event's <see cref="Rules"></see>
         /// </summary>
-        /// <param name="newRules">An <see cref="EventRegistrationRules"></see> object containing the new rules to assign to the Event.</param>
-        /// <exception cref="EventArgumentException">Thrown when the newRules parameter is null.</exception>
-        public void UpdateRegistrationRules(EventRegistrationRules newRules)
+        /// <remarks>
+        /// This method's parameters are defaulted to null, but if no parameters are provided, an error will be thrown.
+        /// If at least one parameter is provided, the method will attempt to update the Rules to reflect the updated values.
+        /// </remarks>
+        /// <param name="maxRegs">Nullable int containing the max registration count.</param>
+        /// <param name="minRegs">Nullable int containing the min registration count.</param>
+        /// <param name="maxStandbyRegs">Nullable int containing the max standby registration count.</param>
+        /// <exception cref="EventArgumentException">
+        /// Thrown when:
+        /// <list type="bullet">
+        /// <item><description>No parameters are provided.</description></item>
+        /// <item><description>One of the provided parameters violated a constraint in the <see cref="EventRegistrationRules"></see> constructor. Most commonly, this will be when the MaxRegistration count is less than the MinRegistraitonCount </description></item>
+        /// </list>
+        /// </exception>
+        public void UpdateRegistrationRules(int? maxRegs, int? minRegs, int? maxStandbyRegs)
         {
-            Rules = newRules ?? throw new EventArgumentException("Cannot update Event: parameter must not be null", nameof(newRules));
+            if(maxRegs == null && minRegs == null && maxStandbyRegs == null)
+            {
+                throw new EventArgumentException("Cannot update Event: at least one registration rules parameter required.", nameof(Event.Rules));
+            }            
+            try
+            {
+                EventRegistrationRules newRules = new EventRegistrationRules(
+                    maxRegs != null ? (uint)maxRegs : Rules.MaxRegistrations,
+                    minRegs != null ? (uint)minRegs : Rules.MinRegistrations,
+                    maxStandbyRegs != null ? (uint)maxStandbyRegs : Rules.MaxStandbyRegistrations);
+            
+                Rules = newRules;
+            }
+            catch (EventRegistrationRulesArgumentException e)
+            {
+                throw new EventArgumentException(e.Message, nameof(Event.Rules));
+            }
         }        
     }
 }

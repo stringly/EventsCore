@@ -2,7 +2,6 @@
 using EventsCore.Application.Common.Interfaces;
 using EventsCore.Domain.Common;
 using EventsCore.Domain.Entities;
-using EventsCore.Domain.Exceptions.ValueObjects;
 using EventsCore.Domain.ValueObjects;
 using FluentValidation.Results;
 using MediatR;
@@ -14,7 +13,7 @@ using System.Threading.Tasks;
 namespace EventsCore.Application.Events.Commands.CreateEvent
 {
     /// <summary>
-    /// Implementation of <see cref="IRequestHandler{TRequest, TResponse}"></see> that handles requests to update/create an <see cref="Event"></see>
+    /// Implementation of <see cref="IRequestHandler{TRequest, TResponse}"></see> that handles requests to create an <see cref="Event"></see>
     /// </summary>
     public class CreateEventCommandHandler : IRequestHandler<CreateEventCommand, int>
     {
@@ -31,11 +30,11 @@ namespace EventsCore.Application.Events.Commands.CreateEvent
             _dateTime = dateTime;
         }
         /// <summary>
-        /// Handles the request to insert or update the <see cref="EventSeries"></see>
+        /// Handles the request to insert the <see cref="Event"></see>
         /// </summary>
         /// <param name="request">The command</param>
         /// <param name="cancellationToken">The cancellationToken</param>
-        /// <returns>A <see cref="Task"> containing the Integer Id of the upserted entity.</see></returns>
+        /// <returns>A <see cref="Task"> containing the Integer Id of the newly inserted entity.</see></returns>
         /// <exception cref="ValidationException">
         /// Throw when:
         /// <list type="bullet">
@@ -64,57 +63,25 @@ namespace EventsCore.Application.Events.Commands.CreateEvent
                 if (series == null)
                 {
                     // throw if no matching series was found
-                    throw new ValidationException(new List<ValidationFailure>() { new ValidationFailure(nameof(Event.EventSeriesId), $"No Event Series with Id: \"{request.EventTypeId}\" was found.") });
+                    throw new ValidationException(new List<ValidationFailure>() { new ValidationFailure(nameof(Event.EventSeriesId), $"No Event Series with Id: \"{request.EventSeriesId}\" was found.") });
                 }
-            }
-            // build the EventDates value object. 
-            // Note: I feel like building this object outside of the entity that owns it violates encapsulation, but I really don't like the Event constructor to have 1000 parameters...
-            EventDates dates;
-            try
-            {
-                dates = new EventDates(request.StartDate, request.EndDate, request.RegStartDate, request.RegEndDate, _dateTime);
-            }
-            catch (EventDatesInvalidException e)
-            {
-                // throw if an error occurred building the EventDates object, as there is likely an invalid date parameter present
-                throw new ValidationException(new List<ValidationFailure>() { new ValidationFailure(nameof(Event.Dates), e.Message) });
-            }
-            // build the EventRegistrationRules value object. 
-            // Note: I feel like building this object outside of the entity that owns it violates encapsulation, but I really don't like the Event constructor to have 1000 parameters...
-            EventRegistrationRules rules;
-            try
-            {
-                // hacky psuedo switch because I can't be bothered with a coalesce that calls the 3 param constructor with defaults... not that I didn't try
-                if(!request.MinRegsCount.HasValue && !request.MaxStandbyCount.HasValue)
-                {
-                    rules = new EventRegistrationRules((uint)request.MaxRegsCount);
-                }
-                else if (request.MinRegsCount.HasValue && !request.MaxStandbyCount.HasValue)
-                {
-                    rules = new EventRegistrationRules((uint)request.MaxRegsCount, (uint)request.MinRegsCount);
-                }
-                else 
-                {
-                    rules = new EventRegistrationRules((uint)request.MaxRegsCount, (uint)request.MinRegsCount, (uint)request.MaxStandbyCount);
-                }                
-            }
-            catch (EventRegistrationRulesArgumentException e)
-            {
-                // throw if the RegistrationRules constructor threw an error, which is most likey because of an invalid parameter
-                throw new ValidationException(new List<ValidationFailure>() { new ValidationFailure(nameof(Event.Rules), e.Message) });
             }
             try
             {
                 // build the event
-                Event entity;
-                if(series != null)
-                {
-                    entity = new Event(request.Title, request.Description, dates, rules, type.Id, series.Id);
-                }
-                else
-                {
-                    entity = new Event(request.Title, request.Description, dates, rules, type.Id);
-                }
+                Event entity = new Event(
+                        request.Title, 
+                        request.Description,
+                        request.StartDate,
+                        request.EndDate,
+                        request.RegStartDate,
+                        request.RegEndDate,
+                        request.MaxRegsCount,
+                        request.MinRegsCount,
+                        request.MaxStandbyCount,
+                        type.Id, 
+                        series?.Id);
+                
                 await _context.Events.AddAsync(entity);
                 await _context.SaveChangesAsync(cancellationToken);
                 return entity.Id;

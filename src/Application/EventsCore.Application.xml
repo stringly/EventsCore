@@ -251,11 +251,6 @@
             <param name="cancellationToken">A <see cref="T:System.Threading.CancellationToken"></see></param>
             <returns></returns>
         </member>
-        <member name="T:EventsCore.Application.Common.Interfaces.IEventsRepository">
-            <summary>
-            Defines an implementation of <see cref="T:EventsCore.Application.Common.Interfaces.IAsyncRepository`1"></see> for the <see cref="T:EventsCore.Domain.Entities.Event"></see> entity
-            </summary>
-        </member>
         <member name="T:EventsCore.Application.Common.Interfaces.INotificationService">
             <summary>
             Defines an interface used to send messages
@@ -637,6 +632,120 @@
             <param name="cancellationToken">A <see cref="T:System.Threading.CancellationToken"></see></param>
             <returns>A <see cref="T:EventsCore.Application.EventSerieses.Queries.GetEventSeriesesList.EventSeriesesListVm"></see> containing the list of <see cref="T:EventsCore.Domain.Entities.EventSeries"></see> projected to <see cref="T:EventsCore.Application.EventSerieses.Queries.GetEventSeriesesList.EventSeriesDto"></see></returns>
         </member>
+        <member name="T:EventsCore.Application.Events.Commands.CreateEvent.CreateEventCommand">
+            <summary>
+            Implementation of <see cref="T:MediatR.IRequest"></see> that creates a <see cref="T:EventsCore.Domain.Entities.Event"></see>
+            </summary>
+        </member>
+        <member name="P:EventsCore.Application.Events.Commands.CreateEvent.CreateEventCommand.Title">
+            <summary>
+            A string containing the Event's title
+            </summary>
+            <remarks>
+            This is a required field with a max length of 50 characters
+            </remarks>
+        </member>
+        <member name="P:EventsCore.Application.Events.Commands.CreateEvent.CreateEventCommand.Description">
+            <summary>
+            A string containing the Event's Description
+            </summary>
+        </member>
+        <member name="P:EventsCore.Application.Events.Commands.CreateEvent.CreateEventCommand.StartDate">
+            <summary>
+            A <see cref="T:System.DateTime"></see> containing the Event's Start Date.
+            </summary>
+            <remarks>
+            This must be a future date.
+            </remarks>
+        </member>
+        <member name="P:EventsCore.Application.Events.Commands.CreateEvent.CreateEventCommand.EndDate">
+            <summary>
+            A <see cref="P:EventsCore.Application.Events.Commands.CreateEvent.CreateEventCommand.EndDate"></see> containing the Event's End Date.
+            </summary>
+            <remarks>
+            This must be a date after <see cref="P:EventsCore.Application.Events.Commands.CreateEvent.CreateEventCommand.StartDate"></see>
+            </remarks>
+        </member>
+        <member name="P:EventsCore.Application.Events.Commands.CreateEvent.CreateEventCommand.RegStartDate">
+            <summary>
+            The start date of the Event's Registration Period
+            </summary>
+            <remarks>
+            This must be a date before <see cref="P:EventsCore.Application.Events.Commands.CreateEvent.CreateEventCommand.StartDate"/>
+            </remarks>
+        </member>
+        <member name="P:EventsCore.Application.Events.Commands.CreateEvent.CreateEventCommand.RegEndDate">
+            <summary>
+            The end date of the Event's Registration Period.
+            </summary>
+            <remarks>
+            This must be a date after <see cref="P:EventsCore.Application.Events.Commands.CreateEvent.CreateEventCommand.RegStartDate"></see>
+            </remarks>
+        </member>
+        <member name="P:EventsCore.Application.Events.Commands.CreateEvent.CreateEventCommand.MaxRegsCount">
+            <summary>
+            The maximum number of attendees the event can have.
+            </summary>
+        </member>
+        <member name="P:EventsCore.Application.Events.Commands.CreateEvent.CreateEventCommand.MinRegsCount">
+            <summary>
+            The minimum number of attendees required for the Event.
+            </summary>
+            <remarks>
+            This is an optional field that will default to 0 if no value is provided. If a value is provided, it must be less than <see cref="P:EventsCore.Application.Events.Commands.CreateEvent.CreateEventCommand.MaxRegsCount"></see>
+            </remarks>
+        </member>
+        <member name="P:EventsCore.Application.Events.Commands.CreateEvent.CreateEventCommand.MaxStandbyCount">
+            <summary>
+            The maximum number of "Standby" registrations that will be allowed for the event.
+            </summary>
+            <remarks>
+            This is an optional field that will default to 0 if no value is provided. A value must be provided to allow standby registrations.
+            </remarks>
+        </member>
+        <member name="P:EventsCore.Application.Events.Commands.CreateEvent.CreateEventCommand.EventTypeId">
+            <summary>
+            The id of the Event's <see cref="T:EventsCore.Domain.Entities.EventType"></see>
+            </summary>
+        </member>
+        <member name="P:EventsCore.Application.Events.Commands.CreateEvent.CreateEventCommand.EventSeriesId">
+            <summary>
+            The id of the Event's <see cref="T:EventsCore.Domain.Entities.EventSeries"></see>
+            </summary>
+            <remarks>
+            This is an optional field. Provide an Id for a valid <see cref="T:EventsCore.Domain.Entities.EventSeries"></see> to assign the Event to the series.
+            </remarks>
+        </member>
+        <member name="T:EventsCore.Application.Events.Commands.CreateEvent.CreateEventCommandHandler">
+            <summary>
+            Implementation of <see cref="T:MediatR.IRequestHandler`2"></see> that handles requests to create an <see cref="T:EventsCore.Domain.Entities.Event"></see>
+            </summary>
+        </member>
+        <member name="M:EventsCore.Application.Events.Commands.CreateEvent.CreateEventCommandHandler.#ctor(EventsCore.Application.Common.Interfaces.IEventsCoreDbContext,EventsCore.Domain.Common.IDateTime)">
+            <summary>
+            Creates a new instance of the handler
+            </summary>
+            <param name="context">An implementation of <see cref="T:EventsCore.Application.Common.Interfaces.IEventsCoreDbContext"></see></param>
+            <param name="dateTime">An implementation of <see cref="T:EventsCore.Domain.Common.IDateTime"></see></param>
+        </member>
+        <member name="M:EventsCore.Application.Events.Commands.CreateEvent.CreateEventCommandHandler.Handle(EventsCore.Application.Events.Commands.CreateEvent.CreateEventCommand,System.Threading.CancellationToken)">
+            <summary>
+            Handles the request to insert the <see cref="T:EventsCore.Domain.Entities.Event"></see>
+            </summary>
+            <param name="request">The command</param>
+            <param name="cancellationToken">The cancellationToken</param>
+            <returns>A <see cref="T:System.Threading.Tasks.Task"> containing the Integer Id of the newly inserted entity.</see></returns>
+            <exception cref="T:EventsCore.Application.Common.Exceptions.ValidationException">
+            Throw when:
+            <list type="bullet">
+            <item><description>the EventTypeId property of the request parameter does not match any existing <see cref="T:EventsCore.Domain.Entities.EventType"></see></description></item>
+            <item><description>the EventSeriesId property of the request parameter is present but does not match any existing <see cref="T:EventsCore.Domain.Entities.EventSeries"></see></description></item>
+            <item><description>one of the Dates used to construct the <see cref="T:EventsCore.Domain.ValueObjects.EventDates"></see> value object caused an error in that object's constructor.</description></item>
+            <item><description>an error was thrown in the constructor of the <see cref="T:EventsCore.Domain.ValueObjects.EventRegistrationRules"></see> value object, likely because of a bad registration count value.</description></item>
+            <item><description>an error was thrown in the constructor of the <see cref="T:EventsCore.Domain.Entities.Event"></see> entity object, likely because of a bad parameter that was not caught by validation.</description></item>
+            </list>
+            </exception>
+        </member>
         <member name="T:EventsCore.Application.Events.Commands.CreateEvent.CreateEventCommandValidator">
             <summary>
             Implemenation of <see cref="T:FluentValidation.AbstractValidator`1"></see> used in the <see cref="T:EventsCore.Application.Events.Commands.CreateEvent.CreateEventCommand"/>
@@ -647,6 +756,137 @@
             Creates a new instance of the Validator
             </summary>
             <param name="dateTime">An implementation of <see cref="T:EventsCore.Domain.Common.IDateTime"></see></param>
+        </member>
+        <member name="T:EventsCore.Application.Events.Commands.UpdateEvent.UpdateEventCommand">
+            <summary>
+            Impementation of <see cref="T:MediatR.IRequest"></see> that updates a <see cref="T:EventsCore.Domain.Entities.Event"></see>
+            </summary>
+        </member>
+        <member name="P:EventsCore.Application.Events.Commands.UpdateEvent.UpdateEventCommand.Id">
+            <summary>
+            An integer containing the Event's Identifier
+            </summary>
+        </member>
+        <member name="P:EventsCore.Application.Events.Commands.UpdateEvent.UpdateEventCommand.Title">
+            <summary>
+            A string containing the Event's title
+            </summary>
+            <remarks>
+            This is a required field with a max length of 50 characters
+            </remarks>
+        </member>
+        <member name="P:EventsCore.Application.Events.Commands.UpdateEvent.UpdateEventCommand.Description">
+            <summary>
+            A string containing the Event's Description
+            </summary>
+        </member>
+        <member name="P:EventsCore.Application.Events.Commands.UpdateEvent.UpdateEventCommand.StartDate">
+            <summary>
+            A <see cref="T:System.DateTime"></see> containing the Event's Start Date.
+            </summary>
+            <remarks>
+            This must be a future date.
+            </remarks>
+        </member>
+        <member name="P:EventsCore.Application.Events.Commands.UpdateEvent.UpdateEventCommand.EndDate">
+            <summary>
+            A <see cref="P:EventsCore.Application.Events.Commands.UpdateEvent.UpdateEventCommand.EndDate"></see> containing the Event's End Date.
+            </summary>
+            <remarks>
+            This must be a date after <see cref="P:EventsCore.Application.Events.Commands.UpdateEvent.UpdateEventCommand.StartDate"></see>
+            </remarks>
+        </member>
+        <member name="P:EventsCore.Application.Events.Commands.UpdateEvent.UpdateEventCommand.RegStartDate">
+            <summary>
+            The start date of the Event's Registration Period
+            </summary>
+            <remarks>
+            This must be a date before <see cref="P:EventsCore.Application.Events.Commands.UpdateEvent.UpdateEventCommand.StartDate"/>
+            </remarks>
+        </member>
+        <member name="P:EventsCore.Application.Events.Commands.UpdateEvent.UpdateEventCommand.RegEndDate">
+            <summary>
+            The end date of the Event's Registration Period.
+            </summary>
+            <remarks>
+            This must be a date after <see cref="P:EventsCore.Application.Events.Commands.UpdateEvent.UpdateEventCommand.RegStartDate"></see>
+            </remarks>
+        </member>
+        <member name="P:EventsCore.Application.Events.Commands.UpdateEvent.UpdateEventCommand.MaxRegsCount">
+            <summary>
+            The maximum number of attendees the event can have.
+            </summary>
+        </member>
+        <member name="P:EventsCore.Application.Events.Commands.UpdateEvent.UpdateEventCommand.MinRegsCount">
+            <summary>
+            The minimum number of attendees required for the Event.
+            </summary>
+            <remarks>
+            This is an optional field that will default to 0 if no value is provided. If a value is provided, it must be less than <see cref="P:EventsCore.Application.Events.Commands.UpdateEvent.UpdateEventCommand.MaxRegsCount"></see>
+            </remarks>
+        </member>
+        <member name="P:EventsCore.Application.Events.Commands.UpdateEvent.UpdateEventCommand.MaxStandbyCount">
+            <summary>
+            The maximum number of "Standby" registrations that will be allowed for the event.
+            </summary>
+            <remarks>
+            This is an optional field that will default to 0 if no value is provided. A value must be provided to allow standby registrations.
+            </remarks>
+        </member>
+        <member name="P:EventsCore.Application.Events.Commands.UpdateEvent.UpdateEventCommand.EventTypeId">
+            <summary>
+            The id of the Event's <see cref="T:EventsCore.Domain.Entities.EventType"></see>
+            </summary>
+        </member>
+        <member name="P:EventsCore.Application.Events.Commands.UpdateEvent.UpdateEventCommand.EventSeriesId">
+            <summary>
+            The id of the Event's <see cref="T:EventsCore.Domain.Entities.EventSeries"></see>
+            </summary>
+            <remarks>
+            This is an optional field. Provide an Id for a valid <see cref="T:EventsCore.Domain.Entities.EventSeries"></see> to assign the Event to the series.
+            </remarks>
+        </member>
+        <member name="T:EventsCore.Application.Events.Commands.UpdateEvent.UpdateEventCommandHandler">
+            <summary>
+            Implementation of <see cref="T:MediatR.IRequestHandler`2"></see> that handles requests to create an <see cref="T:EventsCore.Domain.Entities.Event"></see>
+            </summary>
+        </member>
+        <member name="M:EventsCore.Application.Events.Commands.UpdateEvent.UpdateEventCommandHandler.#ctor(EventsCore.Application.Common.Interfaces.IEventsCoreDbContext,EventsCore.Domain.Common.IDateTime)">
+            <summary>
+            Creates a new instance of the handler
+            </summary>
+            <param name="context">An implementation of <see cref="T:EventsCore.Application.Common.Interfaces.IEventsCoreDbContext"></see></param>
+            <param name="dateTime">An implementation of <see cref="T:EventsCore.Domain.Common.IDateTime"></see></param>
+        </member>
+        <member name="M:EventsCore.Application.Events.Commands.UpdateEvent.UpdateEventCommandHandler.Handle(EventsCore.Application.Events.Commands.UpdateEvent.UpdateEventCommand,System.Threading.CancellationToken)">
+            <summary>
+            Handles the request to update the <see cref="T:EventsCore.Domain.Entities.Event"></see>
+            </summary>
+            <param name="request">The command</param>
+            <param name="cancellationToken">The cancellationToken</param>
+            <returns>A <see cref="T:System.Threading.Tasks.Task"> containing the Integer Id of entity being updated.</see></returns>
+            <exception cref="T:EventsCore.Application.Common.Exceptions.ValidationException">
+            Throw when:
+            <list type="bullet">        /// 
+            <item><description>the EventTypeId property of the request parameter does not match any existing <see cref="T:EventsCore.Domain.Entities.EventType"></see></description></item>
+            <item><description>the EventSeriesId property of the request parameter is present but does not match any existing <see cref="T:EventsCore.Domain.Entities.EventSeries"></see></description></item>
+            <item><description>one of the Dates used to construct the <see cref="T:EventsCore.Domain.ValueObjects.EventDates"></see> value object caused an error in that object's constructor.</description></item>
+            <item><description>an error was thrown in the constructor of the <see cref="T:EventsCore.Domain.ValueObjects.EventRegistrationRules"></see> value object, likely because of a bad registration count value.</description></item>
+            <item><description>an error was thrown in the constructor of the <see cref="T:EventsCore.Domain.Entities.Event"></see> entity object, likely because of a bad parameter that was not caught by validation.</description></item>
+            </list>
+            </exception>
+            <exception cref="T:EventsCore.Application.Common.Exceptions.NotFoundException">Thrown when the Id parameter of the command does not match any existing entity.</exception>
+        </member>
+        <member name="T:EventsCore.Application.Events.Commands.UpdateEvent.UpdateEventCommandValidator">
+            <summary>
+            Implementation of <seealso cref="T:FluentValidation.AbstractValidator`1"/> used to validate data in the <see cref="T:EventsCore.Application.Events.Commands.UpdateEvent.UpdateEventCommand"></see>
+            </summary>
+        </member>
+        <member name="M:EventsCore.Application.Events.Commands.UpdateEvent.UpdateEventCommandValidator.#ctor(EventsCore.Domain.Common.IDateTime)">
+            <summary>
+            Creates a new instance of the validator
+            </summary>
+            <param name="dateTime">An implementation of <see cref="T:EventsCore.Domain.Common.IDateTime"></see> used to obtain the system time.</param>
         </member>
         <member name="T:EventsCore.Application.EventTypes.Commands.DeleteEventType.DeleteEventTypeCommand">
             <summary>

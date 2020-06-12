@@ -161,9 +161,15 @@ namespace EventsCore.Application.UnitTests.Events.Commands
                 MaxRegsCount = validMaxRegs,
                 EventTypeId = validEventTypeId
             };
+            var validator = new CreateEventCommandValidator(new DateTimeTestProvider()); // manually invoke to test the Validator
 
             // Act/Assert
-            await Assert.ThrowsAsync<ValidationException>(() => _sut.Handle(command, CancellationToken.None));
+            var result = await validator.ValidateAsync(command);
+            var ex = await Assert.ThrowsAsync<ValidationException>(() => _sut.Handle(command, CancellationToken.None));
+            Assert.Equal(1, ex.Failures.Count);
+            Assert.False(result.IsValid);
+            Assert.Equal(1, result.Errors.Count);
+            Assert.Contains(result.Errors, x => x.PropertyName == "Description");
         }
         [Fact]
         public async Task Handle_Given_Invalid_EventTypeId_Throws_ValidationException()
@@ -190,7 +196,8 @@ namespace EventsCore.Application.UnitTests.Events.Commands
             };
 
             // Act/Assert
-            await Assert.ThrowsAsync<ValidationException>(() => _sut.Handle(command, CancellationToken.None));
+            var ex = await Assert.ThrowsAsync<ValidationException>(() => _sut.Handle(command, CancellationToken.None));
+            Assert.Equal(1, ex.Failures.Count);
         }
         [Fact]
         public async Task Handle_Given_StartDate_InPast_Throws_ValidationException()
@@ -200,8 +207,8 @@ namespace EventsCore.Application.UnitTests.Events.Commands
             var validDescription = "This event was created from a Unit Test.";
             var inValidStartDate = new DateTime(2019, 3, 1);
             var validEndDate = new DateTime(2020, 3, 2);
-            var validRegStartDate = new DateTime(2020, 2, 1);
-            var validRegEndDate = new DateTime(2020, 2, 2);
+            var validRegStartDate = new DateTime(2019, 1, 1);
+            var validRegEndDate = new DateTime(2019, 2, 1);
             var validMaxRegs = 10;
             var validEventTypeId = 1;
             var command = new CreateEventCommand
@@ -215,9 +222,14 @@ namespace EventsCore.Application.UnitTests.Events.Commands
                 MaxRegsCount = validMaxRegs,
                 EventTypeId = validEventTypeId
             };
-
+            var validator = new CreateEventCommandValidator(new DateTimeTestProvider()); // manually invoke to test the Validator
             // Act/Assert
-            await Assert.ThrowsAsync<ValidationException>(() => _sut.Handle(command, CancellationToken.None));
+            var result = await validator.ValidateAsync(command);
+            var ex = await Assert.ThrowsAsync<ValidationException>(() => _sut.Handle(command, CancellationToken.None));
+            Assert.Equal(1, ex.Failures.Count);
+            Assert.False(result.IsValid);
+            Assert.Equal(1, result.Errors.Count);
+            Assert.Contains(result.Errors, x => x.PropertyName == "StartDate");
         }
         [Fact]
         public async Task Handle_Given_StartDate_After_EndDate_Throws_ValidationException()
@@ -242,9 +254,80 @@ namespace EventsCore.Application.UnitTests.Events.Commands
                 MaxRegsCount = validMaxRegs,
                 EventTypeId = validEventTypeId
             };
+            var validator = new CreateEventCommandValidator(new DateTimeTestProvider()); // manually invoke to test the Validator
+            // Act/Assert
+            var result = await validator.ValidateAsync(command);
+            var ex = await Assert.ThrowsAsync<ValidationException>(() => _sut.Handle(command, CancellationToken.None));
+            Assert.Equal(1, ex.Failures.Count);
+            Assert.False(result.IsValid);
+            Assert.Equal(1, result.Errors.Count);
+            Assert.Contains(result.Errors, x => x.PropertyName == "EndDate");
+        }
+        [Fact]
+        public async Task Handle_Given_RegEndDate_After_EventStartDate_Throws_ValidationException()
+        {
+            // Arrange
+            var validTitle = "Event Created from Unit Tests.";
+            var validDescription = "This event was created from a Unit Test.";
+            var inValidStartDate = new DateTime(2020, 3, 3);
+            var validEndDate = new DateTime(2020, 3, 2);
+            var validRegStartDate = new DateTime(2020, 4, 1);
+            var validRegEndDate = new DateTime(2020, 4, 2);
+            var validMaxRegs = 10;
+            var validEventTypeId = 1;
+            var command = new CreateEventCommand
+            {
+                Title = validTitle,
+                Description = validDescription,
+                StartDate = inValidStartDate,
+                EndDate = validEndDate,
+                RegStartDate = validRegStartDate,
+                RegEndDate = validRegEndDate,
+                MaxRegsCount = validMaxRegs,
+                EventTypeId = validEventTypeId
+            };
+            var validator = new CreateEventCommandValidator(new DateTimeTestProvider()); // manually invoke to test the Validator
+            // Act/Assert
+            var result = await validator.ValidateAsync(command);
+            var ex = await Assert.ThrowsAsync<ValidationException>(() => _sut.Handle(command, CancellationToken.None));
+            Assert.Equal(1, ex.Failures.Count);
+            Assert.False(result.IsValid);
+            Assert.Equal(1, result.Errors.Count);
+            Assert.Contains(result.Errors, x => x.PropertyName == "EndDate");
+        }
+        [Fact]
+        public async Task Handle_Given_RegEndDate_Before_RegStartDate_Throw_ValidationException()
+        {
+            // Arrange
+            var validTitle = "Event Created from Unit Tests.";
+            var validDescription = "This event was created from a Unit Test.";
+            var validStartDate = new DateTime(2020, 3, 3);
+            var validEndDate = new DateTime(2020, 3, 4);
+            var validRegStartDate = new DateTime(2020, 2, 1);
+            var inValidRegEndDate = new DateTime(2020, 1, 1);
+            var validMaxRegs = 10;
+            var validEventTypeId = 1;
+            var command = new CreateEventCommand
+            {
+                Title = validTitle,
+                Description = validDescription,
+                StartDate = validStartDate,
+                EndDate = validEndDate,
+                RegStartDate = validRegStartDate,
+                RegEndDate = inValidRegEndDate,
+                MaxRegsCount = validMaxRegs,
+                EventTypeId = validEventTypeId
+            };
+            var validator = new CreateEventCommandValidator(new DateTimeTestProvider());
 
             // Act/Assert
-            await Assert.ThrowsAsync<ValidationException>(() => _sut.Handle(command, CancellationToken.None));
+            var result = await validator.ValidateAsync(command);
+            var ex = await Assert.ThrowsAsync<ValidationException>(() => _sut.Handle(command, CancellationToken.None));
+            Assert.Equal(1, ex.Failures.Count);
+            Assert.False(result.IsValid);
+            Assert.Equal(1, result.Errors.Count);
+            Assert.Contains(result.Errors, x => x.PropertyName == "RegStartDate");
         }
+
     }
 }

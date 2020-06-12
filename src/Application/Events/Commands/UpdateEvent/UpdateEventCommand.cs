@@ -1,12 +1,17 @@
-﻿using MediatR;
-using System;
+﻿using System;
+using MediatR;
 
-namespace EventsCore.Application.Events.Commands.CreateEvent
-{    /// <summary>
-     /// Implementation of <see cref="IRequest"></see> that creates a <see cref="Domain.Entities.Event"></see>
-     /// </summary>
-    public class CreateEventCommand : IRequest<int>
+namespace EventsCore.Application.Events.Commands.UpdateEvent
+{
+    /// <summary>
+    /// Impementation of <see cref="IRequest"></see> that updates a <see cref="Domain.Entities.Event"></see>
+    /// </summary>
+    public class UpdateEventCommand : IRequest<int>
     {
+        /// <summary>
+        /// An integer containing the Event's Identifier
+        /// </summary>
+        public int Id { get;set;}
         /// <summary>
         /// A string containing the Event's title
         /// </summary>
