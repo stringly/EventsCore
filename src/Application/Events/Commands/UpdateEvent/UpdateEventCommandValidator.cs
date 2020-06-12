@@ -28,6 +28,11 @@ namespace EventsCore.Application.Events.Commands.UpdateEvent
             RuleFor(x => x.Description)
                 .NotEmpty()
                 .WithMessage("An Event Description is required.");
+            RuleFor(x => x.EventTypeId)
+                .NotEmpty()
+                .WithMessage("An Event Type is required.")
+                .GreaterThan(0)
+                .WithMessage("A valid Event Type is required.");
             RuleFor(x => x.StartDate)
                 .NotEmpty()
                 .GreaterThan(_dateTime.Now)
@@ -56,9 +61,7 @@ namespace EventsCore.Application.Events.Commands.UpdateEvent
                 .GreaterThan(0)
                 .When(x => x.MaxStandbyCount.HasValue)
                 .WithMessage("Maximum standby count must be greater than zero to enable standby registrations for this event.");
-            RuleFor(x => x.EventTypeId)
-                .NotEmpty()
-                .WithMessage("An Event Type is required.");
+
             RuleFor(x => x.EventSeriesId)
                 .GreaterThan(0)
                 .When(x => x.EventSeriesId.HasValue);

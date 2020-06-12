@@ -16,41 +16,229 @@ namespace EventsCore.Domain.Entities
     {
         private Event() { }
         /// <summary>
-        /// Creates a new Event object
+        /// Minimum constructor to create a valid instance of an Event
         /// </summary>
         /// <param name="title">A string containing the Event's Title. Must not be null or only whitespace.</param>
         /// <param name="description">A string containing the Event's Description. Must not be null or only whitespace.</param>
-        /// <param name="startDate"></param>
-        /// <param name="endDate"></param>
-        /// <param name="regStartDate"></param>
-        /// <param name="regEndDate"></param>
-        /// <param name="maxRegs"></param>
-        /// <param name="minRegs"></param>
-        /// <param name="maxStandby"></param>
         /// <param name="eventTypeId">An integer representing the <see cref="EventType"></see> Id of the event.</param>
-        /// <param name="eventSeriesId">An optional integer representing the <see cref="EventSeries"></see> Id of the EventSeries to which the new event will belong.</param>
+        /// <param name="startDate">A DateTime containing the Event's Start Date. Must be before endDate</param>
+        /// <param name="endDate">A DateTime containing the Event's End Date. Must be after startDate</param>
+        /// <param name="regStartDate">A DateTime containing the Event's Registration period Start Date. Must be before Event Start Date and Registration Period End Date</param>
+        /// <param name="regEndDate">A DateTime containing the Event's Registration period End Date. Must be after Registration Period Start Date and before Event Start Date.</param>
+        /// <param name="maxRegs">An integer with the maximum number of attendees for the event.</param>
         public Event(
             string title, 
-            string description, 
+            string description,
+            int eventTypeId,
             DateTime startDate,
-            DateTime endDate, 
-            DateTime regStartDate, 
+            DateTime endDate,
+            DateTime regStartDate,
+            DateTime regEndDate,
+            int maxRegs
+            ) : this(title, description, eventTypeId, startDate, endDate, regStartDate, regEndDate)
+        {
+            UpdateRegistrationRules(maxRegs, null, null);
+        }
+        /// <summary>
+        /// Overload of Constructor that allows setting of Max and min registration counts.
+        /// </summary>
+        /// <param name="title">A string containing the Event's Title. Must not be null or only whitespace.</param>
+        /// <param name="description">A string containing the Event's Description. Must not be null or only whitespace.</param>
+        /// <param name="eventTypeId">An integer representing the <see cref="EventType"></see> Id of the event.</param>
+        /// <param name="startDate">A DateTime containing the Event's Start Date. Must be before endDate</param>
+        /// <param name="endDate">A DateTime containing the Event's End Date. Must be after startDate</param>
+        /// <param name="regStartDate">A DateTime containing the Event's Registration period Start Date. Must be before Event Start Date and Registration Period End Date</param>
+        /// <param name="regEndDate">A DateTime containing the Event's Registration period End Date. Must be after Registration Period Start Date and before Event Start Date.</param>
+        /// <param name="maxRegs">An integer with the maximum number of attendees for the event.</param>
+        /// <param name="minRegs">An integer with the minimum number of attendees for the event. Must be less than or equal to maxRegs.</param>
+        public Event(
+            string title,
+            string description,
+            int eventTypeId,
+            DateTime startDate,
+            DateTime endDate,
+            DateTime regStartDate,
+            DateTime regEndDate,
+            int maxRegs, 
+            int minRegs
+            ) : this(title, description, eventTypeId, startDate, endDate, regStartDate, regEndDate)
+        {
+            UpdateRegistrationRules(maxRegs, minRegs, null);
+        }
+        /// <summary>
+        /// Overload of Constructor that allows setting of Max/Min registrations and max standby registrations.
+        /// </summary>
+        /// <param name="title">A string containing the Event's Title. Must not be null or only whitespace.</param>
+        /// <param name="description">A string containing the Event's Description. Must not be null or only whitespace.</param>
+        /// <param name="eventTypeId">An integer representing the <see cref="EventType"></see> Id of the event.</param>
+        /// <param name="startDate">A DateTime containing the Event's Start Date. Must be before endDate</param>
+        /// <param name="endDate">A DateTime containing the Event's End Date. Must be after startDate</param>
+        /// <param name="regStartDate">A DateTime containing the Event's Registration period Start Date. Must be before Event Start Date and Registration Period End Date</param>
+        /// <param name="regEndDate">A DateTime containing the Event's Registration period End Date. Must be after Registration Period Start Date and before Event Start Date.</param>
+        /// <param name="maxRegs">An integer with the maximum number of attendees for the event.</param>
+        /// <param name="minRegs">An integer with the minimum number of attendees for the event. Must be less than or equal to maxRegs.</param>
+        /// <param name="maxStandbyRegs">An integer with the maximum number of standby registrations for the event. Must be less than or equal to maxRegs.</param>
+        public Event(
+            string title,
+            string description,
+            int eventTypeId,
+            DateTime startDate,
+            DateTime endDate,
+            DateTime regStartDate,
+            DateTime regEndDate,
+            int maxRegs,
+            int minRegs,
+            int maxStandbyRegs
+            ) : this(title, description, eventTypeId, startDate, endDate, regStartDate, regEndDate)
+        {
+
+            UpdateRegistrationRules(maxRegs, minRegs, maxStandbyRegs);
+        }
+        /// <summary>
+        /// Overload of constructor that allows the EventSeriesId and Max Registrations to be set.
+        /// </summary>
+        /// <param name="title">A string containing the Event's Title. Must not be null or only whitespace.</param>
+        /// <param name="description">A string containing the Event's Description. Must not be null or only whitespace.</param>
+        /// <param name="eventTypeId">An integer representing the <see cref="EventType"></see> Id of the event.</param>
+        /// <param name="eventSeriesId">An integer representing the Id of the <see cref="EventSeries"></see> to which this event will be assigned.</param>
+        /// <param name="startDate">A DateTime containing the Event's Start Date. Must be before endDate</param>
+        /// <param name="endDate">A DateTime containing the Event's End Date. Must be after startDate</param>
+        /// <param name="regStartDate">A DateTime containing the Event's Registration period Start Date. Must be before Event Start Date and Registration Period End Date</param>
+        /// <param name="regEndDate">A DateTime containing the Event's Registration period End Date. Must be after Registration Period Start Date and before Event Start Date.</param>
+        /// <param name="maxRegs">An integer with the maximum number of attendees for the event.</param>
+        public Event(
+            string title,
+            string description,
+            int eventTypeId,
+            int eventSeriesId,
+            DateTime startDate,
+            DateTime endDate,
+            DateTime regStartDate,
+            DateTime regEndDate,
+            int maxRegs
+            ) : this(title, description, eventTypeId, startDate, endDate, regStartDate, regEndDate)
+        {
+            UpdateRegistrationRules(maxRegs, null, null);
+            AddEventToSeries(eventSeriesId);
+        }
+        /// <summary>
+        /// Overload of constructor that allows the EventSeriesId, Max Registrations, and Min Registrations to be set.
+        /// </summary>
+        /// <param name="title">A string containing the Event's Title. Must not be null or only whitespace.</param>
+        /// <param name="description">A string containing the Event's Description. Must not be null or only whitespace.</param>
+        /// <param name="eventTypeId">An integer representing the <see cref="EventType"></see> Id of the event.</param>
+        /// <param name="eventSeriesId">An integer representing the Id of the <see cref="EventSeries"></see> to which this event will be assigned.</param>
+        /// <param name="startDate">A DateTime containing the Event's Start Date. Must be before endDate</param>
+        /// <param name="endDate">A DateTime containing the Event's End Date. Must be after startDate</param>
+        /// <param name="regStartDate">A DateTime containing the Event's Registration period Start Date. Must be before Event Start Date and Registration Period End Date</param>
+        /// <param name="regEndDate">A DateTime containing the Event's Registration period End Date. Must be after Registration Period Start Date and before Event Start Date.</param>
+        /// <param name="maxRegs">An integer with the maximum number of attendees for the event.</param>
+        /// <param name="minRegs">An integer with the minimum number of attendees for the event. Must be less than or equal to maxRegs.</param>
+        public Event(
+            string title,
+            string description,
+            int eventTypeId,
+            int eventSeriesId,
+            DateTime startDate,
+            DateTime endDate,
+            DateTime regStartDate,
+            DateTime regEndDate,
+            int maxRegs,
+            int minRegs
+            ) : this(title, description, eventTypeId, startDate, endDate, regStartDate, regEndDate)
+        {
+            UpdateRegistrationRules(maxRegs, minRegs, null);
+            AddEventToSeries(eventSeriesId);
+        }
+        /// <summary>
+        /// Overload of constructor that allows the EventSeriesId, Max Registrations, Min Registrations, and Max Standby Registrations to be set via nullable types.
+        /// </summary>
+        /// <param name="title">A string containing the Event's Title. Must not be null or only whitespace.</param>
+        /// <param name="description">A string containing the Event's Description. Must not be null or only whitespace.</param>
+        /// <param name="eventTypeId">An integer representing the <see cref="EventType"></see> Id of the event.</param>
+        /// <param name="eventSeriesId">An integer representing the Id of the <see cref="EventSeries"></see> to which this event will be assigned.</param>
+        /// <param name="startDate">A DateTime containing the Event's Start Date. Must be before endDate</param>
+        /// <param name="endDate">A DateTime containing the Event's End Date. Must be after startDate</param>
+        /// <param name="regStartDate">A DateTime containing the Event's Registration period Start Date. Must be before Event Start Date and Registration Period End Date</param>
+        /// <param name="regEndDate">A DateTime containing the Event's Registration period End Date. Must be after Registration Period Start Date and before Event Start Date.</param>
+        /// <param name="maxRegs">An integer with the maximum number of attendees for the event.</param>
+        /// <param name="minRegs">An integer with the minimum number of attendees for the event. Must be less than or equal to maxRegs.</param>
+        /// <param name="maxStandbyRegs">An integer with the maximum number of standby registrations for the event. Must be less than or equal to maxRegs.</param>
+        public Event(
+            string title,
+            string description,
+            int eventTypeId,
+            int? eventSeriesId,
+            DateTime startDate,
+            DateTime endDate,
+            DateTime regStartDate,
             DateTime regEndDate,
             int maxRegs,
             int? minRegs,
-            int? maxStandby,
-            int eventTypeId, 
-            int? eventSeriesId)
+            int? maxStandbyRegs
+            ) : this(title, description, eventTypeId, startDate, endDate, regStartDate, regEndDate)
         {
-            UpdateTitle(title);
-            UpdateDescription(description);
-            UpdateEventDates(startDate, endDate, regStartDate, regEndDate);
-            UpdateRegistrationRules(maxRegs, minRegs, maxStandby);   
-            UpdateEventType(eventTypeId);
-            if (eventSeriesId != null)
+            UpdateRegistrationRules(maxRegs, minRegs, maxStandbyRegs);
+            if(eventSeriesId != null)
             {
                 AddEventToSeries((int)eventSeriesId);
             }
+            
+        }
+        /// <summary>
+        /// Overload of constructor that allows the EventSeriesId, Max Registrations, Min Registrations, and Max Standby Registrations to be set.
+        /// </summary>
+        /// <param name="title">A string containing the Event's Title. Must not be null or only whitespace.</param>
+        /// <param name="description">A string containing the Event's Description. Must not be null or only whitespace.</param>
+        /// <param name="eventTypeId">An integer representing the <see cref="EventType"></see> Id of the event.</param>
+        /// <param name="eventSeriesId">An integer representing the Id of the <see cref="EventSeries"></see> to which this event will be assigned.</param>
+        /// <param name="startDate">A DateTime containing the Event's Start Date. Must be before endDate</param>
+        /// <param name="endDate">A DateTime containing the Event's End Date. Must be after startDate</param>
+        /// <param name="regStartDate">A DateTime containing the Event's Registration period Start Date. Must be before Event Start Date and Registration Period End Date</param>
+        /// <param name="regEndDate">A DateTime containing the Event's Registration period End Date. Must be after Registration Period Start Date and before Event Start Date.</param>
+        /// <param name="maxRegs">An integer with the maximum number of attendees for the event.</param>
+        /// <param name="minRegs">An integer with the minimum number of attendees for the event. Must be less than or equal to maxRegs.</param>
+        /// <param name="maxStandbyRegs">An integer with the maximum number of standby registrations for the event. Must be less than or equal to maxRegs.</param>
+        public Event(
+            string title,
+            string description,
+            int eventTypeId,
+            int eventSeriesId,
+            DateTime startDate,
+            DateTime endDate,
+            DateTime regStartDate,
+            DateTime regEndDate,
+            int maxRegs,
+            int minRegs,
+            int maxStandbyRegs
+            ) : this(title, description, eventTypeId, startDate, endDate, regStartDate, regEndDate)
+        {
+            UpdateRegistrationRules(maxRegs, minRegs, maxStandbyRegs);
+            AddEventToSeries(eventSeriesId);
+        }
+        /// <summary>
+        /// Private, common parameter constructor used to chain constructors.
+        /// </summary>
+        /// <param name="title">A string containing the Event's Title. Must not be null or only whitespace.</param>
+        /// <param name="description">A string containing the Event's Description. Must not be null or only whitespace.</param>
+        /// <param name="eventTypeId">An integer representing the <see cref="EventType"></see> Id of the event.</param>
+        /// <param name="startDate">A DateTime containing the Event's Start Date. Must be before endDate</param>
+        /// <param name="endDate">A DateTime containing the Event's End Date. Must be after startDate</param>
+        /// <param name="regStartDate">A DateTime containing the Event's Registration period Start Date. Must be before Event Start Date and Registration Period End Date</param>
+        /// <param name="regEndDate">A DateTime containing the Event's Registration period End Date. Must be after Registration Period Start Date and before Event Start Date.</param>
+        private Event(
+            string title,
+            string description,
+            int eventTypeId,
+            DateTime startDate,
+            DateTime endDate,
+            DateTime regStartDate,
+            DateTime regEndDate)
+        {
+            UpdateTitle(title);
+            UpdateDescription(description);
+            UpdateEventDates(startDate, endDate, regStartDate, regEndDate);            
+            UpdateEventType(eventTypeId);
         }
         /// <summary>
         /// A string that represents the Event's title. 
@@ -198,7 +386,7 @@ namespace EventsCore.Domain.Entities
         /// <param name="endDate"></param>
         /// <param name="regStart"></param>
         /// <param name="regEnd"></param>
-        public void UpdateEventDates(DateTime? startDate, DateTime? endDate, DateTime? regStart, DateTime? regEnd)
+        public void UpdateEventDates(DateTime? startDate = null, DateTime? endDate = null, DateTime? regStart = null, DateTime? regEnd = null)
         {
             if (startDate == null && endDate == null && regStart == null && regEnd == null)
             {
@@ -210,7 +398,7 @@ namespace EventsCore.Domain.Entities
                     startDate != null ? (DateTime)startDate : Dates.StartDate,
                     endDate != null ? (DateTime)endDate : Dates.EndDate,
                     regStart != null ? (DateTime)regStart : Dates.RegistrationStartDate,
-                    regEnd != null ? (DateTime)regStart : Dates.RegistrationEndDate            
+                    regEnd != null ? (DateTime)regEnd : Dates.RegistrationEndDate            
                     );
                 Dates = newDates;
             }
@@ -219,6 +407,7 @@ namespace EventsCore.Domain.Entities
                 throw new EventArgumentException(ex.Message, nameof(Event.Dates));
             }            
         }
+        
         /// <summary>
         /// Updates the Event's <see cref="Rules"></see>
         /// </summary>
@@ -236,7 +425,7 @@ namespace EventsCore.Domain.Entities
         /// <item><description>One of the provided parameters violated a constraint in the <see cref="EventRegistrationRules"></see> constructor. Most commonly, this will be when the MaxRegistration count is less than the MinRegistraitonCount </description></item>
         /// </list>
         /// </exception>
-        public void UpdateRegistrationRules(int? maxRegs, int? minRegs, int? maxStandbyRegs)
+        public void UpdateRegistrationRules(int? maxRegs = null, int? minRegs = null, int? maxStandbyRegs = null)
         {
             if(maxRegs == null && minRegs == null && maxStandbyRegs == null)
             {
@@ -246,8 +435,8 @@ namespace EventsCore.Domain.Entities
             {
                 EventRegistrationRules newRules = new EventRegistrationRules(
                     maxRegs != null ? (uint)maxRegs : Rules.MaxRegistrations,
-                    minRegs != null ? (uint)minRegs : Rules.MinRegistrations,
-                    maxStandbyRegs != null ? (uint)maxStandbyRegs : Rules.MaxStandbyRegistrations);
+                    minRegs != null ? (uint)minRegs : Rules?.MinRegistrations ?? 1,
+                    maxStandbyRegs != null ? (uint)maxStandbyRegs : Rules?.MaxStandbyRegistrations ?? 0);
             
                 Rules = newRules;
             }

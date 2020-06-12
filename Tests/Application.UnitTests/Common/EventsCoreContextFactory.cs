@@ -40,16 +40,14 @@ namespace EventsCore.Application.UnitTests.Common
             context.Events.Add(
                 new Event(
                     "Test Event 1", 
-                    "The first test event", 
-                    new EventDates(
-                        new DateTime(3000, 2, 1), 
-                        new DateTime(3000, 2, 2),
-                        new DateTime(3000, 1, 1),
-                        new DateTime(3000, 1, 2),
-                        new DateTimeTestProvider()),
-                    new EventRegistrationRules(10),
-                    1, 
-                    1)
+                    "The first test event",
+                    1,
+                    1,
+                    new DateTime(3000, 2, 1), 
+                    new DateTime(3000, 2, 2),
+                    new DateTime(3000, 1, 1),
+                    new DateTime(3000, 1, 2),                        
+                    10)
                 );
             context.SaveChanges();
             return context;

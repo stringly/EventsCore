@@ -68,20 +68,19 @@ namespace EventsCore.Application.Events.Commands.CreateEvent
             }
             try
             {
-                // build the event
                 Event entity = new Event(
-                        request.Title, 
-                        request.Description,
-                        request.StartDate,
-                        request.EndDate,
-                        request.RegStartDate,
-                        request.RegEndDate,
-                        request.MaxRegsCount,
-                        request.MinRegsCount,
-                        request.MaxStandbyCount,
-                        type.Id, 
-                        series?.Id);
-                
+                    request.Title,
+                    request.Description,
+                    request.EventTypeId,
+                    request.EventSeriesId,
+                    request.StartDate,
+                    request.EndDate,
+                    request.RegStartDate,
+                    request.RegEndDate,
+                    request.MaxRegsCount,
+                    request.MinRegsCount,
+                    request.MaxStandbyCount
+                    );
                 await _context.Events.AddAsync(entity);
                 await _context.SaveChangesAsync(cancellationToken);
                 return entity.Id;

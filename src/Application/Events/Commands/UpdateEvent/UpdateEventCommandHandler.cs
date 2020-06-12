@@ -81,11 +81,7 @@ namespace EventsCore.Application.Events.Commands.UpdateEvent
             }
             try
             {
-                EventDates newDates = new EventDates(request.StartDate, request.EndDate, request.RegStartDate, request.RegEndDate, _dateTime);
-                if (newDates != entity.Dates)
-                {
-                    entity.UpdateEventDates(newDates);
-                }
+                entity.UpdateEventDates(request.StartDate, request.EndDate, request.RegStartDate, request.RegEndDate);                
             }
             catch (Exception ex)
             {
@@ -94,25 +90,12 @@ namespace EventsCore.Application.Events.Commands.UpdateEvent
             }
             try
             {
-                EventRegistrationRules rules;
-                // hacky psuedo switch because I can't be bothered with a coalesce that calls the 3 param constructor with defaults... not that I didn't try
-                if (!request.MinRegsCount.HasValue && !request.MaxStandbyCount.HasValue)
-                {
-                    rules = new EventRegistrationRules((uint)request.MaxRegsCount);
-                }
-                else if (request.MinRegsCount.HasValue && !request.MaxStandbyCount.HasValue)
-                {
-                    rules = new EventRegistrationRules((uint)request.MaxRegsCount, (uint)request.MinRegsCount);
-                }
-                else
-                {
-                    rules = new EventRegistrationRules((uint)request.MaxRegsCount, (uint)request.MinRegsCount, (uint)request.MaxStandbyCount);
-                }
-                entity.UpdateRegistrationRules(rules);
+                entity.UpdateRegistrationRules(request.MaxRegsCount, request.MinRegsCount, request.MaxStandbyCount);
             }
             catch (Exception ex)
             {
                 // throw if the RegistrationRules constructor threw an error, which is most likey because of an invalid parameter
+                // TODO: Add check for Current Registrations when changing the attendees count
                 throw new ValidationException(new List<ValidationFailure>() { new ValidationFailure(nameof(Event.Rules), ex.Message) });
             }
             try

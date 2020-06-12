@@ -53,7 +53,12 @@ namespace EventsCore.Domain.ValueObjects
             else if (rgStart > rgEnd)
             {
                 // reject; event can't have registration period end before it starts
-                throw new EventDatesInvalidException($"Event Registration Period Start Date cannot be after Registration Period End Date: Registration Period Start Date: {rgStart.ToString()} | Event Start Date: {rgEnd.ToString()}");
+                throw new EventDatesInvalidException($"Event Registration Period Start Date cannot be after Registration Period End Date: Registration Period Start Date: {rgStart.ToString()} | Registration Period Start Date: {rgEnd.ToString()}");
+            }
+            else if (rgEnd > evStart)
+            {
+                // reject; event can't have registration period end after the event starts
+                throw new EventDatesInvalidException($"Event Registration Period End Date cannot be after Event Start Date: Registration Period End Date: {rgEnd.ToString()} | Event Start Date: {rgEnd.ToString()}");
             }
             
             StartDate = evStart;

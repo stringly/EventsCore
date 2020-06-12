@@ -225,8 +225,6 @@ namespace EventsCore.Application.UnitTests.Events.Commands
             var validator = new CreateEventCommandValidator(new DateTimeTestProvider()); // manually invoke to test the Validator
             // Act/Assert
             var result = await validator.ValidateAsync(command);
-            var ex = await Assert.ThrowsAsync<ValidationException>(() => _sut.Handle(command, CancellationToken.None));
-            Assert.Equal(1, ex.Failures.Count);
             Assert.False(result.IsValid);
             Assert.Equal(1, result.Errors.Count);
             Assert.Contains(result.Errors, x => x.PropertyName == "StartDate");
@@ -269,20 +267,20 @@ namespace EventsCore.Application.UnitTests.Events.Commands
             // Arrange
             var validTitle = "Event Created from Unit Tests.";
             var validDescription = "This event was created from a Unit Test.";
-            var inValidStartDate = new DateTime(2020, 3, 3);
+            var validStartDate = new DateTime(2020, 3, 1);
             var validEndDate = new DateTime(2020, 3, 2);
-            var validRegStartDate = new DateTime(2020, 4, 1);
-            var validRegEndDate = new DateTime(2020, 4, 2);
+            var validRegStartDate = new DateTime(2020, 1, 1);
+            var inValidRegEndDate = new DateTime(2020, 3, 2);
             var validMaxRegs = 10;
             var validEventTypeId = 1;
             var command = new CreateEventCommand
             {
                 Title = validTitle,
                 Description = validDescription,
-                StartDate = inValidStartDate,
+                StartDate = validStartDate,
                 EndDate = validEndDate,
                 RegStartDate = validRegStartDate,
-                RegEndDate = validRegEndDate,
+                RegEndDate = inValidRegEndDate,
                 MaxRegsCount = validMaxRegs,
                 EventTypeId = validEventTypeId
             };
@@ -293,7 +291,7 @@ namespace EventsCore.Application.UnitTests.Events.Commands
             Assert.Equal(1, ex.Failures.Count);
             Assert.False(result.IsValid);
             Assert.Equal(1, result.Errors.Count);
-            Assert.Contains(result.Errors, x => x.PropertyName == "EndDate");
+            Assert.Contains(result.Errors, x => x.PropertyName == "RegEndDate");
         }
         [Fact]
         public async Task Handle_Given_RegEndDate_Before_RegStartDate_Throw_ValidationException()

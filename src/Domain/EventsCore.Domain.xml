@@ -109,16 +109,120 @@
             Domain Entity that represents an Event for which Users can register.
             </summary>
         </member>
-        <member name="M:EventsCore.Domain.Entities.Event.#ctor(System.String,System.String,EventsCore.Domain.ValueObjects.EventDates,EventsCore.Domain.ValueObjects.EventRegistrationRules,System.Int32,System.Int32)">
+        <member name="M:EventsCore.Domain.Entities.Event.#ctor(System.String,System.String,System.Int32,System.DateTime,System.DateTime,System.DateTime,System.DateTime,System.Int32)">
             <summary>
-            Creates a new Event object
+            Minimum constructor to create a valid instance of an Event
             </summary>
             <param name="title">A string containing the Event's Title. Must not be null or only whitespace.</param>
             <param name="description">A string containing the Event's Description. Must not be null or only whitespace.</param>
-            <param name="dates">An <see cref="T:EventsCore.Domain.ValueObjects.EventDates"></see> ValueObject containing the Event's Date information.</param>
-            <param name="rules">A <see cref="T:EventsCore.Domain.ValueObjects.EventRegistrationRules"></see> ValueObject containing the Registration rules for the event.</param>
             <param name="eventTypeId">An integer representing the <see cref="P:EventsCore.Domain.Entities.Event.EventType"></see> Id of the event.</param>
-            <param name="eventSeriesId">An optional integer representing the <see cref="P:EventsCore.Domain.Entities.Event.EventSeries"></see> Id of the EventSeries to which the new event will belong.</param>
+            <param name="startDate">A DateTime containing the Event's Start Date. Must be before endDate</param>
+            <param name="endDate">A DateTime containing the Event's End Date. Must be after startDate</param>
+            <param name="regStartDate">A DateTime containing the Event's Registration period Start Date. Must be before Event Start Date and Registration Period End Date</param>
+            <param name="regEndDate">A DateTime containing the Event's Registration period End Date. Must be after Registration Period Start Date and before Event Start Date.</param>
+            <param name="maxRegs">An integer with the maximum number of attendees for the event.</param>
+        </member>
+        <member name="M:EventsCore.Domain.Entities.Event.#ctor(System.String,System.String,System.Int32,System.DateTime,System.DateTime,System.DateTime,System.DateTime,System.Int32,System.Int32)">
+            <summary>
+            Overload of Constructor that allows setting of Max and min registration counts.
+            </summary>
+            <param name="title">A string containing the Event's Title. Must not be null or only whitespace.</param>
+            <param name="description">A string containing the Event's Description. Must not be null or only whitespace.</param>
+            <param name="eventTypeId">An integer representing the <see cref="P:EventsCore.Domain.Entities.Event.EventType"></see> Id of the event.</param>
+            <param name="startDate">A DateTime containing the Event's Start Date. Must be before endDate</param>
+            <param name="endDate">A DateTime containing the Event's End Date. Must be after startDate</param>
+            <param name="regStartDate">A DateTime containing the Event's Registration period Start Date. Must be before Event Start Date and Registration Period End Date</param>
+            <param name="regEndDate">A DateTime containing the Event's Registration period End Date. Must be after Registration Period Start Date and before Event Start Date.</param>
+            <param name="maxRegs">An integer with the maximum number of attendees for the event.</param>
+            <param name="minRegs">An integer with the minimum number of attendees for the event. Must be less than or equal to maxRegs.</param>
+        </member>
+        <member name="M:EventsCore.Domain.Entities.Event.#ctor(System.String,System.String,System.Int32,System.DateTime,System.DateTime,System.DateTime,System.DateTime,System.Int32,System.Int32,System.Int32)">
+            <summary>
+            Overload of Constructor that allows setting of Max/Min registrations and max standby registrations.
+            </summary>
+            <param name="title">A string containing the Event's Title. Must not be null or only whitespace.</param>
+            <param name="description">A string containing the Event's Description. Must not be null or only whitespace.</param>
+            <param name="eventTypeId">An integer representing the <see cref="P:EventsCore.Domain.Entities.Event.EventType"></see> Id of the event.</param>
+            <param name="startDate">A DateTime containing the Event's Start Date. Must be before endDate</param>
+            <param name="endDate">A DateTime containing the Event's End Date. Must be after startDate</param>
+            <param name="regStartDate">A DateTime containing the Event's Registration period Start Date. Must be before Event Start Date and Registration Period End Date</param>
+            <param name="regEndDate">A DateTime containing the Event's Registration period End Date. Must be after Registration Period Start Date and before Event Start Date.</param>
+            <param name="maxRegs">An integer with the maximum number of attendees for the event.</param>
+            <param name="minRegs">An integer with the minimum number of attendees for the event. Must be less than or equal to maxRegs.</param>
+            <param name="maxStandbyRegs">An integer with the maximum number of standby registrations for the event. Must be less than or equal to maxRegs.</param>
+        </member>
+        <member name="M:EventsCore.Domain.Entities.Event.#ctor(System.String,System.String,System.Int32,System.Int32,System.DateTime,System.DateTime,System.DateTime,System.DateTime,System.Int32)">
+            <summary>
+            Overload of constructor that allows the EventSeriesId and Max Registrations to be set.
+            </summary>
+            <param name="title">A string containing the Event's Title. Must not be null or only whitespace.</param>
+            <param name="description">A string containing the Event's Description. Must not be null or only whitespace.</param>
+            <param name="eventTypeId">An integer representing the <see cref="P:EventsCore.Domain.Entities.Event.EventType"></see> Id of the event.</param>
+            <param name="eventSeriesId">An integer representing the Id of the <see cref="P:EventsCore.Domain.Entities.Event.EventSeries"></see> to which this event will be assigned.</param>
+            <param name="startDate">A DateTime containing the Event's Start Date. Must be before endDate</param>
+            <param name="endDate">A DateTime containing the Event's End Date. Must be after startDate</param>
+            <param name="regStartDate">A DateTime containing the Event's Registration period Start Date. Must be before Event Start Date and Registration Period End Date</param>
+            <param name="regEndDate">A DateTime containing the Event's Registration period End Date. Must be after Registration Period Start Date and before Event Start Date.</param>
+            <param name="maxRegs">An integer with the maximum number of attendees for the event.</param>
+        </member>
+        <member name="M:EventsCore.Domain.Entities.Event.#ctor(System.String,System.String,System.Int32,System.Int32,System.DateTime,System.DateTime,System.DateTime,System.DateTime,System.Int32,System.Int32)">
+            <summary>
+            Overload of constructor that allows the EventSeriesId, Max Registrations, and Min Registrations to be set.
+            </summary>
+            <param name="title">A string containing the Event's Title. Must not be null or only whitespace.</param>
+            <param name="description">A string containing the Event's Description. Must not be null or only whitespace.</param>
+            <param name="eventTypeId">An integer representing the <see cref="P:EventsCore.Domain.Entities.Event.EventType"></see> Id of the event.</param>
+            <param name="eventSeriesId">An integer representing the Id of the <see cref="P:EventsCore.Domain.Entities.Event.EventSeries"></see> to which this event will be assigned.</param>
+            <param name="startDate">A DateTime containing the Event's Start Date. Must be before endDate</param>
+            <param name="endDate">A DateTime containing the Event's End Date. Must be after startDate</param>
+            <param name="regStartDate">A DateTime containing the Event's Registration period Start Date. Must be before Event Start Date and Registration Period End Date</param>
+            <param name="regEndDate">A DateTime containing the Event's Registration period End Date. Must be after Registration Period Start Date and before Event Start Date.</param>
+            <param name="maxRegs">An integer with the maximum number of attendees for the event.</param>
+            <param name="minRegs">An integer with the minimum number of attendees for the event. Must be less than or equal to maxRegs.</param>
+        </member>
+        <member name="M:EventsCore.Domain.Entities.Event.#ctor(System.String,System.String,System.Int32,System.Nullable{System.Int32},System.DateTime,System.DateTime,System.DateTime,System.DateTime,System.Int32,System.Nullable{System.Int32},System.Nullable{System.Int32})">
+            <summary>
+            Overload of constructor that allows the EventSeriesId, Max Registrations, Min Registrations, and Max Standby Registrations to be set via nullable types.
+            </summary>
+            <param name="title">A string containing the Event's Title. Must not be null or only whitespace.</param>
+            <param name="description">A string containing the Event's Description. Must not be null or only whitespace.</param>
+            <param name="eventTypeId">An integer representing the <see cref="P:EventsCore.Domain.Entities.Event.EventType"></see> Id of the event.</param>
+            <param name="eventSeriesId">An integer representing the Id of the <see cref="P:EventsCore.Domain.Entities.Event.EventSeries"></see> to which this event will be assigned.</param>
+            <param name="startDate">A DateTime containing the Event's Start Date. Must be before endDate</param>
+            <param name="endDate">A DateTime containing the Event's End Date. Must be after startDate</param>
+            <param name="regStartDate">A DateTime containing the Event's Registration period Start Date. Must be before Event Start Date and Registration Period End Date</param>
+            <param name="regEndDate">A DateTime containing the Event's Registration period End Date. Must be after Registration Period Start Date and before Event Start Date.</param>
+            <param name="maxRegs">An integer with the maximum number of attendees for the event.</param>
+            <param name="minRegs">An integer with the minimum number of attendees for the event. Must be less than or equal to maxRegs.</param>
+            <param name="maxStandbyRegs">An integer with the maximum number of standby registrations for the event. Must be less than or equal to maxRegs.</param>
+        </member>
+        <member name="M:EventsCore.Domain.Entities.Event.#ctor(System.String,System.String,System.Int32,System.Int32,System.DateTime,System.DateTime,System.DateTime,System.DateTime,System.Int32,System.Int32,System.Int32)">
+            <summary>
+            Overload of constructor that allows the EventSeriesId, Max Registrations, Min Registrations, and Max Standby Registrations to be set.
+            </summary>
+            <param name="title">A string containing the Event's Title. Must not be null or only whitespace.</param>
+            <param name="description">A string containing the Event's Description. Must not be null or only whitespace.</param>
+            <param name="eventTypeId">An integer representing the <see cref="P:EventsCore.Domain.Entities.Event.EventType"></see> Id of the event.</param>
+            <param name="eventSeriesId">An integer representing the Id of the <see cref="P:EventsCore.Domain.Entities.Event.EventSeries"></see> to which this event will be assigned.</param>
+            <param name="startDate">A DateTime containing the Event's Start Date. Must be before endDate</param>
+            <param name="endDate">A DateTime containing the Event's End Date. Must be after startDate</param>
+            <param name="regStartDate">A DateTime containing the Event's Registration period Start Date. Must be before Event Start Date and Registration Period End Date</param>
+            <param name="regEndDate">A DateTime containing the Event's Registration period End Date. Must be after Registration Period Start Date and before Event Start Date.</param>
+            <param name="maxRegs">An integer with the maximum number of attendees for the event.</param>
+            <param name="minRegs">An integer with the minimum number of attendees for the event. Must be less than or equal to maxRegs.</param>
+            <param name="maxStandbyRegs">An integer with the maximum number of standby registrations for the event. Must be less than or equal to maxRegs.</param>
+        </member>
+        <member name="M:EventsCore.Domain.Entities.Event.#ctor(System.String,System.String,System.Int32,System.DateTime,System.DateTime,System.DateTime,System.DateTime)">
+            <summary>
+            Private, common parameter constructor used to chain constructors.
+            </summary>
+            <param name="title">A string containing the Event's Title. Must not be null or only whitespace.</param>
+            <param name="description">A string containing the Event's Description. Must not be null or only whitespace.</param>
+            <param name="eventTypeId">An integer representing the <see cref="P:EventsCore.Domain.Entities.Event.EventType"></see> Id of the event.</param>
+            <param name="startDate">A DateTime containing the Event's Start Date. Must be before endDate</param>
+            <param name="endDate">A DateTime containing the Event's End Date. Must be after startDate</param>
+            <param name="regStartDate">A DateTime containing the Event's Registration period Start Date. Must be before Event Start Date and Registration Period End Date</param>
+            <param name="regEndDate">A DateTime containing the Event's Registration period End Date. Must be after Registration Period Start Date and before Event Start Date.</param>
         </member>
         <member name="F:EventsCore.Domain.Entities.Event._title">
             <summary>
@@ -252,19 +356,33 @@
             <param name="newEventTypeId">The Id of the <see cref="P:EventsCore.Domain.Entities.Event.EventType"></see> to assign to this Event.</param>
             <exception cref="T:EventsCore.Domain.Exceptions.Event.EventArgumentException">Thrown when the EventTypeId is 0 or out of range.</exception>
         </member>
-        <member name="M:EventsCore.Domain.Entities.Event.UpdateEventDates(EventsCore.Domain.ValueObjects.EventDates)">
+        <member name="M:EventsCore.Domain.Entities.Event.UpdateEventDates(System.Nullable{System.DateTime},System.Nullable{System.DateTime},System.Nullable{System.DateTime},System.Nullable{System.DateTime})">
             <summary>
-            Updates the Event's Dates property.
+            Updates the Event's <see cref="P:EventsCore.Domain.Entities.Event.Dates"></see>
             </summary>
-            <param name="newDates">A <see cref="T:EventsCore.Domain.ValueObjects.EventDates"> object</see> containing the new Date set.</param>
-            <exception cref="T:EventsCore.Domain.Exceptions.Event.EventArgumentException">Thrown when the newDates parameter is null.</exception>
+            <param name="startDate">A nullable DateTime containing the Event's start date.</param>
+            <param name="endDate"></param>
+            <param name="regStart"></param>
+            <param name="regEnd"></param>
         </member>
-        <member name="M:EventsCore.Domain.Entities.Event.UpdateRegistrationRules(EventsCore.Domain.ValueObjects.EventRegistrationRules)">
+        <member name="M:EventsCore.Domain.Entities.Event.UpdateRegistrationRules(System.Nullable{System.Int32},System.Nullable{System.Int32},System.Nullable{System.Int32})">
             <summary>
-            Updates the Event's <see cref="T:EventsCore.Domain.ValueObjects.EventRegistrationRules"></see> ruleset.
+            Updates the Event's <see cref="P:EventsCore.Domain.Entities.Event.Rules"></see>
             </summary>
-            <param name="newRules">An <see cref="T:EventsCore.Domain.ValueObjects.EventRegistrationRules"></see> object containing the new rules to assign to the Event.</param>
-            <exception cref="T:EventsCore.Domain.Exceptions.Event.EventArgumentException">Thrown when the newRules parameter is null.</exception>
+            <remarks>
+            This method's parameters are defaulted to null, but if no parameters are provided, an error will be thrown.
+            If at least one parameter is provided, the method will attempt to update the Rules to reflect the updated values.
+            </remarks>
+            <param name="maxRegs">Nullable int containing the max registration count.</param>
+            <param name="minRegs">Nullable int containing the min registration count.</param>
+            <param name="maxStandbyRegs">Nullable int containing the max standby registration count.</param>
+            <exception cref="T:EventsCore.Domain.Exceptions.Event.EventArgumentException">
+            Thrown when:
+            <list type="bullet">
+            <item><description>No parameters are provided.</description></item>
+            <item><description>One of the provided parameters violated a constraint in the <see cref="T:EventsCore.Domain.ValueObjects.EventRegistrationRules"></see> constructor. Most commonly, this will be when the MaxRegistration count is less than the MinRegistraitonCount </description></item>
+            </list>
+            </exception>
         </member>
         <member name="T:EventsCore.Domain.Entities.EventAttendanceAggregate.Attendance">
             <summary>
@@ -1424,7 +1542,7 @@
             Private, parameterless constructor implemented for EF purposes. This object cannot be created with no parameters.
             </summary>
         </member>
-        <member name="M:EventsCore.Domain.ValueObjects.EventDates.#ctor(System.DateTime,System.DateTime,System.DateTime,System.DateTime,EventsCore.Domain.Common.IDateTime)">
+        <member name="M:EventsCore.Domain.ValueObjects.EventDates.#ctor(System.DateTime,System.DateTime,System.DateTime,System.DateTime)">
             <summary>
             Constructor for the EventDates argument.
             </summary>
@@ -1435,7 +1553,6 @@
             <param name="evEnd">DateTime object representing the Date/Time the Event is to end. Must be after Start Date.</param>
             <param name="rgStart">DateTime object representing the Date/Time the Registration Period for the Event is to begin. Must be before Event Start Date.</param>
             <param name="rgEnd">DateTime object representing the Date/Time the Registration Period for the Event is to end. Must be before Event Start Date and after Registration Start Date.</param>
-            <param name="dateTimeProvider">An implemementation of <see cref="T:EventsCore.Domain.Common.IDateTime"></see> used to access the system time.</param>        
             <exception cref="T:EventsCore.Domain.Exceptions.ValueObjects.EventDatesInvalidException">
             Thrown when:
             <list type="bullet">

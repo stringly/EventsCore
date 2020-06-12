@@ -25,8 +25,7 @@ namespace EventsCore.Domain.UnitTests.Entities.EventRegistrationsAggregate
                 new DateTime(3000, 2, 1),
                 new DateTime(3000, 2, 2),
                 new DateTime(3000, 1, 1),
-                new DateTime(3000, 1, 2),
-                _dateTime);
+                new DateTime(3000, 1, 2));
             var RegistrationRules = new EventRegistrationRules(10);
 
             // Act
@@ -47,8 +46,7 @@ namespace EventsCore.Domain.UnitTests.Entities.EventRegistrationsAggregate
                 new DateTime(3000, 2, 1),
                 new DateTime(3000, 2, 2),
                 new DateTime(3000, 1, 1),
-                new DateTime(3000, 1, 2),                
-                _dateTime);
+                new DateTime(3000, 1, 2));
             var RegistrationRules = new EventRegistrationRules(10);
 
             // Act/Assert
@@ -74,8 +72,7 @@ namespace EventsCore.Domain.UnitTests.Entities.EventRegistrationsAggregate
                 new DateTime(3000, 2, 1),
                 new DateTime(3000, 2, 2),
                 new DateTime(3000, 1, 1),
-                new DateTime(3000, 1, 2),
-                _dateTime);
+                new DateTime(3000, 1, 2));
             EventRegistrationRules registrationRules = null;
 
             // Act/Assert
@@ -90,8 +87,7 @@ namespace EventsCore.Domain.UnitTests.Entities.EventRegistrationsAggregate
                 new DateTime(3000, 2, 1),
                 new DateTime(3000, 2, 2),
                 new DateTime(3000, 1, 1), // registration period start date is in future
-                new DateTime(3000, 1, 2),
-                _dateTime);
+                new DateTime(3000, 1, 2));
             var registrationRules = new EventRegistrationRules(10);
             var eventRegistrations = new EventRegistrations(eventId, eventDates, registrationRules, _dateTime);
 
@@ -110,8 +106,7 @@ namespace EventsCore.Domain.UnitTests.Entities.EventRegistrationsAggregate
                 new DateTime(3000, 2, 1),
                 new DateTime(3000, 2, 2),
                 new DateTime(2019, 12, 1), // reg open date needs to be before test date of 1/1/2020 to ensure registration period open
-                new DateTime(3000, 1, 2),
-                _dateTime);
+                new DateTime(3000, 1, 2));
             var registrationRules = new EventRegistrationRules(1); // allow 1 registration
             var eventRegistrations = new EventRegistrations(eventId, eventDates, registrationRules, _dateTime); // construct aggregate
             eventRegistrations.RegisterUser(1, "Test User", "TestUser@mail.com", ""); // register user with Id = 1
@@ -133,8 +128,7 @@ namespace EventsCore.Domain.UnitTests.Entities.EventRegistrationsAggregate
                 new DateTime(3000, 2, 1),
                 new DateTime(3000, 2, 2),
                 new DateTime(2019, 12, 1), // reg open date needs to be before test date of 1/1/2020 to ensure registration period open
-                new DateTime(3000, 1, 2),
-                _dateTime);
+                new DateTime(3000, 1, 2));
             var registrationRules = new EventRegistrationRules(1);
             var eventRegistrations = new EventRegistrations(eventId, eventDates, registrationRules, _dateTime); // construct aggregate
             eventRegistrations.RegisterUser(1, "Test User", "TestUser@mail.com", ""); // register user with Id = 1
@@ -155,8 +149,7 @@ namespace EventsCore.Domain.UnitTests.Entities.EventRegistrationsAggregate
                 new DateTime(3000, 2, 1),
                 new DateTime(3000, 2, 2),
                 new DateTime(2019, 12, 1), // reg open date needs to be before test date of 1/1/2020 to ensure registration period open
-                new DateTime(3000, 1, 2),
-                _dateTime);
+                new DateTime(3000, 1, 2));
             var registrationRules = new EventRegistrationRules(1);
             var eventRegistrations = new EventRegistrations(eventId, eventDates, registrationRules, _dateTime); // construct aggregate
             eventRegistrations.RegisterUser(1, "Test User", "TestUser@mail.com", ""); // register user with Id = 1
@@ -175,8 +168,7 @@ namespace EventsCore.Domain.UnitTests.Entities.EventRegistrationsAggregate
                 new DateTime(3000, 2, 1),
                 new DateTime(3000, 2, 2),
                 new DateTime(2019, 12, 1), // reg open date needs to be before test date of 1/1/2020 to ensure registration period open
-                new DateTime(3000, 1, 2),
-                _dateTime);
+                new DateTime(3000, 1, 2));
             var registrationRules = new EventRegistrationRules(1);
             var eventRegistrations = new EventRegistrations(eventId, eventDates, registrationRules, _dateTime); // construct aggregate
             eventRegistrations.RegisterUser(1, "Test User", "TestUser@mail.com", ""); // register user with Id = 1
@@ -193,14 +185,12 @@ namespace EventsCore.Domain.UnitTests.Entities.EventRegistrationsAggregate
                 new DateTime(2019, 1, 1), // Start/End date should be in past
                 new DateTime(2019, 1, 2),
                 new DateTime(2018, 1, 1),
-                new DateTime(2018, 1, 2),
-                new DateTimeTestProvider(new DateTime(2018, 12, 1))); //inject custom IDateTime to allow entry of an Event Start Date in the past
+                new DateTime(2018, 1, 2)); 
             var nonExpiredEventDates = new EventDates(
                 new DateTime(2020, 2, 1), 
                 new DateTime(2020, 2, 2),
                 new DateTime(2020, 1, 1),
-                new DateTime(2020, 1, 2),
-                _dateTime);
+                new DateTime(2020, 1, 2));
             var registrationRules = new EventRegistrationRules(10);
             var expiredEventRegistrations = new EventRegistrations(1, expiredEventDates, registrationRules, _dateTime);
             var nonExpiredEventRegistrations = new EventRegistrations(1, nonExpiredEventDates, registrationRules, _dateTime);
@@ -217,14 +207,12 @@ namespace EventsCore.Domain.UnitTests.Entities.EventRegistrationsAggregate
                 new DateTime(2020, 1, 1),
                 new DateTime(2020, 1, 2),
                 new DateTime(2019, 12, 1), 
-                new DateTime(2019, 12, 30),
-                new DateTimeTestProvider(new DateTime(2019, 11, 1)));
+                new DateTime(2019, 12, 30));
             var inActiveEventDates = new EventDates(
                 new DateTime(2020, 2, 1),
                 new DateTime(2020, 2, 2),
                 new DateTime(2020, 1, 1),
-                new DateTime(2020, 1, 2),
-                new DateTimeTestProvider(new DateTime(2019, 11, 1)));
+                new DateTime(2020, 1, 2));
             var registrationRules = new EventRegistrationRules(10);
             var activeEventRegistrations = new EventRegistrations(1, activeEventDates, registrationRules, _dateTime);
             var inActiveEventRegistrations = new EventRegistrations(1, inActiveEventDates, registrationRules, _dateTime);
@@ -242,8 +230,7 @@ namespace EventsCore.Domain.UnitTests.Entities.EventRegistrationsAggregate
                 new DateTime(2020, 2, 1), 
                 new DateTime(2020, 2, 2),
                 new DateTime(2020, 1, 1),
-                new DateTime(2020, 1, 2),
-                _dateTime);
+                new DateTime(2020, 1, 2));
             var registrationRules = new EventRegistrationRules(10);
             var eventRegistrations = new EventRegistrations(1, eventDates, registrationRules, _dateTime);
             eventRegistrations.RegisterUser(1, "Test User", "TestUser@mail.com", ""); // register user with Id = 1
@@ -259,8 +246,7 @@ namespace EventsCore.Domain.UnitTests.Entities.EventRegistrationsAggregate
                 new DateTime(2020, 2, 1),
                 new DateTime(2020, 2, 2),
                 new DateTime(2020, 1, 1),
-                new DateTime(2020, 1, 2),
-                _dateTime);
+                new DateTime(2020, 1, 2));
             var registrationRules = new EventRegistrationRules(10);
             var eventRegistrations = new EventRegistrations(1, eventDates, registrationRules, _dateTime);
             eventRegistrations.RegisterUser(1, "Test User", "TestUser@mail.com", ""); // register user with Id = 1
@@ -282,8 +268,7 @@ namespace EventsCore.Domain.UnitTests.Entities.EventRegistrationsAggregate
                 new DateTime(2020, 2, 1),
                 new DateTime(2020, 2, 2),
                 new DateTime(2020, 1, 1),
-                new DateTime(2020, 1, 2),
-                _dateTime);
+                new DateTime(2020, 1, 2));
             var registrationRules = new EventRegistrationRules(10);
             var eventRegistrations = new EventRegistrations(1, eventDates, registrationRules, _dateTime);
             eventRegistrations.RegisterUser(1, "Test User", "TestUser@mail.com", ""); // register user with Id = 1
@@ -305,8 +290,7 @@ namespace EventsCore.Domain.UnitTests.Entities.EventRegistrationsAggregate
                 new DateTime(2020, 2, 1),
                 new DateTime(2020, 2, 2),
                 new DateTime(2020, 1, 1),
-                new DateTime(2020, 1, 2),
-                _dateTime);
+                new DateTime(2020, 1, 2));
             var registrationRules = new EventRegistrationRules(10);
             var eventRegistrations = new EventRegistrations(1, eventDates, registrationRules, _dateTime);
             eventRegistrations.RegisterUser(1, "Test User", "TestUser@mail.com", ""); // register user with Id = 1
@@ -327,8 +311,7 @@ namespace EventsCore.Domain.UnitTests.Entities.EventRegistrationsAggregate
                 new DateTime(2020, 2, 1),
                 new DateTime(2020, 2, 2),
                 new DateTime(2020, 1, 1),
-                new DateTime(2020, 1, 2),
-                _dateTime);
+                new DateTime(2020, 1, 2));
             var registrationRulesNoStandby = new EventRegistrationRules(10); // don't pass a StandbyCount
             var registrationRulesWithStandby = new EventRegistrationRules(10, 1, 1);
             var eventRegistrationsNoStandby = new EventRegistrations(1, eventDates, registrationRulesNoStandby, _dateTime);
@@ -350,8 +333,7 @@ namespace EventsCore.Domain.UnitTests.Entities.EventRegistrationsAggregate
                 new DateTime(2020, 2, 1),
                 new DateTime(2020, 2, 2),
                 new DateTime(2020, 1, 1),
-                new DateTime(2020, 1, 2),
-                _dateTime);
+                new DateTime(2020, 1, 2));
             var registrationRules = new EventRegistrationRules(10); // don't pass a StandbyCount
             var eventRegistrations = new EventRegistrations(1, eventDates, registrationRules, _dateTime);
 
@@ -366,8 +348,7 @@ namespace EventsCore.Domain.UnitTests.Entities.EventRegistrationsAggregate
                 new DateTime(2020, 2, 1),
                 new DateTime(2020, 2, 2),
                 new DateTime(2020, 1, 1),
-                new DateTime(2020, 1, 2),
-                _dateTime);
+                new DateTime(2020, 1, 2));
             var registrationRules = new EventRegistrationRules(10, 1, 1);
             var eventRegistrations = new EventRegistrations(1, eventDates, registrationRules, _dateTime);
             eventRegistrations.RegisterUser(1, "Test User", "TestUser@mail.com", ""); // register user with Id = 1
@@ -387,8 +368,7 @@ namespace EventsCore.Domain.UnitTests.Entities.EventRegistrationsAggregate
                 new DateTime(2020, 2, 1),
                 new DateTime(2020, 2, 2),
                 new DateTime(2020, 1, 1),
-                new DateTime(2020, 1, 2),
-                _dateTime);
+                new DateTime(2020, 1, 2));
             var registrationRules = new EventRegistrationRules(10, 1, 1);
             var eventRegistrations = new EventRegistrations(1, eventDates, registrationRules, _dateTime);
             eventRegistrations.RegisterUser(1, "Test User", "TestUser@mail.com", ""); // register user with Id = 1
@@ -410,8 +390,7 @@ namespace EventsCore.Domain.UnitTests.Entities.EventRegistrationsAggregate
                 new DateTime(2020, 2, 1),
                 new DateTime(2020, 2, 2),
                 new DateTime(2020, 1, 1),
-                new DateTime(2020, 1, 2),
-                _dateTime);
+                new DateTime(2020, 1, 2));
             var registrationRules = new EventRegistrationRules(10, 1, 1);
             var eventRegistrations = new EventRegistrations(1, eventDates, registrationRules, _dateTime);
             eventRegistrations.RegisterUser(1, "Test User", "TestUser@mail.com", ""); // register user with Id = 1
