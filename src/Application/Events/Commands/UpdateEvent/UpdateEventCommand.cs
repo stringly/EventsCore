@@ -80,5 +80,25 @@ namespace EventsCore.Application.Events.Commands.UpdateEvent
         /// This is an optional field. Provide an Id for a valid <see cref="Domain.Entities.EventSeries"></see> to assign the Event to the series.
         /// </remarks>
         public int? EventSeriesId { get; set; }
+        /// <summary>
+        /// String containing the street address of the event's location, i.e "123 Anywhere St."
+        /// </summary>
+        public string Street { get; set; }
+        /// <summary>
+        /// Optional string containing the suite, apartment, or room number, i.e. "Suite #4"
+        /// </summary>
+        public string Suite { get; set; }
+        /// <summary>
+        /// String containing the name of the city in which the Event will be.
+        /// </summary>
+        public string City { get; set; }
+        /// <summary>
+        /// String containing the 2-digit postal code for the state in which the event is located.
+        /// </summary>
+        public string State { get; set; }
+        /// <summary>
+        /// String containing the 5-digit postal ZIP code for the event's location.
+        /// </summary>
+        public string Zip { get; set; }
     }
 }

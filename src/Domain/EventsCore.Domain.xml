@@ -122,6 +122,24 @@
             <param name="regEndDate">A DateTime containing the Event's Registration period End Date. Must be after Registration Period Start Date and before Event Start Date.</param>
             <param name="maxRegs">An integer with the maximum number of attendees for the event.</param>
         </member>
+        <member name="M:EventsCore.Domain.Entities.Event.#ctor(System.String,System.String,System.Int32,System.DateTime,System.DateTime,System.DateTime,System.DateTime,System.Int32,System.String,System.String,System.String,System.String,System.String)">
+            <summary>
+            Constructor to create a valid instance of an Event with a physical address
+            </summary>
+            <param name="title">A string containing the Event's Title. Must not be null or only whitespace.</param>
+            <param name="description">A string containing the Event's Description. Must not be null or only whitespace.</param>
+            <param name="eventTypeId">An integer representing the <see cref="P:EventsCore.Domain.Entities.Event.EventType"></see> Id of the event.</param>
+            <param name="startDate">A DateTime containing the Event's Start Date. Must be before endDate</param>
+            <param name="endDate">A DateTime containing the Event's End Date. Must be after startDate</param>
+            <param name="regStartDate">A DateTime containing the Event's Registration period Start Date. Must be before Event Start Date and Registration Period End Date</param>
+            <param name="regEndDate">A DateTime containing the Event's Registration period End Date. Must be after Registration Period Start Date and before Event Start Date.</param>
+            <param name="maxRegs">An integer with the maximum number of attendees for the event.</param>
+            <param name="street">The street address, e.g. "123 Anywhere St." Required, cannot be null/whitespace/empty string.</param>
+            <param name="suite">The suite/apartment/room number. This is an optional field.</param>
+            <param name="city">The name of the city in which the address is located. Required, cannot be null/whitespace/empty string.</param>
+            <param name="state">The 2-digit Postal Abbreviation for the state in which the address is located. Required, cannot be null/whitespace/empty string.</param>        
+            <param name="zip">The 5-digit ZIP code for the address. Required, cannot be null/whitespace/empty string.</param>
+        </member>
         <member name="M:EventsCore.Domain.Entities.Event.#ctor(System.String,System.String,System.Int32,System.DateTime,System.DateTime,System.DateTime,System.DateTime,System.Int32,System.Int32)">
             <summary>
             Overload of Constructor that allows setting of Max and min registration counts.
@@ -135,6 +153,25 @@
             <param name="regEndDate">A DateTime containing the Event's Registration period End Date. Must be after Registration Period Start Date and before Event Start Date.</param>
             <param name="maxRegs">An integer with the maximum number of attendees for the event.</param>
             <param name="minRegs">An integer with the minimum number of attendees for the event. Must be less than or equal to maxRegs.</param>
+        </member>
+        <member name="M:EventsCore.Domain.Entities.Event.#ctor(System.String,System.String,System.Int32,System.DateTime,System.DateTime,System.DateTime,System.DateTime,System.Int32,System.Int32,System.String,System.String,System.String,System.String,System.String)">
+            <summary>
+            Overload of Constructor that allows setting of Max and min registration counts and physical location.
+            </summary>
+            <param name="title">A string containing the Event's Title. Must not be null or only whitespace.</param>
+            <param name="description">A string containing the Event's Description. Must not be null or only whitespace.</param>
+            <param name="eventTypeId">An integer representing the <see cref="P:EventsCore.Domain.Entities.Event.EventType"></see> Id of the event.</param>
+            <param name="startDate">A DateTime containing the Event's Start Date. Must be before endDate</param>
+            <param name="endDate">A DateTime containing the Event's End Date. Must be after startDate</param>
+            <param name="regStartDate">A DateTime containing the Event's Registration period Start Date. Must be before Event Start Date and Registration Period End Date</param>
+            <param name="regEndDate">A DateTime containing the Event's Registration period End Date. Must be after Registration Period Start Date and before Event Start Date.</param>
+            <param name="maxRegs">An integer with the maximum number of attendees for the event.</param>
+            <param name="minRegs">An integer with the minimum number of attendees for the event. Must be less than or equal to maxRegs.</param>
+            <param name="street">The street address, e.g. "123 Anywhere St." Required, cannot be null/whitespace/empty string.</param>
+            <param name="suite">The suite/apartment/room number. This is an optional field.</param>
+            <param name="city">The name of the city in which the address is located. Required, cannot be null/whitespace/empty string.</param>
+            <param name="state">The 2-digit Postal Abbreviation for the state in which the address is located. Required, cannot be null/whitespace/empty string.</param>        
+            <param name="zip">The 5-digit ZIP code for the address. Required, cannot be null/whitespace/empty string.</param>
         </member>
         <member name="M:EventsCore.Domain.Entities.Event.#ctor(System.String,System.String,System.Int32,System.DateTime,System.DateTime,System.DateTime,System.DateTime,System.Int32,System.Int32,System.Int32)">
             <summary>
@@ -151,6 +188,26 @@
             <param name="minRegs">An integer with the minimum number of attendees for the event. Must be less than or equal to maxRegs.</param>
             <param name="maxStandbyRegs">An integer with the maximum number of standby registrations for the event. Must be less than or equal to maxRegs.</param>
         </member>
+        <member name="M:EventsCore.Domain.Entities.Event.#ctor(System.String,System.String,System.Int32,System.DateTime,System.DateTime,System.DateTime,System.DateTime,System.Int32,System.Int32,System.Int32,System.String,System.String,System.String,System.String,System.String)">
+            <summary>
+            Overload of Constructor that allows setting of Max/Min registrations and max standby registrations and physical address.
+            </summary>
+            <param name="title">A string containing the Event's Title. Must not be null or only whitespace.</param>
+            <param name="description">A string containing the Event's Description. Must not be null or only whitespace.</param>
+            <param name="eventTypeId">An integer representing the <see cref="P:EventsCore.Domain.Entities.Event.EventType"></see> Id of the event.</param>
+            <param name="startDate">A DateTime containing the Event's Start Date. Must be before endDate</param>
+            <param name="endDate">A DateTime containing the Event's End Date. Must be after startDate</param>
+            <param name="regStartDate">A DateTime containing the Event's Registration period Start Date. Must be before Event Start Date and Registration Period End Date</param>
+            <param name="regEndDate">A DateTime containing the Event's Registration period End Date. Must be after Registration Period Start Date and before Event Start Date.</param>
+            <param name="maxRegs">An integer with the maximum number of attendees for the event.</param>
+            <param name="minRegs">An integer with the minimum number of attendees for the event. Must be less than or equal to maxRegs.</param>
+            <param name="maxStandbyRegs">An integer with the maximum number of standby registrations for the event. Must be less than or equal to maxRegs.</param>
+            <param name="street">The street address, e.g. "123 Anywhere St." Required, cannot be null/whitespace/empty string.</param>
+            <param name="suite">The suite/apartment/room number. This is an optional field.</param>
+            <param name="city">The name of the city in which the address is located. Required, cannot be null/whitespace/empty string.</param>
+            <param name="state">The 2-digit Postal Abbreviation for the state in which the address is located. Required, cannot be null/whitespace/empty string.</param>        
+            <param name="zip">The 5-digit ZIP code for the address. Required, cannot be null/whitespace/empty string.</param>
+        </member>
         <member name="M:EventsCore.Domain.Entities.Event.#ctor(System.String,System.String,System.Int32,System.Int32,System.DateTime,System.DateTime,System.DateTime,System.DateTime,System.Int32)">
             <summary>
             Overload of constructor that allows the EventSeriesId and Max Registrations to be set.
@@ -164,6 +221,25 @@
             <param name="regStartDate">A DateTime containing the Event's Registration period Start Date. Must be before Event Start Date and Registration Period End Date</param>
             <param name="regEndDate">A DateTime containing the Event's Registration period End Date. Must be after Registration Period Start Date and before Event Start Date.</param>
             <param name="maxRegs">An integer with the maximum number of attendees for the event.</param>
+        </member>
+        <member name="M:EventsCore.Domain.Entities.Event.#ctor(System.String,System.String,System.Int32,System.Int32,System.DateTime,System.DateTime,System.DateTime,System.DateTime,System.Int32,System.String,System.String,System.String,System.String,System.String)">
+            <summary>
+            Overload of constructor that allows the EventSeriesId and Max Registrations to be set.
+            </summary>
+            <param name="title">A string containing the Event's Title. Must not be null or only whitespace.</param>
+            <param name="description">A string containing the Event's Description. Must not be null or only whitespace.</param>
+            <param name="eventTypeId">An integer representing the <see cref="P:EventsCore.Domain.Entities.Event.EventType"></see> Id of the event.</param>
+            <param name="eventSeriesId">An integer representing the Id of the <see cref="P:EventsCore.Domain.Entities.Event.EventSeries"></see> to which this event will be assigned.</param>
+            <param name="startDate">A DateTime containing the Event's Start Date. Must be before endDate</param>
+            <param name="endDate">A DateTime containing the Event's End Date. Must be after startDate</param>
+            <param name="regStartDate">A DateTime containing the Event's Registration period Start Date. Must be before Event Start Date and Registration Period End Date</param>
+            <param name="regEndDate">A DateTime containing the Event's Registration period End Date. Must be after Registration Period Start Date and before Event Start Date.</param>
+            <param name="maxRegs">An integer with the maximum number of attendees for the event.</param>
+            <param name="street">The street address, e.g. "123 Anywhere St." Required, cannot be null/whitespace/empty string.</param>
+            <param name="suite">The suite/apartment/room number. This is an optional field.</param>
+            <param name="city">The name of the city in which the address is located. Required, cannot be null/whitespace/empty string.</param>
+            <param name="state">The 2-digit Postal Abbreviation for the state in which the address is located. Required, cannot be null/whitespace/empty string.</param>        
+            <param name="zip">The 5-digit ZIP code for the address. Required, cannot be null/whitespace/empty string.</param>
         </member>
         <member name="M:EventsCore.Domain.Entities.Event.#ctor(System.String,System.String,System.Int32,System.Int32,System.DateTime,System.DateTime,System.DateTime,System.DateTime,System.Int32,System.Int32)">
             <summary>
@@ -180,9 +256,9 @@
             <param name="maxRegs">An integer with the maximum number of attendees for the event.</param>
             <param name="minRegs">An integer with the minimum number of attendees for the event. Must be less than or equal to maxRegs.</param>
         </member>
-        <member name="M:EventsCore.Domain.Entities.Event.#ctor(System.String,System.String,System.Int32,System.Nullable{System.Int32},System.DateTime,System.DateTime,System.DateTime,System.DateTime,System.Int32,System.Nullable{System.Int32},System.Nullable{System.Int32})">
+        <member name="M:EventsCore.Domain.Entities.Event.#ctor(System.String,System.String,System.Int32,System.Nullable{System.Int32},System.DateTime,System.DateTime,System.DateTime,System.DateTime,System.Int32,System.Nullable{System.Int32},System.Nullable{System.Int32},System.String,System.String,System.String,System.String,System.String)">
             <summary>
-            Overload of constructor that allows the EventSeriesId, Max Registrations, Min Registrations, and Max Standby Registrations to be set via nullable types.
+            Overload of constructor that allows the physical address, EventSeriesId, Max Registrations, Min Registrations, and Max Standby Registrations to be set via nullable types.
             </summary>
             <param name="title">A string containing the Event's Title. Must not be null or only whitespace.</param>
             <param name="description">A string containing the Event's Description. Must not be null or only whitespace.</param>
@@ -195,6 +271,11 @@
             <param name="maxRegs">An integer with the maximum number of attendees for the event.</param>
             <param name="minRegs">An integer with the minimum number of attendees for the event. Must be less than or equal to maxRegs.</param>
             <param name="maxStandbyRegs">An integer with the maximum number of standby registrations for the event. Must be less than or equal to maxRegs.</param>
+            <param name="street">The street address, e.g. "123 Anywhere St."</param>
+            <param name="suite">The suite/apartment/room number. This is an optional field.</param>
+            <param name="city">The name of the city in which the address is located.</param>
+            <param name="state">The 2-digit Postal Abbreviation for the state in which the address is located.</param>        
+            <param name="zip">The 5-digit ZIP code for the address.</param>
         </member>
         <member name="M:EventsCore.Domain.Entities.Event.#ctor(System.String,System.String,System.Int32,System.Int32,System.DateTime,System.DateTime,System.DateTime,System.DateTime,System.Int32,System.Int32,System.Int32)">
             <summary>
@@ -268,6 +349,19 @@
         <member name="P:EventsCore.Domain.Entities.Event.EventType">
             <summary>
             The <see cref="P:EventsCore.Domain.Entities.Event.EventType"></see> to which the Event belongs.
+            </summary>
+        </member>
+        <member name="P:EventsCore.Domain.Entities.Event.Address">
+            <summary>
+            A <see cref="T:EventsCore.Domain.ValueObjects.Address"/> containing the Event's Address
+            </summary>
+            <remarks>
+            This uses the <seealso cref="T:EventsCore.Domain.ValueObjects.Address"/> value object to store an event's address
+            </remarks>
+        </member>
+        <member name="P:EventsCore.Domain.Entities.Event.Location">
+            <summary>
+            Returns a string with the Event's Address, or "None" if no address exists.
             </summary>
         </member>
         <member name="P:EventsCore.Domain.Entities.Event.Dates">
@@ -355,6 +449,17 @@
             </summary>
             <param name="newEventTypeId">The Id of the <see cref="P:EventsCore.Domain.Entities.Event.EventType"></see> to assign to this Event.</param>
             <exception cref="T:EventsCore.Domain.Exceptions.Event.EventArgumentException">Thrown when the EventTypeId is 0 or out of range.</exception>
+        </member>
+        <member name="M:EventsCore.Domain.Entities.Event.UpdateAddress(System.String,System.String,System.String,System.String,System.String)">
+            <summary>
+            Updates the event's <see cref="P:EventsCore.Domain.Entities.Event.Address"/>
+            </summary>
+            <param name="street">A string containing the street address, i.e "123 Anywhere St."</param>
+            <param name="suite">A string containing an optional suite, apt, room number, or other detail, i.e. "Suite #4"</param>
+            <param name="city">A string containing the name of the city in which the address is located.</param>
+            <param name="state">A string containing the 2-digit state postal code for the address.</param>
+            <param name="zip">A strubg containing the 5-digit ZIP code for the address.</param>
+            <exception cref="T:EventsCore.Domain.Exceptions.Event.EventArgumentException">Thrown when one of the parameters is invalid and the <see cref="T:EventsCore.Domain.ValueObjects.Address"/> constructor throws an error.</exception>
         </member>
         <member name="M:EventsCore.Domain.Entities.Event.UpdateEventDates(System.Nullable{System.DateTime},System.Nullable{System.DateTime},System.Nullable{System.DateTime},System.Nullable{System.DateTime})">
             <summary>

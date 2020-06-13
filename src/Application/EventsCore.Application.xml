@@ -716,6 +716,31 @@
             This is an optional field. Provide an Id for a valid <see cref="T:EventsCore.Domain.Entities.EventSeries"></see> to assign the Event to the series.
             </remarks>
         </member>
+        <member name="P:EventsCore.Application.Events.Commands.CreateEvent.CreateEventCommand.Street">
+            <summary>
+            String containing the street address of the event's location, i.e "123 Anywhere St."
+            </summary>
+        </member>
+        <member name="P:EventsCore.Application.Events.Commands.CreateEvent.CreateEventCommand.Suite">
+            <summary>
+            Optional string containing the suite, apartment, or room number, i.e. "Suite #4"
+            </summary>
+        </member>
+        <member name="P:EventsCore.Application.Events.Commands.CreateEvent.CreateEventCommand.City">
+            <summary>
+            String containing the name of the city in which the Event will be.
+            </summary>
+        </member>
+        <member name="P:EventsCore.Application.Events.Commands.CreateEvent.CreateEventCommand.State">
+            <summary>
+            String containing the 2-digit postal code for the state in which the event is located.
+            </summary>
+        </member>
+        <member name="P:EventsCore.Application.Events.Commands.CreateEvent.CreateEventCommand.Zip">
+            <summary>
+            String containing the 5-digit postal ZIP code for the event's location.
+            </summary>
+        </member>
         <member name="T:EventsCore.Application.Events.Commands.CreateEvent.CreateEventCommandHandler">
             <summary>
             Implementation of <see cref="T:MediatR.IRequestHandler`2"></see> that handles requests to create an <see cref="T:EventsCore.Domain.Entities.Event"></see>
@@ -845,6 +870,31 @@
             <remarks>
             This is an optional field. Provide an Id for a valid <see cref="T:EventsCore.Domain.Entities.EventSeries"></see> to assign the Event to the series.
             </remarks>
+        </member>
+        <member name="P:EventsCore.Application.Events.Commands.UpdateEvent.UpdateEventCommand.Street">
+            <summary>
+            String containing the street address of the event's location, i.e "123 Anywhere St."
+            </summary>
+        </member>
+        <member name="P:EventsCore.Application.Events.Commands.UpdateEvent.UpdateEventCommand.Suite">
+            <summary>
+            Optional string containing the suite, apartment, or room number, i.e. "Suite #4"
+            </summary>
+        </member>
+        <member name="P:EventsCore.Application.Events.Commands.UpdateEvent.UpdateEventCommand.City">
+            <summary>
+            String containing the name of the city in which the Event will be.
+            </summary>
+        </member>
+        <member name="P:EventsCore.Application.Events.Commands.UpdateEvent.UpdateEventCommand.State">
+            <summary>
+            String containing the 2-digit postal code for the state in which the event is located.
+            </summary>
+        </member>
+        <member name="P:EventsCore.Application.Events.Commands.UpdateEvent.UpdateEventCommand.Zip">
+            <summary>
+            String containing the 5-digit postal ZIP code for the event's location.
+            </summary>
         </member>
         <member name="T:EventsCore.Application.Events.Commands.UpdateEvent.UpdateEventCommandHandler">
             <summary>

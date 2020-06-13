@@ -79,7 +79,12 @@ namespace EventsCore.Application.Events.Commands.CreateEvent
                     request.RegEndDate,
                     request.MaxRegsCount,
                     request.MinRegsCount,
-                    request.MaxStandbyCount
+                    request.MaxStandbyCount,
+                    request.Street,
+                    request.Suite,
+                    request.City,
+                    request.State,
+                    request.Zip
                     );
                 await _context.Events.AddAsync(entity);
                 await _context.SaveChangesAsync(cancellationToken);

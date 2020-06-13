@@ -40,6 +40,40 @@ namespace EventsCore.Domain.Entities
             UpdateRegistrationRules(maxRegs, null, null);
         }
         /// <summary>
+        /// Constructor to create a valid instance of an Event with a physical address
+        /// </summary>
+        /// <param name="title">A string containing the Event's Title. Must not be null or only whitespace.</param>
+        /// <param name="description">A string containing the Event's Description. Must not be null or only whitespace.</param>
+        /// <param name="eventTypeId">An integer representing the <see cref="EventType"></see> Id of the event.</param>
+        /// <param name="startDate">A DateTime containing the Event's Start Date. Must be before endDate</param>
+        /// <param name="endDate">A DateTime containing the Event's End Date. Must be after startDate</param>
+        /// <param name="regStartDate">A DateTime containing the Event's Registration period Start Date. Must be before Event Start Date and Registration Period End Date</param>
+        /// <param name="regEndDate">A DateTime containing the Event's Registration period End Date. Must be after Registration Period Start Date and before Event Start Date.</param>
+        /// <param name="maxRegs">An integer with the maximum number of attendees for the event.</param>
+        /// <param name="street">The street address, e.g. "123 Anywhere St." Required, cannot be null/whitespace/empty string.</param>
+        /// <param name="suite">The suite/apartment/room number. This is an optional field.</param>
+        /// <param name="city">The name of the city in which the address is located. Required, cannot be null/whitespace/empty string.</param>
+        /// <param name="state">The 2-digit Postal Abbreviation for the state in which the address is located. Required, cannot be null/whitespace/empty string.</param>        
+        /// <param name="zip">The 5-digit ZIP code for the address. Required, cannot be null/whitespace/empty string.</param>
+        public Event(string title,
+            string description,
+            int eventTypeId,
+            DateTime startDate,
+            DateTime endDate,
+            DateTime regStartDate,
+            DateTime regEndDate,
+            int maxRegs, 
+            string street, 
+            string suite,
+            string city, 
+            string state, 
+            string zip
+            ) : this(title, description, eventTypeId, startDate, endDate, regStartDate, regEndDate)
+        {
+            UpdateRegistrationRules(maxRegs, null, null);
+            UpdateAddress(street, suite, city, state, zip);
+        }
+        /// <summary>
         /// Overload of Constructor that allows setting of Max and min registration counts.
         /// </summary>
         /// <param name="title">A string containing the Event's Title. Must not be null or only whitespace.</param>
@@ -64,6 +98,42 @@ namespace EventsCore.Domain.Entities
             ) : this(title, description, eventTypeId, startDate, endDate, regStartDate, regEndDate)
         {
             UpdateRegistrationRules(maxRegs, minRegs, null);
+        }
+        /// <summary>
+        /// Overload of Constructor that allows setting of Max and min registration counts and physical location.
+        /// </summary>
+        /// <param name="title">A string containing the Event's Title. Must not be null or only whitespace.</param>
+        /// <param name="description">A string containing the Event's Description. Must not be null or only whitespace.</param>
+        /// <param name="eventTypeId">An integer representing the <see cref="EventType"></see> Id of the event.</param>
+        /// <param name="startDate">A DateTime containing the Event's Start Date. Must be before endDate</param>
+        /// <param name="endDate">A DateTime containing the Event's End Date. Must be after startDate</param>
+        /// <param name="regStartDate">A DateTime containing the Event's Registration period Start Date. Must be before Event Start Date and Registration Period End Date</param>
+        /// <param name="regEndDate">A DateTime containing the Event's Registration period End Date. Must be after Registration Period Start Date and before Event Start Date.</param>
+        /// <param name="maxRegs">An integer with the maximum number of attendees for the event.</param>
+        /// <param name="minRegs">An integer with the minimum number of attendees for the event. Must be less than or equal to maxRegs.</param>
+        /// <param name="street">The street address, e.g. "123 Anywhere St." Required, cannot be null/whitespace/empty string.</param>
+        /// <param name="suite">The suite/apartment/room number. This is an optional field.</param>
+        /// <param name="city">The name of the city in which the address is located. Required, cannot be null/whitespace/empty string.</param>
+        /// <param name="state">The 2-digit Postal Abbreviation for the state in which the address is located. Required, cannot be null/whitespace/empty string.</param>        
+        /// <param name="zip">The 5-digit ZIP code for the address. Required, cannot be null/whitespace/empty string.</param>
+        public Event(
+            string title, 
+            string description,
+            int eventTypeId, 
+            DateTime startDate,
+            DateTime endDate,
+            DateTime regStartDate,
+            DateTime regEndDate,
+            int maxRegs,
+            int minRegs,
+            string street,
+            string suite,
+            string city, 
+            string state,
+            string zip) : this(title, description, eventTypeId, startDate, endDate, regStartDate, regEndDate)
+        {
+            UpdateRegistrationRules(maxRegs, minRegs, null);
+            UpdateAddress(street, suite, city, state, zip);
         }
         /// <summary>
         /// Overload of Constructor that allows setting of Max/Min registrations and max standby registrations.
@@ -95,6 +165,46 @@ namespace EventsCore.Domain.Entities
             UpdateRegistrationRules(maxRegs, minRegs, maxStandbyRegs);
         }
         /// <summary>
+        /// Overload of Constructor that allows setting of Max/Min registrations and max standby registrations and physical address.
+        /// </summary>
+        /// <param name="title">A string containing the Event's Title. Must not be null or only whitespace.</param>
+        /// <param name="description">A string containing the Event's Description. Must not be null or only whitespace.</param>
+        /// <param name="eventTypeId">An integer representing the <see cref="EventType"></see> Id of the event.</param>
+        /// <param name="startDate">A DateTime containing the Event's Start Date. Must be before endDate</param>
+        /// <param name="endDate">A DateTime containing the Event's End Date. Must be after startDate</param>
+        /// <param name="regStartDate">A DateTime containing the Event's Registration period Start Date. Must be before Event Start Date and Registration Period End Date</param>
+        /// <param name="regEndDate">A DateTime containing the Event's Registration period End Date. Must be after Registration Period Start Date and before Event Start Date.</param>
+        /// <param name="maxRegs">An integer with the maximum number of attendees for the event.</param>
+        /// <param name="minRegs">An integer with the minimum number of attendees for the event. Must be less than or equal to maxRegs.</param>
+        /// <param name="maxStandbyRegs">An integer with the maximum number of standby registrations for the event. Must be less than or equal to maxRegs.</param>
+        /// <param name="street">The street address, e.g. "123 Anywhere St." Required, cannot be null/whitespace/empty string.</param>
+        /// <param name="suite">The suite/apartment/room number. This is an optional field.</param>
+        /// <param name="city">The name of the city in which the address is located. Required, cannot be null/whitespace/empty string.</param>
+        /// <param name="state">The 2-digit Postal Abbreviation for the state in which the address is located. Required, cannot be null/whitespace/empty string.</param>        
+        /// <param name="zip">The 5-digit ZIP code for the address. Required, cannot be null/whitespace/empty string.</param>
+        public Event(
+            string title,
+            string description,
+            int eventTypeId,
+            DateTime startDate,
+            DateTime endDate,
+            DateTime regStartDate,
+            DateTime regEndDate,
+            int maxRegs,
+            int minRegs,
+            int maxStandbyRegs, 
+            string street,
+            string suite,
+            string city, 
+            string state,
+            string zip
+            ) : this(title, description, eventTypeId, startDate, endDate, regStartDate, regEndDate)
+        {
+
+            UpdateRegistrationRules(maxRegs, minRegs, maxStandbyRegs);
+            UpdateAddress(street, suite, city, state, zip);
+        }
+        /// <summary>
         /// Overload of constructor that allows the EventSeriesId and Max Registrations to be set.
         /// </summary>
         /// <param name="title">A string containing the Event's Title. Must not be null or only whitespace.</param>
@@ -120,6 +230,44 @@ namespace EventsCore.Domain.Entities
         {
             UpdateRegistrationRules(maxRegs, null, null);
             AddEventToSeries(eventSeriesId);
+        }
+        /// <summary>
+        /// Overload of constructor that allows the EventSeriesId and Max Registrations to be set.
+        /// </summary>
+        /// <param name="title">A string containing the Event's Title. Must not be null or only whitespace.</param>
+        /// <param name="description">A string containing the Event's Description. Must not be null or only whitespace.</param>
+        /// <param name="eventTypeId">An integer representing the <see cref="EventType"></see> Id of the event.</param>
+        /// <param name="eventSeriesId">An integer representing the Id of the <see cref="EventSeries"></see> to which this event will be assigned.</param>
+        /// <param name="startDate">A DateTime containing the Event's Start Date. Must be before endDate</param>
+        /// <param name="endDate">A DateTime containing the Event's End Date. Must be after startDate</param>
+        /// <param name="regStartDate">A DateTime containing the Event's Registration period Start Date. Must be before Event Start Date and Registration Period End Date</param>
+        /// <param name="regEndDate">A DateTime containing the Event's Registration period End Date. Must be after Registration Period Start Date and before Event Start Date.</param>
+        /// <param name="maxRegs">An integer with the maximum number of attendees for the event.</param>
+        /// <param name="street">The street address, e.g. "123 Anywhere St." Required, cannot be null/whitespace/empty string.</param>
+        /// <param name="suite">The suite/apartment/room number. This is an optional field.</param>
+        /// <param name="city">The name of the city in which the address is located. Required, cannot be null/whitespace/empty string.</param>
+        /// <param name="state">The 2-digit Postal Abbreviation for the state in which the address is located. Required, cannot be null/whitespace/empty string.</param>        
+        /// <param name="zip">The 5-digit ZIP code for the address. Required, cannot be null/whitespace/empty string.</param>
+        public Event(
+            string title,
+            string description,
+            int eventTypeId,
+            int eventSeriesId,
+            DateTime startDate,
+            DateTime endDate,
+            DateTime regStartDate,
+            DateTime regEndDate,
+            int maxRegs,
+            string street,
+            string suite, 
+            string city,
+            string state,
+            string zip
+            ) : this(title, description, eventTypeId, startDate, endDate, regStartDate, regEndDate)
+        {
+            UpdateRegistrationRules(maxRegs, null, null);
+            AddEventToSeries(eventSeriesId);
+            UpdateAddress(street, suite, city, state, zip);
         }
         /// <summary>
         /// Overload of constructor that allows the EventSeriesId, Max Registrations, and Min Registrations to be set.
@@ -151,7 +299,7 @@ namespace EventsCore.Domain.Entities
             AddEventToSeries(eventSeriesId);
         }
         /// <summary>
-        /// Overload of constructor that allows the EventSeriesId, Max Registrations, Min Registrations, and Max Standby Registrations to be set via nullable types.
+        /// Overload of constructor that allows the physical address, EventSeriesId, Max Registrations, Min Registrations, and Max Standby Registrations to be set via nullable types.
         /// </summary>
         /// <param name="title">A string containing the Event's Title. Must not be null or only whitespace.</param>
         /// <param name="description">A string containing the Event's Description. Must not be null or only whitespace.</param>
@@ -164,6 +312,11 @@ namespace EventsCore.Domain.Entities
         /// <param name="maxRegs">An integer with the maximum number of attendees for the event.</param>
         /// <param name="minRegs">An integer with the minimum number of attendees for the event. Must be less than or equal to maxRegs.</param>
         /// <param name="maxStandbyRegs">An integer with the maximum number of standby registrations for the event. Must be less than or equal to maxRegs.</param>
+        /// <param name="street">The street address, e.g. "123 Anywhere St."</param>
+        /// <param name="suite">The suite/apartment/room number. This is an optional field.</param>
+        /// <param name="city">The name of the city in which the address is located.</param>
+        /// <param name="state">The 2-digit Postal Abbreviation for the state in which the address is located.</param>        
+        /// <param name="zip">The 5-digit ZIP code for the address.</param>
         public Event(
             string title,
             string description,
@@ -175,13 +328,22 @@ namespace EventsCore.Domain.Entities
             DateTime regEndDate,
             int maxRegs,
             int? minRegs,
-            int? maxStandbyRegs
+            int? maxStandbyRegs,
+            string street,
+            string suite,
+            string city,
+            string state,
+            string zip
             ) : this(title, description, eventTypeId, startDate, endDate, regStartDate, regEndDate)
         {
             UpdateRegistrationRules(maxRegs, minRegs, maxStandbyRegs);
             if(eventSeriesId != null)
             {
                 AddEventToSeries((int)eventSeriesId);
+            }
+            if(!String.IsNullOrEmpty(street) && !String.IsNullOrEmpty(city) && !String.IsNullOrEmpty(state) && !String.IsNullOrEmpty(zip))
+            {
+                UpdateAddress(street, suite, city, state, zip);
             }
             
         }
@@ -278,6 +440,28 @@ namespace EventsCore.Domain.Entities
         /// The <see cref="EventType"></see> to which the Event belongs.
         /// </summary>
         public EventType EventType { get; private set; }
+        /// <summary>
+        /// A <see cref="ValueObjects.Address"/> containing the Event's Address
+        /// </summary>
+        /// <remarks>
+        /// This uses the <seealso cref="ValueObjects.Address"/> value object to store an event's address
+        /// </remarks>
+        public Address Address { get; private set; }
+        /// <summary>
+        /// Returns a string with the Event's Address, or "None" if no address exists.
+        /// </summary>
+        public string Location {
+            get {
+                if (Address != null)
+                {
+                    return $"{Address.Street}{(!String.IsNullOrEmpty(Address.Suite) ? $" {Address.Suite}" : " ")} {Address.City}, {Address.State} {Address.ZipCode}";
+                }
+                else
+                {
+                    return "None";
+                }
+            }
+        }
         /// <summary>
         /// The Dates associated with this Event.
         /// </summary>
@@ -378,6 +562,43 @@ namespace EventsCore.Domain.Entities
         public void UpdateEventType(int newEventTypeId)
         {
             EventTypeId = newEventTypeId != 0 ? newEventTypeId : throw new EventArgumentException("Cannot update Event Type: parameter cannot be 0.", nameof(newEventTypeId));
+        }
+        /// <summary>
+        /// Updates the event's <see cref="Address"/>
+        /// </summary>
+        /// <param name="street">A string containing the street address, i.e "123 Anywhere St."</param>
+        /// <param name="suite">A string containing an optional suite, apt, room number, or other detail, i.e. "Suite #4"</param>
+        /// <param name="city">A string containing the name of the city in which the address is located.</param>
+        /// <param name="state">A string containing the 2-digit state postal code for the address.</param>
+        /// <param name="zip">A strubg containing the 5-digit ZIP code for the address.</param>
+        /// <exception cref="EventArgumentException">Thrown when one of the parameters is invalid and the <see cref="ValueObjects.Address"/> constructor throws an error.</exception>
+        public void UpdateAddress(string street = "", string suite = "", string city = "", string state = "", string zip = "")
+        {
+            if (String.IsNullOrEmpty(street) && String.IsNullOrEmpty(suite) && String.IsNullOrEmpty(city) && String.IsNullOrEmpty(state) && string.IsNullOrEmpty(zip))
+            {
+                return;
+            }
+            try
+            {
+                if (this.Address != null)
+                {
+                    Address = new Address(
+                        !String.IsNullOrWhiteSpace(street) ? street : this.Address.Street,
+                        !String.IsNullOrWhiteSpace(suite) ? suite : this.Address.Suite,
+                        !String.IsNullOrWhiteSpace(city) ? city : this.Address.City,
+                        !String.IsNullOrWhiteSpace(state) ? state : this.Address.State,
+                        !String.IsNullOrWhiteSpace(zip) ? zip : this.Address.ZipCode);
+                }
+                else
+                {
+                    Address = new Address(street, suite, city, state, zip);
+                }
+            }
+            catch (AddressInvalidException ex)
+            {
+                throw new EventArgumentException($"Cannot update Event: {ex.Message}", nameof(Event.Address));
+            }
+            
         }
         /// <summary>
         /// Updates the Event's <see cref="Dates"></see>

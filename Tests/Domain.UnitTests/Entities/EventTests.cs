@@ -639,5 +639,318 @@ namespace EventsCore.Domain.UnitTests.Entities
             Assert.Equal(newValidMinRegs, (int)ev.Rules.MinRegistrations);
             Assert.Equal(newValidStandbyRegs, (int)ev.Rules.MaxStandbyRegistrations);
         }
+        [Fact]
+        public void Can_Create_Event_With_Address()
+        {
+            // Arrange
+            string validTitle = "Valid Event Title";
+            string validDescription = "Valid event description";
+            int validEventTypeId = 1;
+            DateTime validStartDate = new DateTime(3000, 2, 1);
+            DateTime validEndDate = new DateTime(3000, 2, 2);
+            DateTime validRegStart = new DateTime(3000, 1, 1);
+            DateTime validRegEnd = new DateTime(3000, 1, 2);
+            int validMaxRegs = 10;
+            string validStreet = "123 Anywhere St.";
+            string validSuite = "Room #123";
+            string validCity = "Yourtown";
+            string validState = "MD";
+            string validZip = "12345";
+
+            // Act
+            var e = new Event(
+                validTitle,
+                validDescription,
+                validEventTypeId,
+                validStartDate,
+                validEndDate,
+                validRegStart,
+                validRegEnd,
+                validMaxRegs,
+                validStreet,
+                validSuite,
+                validCity,
+                validState,
+                validZip
+                );
+
+            // Assert
+            Assert.Equal(validTitle, e.Title);
+            Assert.Equal(validDescription, e.Description);
+            Assert.Equal(validEventTypeId, e.EventTypeId);
+            Assert.Null(e.EventSeriesId);
+            Assert.Equal(validStreet, e.Address.Street);
+            Assert.Equal(validSuite, e.Address.Suite);
+            Assert.Equal(validCity, e.Address.City);
+            Assert.Equal(validState, e.Address.State);
+            Assert.Equal(validZip, e.Address.ZipCode);
+        }
+        [Theory]
+        [InlineData("Room 123")]
+        [InlineData("")]
+        public void Location_Returns_Correct_String(string value)
+        {
+            // Arrange
+            string validTitle = "Valid Event Title";
+            string validDescription = "Valid event description";
+            int validEventTypeId = 1;
+            DateTime validStartDate = new DateTime(3000, 2, 1);
+            DateTime validEndDate = new DateTime(3000, 2, 2);
+            DateTime validRegStart = new DateTime(3000, 1, 1);
+            DateTime validRegEnd = new DateTime(3000, 1, 2);
+            int validMaxRegs = 10;
+            string validStreet = "123 Anywhere St.";
+            string validSuite = value;
+            string validCity = "Yourtown";
+            string validState = "MD";
+            string validZip = "12345";
+            var e = new Event(
+                validTitle,
+                validDescription,
+                validEventTypeId,
+                validStartDate,
+                validEndDate,
+                validRegStart,
+                validRegEnd,
+                validMaxRegs,
+                validStreet,
+                validSuite,
+                validCity,
+                validState,
+                validZip
+                );
+            string expected = $"{validStreet} {validSuite} {validCity}, {validState} {validZip}";
+
+            // Act
+            string actual = e.Location;
+            // Assert
+            Assert.Equal(expected, actual);
+
+        }
+        [Fact]
+        public void Can_Update_Address_Street()
+        {
+            // Arrange
+            string validTitle = "Valid Event Title";
+            string validDescription = "Valid event description";
+            int validEventTypeId = 1;
+            DateTime validStartDate = new DateTime(3000, 2, 1);
+            DateTime validEndDate = new DateTime(3000, 2, 2);
+            DateTime validRegStart = new DateTime(3000, 1, 1);
+            DateTime validRegEnd = new DateTime(3000, 1, 2);
+            int validMaxRegs = 10;
+            string validStreet = "123 Anywhere St.";
+            string validSuite = "Room #123";
+            string validCity = "Yourtown";
+            string validState = "MD";
+            string validZip = "12345";
+            var e = new Event(
+                validTitle,
+                validDescription,
+                validEventTypeId,
+                validStartDate,
+                validEndDate,
+                validRegStart,
+                validRegEnd,
+                validMaxRegs,
+                validStreet,
+                validSuite,
+                validCity,
+                validState,
+                validZip
+                );
+            Assert.Equal(validStreet, e.Address.Street);
+            string newValidStreet = "999 New Street";
+            // Act
+            e.UpdateAddress(newValidStreet);
+
+            // Assert
+            Assert.Equal(newValidStreet, e.Address.Street);
+            Assert.Equal(validSuite, e.Address.Suite);
+            Assert.Equal(validCity, e.Address.City);
+            Assert.Equal(validState, e.Address.State);
+            Assert.Equal(validZip, e.Address.ZipCode);
+
+        }
+        [Fact]
+        public void Can_Update_Address_Suite()
+        {
+            // Arrange
+            string validTitle = "Valid Event Title";
+            string validDescription = "Valid event description";
+            int validEventTypeId = 1;
+            DateTime validStartDate = new DateTime(3000, 2, 1);
+            DateTime validEndDate = new DateTime(3000, 2, 2);
+            DateTime validRegStart = new DateTime(3000, 1, 1);
+            DateTime validRegEnd = new DateTime(3000, 1, 2);
+            int validMaxRegs = 10;
+            string validStreet = "123 Anywhere St.";
+            string validSuite = "Room #123";
+            string validCity = "Yourtown";
+            string validState = "MD";
+            string validZip = "12345";
+            var e = new Event(
+                validTitle,
+                validDescription,
+                validEventTypeId,
+                validStartDate,
+                validEndDate,
+                validRegStart,
+                validRegEnd,
+                validMaxRegs,
+                validStreet,
+                validSuite,
+                validCity,
+                validState,
+                validZip
+                );
+            Assert.Equal(validStreet, e.Address.Street);
+            string newValidSuite = "Conference room 2";
+
+            // Act
+            e.UpdateAddress("", newValidSuite);
+
+            // Assert
+            Assert.Equal(validStreet, e.Address.Street);
+            Assert.Equal(newValidSuite, e.Address.Suite);
+            Assert.Equal(validCity, e.Address.City);
+            Assert.Equal(validState, e.Address.State);
+            Assert.Equal(validZip, e.Address.ZipCode);
+        }
+        [Fact]
+        public void Can_Update_City()
+        {
+            // Arrange
+            string validTitle = "Valid Event Title";
+            string validDescription = "Valid event description";
+            int validEventTypeId = 1;
+            DateTime validStartDate = new DateTime(3000, 2, 1);
+            DateTime validEndDate = new DateTime(3000, 2, 2);
+            DateTime validRegStart = new DateTime(3000, 1, 1);
+            DateTime validRegEnd = new DateTime(3000, 1, 2);
+            int validMaxRegs = 10;
+            string validStreet = "123 Anywhere St.";
+            string validSuite = "Room #123";
+            string validCity = "Yourtown";
+            string validState = "MD";
+            string validZip = "12345";
+            var e = new Event(
+                validTitle,
+                validDescription,
+                validEventTypeId,
+                validStartDate,
+                validEndDate,
+                validRegStart,
+                validRegEnd,
+                validMaxRegs,
+                validStreet,
+                validSuite,
+                validCity,
+                validState,
+                validZip
+                );
+            Assert.Equal(validStreet, e.Address.Street);
+            string newValidCity = "New Jack City";
+
+            // Act
+            e.UpdateAddress("", "", newValidCity);
+
+            // Assert
+            Assert.Equal(validStreet, e.Address.Street);
+            Assert.Equal(validSuite, e.Address.Suite);
+            Assert.Equal(newValidCity, e.Address.City);
+            Assert.Equal(validState, e.Address.State);
+            Assert.Equal(validZip, e.Address.ZipCode);
+        }
+        [Fact]
+        public void Can_Update_State()
+        {
+            // Arrange
+            string validTitle = "Valid Event Title";
+            string validDescription = "Valid event description";
+            int validEventTypeId = 1;
+            DateTime validStartDate = new DateTime(3000, 2, 1);
+            DateTime validEndDate = new DateTime(3000, 2, 2);
+            DateTime validRegStart = new DateTime(3000, 1, 1);
+            DateTime validRegEnd = new DateTime(3000, 1, 2);
+            int validMaxRegs = 10;
+            string validStreet = "123 Anywhere St.";
+            string validSuite = "Room #123";
+            string validCity = "Yourtown";
+            string validState = "MD";
+            string validZip = "12345";
+            var e = new Event(
+                validTitle,
+                validDescription,
+                validEventTypeId,
+                validStartDate,
+                validEndDate,
+                validRegStart,
+                validRegEnd,
+                validMaxRegs,
+                validStreet,
+                validSuite,
+                validCity,
+                validState,
+                validZip
+                );
+            Assert.Equal(validStreet, e.Address.Street);
+            string newValidState = "AK";
+
+            // Act
+            e.UpdateAddress("", "", "", newValidState);
+
+            // Assert
+            Assert.Equal(validStreet, e.Address.Street);
+            Assert.Equal(validSuite, e.Address.Suite);
+            Assert.Equal(validCity, e.Address.City);
+            Assert.Equal(newValidState, e.Address.State);
+            Assert.Equal(validZip, e.Address.ZipCode);
+        }
+        [Fact]
+        public void Can_Update_Zip()
+        {
+            // Arrange
+            string validTitle = "Valid Event Title";
+            string validDescription = "Valid event description";
+            int validEventTypeId = 1;
+            DateTime validStartDate = new DateTime(3000, 2, 1);
+            DateTime validEndDate = new DateTime(3000, 2, 2);
+            DateTime validRegStart = new DateTime(3000, 1, 1);
+            DateTime validRegEnd = new DateTime(3000, 1, 2);
+            int validMaxRegs = 10;
+            string validStreet = "123 Anywhere St.";
+            string validSuite = "Room #123";
+            string validCity = "Yourtown";
+            string validState = "MD";
+            string validZip = "12345";
+            var e = new Event(
+                validTitle,
+                validDescription,
+                validEventTypeId,
+                validStartDate,
+                validEndDate,
+                validRegStart,
+                validRegEnd,
+                validMaxRegs,
+                validStreet,
+                validSuite,
+                validCity,
+                validState,
+                validZip
+                );
+            Assert.Equal(validStreet, e.Address.Street);
+            string newValidZip = "99999";
+
+            // Act
+            e.UpdateAddress("", "", "", "", newValidZip);
+
+            // Assert
+            Assert.Equal(validStreet, e.Address.Street);
+            Assert.Equal(validSuite, e.Address.Suite);
+            Assert.Equal(validCity, e.Address.City);
+            Assert.Equal(validState, e.Address.State);
+            Assert.Equal(newValidZip, e.Address.ZipCode);
+        }
     }
 }

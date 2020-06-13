@@ -61,10 +61,25 @@ namespace EventsCore.Application.Events.Commands.UpdateEvent
                 .GreaterThan(0)
                 .When(x => x.MaxStandbyCount.HasValue)
                 .WithMessage("Maximum standby count must be greater than zero to enable standby registrations for this event.");
-
             RuleFor(x => x.EventSeriesId)
                 .GreaterThan(0)
                 .When(x => x.EventSeriesId.HasValue);
+            RuleFor(x => x.Street)
+                .MaximumLength(50)
+                .When(x => !string.IsNullOrEmpty(x.Street));
+            RuleFor(x => x.Suite)
+                .MaximumLength(20)
+                .When(x => !string.IsNullOrEmpty(x.Suite));
+            RuleFor(x => x.City)
+                .MaximumLength(50)
+                .When(x => !string.IsNullOrEmpty(x.City));
+            RuleFor(x => x.State)
+                .MaximumLength(2)
+                .When(x => !string.IsNullOrEmpty(x.State));
+            RuleFor(x => x.Zip)
+                .Matches(@"^\d{5}(?:[-\s]\d{4})?$")
+                .When(x => !string.IsNullOrEmpty(x.Zip));
+
         }
 
     }

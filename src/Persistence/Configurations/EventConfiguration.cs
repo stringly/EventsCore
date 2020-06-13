@@ -29,6 +29,7 @@ namespace EventsCore.Persistence.Configurations
                 .HasColumnType("ntext");
             builder.HasOne(typeof(EventType), "EventType").WithMany();
             builder.OwnsOne(p => p.Dates);
+            builder.OwnsOne(a => a.Address);
             builder.HasOne(typeof(EventSeries), "EventSeries").WithMany();
             builder.OwnsOne(p => p.Rules);
             builder.HasOne(o => o.EventAttendance).WithOne()
