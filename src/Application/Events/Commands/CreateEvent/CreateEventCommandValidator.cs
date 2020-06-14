@@ -61,18 +61,36 @@ namespace EventsCore.Application.Events.Commands.CreateEvent
             RuleFor(x => x.Street)
                 .MaximumLength(50)
                 .When(x => !string.IsNullOrEmpty(x.Street));
+            RuleFor(x => x.Street)
+                .NotEmpty()
+                .When(x => !string.IsNullOrEmpty(x.Suite) || !string.IsNullOrEmpty(x.City) || !string.IsNullOrEmpty(x.State) || !string.IsNullOrEmpty(x.Zip))
+                .WithMessage("Street is required if adding an address for the event.");
             RuleFor(x => x.Suite)
                 .MaximumLength(20)
                 .When(x => !string.IsNullOrEmpty(x.Suite));
             RuleFor(x => x.City)
                 .MaximumLength(50)
                 .When(x => !string.IsNullOrEmpty(x.City));
+            RuleFor(x => x.City)
+                .NotEmpty()
+                .When(x => !string.IsNullOrEmpty(x.Street) || !string.IsNullOrEmpty(x.Suite) || !string.IsNullOrEmpty(x.State) || !string.IsNullOrEmpty(x.Zip))
+                .WithMessage("City is required if adding an address for the event.");
             RuleFor(x => x.State)
                 .MaximumLength(2)
-                .When(x => !string.IsNullOrEmpty(x.State));
+                .MinimumLength(2)
+                .When(x => !string.IsNullOrEmpty(x.State))
+                .WithMessage("A valid, 2-character state postal code is required.");
+            RuleFor(x => x.State)
+                .NotEmpty()
+                .When(x => !string.IsNullOrEmpty(x.Street) || !string.IsNullOrEmpty(x.Suite) || !string.IsNullOrEmpty(x.City) || !string.IsNullOrEmpty(x.Zip))
+                .WithMessage("State is required if adding an address for the event.");
             RuleFor(x => x.Zip)
                 .Matches(@"^\d{5}(?:[-\s]\d{4})?$")
                 .When(x => !string.IsNullOrEmpty(x.Zip));
+            RuleFor(x => x.Zip)
+                .NotEmpty()
+                .When(x => !string.IsNullOrEmpty(x.Street) || !string.IsNullOrEmpty(x.Suite) || !string.IsNullOrEmpty(x.City) || !string.IsNullOrEmpty(x.State))
+                .WithMessage("Zip is required if adding an address for the event.");
         }
     }
 }
