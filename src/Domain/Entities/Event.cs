@@ -341,10 +341,8 @@ namespace EventsCore.Domain.Entities
             {
                 AddEventToSeries((int)eventSeriesId);
             }
-            if(!String.IsNullOrEmpty(street) && !String.IsNullOrEmpty(city) && !String.IsNullOrEmpty(state) && !String.IsNullOrEmpty(zip))
-            {
-                UpdateAddress(street, suite, city, state, zip);
-            }
+            UpdateAddress(street, suite, city, state, zip);
+
             
         }
         /// <summary>

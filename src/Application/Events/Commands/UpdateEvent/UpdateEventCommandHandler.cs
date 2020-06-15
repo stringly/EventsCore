@@ -99,17 +99,15 @@ namespace EventsCore.Application.Events.Commands.UpdateEvent
                 // TODO: Add check for Current Registrations when changing the attendees count
                 throw new ValidationException(new List<ValidationFailure>() { new ValidationFailure(nameof(Event.Rules), ex.Message) });
             }
-            if(!string.IsNullOrEmpty(request.Street) && !string.IsNullOrEmpty(request.City) && !string.IsNullOrEmpty(request.State) && !string.IsNullOrEmpty(request.Zip))
+            try
             {
-                try
-                {
-                    entity.UpdateAddress(request.Street, request.Suite, request.City, request.State, request.Zip);
-                }
-                catch(EventArgumentException ex)
-                {
-                    throw new ValidationException(new List<ValidationFailure>() { new ValidationFailure(nameof(Event), ex.Message) });
-                }
+                entity.UpdateAddress(request.Street, request.Suite, request.City, request.State, request.Zip);
             }
+            catch(EventArgumentException ex)
+            {
+                throw new ValidationException(new List<ValidationFailure>() { new ValidationFailure(nameof(Event), ex.Message) });
+            }
+            
             try
             {
                 entity.UpdateTitle(request.Title);

@@ -952,5 +952,153 @@ namespace EventsCore.Domain.UnitTests.Entities
             Assert.Equal(validState, e.Address.State);
             Assert.Equal(newValidZip, e.Address.ZipCode);
         }
+        [Theory]
+        [InlineData("")]
+        [InlineData("           ")]
+        public void Given_Empty_StreetAddress_Should_Throw_EventArgumentException(string value)
+        {
+            // Arrange
+            string validTitle = "Valid Event Title";
+            string validDescription = "Valid event description";
+            int validEventTypeId = 1;
+            DateTime validStartDate = new DateTime(3000, 2, 1);
+            DateTime validEndDate = new DateTime(3000, 2, 2);
+            DateTime validRegStart = new DateTime(3000, 1, 1);
+            DateTime validRegEnd = new DateTime(3000, 1, 2);
+            int validMaxRegs = 10;
+            string inValidStreet = value;
+            string validSuite = "Room #123";
+            string validCity = "Yourtown";
+            string validState = "MD";
+            string validZip = "12345";
+
+            // Act/Assert
+            Assert.Throws<EventArgumentException>(() => new Event(
+                validTitle,
+                validDescription,
+                validEventTypeId,
+                validStartDate,
+                validEndDate,
+                validRegStart,
+                validRegEnd,
+                validMaxRegs,
+                inValidStreet,
+                validSuite,
+                validCity,
+                validState,
+                validZip
+                ));
+        }
+        [Theory]
+        [InlineData("")]
+        [InlineData("           ")]
+        public void Given_Empty_City_Should_Throw_EventArgumentException(string value)
+        {
+            // Arrange
+            string validTitle = "Valid Event Title";
+            string validDescription = "Valid event description";
+            int validEventTypeId = 1;
+            DateTime validStartDate = new DateTime(3000, 2, 1);
+            DateTime validEndDate = new DateTime(3000, 2, 2);
+            DateTime validRegStart = new DateTime(3000, 1, 1);
+            DateTime validRegEnd = new DateTime(3000, 1, 2);
+            int validMaxRegs = 10;
+            string validStreet = "123 Anywhere St.";
+            string validSuite = "Room #123";
+            string inValidCity = value;
+            string validState = "MD";
+            string validZip = "12345";
+
+            // Act/Assert
+            Assert.Throws<EventArgumentException>(() => new Event(
+                validTitle,
+                validDescription,
+                validEventTypeId,
+                validStartDate,
+                validEndDate,
+                validRegStart,
+                validRegEnd,
+                validMaxRegs,
+                validStreet,
+                validSuite,
+                inValidCity,
+                validState,
+                validZip
+                ));
+        }
+        [Theory]
+        [InlineData("")]
+        [InlineData("           ")]
+        public void Given_Empty_State_Should_Throw_EventArgumentException(string value)
+        {
+            // Arrange
+            string validTitle = "Valid Event Title";
+            string validDescription = "Valid event description";
+            int validEventTypeId = 1;
+            DateTime validStartDate = new DateTime(3000, 2, 1);
+            DateTime validEndDate = new DateTime(3000, 2, 2);
+            DateTime validRegStart = new DateTime(3000, 1, 1);
+            DateTime validRegEnd = new DateTime(3000, 1, 2);
+            int validMaxRegs = 10;
+            string validStreet = "123 Anywhere St.";
+            string validSuite = "Room #123";
+            string validCity = "Yourtown";
+            string inValidState = value;
+            string validZip = "12345";
+
+            // Act/Assert
+            Assert.Throws<EventArgumentException>(() => new Event(
+                validTitle,
+                validDescription,
+                validEventTypeId,
+                validStartDate,
+                validEndDate,
+                validRegStart,
+                validRegEnd,
+                validMaxRegs,
+                validStreet,
+                validSuite,
+                validCity,
+                inValidState,
+                validZip
+                ));
+        }
+        [Theory]
+        [InlineData("")]
+        [InlineData("           ")]
+        public void Given_Empty_Zip_Should_Throw_EventArgumentException(string value)
+        {
+            // Arrange
+            string validTitle = "Valid Event Title";
+            string validDescription = "Valid event description";
+            int validEventTypeId = 1;
+            DateTime validStartDate = new DateTime(3000, 2, 1);
+            DateTime validEndDate = new DateTime(3000, 2, 2);
+            DateTime validRegStart = new DateTime(3000, 1, 1);
+            DateTime validRegEnd = new DateTime(3000, 1, 2);
+            int validMaxRegs = 10;
+            string validStreet = "123 Anywhere St.";
+            string validSuite = "Room #123";
+            string validCity = "Yourtown";
+            string validState = "MD";
+            string inValidZip = value;
+
+            // Act/Assert
+            Assert.Throws<EventArgumentException>(() => new Event(
+                validTitle,
+                validDescription,
+                validEventTypeId,
+                validStartDate,
+                validEndDate,
+                validRegStart,
+                validRegEnd,
+                validMaxRegs,
+                validStreet,
+                validSuite,
+                validCity,
+                validState,
+                inValidZip
+                ));
+        }
     }
 }
