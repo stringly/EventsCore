@@ -37,7 +37,7 @@ namespace EventsCore.Application.UnitTests.Common
                 new User("user123", 1, "Bob", "Jones", "1234", "bobjones@mail.com", "1234567890", 1),
                 new User("user234", 2, "Steve", "Smith", "2222", "bobjones@mail.com", "1112223333", 2)
             });
-            context.Events.Add(
+            context.Events.AddRange(
                 new Event(
                     "Test Event 1", 
                     "The first test event",
@@ -47,7 +47,25 @@ namespace EventsCore.Application.UnitTests.Common
                     new DateTime(3000, 2, 2),
                     new DateTime(3000, 1, 1),
                     new DateTime(3000, 1, 2),                        
-                    10)
+                    10),
+                new Event(
+                    "Test Event 2",
+                    "The second test event",
+                    2,
+                    new DateTime(3000, 4, 1),
+                    new DateTime(3000, 4, 2),
+                    new DateTime(3000, 3, 1),
+                    new DateTime(3000, 3, 2),
+                    10),
+                new Event(
+                    "Searchable Event 3",
+                    "The third test event",
+                    2,
+                    new DateTime(3000, 5, 1),
+                    new DateTime(3000, 5, 2),
+                    new DateTime(3000, 4, 1),
+                    new DateTime(3000, 4, 2),
+                    20)
                 );
             context.SaveChanges();
             return context;

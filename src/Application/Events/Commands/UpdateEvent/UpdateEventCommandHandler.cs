@@ -81,7 +81,8 @@ namespace EventsCore.Application.Events.Commands.UpdateEvent
             }
             try
             {
-                entity.UpdateEventDates(request.StartDate, request.EndDate, request.RegStartDate, request.RegEndDate);                
+                entity.UpdateEventDates(request.StartDate, request.EndDate, request.RegStartDate, request.RegEndDate);
+                // TODO: Update Event: Notification to attendees/registrants if Start/End Date has changed?
             }
             catch (Exception ex)
             {
