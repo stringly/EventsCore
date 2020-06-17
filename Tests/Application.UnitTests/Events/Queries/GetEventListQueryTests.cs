@@ -3,10 +3,7 @@ using EventsCore.Application.Events.Queries.GetEventsList;
 using EventsCore.Application.UnitTests.Common;
 using EventsCore.Persistence;
 using Shouldly;
-using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using Xunit;
@@ -35,7 +32,7 @@ namespace EventsCore.Application.UnitTests.Events.Queries
 
             // Assert
             result.ShouldBeOfType<EventListVm>();
-            result.Events.Count.ShouldBe(2);
+            result.Events.Count.ShouldBe(3);
 
         }
         [Fact]

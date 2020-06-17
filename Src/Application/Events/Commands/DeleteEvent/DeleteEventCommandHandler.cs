@@ -37,8 +37,8 @@ namespace EventsCore.Application.Events.Commands.DeleteEvent
             {
                 throw new NotFoundException(nameof(Event), request.Id);
             }
-            var hasRegistrations = _context.EventRegistrations.Any(x => x.Id == entity.Id);
-            if (hasRegistrations)
+            
+            if (entity.Registrations.Any())
             {
                 // TODO: Notify Registrants that event has been cancelled.
             }

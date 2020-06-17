@@ -31,7 +31,7 @@ namespace EventsCore.Application.UnitTests.EventTypes.Queries
 
             // Assert
             result.ShouldBeOfType<EventTypeListVm>();
-            result.EventTypes.Count.ShouldBe(2);
+            result.EventTypes.Count.ShouldBe(3);
 
         }
     }

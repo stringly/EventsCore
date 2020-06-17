@@ -1,6 +1,7 @@
 ﻿using EventsCore.Domain.Common;
 using EventsCore.Domain.Exceptions.Module;
 using System;
+using System.Collections.Generic;
 
 namespace EventsCore.Domain.Entities
 {
@@ -41,5 +42,10 @@ namespace EventsCore.Domain.Entities
         /// The description of the module
         /// </summary>
         public string Description => _description;
+        private List<Attendance> _attendance;
+        /// <summary>
+        /// A list of <see cref="Attendance"></see> records associated with the Module.
+        /// </summary>
+        public IEnumerable<Attendance> Attendance => _attendance.AsReadOnly();
     }
 }

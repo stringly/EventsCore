@@ -1,5 +1,4 @@
 ﻿using EventsCore.Domain.Entities;
-using EventsCore.Domain.ValueObjects;
 using EventsCore.Persistence;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -18,7 +17,8 @@ namespace EventsCore.Application.UnitTests.Common
             context.EventTypes.AddRange(new[]
             {
                 new EventType("Training"),
-                new EventType("Overtime")                
+                new EventType("Overtime"),
+                new EventType("Meeting")
             });
             context.EventSeries.AddRange(new[]
             {
@@ -61,12 +61,14 @@ namespace EventsCore.Application.UnitTests.Common
                     "Searchable Event 3",
                     "The third test event",
                     2,
-                    new DateTime(3000, 5, 1),
-                    new DateTime(3000, 5, 2),
-                    new DateTime(3000, 4, 1),
-                    new DateTime(3000, 4, 2),
+                    new DateTime(2020, 2, 1),
+                    new DateTime(2020, 2, 2),
+                    new DateTime(2020, 1, 1),
+                    new DateTime(2020, 1, 30),
                     20)
                 );
+            var entity = context.Events.Find(3);
+            entity.RegisterUser(1, "Bob Jones #1234", "bobjones@mail.com", "1234567890", new DateTimeTestProvider());
             context.SaveChanges();
             return context;
         }

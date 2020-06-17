@@ -22,6 +22,8 @@ namespace EventsCore.Persistence.Configurations
                 .HasField("_description");
             builder.Property(x => x.ModuleName)
                 .HasField("_moduleName");
+            var navigation1 = builder.Metadata.FindNavigation(nameof(Module.Attendance));
+            navigation1.SetPropertyAccessMode(PropertyAccessMode.Field);
         }        
     }
 }

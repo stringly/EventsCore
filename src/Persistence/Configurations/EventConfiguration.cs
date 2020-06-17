@@ -1,7 +1,4 @@
 ﻿using EventsCore.Domain.Entities;
-using EventsCore.Domain.Entities.EventAttendanceAggregate;
-using EventsCore.Domain.Entities.EventModulesAggregate;
-using EventsCore.Domain.Entities.EventRegistrationsAggregate;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
@@ -19,6 +16,7 @@ namespace EventsCore.Persistence.Configurations
         public void Configure(EntityTypeBuilder<Event> builder)
         {
             //builder.Property(e => e.Id).HasColumnName("EventID");
+            builder.ToTable("Events");
             builder.Property(e => e.Title)
                 .HasField("_title")
                 .IsRequired()
@@ -32,12 +30,15 @@ namespace EventsCore.Persistence.Configurations
             builder.OwnsOne(a => a.Address);
             builder.HasOne(typeof(EventSeries), "EventSeries").WithMany();
             builder.OwnsOne(p => p.Rules);
-            builder.HasOne(o => o.EventAttendance).WithOne()
-                .HasForeignKey<EventAttendance>(o => o.Id);
-            builder.HasOne(o => o.Registrations).WithOne()
-                .HasForeignKey<EventRegistrations>(o => o.Id);
-            builder.HasOne(o => o.Modules).WithOne()
-                .HasForeignKey<EventModules>(o => o.Id);
+            builder.HasMany<Registration>().WithOne().HasForeignKey("EventId");
+            builder.HasMany<Attendance>().WithOne().HasForeignKey("EventId");
+            builder.HasMany<Module>().WithOne().HasForeignKey("EventId");
+            var navigation1 = builder.Metadata.FindNavigation(nameof(Event.Attendance));
+            navigation1.SetPropertyAccessMode(PropertyAccessMode.Field);
+            var navigation2 = builder.Metadata.FindNavigation(nameof(Event.Registrations));
+            navigation2.SetPropertyAccessMode(PropertyAccessMode.Field);
+            var navigation3 = builder.Metadata.FindNavigation(nameof(Event.Modules));
+            navigation3.SetPropertyAccessMode(PropertyAccessMode.Field);
         }
     }
 }

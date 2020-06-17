@@ -31,7 +31,7 @@ namespace EventsCore.Application.UnitTests.EventTypes.Commands
         {
             // Arrange
 
-            var validId = 2;
+            var validId = 3;
             var command = new DeleteEventTypeCommand { Id = validId };
 
             // Act

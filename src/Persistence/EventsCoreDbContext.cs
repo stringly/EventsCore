@@ -1,9 +1,6 @@
 ﻿using EventsCore.Application.Common.Interfaces;
 using EventsCore.Domain.Common;
 using EventsCore.Domain.Entities;
-using EventsCore.Domain.Entities.EventAttendanceAggregate;
-using EventsCore.Domain.Entities.EventModulesAggregate;
-using EventsCore.Domain.Entities.EventRegistrationsAggregate;
 using Microsoft.EntityFrameworkCore;
 using System.Threading;
 using System.Threading.Tasks;
@@ -34,18 +31,6 @@ namespace EventsCore.Persistence
         {
             _dateTime = dateTime;
         }
-        /// <summary>
-        /// A <see cref="DbSet{TEntity}"></see> of <see cref="Domain.Entities.EventAttendanceAggregate.EventAttendance"></see>
-        /// </summary>
-        public DbSet<EventAttendance> EventAttendance { get; set; }
-        /// <summary>
-        /// A <see cref="DbSet{TEntity}"></see> of <see cref="Domain.Entities.EventModulesAggregate.EventModules"></see>
-        /// </summary>
-        public DbSet<EventModules> EventModules { get; set; }
-        /// <summary>
-        /// A <see cref="DbSet{TEntity}"></see> of <see cref="Domain.Entities.EventRegistrationsAggregate.EventRegistrations"></see>
-        /// </summary>
-        public DbSet<EventRegistrations> EventRegistrations { get; set; }
         /// <summary>
         /// A <see cref="DbSet{TEntity}"></see> of <see cref="Event"></see>
         /// </summary>

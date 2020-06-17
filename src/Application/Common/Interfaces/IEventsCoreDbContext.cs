@@ -1,7 +1,4 @@
 ﻿using EventsCore.Domain.Entities;
-using EventsCore.Domain.Entities.EventAttendanceAggregate;
-using EventsCore.Domain.Entities.EventModulesAggregate;
-using EventsCore.Domain.Entities.EventRegistrationsAggregate;
 using Microsoft.EntityFrameworkCore;
 using System.Threading;
 using System.Threading.Tasks;
@@ -13,18 +10,6 @@ namespace EventsCore.Application.Common.Interfaces
     /// </summary>
     public interface IEventsCoreDbContext
     {
-        /// <summary>
-        /// A <see cref="DbSet{EventAttendance}"></see>
-        /// </summary>
-        DbSet<EventAttendance> EventAttendance { get; set; }
-        /// <summary>
-        /// A <see cref="DbSet{EventModules}"></see>
-        /// </summary>
-        DbSet<EventModules> EventModules { get; set; }
-        /// <summary>
-        /// A <see cref="DbSet{EventRegistrations}"></see>
-        /// </summary>
-        DbSet<EventRegistrations> EventRegistrations { get; set; }
         /// <summary>
         /// A <see cref="DbSet{Events}"></see>
         /// </summary>
