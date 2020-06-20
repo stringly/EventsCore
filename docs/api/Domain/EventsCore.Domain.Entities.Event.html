@@ -123,19 +123,19 @@
   </h3>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/stringly/EventsCore/new/master/apiSpec/new?filename=EventsCore_Domain_Entities_Event__ctor_System_String_System_String_EventsCore_Domain_ValueObjects_EventDates_EventsCore_Domain_ValueObjects_EventRegistrationRules_System_Int32_System_Int32_.md&amp;value=---%0Auid%3A%20EventsCore.Domain.Entities.Event.%23ctor(System.String%2CSystem.String%2CEventsCore.Domain.ValueObjects.EventDates%2CEventsCore.Domain.ValueObjects.EventRegistrationRules%2CSystem.Int32%2CSystem.Int32)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/stringly/EventsCore/new/master/apiSpec/new?filename=EventsCore_Domain_Entities_Event__ctor_System_String_System_String_System_Int32_System_DateTime_System_DateTime_System_DateTime_System_DateTime_System_Int32_.md&amp;value=---%0Auid%3A%20EventsCore.Domain.Entities.Event.%23ctor(System.String%2CSystem.String%2CSystem.Int32%2CSystem.DateTime%2CSystem.DateTime%2CSystem.DateTime%2CSystem.DateTime%2CSystem.Int32)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/stringly/EventsCore/blob/master/src/Domain/Entities/Event.cs/#L26">View Source</a>
+    <a href="https://github.com/stringly/EventsCore/blob/master/src/Domain/Entities/Event.cs/#L34">View Source</a>
   </span>
   <a id="EventsCore_Domain_Entities_Event__ctor_" data-uid="EventsCore.Domain.Entities.Event.#ctor*"></a>
-  <h4 id="EventsCore_Domain_Entities_Event__ctor_System_String_System_String_EventsCore_Domain_ValueObjects_EventDates_EventsCore_Domain_ValueObjects_EventRegistrationRules_System_Int32_System_Int32_" data-uid="EventsCore.Domain.Entities.Event.#ctor(System.String,System.String,EventsCore.Domain.ValueObjects.EventDates,EventsCore.Domain.ValueObjects.EventRegistrationRules,System.Int32,System.Int32)">Event(String, String, EventDates, EventRegistrationRules, Int32, Int32)</h4>
-  <div class="markdown level1 summary"><p>Creates a new Event object</p>
+  <h4 id="EventsCore_Domain_Entities_Event__ctor_System_String_System_String_System_Int32_System_DateTime_System_DateTime_System_DateTime_System_DateTime_System_Int32_" data-uid="EventsCore.Domain.Entities.Event.#ctor(System.String,System.String,System.Int32,System.DateTime,System.DateTime,System.DateTime,System.DateTime,System.Int32)">Event(String, String, Int32, DateTime, DateTime, DateTime, DateTime, Int32)</h4>
+  <div class="markdown level1 summary"><p>Minimum constructor to create a valid instance of an Event</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public Event(string title, string description, EventDates dates, EventRegistrationRules rules, int eventTypeId, int eventSeriesId = 0)</code></pre>
+    <pre><code class="lang-csharp hljs">public Event(string title, string description, int eventTypeId, DateTime startDate, DateTime endDate, DateTime regStartDate, DateTime regEndDate, int maxRegs)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -160,15 +160,585 @@
 </td>
       </tr>
       <tr>
-        <td><a class="xref" href="EventsCore.Domain.ValueObjects.EventDates.html">EventDates</a></td>
-        <td><span class="parametername">dates</span></td>
-        <td><p>An <a class="xref" href="EventsCore.Domain.ValueObjects.EventDates.html">EventDates</a> ValueObject containing the Event&apos;s Date information.</p>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">eventTypeId</span></td>
+        <td><p>An integer representing the <a class="xref" href="EventsCore.Domain.Entities.Event.html#EventsCore_Domain_Entities_Event_EventType">EventType</a> Id of the event.</p>
 </td>
       </tr>
       <tr>
-        <td><a class="xref" href="EventsCore.Domain.ValueObjects.EventRegistrationRules.html">EventRegistrationRules</a></td>
-        <td><span class="parametername">rules</span></td>
-        <td><p>A <a class="xref" href="EventsCore.Domain.ValueObjects.EventRegistrationRules.html">EventRegistrationRules</a> ValueObject containing the Registration rules for the event.</p>
+        <td><span class="xref">System.DateTime</span></td>
+        <td><span class="parametername">startDate</span></td>
+        <td><p>A DateTime containing the Event&apos;s Start Date. Must be before endDate</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.DateTime</span></td>
+        <td><span class="parametername">endDate</span></td>
+        <td><p>A DateTime containing the Event&apos;s End Date. Must be after startDate</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.DateTime</span></td>
+        <td><span class="parametername">regStartDate</span></td>
+        <td><p>A DateTime containing the Event&apos;s Registration period Start Date. Must be before Event Start Date and Registration Period End Date</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.DateTime</span></td>
+        <td><span class="parametername">regEndDate</span></td>
+        <td><p>A DateTime containing the Event&apos;s Registration period End Date. Must be after Registration Period Start Date and before Event Start Date.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">maxRegs</span></td>
+        <td><p>An integer with the maximum number of attendees for the event.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/stringly/EventsCore/new/master/apiSpec/new?filename=EventsCore_Domain_Entities_Event__ctor_System_String_System_String_System_Int32_System_DateTime_System_DateTime_System_DateTime_System_DateTime_System_Int32_System_Int32_.md&amp;value=---%0Auid%3A%20EventsCore.Domain.Entities.Event.%23ctor(System.String%2CSystem.String%2CSystem.Int32%2CSystem.DateTime%2CSystem.DateTime%2CSystem.DateTime%2CSystem.DateTime%2CSystem.Int32%2CSystem.Int32)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/stringly/EventsCore/blob/master/src/Domain/Entities/Event.cs/#L93">View Source</a>
+  </span>
+  <a id="EventsCore_Domain_Entities_Event__ctor_" data-uid="EventsCore.Domain.Entities.Event.#ctor*"></a>
+  <h4 id="EventsCore_Domain_Entities_Event__ctor_System_String_System_String_System_Int32_System_DateTime_System_DateTime_System_DateTime_System_DateTime_System_Int32_System_Int32_" data-uid="EventsCore.Domain.Entities.Event.#ctor(System.String,System.String,System.Int32,System.DateTime,System.DateTime,System.DateTime,System.DateTime,System.Int32,System.Int32)">Event(String, String, Int32, DateTime, DateTime, DateTime, DateTime, Int32, Int32)</h4>
+  <div class="markdown level1 summary"><p>Overload of Constructor that allows setting of Max and min registration counts.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Event(string title, string description, int eventTypeId, DateTime startDate, DateTime endDate, DateTime regStartDate, DateTime regEndDate, int maxRegs, int minRegs)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">title</span></td>
+        <td><p>A string containing the Event&apos;s Title. Must not be null or only whitespace.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">description</span></td>
+        <td><p>A string containing the Event&apos;s Description. Must not be null or only whitespace.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">eventTypeId</span></td>
+        <td><p>An integer representing the <a class="xref" href="EventsCore.Domain.Entities.Event.html#EventsCore_Domain_Entities_Event_EventType">EventType</a> Id of the event.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.DateTime</span></td>
+        <td><span class="parametername">startDate</span></td>
+        <td><p>A DateTime containing the Event&apos;s Start Date. Must be before endDate</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.DateTime</span></td>
+        <td><span class="parametername">endDate</span></td>
+        <td><p>A DateTime containing the Event&apos;s End Date. Must be after startDate</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.DateTime</span></td>
+        <td><span class="parametername">regStartDate</span></td>
+        <td><p>A DateTime containing the Event&apos;s Registration period Start Date. Must be before Event Start Date and Registration Period End Date</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.DateTime</span></td>
+        <td><span class="parametername">regEndDate</span></td>
+        <td><p>A DateTime containing the Event&apos;s Registration period End Date. Must be after Registration Period Start Date and before Event Start Date.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">maxRegs</span></td>
+        <td><p>An integer with the maximum number of attendees for the event.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">minRegs</span></td>
+        <td><p>An integer with the minimum number of attendees for the event. Must be less than or equal to maxRegs.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/stringly/EventsCore/new/master/apiSpec/new?filename=EventsCore_Domain_Entities_Event__ctor_System_String_System_String_System_Int32_System_DateTime_System_DateTime_System_DateTime_System_DateTime_System_Int32_System_Int32_System_Int32_.md&amp;value=---%0Auid%3A%20EventsCore.Domain.Entities.Event.%23ctor(System.String%2CSystem.String%2CSystem.Int32%2CSystem.DateTime%2CSystem.DateTime%2CSystem.DateTime%2CSystem.DateTime%2CSystem.Int32%2CSystem.Int32%2CSystem.Int32)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/stringly/EventsCore/blob/master/src/Domain/Entities/Event.cs/#L156">View Source</a>
+  </span>
+  <a id="EventsCore_Domain_Entities_Event__ctor_" data-uid="EventsCore.Domain.Entities.Event.#ctor*"></a>
+  <h4 id="EventsCore_Domain_Entities_Event__ctor_System_String_System_String_System_Int32_System_DateTime_System_DateTime_System_DateTime_System_DateTime_System_Int32_System_Int32_System_Int32_" data-uid="EventsCore.Domain.Entities.Event.#ctor(System.String,System.String,System.Int32,System.DateTime,System.DateTime,System.DateTime,System.DateTime,System.Int32,System.Int32,System.Int32)">Event(String, String, Int32, DateTime, DateTime, DateTime, DateTime, Int32, Int32, Int32)</h4>
+  <div class="markdown level1 summary"><p>Overload of Constructor that allows setting of Max/Min registrations and max standby registrations.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Event(string title, string description, int eventTypeId, DateTime startDate, DateTime endDate, DateTime regStartDate, DateTime regEndDate, int maxRegs, int minRegs, int maxStandbyRegs)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">title</span></td>
+        <td><p>A string containing the Event&apos;s Title. Must not be null or only whitespace.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">description</span></td>
+        <td><p>A string containing the Event&apos;s Description. Must not be null or only whitespace.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">eventTypeId</span></td>
+        <td><p>An integer representing the <a class="xref" href="EventsCore.Domain.Entities.Event.html#EventsCore_Domain_Entities_Event_EventType">EventType</a> Id of the event.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.DateTime</span></td>
+        <td><span class="parametername">startDate</span></td>
+        <td><p>A DateTime containing the Event&apos;s Start Date. Must be before endDate</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.DateTime</span></td>
+        <td><span class="parametername">endDate</span></td>
+        <td><p>A DateTime containing the Event&apos;s End Date. Must be after startDate</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.DateTime</span></td>
+        <td><span class="parametername">regStartDate</span></td>
+        <td><p>A DateTime containing the Event&apos;s Registration period Start Date. Must be before Event Start Date and Registration Period End Date</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.DateTime</span></td>
+        <td><span class="parametername">regEndDate</span></td>
+        <td><p>A DateTime containing the Event&apos;s Registration period End Date. Must be after Registration Period Start Date and before Event Start Date.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">maxRegs</span></td>
+        <td><p>An integer with the maximum number of attendees for the event.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">minRegs</span></td>
+        <td><p>An integer with the minimum number of attendees for the event. Must be less than or equal to maxRegs.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">maxStandbyRegs</span></td>
+        <td><p>An integer with the maximum number of standby registrations for the event. Must be less than or equal to maxRegs.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/stringly/EventsCore/new/master/apiSpec/new?filename=EventsCore_Domain_Entities_Event__ctor_System_String_System_String_System_Int32_System_DateTime_System_DateTime_System_DateTime_System_DateTime_System_Int32_System_Int32_System_Int32_System_String_System_String_System_String_System_String_System_String_.md&amp;value=---%0Auid%3A%20EventsCore.Domain.Entities.Event.%23ctor(System.String%2CSystem.String%2CSystem.Int32%2CSystem.DateTime%2CSystem.DateTime%2CSystem.DateTime%2CSystem.DateTime%2CSystem.Int32%2CSystem.Int32%2CSystem.Int32%2CSystem.String%2CSystem.String%2CSystem.String%2CSystem.String%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/stringly/EventsCore/blob/master/src/Domain/Entities/Event.cs/#L190">View Source</a>
+  </span>
+  <a id="EventsCore_Domain_Entities_Event__ctor_" data-uid="EventsCore.Domain.Entities.Event.#ctor*"></a>
+  <h4 id="EventsCore_Domain_Entities_Event__ctor_System_String_System_String_System_Int32_System_DateTime_System_DateTime_System_DateTime_System_DateTime_System_Int32_System_Int32_System_Int32_System_String_System_String_System_String_System_String_System_String_" data-uid="EventsCore.Domain.Entities.Event.#ctor(System.String,System.String,System.Int32,System.DateTime,System.DateTime,System.DateTime,System.DateTime,System.Int32,System.Int32,System.Int32,System.String,System.String,System.String,System.String,System.String)">Event(String, String, Int32, DateTime, DateTime, DateTime, DateTime, Int32, Int32, Int32, String, String, String, String, String)</h4>
+  <div class="markdown level1 summary"><p>Overload of Constructor that allows setting of Max/Min registrations and max standby registrations and physical address.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Event(string title, string description, int eventTypeId, DateTime startDate, DateTime endDate, DateTime regStartDate, DateTime regEndDate, int maxRegs, int minRegs, int maxStandbyRegs, string street, string suite, string city, string state, string zip)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">title</span></td>
+        <td><p>A string containing the Event&apos;s Title. Must not be null or only whitespace.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">description</span></td>
+        <td><p>A string containing the Event&apos;s Description. Must not be null or only whitespace.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">eventTypeId</span></td>
+        <td><p>An integer representing the <a class="xref" href="EventsCore.Domain.Entities.Event.html#EventsCore_Domain_Entities_Event_EventType">EventType</a> Id of the event.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.DateTime</span></td>
+        <td><span class="parametername">startDate</span></td>
+        <td><p>A DateTime containing the Event&apos;s Start Date. Must be before endDate</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.DateTime</span></td>
+        <td><span class="parametername">endDate</span></td>
+        <td><p>A DateTime containing the Event&apos;s End Date. Must be after startDate</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.DateTime</span></td>
+        <td><span class="parametername">regStartDate</span></td>
+        <td><p>A DateTime containing the Event&apos;s Registration period Start Date. Must be before Event Start Date and Registration Period End Date</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.DateTime</span></td>
+        <td><span class="parametername">regEndDate</span></td>
+        <td><p>A DateTime containing the Event&apos;s Registration period End Date. Must be after Registration Period Start Date and before Event Start Date.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">maxRegs</span></td>
+        <td><p>An integer with the maximum number of attendees for the event.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">minRegs</span></td>
+        <td><p>An integer with the minimum number of attendees for the event. Must be less than or equal to maxRegs.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">maxStandbyRegs</span></td>
+        <td><p>An integer with the maximum number of standby registrations for the event. Must be less than or equal to maxRegs.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">street</span></td>
+        <td><p>The street address, e.g. &quot;123 Anywhere St.&quot; Required, cannot be null/whitespace/empty string.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">suite</span></td>
+        <td><p>The suite/apartment/room number. This is an optional field.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">city</span></td>
+        <td><p>The name of the city in which the address is located. Required, cannot be null/whitespace/empty string.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">state</span></td>
+        <td><p>The 2-digit Postal Abbreviation for the state in which the address is located. Required, cannot be null/whitespace/empty string.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">zip</span></td>
+        <td><p>The 5-digit ZIP code for the address. Required, cannot be null/whitespace/empty string.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/stringly/EventsCore/new/master/apiSpec/new?filename=EventsCore_Domain_Entities_Event__ctor_System_String_System_String_System_Int32_System_DateTime_System_DateTime_System_DateTime_System_DateTime_System_Int32_System_Int32_System_String_System_String_System_String_System_String_System_String_.md&amp;value=---%0Auid%3A%20EventsCore.Domain.Entities.Event.%23ctor(System.String%2CSystem.String%2CSystem.Int32%2CSystem.DateTime%2CSystem.DateTime%2CSystem.DateTime%2CSystem.DateTime%2CSystem.Int32%2CSystem.Int32%2CSystem.String%2CSystem.String%2CSystem.String%2CSystem.String%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/stringly/EventsCore/blob/master/src/Domain/Entities/Event.cs/#L124">View Source</a>
+  </span>
+  <a id="EventsCore_Domain_Entities_Event__ctor_" data-uid="EventsCore.Domain.Entities.Event.#ctor*"></a>
+  <h4 id="EventsCore_Domain_Entities_Event__ctor_System_String_System_String_System_Int32_System_DateTime_System_DateTime_System_DateTime_System_DateTime_System_Int32_System_Int32_System_String_System_String_System_String_System_String_System_String_" data-uid="EventsCore.Domain.Entities.Event.#ctor(System.String,System.String,System.Int32,System.DateTime,System.DateTime,System.DateTime,System.DateTime,System.Int32,System.Int32,System.String,System.String,System.String,System.String,System.String)">Event(String, String, Int32, DateTime, DateTime, DateTime, DateTime, Int32, Int32, String, String, String, String, String)</h4>
+  <div class="markdown level1 summary"><p>Overload of Constructor that allows setting of Max and min registration counts and physical location.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Event(string title, string description, int eventTypeId, DateTime startDate, DateTime endDate, DateTime regStartDate, DateTime regEndDate, int maxRegs, int minRegs, string street, string suite, string city, string state, string zip)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">title</span></td>
+        <td><p>A string containing the Event&apos;s Title. Must not be null or only whitespace.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">description</span></td>
+        <td><p>A string containing the Event&apos;s Description. Must not be null or only whitespace.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">eventTypeId</span></td>
+        <td><p>An integer representing the <a class="xref" href="EventsCore.Domain.Entities.Event.html#EventsCore_Domain_Entities_Event_EventType">EventType</a> Id of the event.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.DateTime</span></td>
+        <td><span class="parametername">startDate</span></td>
+        <td><p>A DateTime containing the Event&apos;s Start Date. Must be before endDate</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.DateTime</span></td>
+        <td><span class="parametername">endDate</span></td>
+        <td><p>A DateTime containing the Event&apos;s End Date. Must be after startDate</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.DateTime</span></td>
+        <td><span class="parametername">regStartDate</span></td>
+        <td><p>A DateTime containing the Event&apos;s Registration period Start Date. Must be before Event Start Date and Registration Period End Date</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.DateTime</span></td>
+        <td><span class="parametername">regEndDate</span></td>
+        <td><p>A DateTime containing the Event&apos;s Registration period End Date. Must be after Registration Period Start Date and before Event Start Date.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">maxRegs</span></td>
+        <td><p>An integer with the maximum number of attendees for the event.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">minRegs</span></td>
+        <td><p>An integer with the minimum number of attendees for the event. Must be less than or equal to maxRegs.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">street</span></td>
+        <td><p>The street address, e.g. &quot;123 Anywhere St.&quot; Required, cannot be null/whitespace/empty string.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">suite</span></td>
+        <td><p>The suite/apartment/room number. This is an optional field.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">city</span></td>
+        <td><p>The name of the city in which the address is located. Required, cannot be null/whitespace/empty string.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">state</span></td>
+        <td><p>The 2-digit Postal Abbreviation for the state in which the address is located. Required, cannot be null/whitespace/empty string.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">zip</span></td>
+        <td><p>The 5-digit ZIP code for the address. Required, cannot be null/whitespace/empty string.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/stringly/EventsCore/new/master/apiSpec/new?filename=EventsCore_Domain_Entities_Event__ctor_System_String_System_String_System_Int32_System_DateTime_System_DateTime_System_DateTime_System_DateTime_System_Int32_System_String_System_String_System_String_System_String_System_String_.md&amp;value=---%0Auid%3A%20EventsCore.Domain.Entities.Event.%23ctor(System.String%2CSystem.String%2CSystem.Int32%2CSystem.DateTime%2CSystem.DateTime%2CSystem.DateTime%2CSystem.DateTime%2CSystem.Int32%2CSystem.String%2CSystem.String%2CSystem.String%2CSystem.String%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/stringly/EventsCore/blob/master/src/Domain/Entities/Event.cs/#L63">View Source</a>
+  </span>
+  <a id="EventsCore_Domain_Entities_Event__ctor_" data-uid="EventsCore.Domain.Entities.Event.#ctor*"></a>
+  <h4 id="EventsCore_Domain_Entities_Event__ctor_System_String_System_String_System_Int32_System_DateTime_System_DateTime_System_DateTime_System_DateTime_System_Int32_System_String_System_String_System_String_System_String_System_String_" data-uid="EventsCore.Domain.Entities.Event.#ctor(System.String,System.String,System.Int32,System.DateTime,System.DateTime,System.DateTime,System.DateTime,System.Int32,System.String,System.String,System.String,System.String,System.String)">Event(String, String, Int32, DateTime, DateTime, DateTime, DateTime, Int32, String, String, String, String, String)</h4>
+  <div class="markdown level1 summary"><p>Constructor to create a valid instance of an Event with a physical address</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Event(string title, string description, int eventTypeId, DateTime startDate, DateTime endDate, DateTime regStartDate, DateTime regEndDate, int maxRegs, string street, string suite, string city, string state, string zip)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">title</span></td>
+        <td><p>A string containing the Event&apos;s Title. Must not be null or only whitespace.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">description</span></td>
+        <td><p>A string containing the Event&apos;s Description. Must not be null or only whitespace.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">eventTypeId</span></td>
+        <td><p>An integer representing the <a class="xref" href="EventsCore.Domain.Entities.Event.html#EventsCore_Domain_Entities_Event_EventType">EventType</a> Id of the event.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.DateTime</span></td>
+        <td><span class="parametername">startDate</span></td>
+        <td><p>A DateTime containing the Event&apos;s Start Date. Must be before endDate</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.DateTime</span></td>
+        <td><span class="parametername">endDate</span></td>
+        <td><p>A DateTime containing the Event&apos;s End Date. Must be after startDate</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.DateTime</span></td>
+        <td><span class="parametername">regStartDate</span></td>
+        <td><p>A DateTime containing the Event&apos;s Registration period Start Date. Must be before Event Start Date and Registration Period End Date</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.DateTime</span></td>
+        <td><span class="parametername">regEndDate</span></td>
+        <td><p>A DateTime containing the Event&apos;s Registration period End Date. Must be after Registration Period Start Date and before Event Start Date.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">maxRegs</span></td>
+        <td><p>An integer with the maximum number of attendees for the event.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">street</span></td>
+        <td><p>The street address, e.g. &quot;123 Anywhere St.&quot; Required, cannot be null/whitespace/empty string.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">suite</span></td>
+        <td><p>The suite/apartment/room number. This is an optional field.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">city</span></td>
+        <td><p>The name of the city in which the address is located. Required, cannot be null/whitespace/empty string.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">state</span></td>
+        <td><p>The 2-digit Postal Abbreviation for the state in which the address is located. Required, cannot be null/whitespace/empty string.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">zip</span></td>
+        <td><p>The 5-digit ZIP code for the address. Required, cannot be null/whitespace/empty string.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/stringly/EventsCore/new/master/apiSpec/new?filename=EventsCore_Domain_Entities_Event__ctor_System_String_System_String_System_Int32_System_Int32_System_DateTime_System_DateTime_System_DateTime_System_DateTime_System_Int32_.md&amp;value=---%0Auid%3A%20EventsCore.Domain.Entities.Event.%23ctor(System.String%2CSystem.String%2CSystem.Int32%2CSystem.Int32%2CSystem.DateTime%2CSystem.DateTime%2CSystem.DateTime%2CSystem.DateTime%2CSystem.Int32)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/stringly/EventsCore/blob/master/src/Domain/Entities/Event.cs/#L224">View Source</a>
+  </span>
+  <a id="EventsCore_Domain_Entities_Event__ctor_" data-uid="EventsCore.Domain.Entities.Event.#ctor*"></a>
+  <h4 id="EventsCore_Domain_Entities_Event__ctor_System_String_System_String_System_Int32_System_Int32_System_DateTime_System_DateTime_System_DateTime_System_DateTime_System_Int32_" data-uid="EventsCore.Domain.Entities.Event.#ctor(System.String,System.String,System.Int32,System.Int32,System.DateTime,System.DateTime,System.DateTime,System.DateTime,System.Int32)">Event(String, String, Int32, Int32, DateTime, DateTime, DateTime, DateTime, Int32)</h4>
+  <div class="markdown level1 summary"><p>Overload of constructor that allows the EventSeriesId and Max Registrations to be set.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Event(string title, string description, int eventTypeId, int eventSeriesId, DateTime startDate, DateTime endDate, DateTime regStartDate, DateTime regEndDate, int maxRegs)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">title</span></td>
+        <td><p>A string containing the Event&apos;s Title. Must not be null or only whitespace.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">description</span></td>
+        <td><p>A string containing the Event&apos;s Description. Must not be null or only whitespace.</p>
 </td>
       </tr>
       <tr>
@@ -180,7 +750,455 @@
       <tr>
         <td><span class="xref">System.Int32</span></td>
         <td><span class="parametername">eventSeriesId</span></td>
-        <td><p>An optional integer representing the <a class="xref" href="EventsCore.Domain.Entities.Event.html#EventsCore_Domain_Entities_Event_EventSeries">EventSeries</a> Id of the EventSeries to which the new event will belong.</p>
+        <td><p>An integer representing the Id of the <a class="xref" href="EventsCore.Domain.Entities.Event.html#EventsCore_Domain_Entities_Event_EventSeries">EventSeries</a> to which this event will be assigned.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.DateTime</span></td>
+        <td><span class="parametername">startDate</span></td>
+        <td><p>A DateTime containing the Event&apos;s Start Date. Must be before endDate</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.DateTime</span></td>
+        <td><span class="parametername">endDate</span></td>
+        <td><p>A DateTime containing the Event&apos;s End Date. Must be after startDate</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.DateTime</span></td>
+        <td><span class="parametername">regStartDate</span></td>
+        <td><p>A DateTime containing the Event&apos;s Registration period Start Date. Must be before Event Start Date and Registration Period End Date</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.DateTime</span></td>
+        <td><span class="parametername">regEndDate</span></td>
+        <td><p>A DateTime containing the Event&apos;s Registration period End Date. Must be after Registration Period Start Date and before Event Start Date.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">maxRegs</span></td>
+        <td><p>An integer with the maximum number of attendees for the event.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/stringly/EventsCore/new/master/apiSpec/new?filename=EventsCore_Domain_Entities_Event__ctor_System_String_System_String_System_Int32_System_Int32_System_DateTime_System_DateTime_System_DateTime_System_DateTime_System_Int32_System_Int32_.md&amp;value=---%0Auid%3A%20EventsCore.Domain.Entities.Event.%23ctor(System.String%2CSystem.String%2CSystem.Int32%2CSystem.Int32%2CSystem.DateTime%2CSystem.DateTime%2CSystem.DateTime%2CSystem.DateTime%2CSystem.Int32%2CSystem.Int32)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/stringly/EventsCore/blob/master/src/Domain/Entities/Event.cs/#L290">View Source</a>
+  </span>
+  <a id="EventsCore_Domain_Entities_Event__ctor_" data-uid="EventsCore.Domain.Entities.Event.#ctor*"></a>
+  <h4 id="EventsCore_Domain_Entities_Event__ctor_System_String_System_String_System_Int32_System_Int32_System_DateTime_System_DateTime_System_DateTime_System_DateTime_System_Int32_System_Int32_" data-uid="EventsCore.Domain.Entities.Event.#ctor(System.String,System.String,System.Int32,System.Int32,System.DateTime,System.DateTime,System.DateTime,System.DateTime,System.Int32,System.Int32)">Event(String, String, Int32, Int32, DateTime, DateTime, DateTime, DateTime, Int32, Int32)</h4>
+  <div class="markdown level1 summary"><p>Overload of constructor that allows the EventSeriesId, Max Registrations, and Min Registrations to be set.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Event(string title, string description, int eventTypeId, int eventSeriesId, DateTime startDate, DateTime endDate, DateTime regStartDate, DateTime regEndDate, int maxRegs, int minRegs)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">title</span></td>
+        <td><p>A string containing the Event&apos;s Title. Must not be null or only whitespace.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">description</span></td>
+        <td><p>A string containing the Event&apos;s Description. Must not be null or only whitespace.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">eventTypeId</span></td>
+        <td><p>An integer representing the <a class="xref" href="EventsCore.Domain.Entities.Event.html#EventsCore_Domain_Entities_Event_EventType">EventType</a> Id of the event.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">eventSeriesId</span></td>
+        <td><p>An integer representing the Id of the <a class="xref" href="EventsCore.Domain.Entities.Event.html#EventsCore_Domain_Entities_Event_EventSeries">EventSeries</a> to which this event will be assigned.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.DateTime</span></td>
+        <td><span class="parametername">startDate</span></td>
+        <td><p>A DateTime containing the Event&apos;s Start Date. Must be before endDate</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.DateTime</span></td>
+        <td><span class="parametername">endDate</span></td>
+        <td><p>A DateTime containing the Event&apos;s End Date. Must be after startDate</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.DateTime</span></td>
+        <td><span class="parametername">regStartDate</span></td>
+        <td><p>A DateTime containing the Event&apos;s Registration period Start Date. Must be before Event Start Date and Registration Period End Date</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.DateTime</span></td>
+        <td><span class="parametername">regEndDate</span></td>
+        <td><p>A DateTime containing the Event&apos;s Registration period End Date. Must be after Registration Period Start Date and before Event Start Date.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">maxRegs</span></td>
+        <td><p>An integer with the maximum number of attendees for the event.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">minRegs</span></td>
+        <td><p>An integer with the minimum number of attendees for the event. Must be less than or equal to maxRegs.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/stringly/EventsCore/new/master/apiSpec/new?filename=EventsCore_Domain_Entities_Event__ctor_System_String_System_String_System_Int32_System_Int32_System_DateTime_System_DateTime_System_DateTime_System_DateTime_System_Int32_System_Int32_System_Int32_.md&amp;value=---%0Auid%3A%20EventsCore.Domain.Entities.Event.%23ctor(System.String%2CSystem.String%2CSystem.Int32%2CSystem.Int32%2CSystem.DateTime%2CSystem.DateTime%2CSystem.DateTime%2CSystem.DateTime%2CSystem.Int32%2CSystem.Int32%2CSystem.Int32)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/stringly/EventsCore/blob/master/src/Domain/Entities/Event.cs/#L367">View Source</a>
+  </span>
+  <a id="EventsCore_Domain_Entities_Event__ctor_" data-uid="EventsCore.Domain.Entities.Event.#ctor*"></a>
+  <h4 id="EventsCore_Domain_Entities_Event__ctor_System_String_System_String_System_Int32_System_Int32_System_DateTime_System_DateTime_System_DateTime_System_DateTime_System_Int32_System_Int32_System_Int32_" data-uid="EventsCore.Domain.Entities.Event.#ctor(System.String,System.String,System.Int32,System.Int32,System.DateTime,System.DateTime,System.DateTime,System.DateTime,System.Int32,System.Int32,System.Int32)">Event(String, String, Int32, Int32, DateTime, DateTime, DateTime, DateTime, Int32, Int32, Int32)</h4>
+  <div class="markdown level1 summary"><p>Overload of constructor that allows the EventSeriesId, Max Registrations, Min Registrations, and Max Standby Registrations to be set.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Event(string title, string description, int eventTypeId, int eventSeriesId, DateTime startDate, DateTime endDate, DateTime regStartDate, DateTime regEndDate, int maxRegs, int minRegs, int maxStandbyRegs)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">title</span></td>
+        <td><p>A string containing the Event&apos;s Title. Must not be null or only whitespace.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">description</span></td>
+        <td><p>A string containing the Event&apos;s Description. Must not be null or only whitespace.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">eventTypeId</span></td>
+        <td><p>An integer representing the <a class="xref" href="EventsCore.Domain.Entities.Event.html#EventsCore_Domain_Entities_Event_EventType">EventType</a> Id of the event.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">eventSeriesId</span></td>
+        <td><p>An integer representing the Id of the <a class="xref" href="EventsCore.Domain.Entities.Event.html#EventsCore_Domain_Entities_Event_EventSeries">EventSeries</a> to which this event will be assigned.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.DateTime</span></td>
+        <td><span class="parametername">startDate</span></td>
+        <td><p>A DateTime containing the Event&apos;s Start Date. Must be before endDate</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.DateTime</span></td>
+        <td><span class="parametername">endDate</span></td>
+        <td><p>A DateTime containing the Event&apos;s End Date. Must be after startDate</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.DateTime</span></td>
+        <td><span class="parametername">regStartDate</span></td>
+        <td><p>A DateTime containing the Event&apos;s Registration period Start Date. Must be before Event Start Date and Registration Period End Date</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.DateTime</span></td>
+        <td><span class="parametername">regEndDate</span></td>
+        <td><p>A DateTime containing the Event&apos;s Registration period End Date. Must be after Registration Period Start Date and before Event Start Date.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">maxRegs</span></td>
+        <td><p>An integer with the maximum number of attendees for the event.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">minRegs</span></td>
+        <td><p>An integer with the minimum number of attendees for the event. Must be less than or equal to maxRegs.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">maxStandbyRegs</span></td>
+        <td><p>An integer with the maximum number of standby registrations for the event. Must be less than or equal to maxRegs.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/stringly/EventsCore/new/master/apiSpec/new?filename=EventsCore_Domain_Entities_Event__ctor_System_String_System_String_System_Int32_System_Int32_System_DateTime_System_DateTime_System_DateTime_System_DateTime_System_Int32_System_String_System_String_System_String_System_String_System_String_.md&amp;value=---%0Auid%3A%20EventsCore.Domain.Entities.Event.%23ctor(System.String%2CSystem.String%2CSystem.Int32%2CSystem.Int32%2CSystem.DateTime%2CSystem.DateTime%2CSystem.DateTime%2CSystem.DateTime%2CSystem.Int32%2CSystem.String%2CSystem.String%2CSystem.String%2CSystem.String%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/stringly/EventsCore/blob/master/src/Domain/Entities/Event.cs/#L256">View Source</a>
+  </span>
+  <a id="EventsCore_Domain_Entities_Event__ctor_" data-uid="EventsCore.Domain.Entities.Event.#ctor*"></a>
+  <h4 id="EventsCore_Domain_Entities_Event__ctor_System_String_System_String_System_Int32_System_Int32_System_DateTime_System_DateTime_System_DateTime_System_DateTime_System_Int32_System_String_System_String_System_String_System_String_System_String_" data-uid="EventsCore.Domain.Entities.Event.#ctor(System.String,System.String,System.Int32,System.Int32,System.DateTime,System.DateTime,System.DateTime,System.DateTime,System.Int32,System.String,System.String,System.String,System.String,System.String)">Event(String, String, Int32, Int32, DateTime, DateTime, DateTime, DateTime, Int32, String, String, String, String, String)</h4>
+  <div class="markdown level1 summary"><p>Overload of constructor that allows the EventSeriesId and Max Registrations to be set.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Event(string title, string description, int eventTypeId, int eventSeriesId, DateTime startDate, DateTime endDate, DateTime regStartDate, DateTime regEndDate, int maxRegs, string street, string suite, string city, string state, string zip)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">title</span></td>
+        <td><p>A string containing the Event&apos;s Title. Must not be null or only whitespace.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">description</span></td>
+        <td><p>A string containing the Event&apos;s Description. Must not be null or only whitespace.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">eventTypeId</span></td>
+        <td><p>An integer representing the <a class="xref" href="EventsCore.Domain.Entities.Event.html#EventsCore_Domain_Entities_Event_EventType">EventType</a> Id of the event.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">eventSeriesId</span></td>
+        <td><p>An integer representing the Id of the <a class="xref" href="EventsCore.Domain.Entities.Event.html#EventsCore_Domain_Entities_Event_EventSeries">EventSeries</a> to which this event will be assigned.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.DateTime</span></td>
+        <td><span class="parametername">startDate</span></td>
+        <td><p>A DateTime containing the Event&apos;s Start Date. Must be before endDate</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.DateTime</span></td>
+        <td><span class="parametername">endDate</span></td>
+        <td><p>A DateTime containing the Event&apos;s End Date. Must be after startDate</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.DateTime</span></td>
+        <td><span class="parametername">regStartDate</span></td>
+        <td><p>A DateTime containing the Event&apos;s Registration period Start Date. Must be before Event Start Date and Registration Period End Date</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.DateTime</span></td>
+        <td><span class="parametername">regEndDate</span></td>
+        <td><p>A DateTime containing the Event&apos;s Registration period End Date. Must be after Registration Period Start Date and before Event Start Date.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">maxRegs</span></td>
+        <td><p>An integer with the maximum number of attendees for the event.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">street</span></td>
+        <td><p>The street address, e.g. &quot;123 Anywhere St.&quot; Required, cannot be null/whitespace/empty string.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">suite</span></td>
+        <td><p>The suite/apartment/room number. This is an optional field.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">city</span></td>
+        <td><p>The name of the city in which the address is located. Required, cannot be null/whitespace/empty string.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">state</span></td>
+        <td><p>The 2-digit Postal Abbreviation for the state in which the address is located. Required, cannot be null/whitespace/empty string.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">zip</span></td>
+        <td><p>The 5-digit ZIP code for the address. Required, cannot be null/whitespace/empty string.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/stringly/EventsCore/new/master/apiSpec/new?filename=EventsCore_Domain_Entities_Event__ctor_System_String_System_String_System_Int32_System_Nullable_System_Int32__System_DateTime_System_DateTime_System_DateTime_System_DateTime_System_Int32_System_Nullable_System_Int32__System_Nullable_System_Int32__System_String_System_String_System_String_System_String_System_String_.md&amp;value=---%0Auid%3A%20EventsCore.Domain.Entities.Event.%23ctor(System.String%2CSystem.String%2CSystem.Int32%2CSystem.Nullable%7BSystem.Int32%7D%2CSystem.DateTime%2CSystem.DateTime%2CSystem.DateTime%2CSystem.DateTime%2CSystem.Int32%2CSystem.Nullable%7BSystem.Int32%7D%2CSystem.Nullable%7BSystem.Int32%7D%2CSystem.String%2CSystem.String%2CSystem.String%2CSystem.String%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/stringly/EventsCore/blob/master/src/Domain/Entities/Event.cs/#L325">View Source</a>
+  </span>
+  <a id="EventsCore_Domain_Entities_Event__ctor_" data-uid="EventsCore.Domain.Entities.Event.#ctor*"></a>
+  <h4 id="EventsCore_Domain_Entities_Event__ctor_System_String_System_String_System_Int32_System_Nullable_System_Int32__System_DateTime_System_DateTime_System_DateTime_System_DateTime_System_Int32_System_Nullable_System_Int32__System_Nullable_System_Int32__System_String_System_String_System_String_System_String_System_String_" data-uid="EventsCore.Domain.Entities.Event.#ctor(System.String,System.String,System.Int32,System.Nullable{System.Int32},System.DateTime,System.DateTime,System.DateTime,System.DateTime,System.Int32,System.Nullable{System.Int32},System.Nullable{System.Int32},System.String,System.String,System.String,System.String,System.String)">Event(String, String, Int32, Nullable&lt;Int32&gt;, DateTime, DateTime, DateTime, DateTime, Int32, Nullable&lt;Int32&gt;, Nullable&lt;Int32&gt;, String, String, String, String, String)</h4>
+  <div class="markdown level1 summary"><p>Overload of constructor that allows the physical address, EventSeriesId, Max Registrations, Min Registrations, and Max Standby Registrations to be set via nullable types.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Event(string title, string description, int eventTypeId, int? eventSeriesId, DateTime startDate, DateTime endDate, DateTime regStartDate, DateTime regEndDate, int maxRegs, int? minRegs, int? maxStandbyRegs, string street, string suite, string city, string state, string zip)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">title</span></td>
+        <td><p>A string containing the Event&apos;s Title. Must not be null or only whitespace.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">description</span></td>
+        <td><p>A string containing the Event&apos;s Description. Must not be null or only whitespace.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">eventTypeId</span></td>
+        <td><p>An integer representing the <a class="xref" href="EventsCore.Domain.Entities.Event.html#EventsCore_Domain_Entities_Event_EventType">EventType</a> Id of the event.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Nullable</span>&lt;<span class="xref">System.Int32</span>&gt;</td>
+        <td><span class="parametername">eventSeriesId</span></td>
+        <td><p>An integer representing the Id of the <a class="xref" href="EventsCore.Domain.Entities.Event.html#EventsCore_Domain_Entities_Event_EventSeries">EventSeries</a> to which this event will be assigned.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.DateTime</span></td>
+        <td><span class="parametername">startDate</span></td>
+        <td><p>A DateTime containing the Event&apos;s Start Date. Must be before endDate</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.DateTime</span></td>
+        <td><span class="parametername">endDate</span></td>
+        <td><p>A DateTime containing the Event&apos;s End Date. Must be after startDate</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.DateTime</span></td>
+        <td><span class="parametername">regStartDate</span></td>
+        <td><p>A DateTime containing the Event&apos;s Registration period Start Date. Must be before Event Start Date and Registration Period End Date</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.DateTime</span></td>
+        <td><span class="parametername">regEndDate</span></td>
+        <td><p>A DateTime containing the Event&apos;s Registration period End Date. Must be after Registration Period Start Date and before Event Start Date.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">maxRegs</span></td>
+        <td><p>An integer with the maximum number of attendees for the event.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Nullable</span>&lt;<span class="xref">System.Int32</span>&gt;</td>
+        <td><span class="parametername">minRegs</span></td>
+        <td><p>An integer with the minimum number of attendees for the event. Must be less than or equal to maxRegs.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Nullable</span>&lt;<span class="xref">System.Int32</span>&gt;</td>
+        <td><span class="parametername">maxStandbyRegs</span></td>
+        <td><p>An integer with the maximum number of standby registrations for the event. Must be less than or equal to maxRegs.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">street</span></td>
+        <td><p>The street address, e.g. &quot;123 Anywhere St.&quot;</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">suite</span></td>
+        <td><p>The suite/apartment/room number. This is an optional field.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">city</span></td>
+        <td><p>The name of the city in which the address is located.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">state</span></td>
+        <td><p>The 2-digit Postal Abbreviation for the state in which the address is located.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">zip</span></td>
+        <td><p>The 5-digit ZIP code for the address.</p>
 </td>
       </tr>
     </tbody>
@@ -189,10 +1207,137 @@
   </h3>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
+    <a href="https://github.com/stringly/EventsCore/new/master/apiSpec/new?filename=EventsCore_Domain_Entities_Event_Address.md&amp;value=---%0Auid%3A%20EventsCore.Domain.Entities.Event.Address%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/stringly/EventsCore/blob/master/src/Domain/Entities/Event.cs/#L463">View Source</a>
+  </span>
+  <a id="EventsCore_Domain_Entities_Event_Address_" data-uid="EventsCore.Domain.Entities.Event.Address*"></a>
+  <h4 id="EventsCore_Domain_Entities_Event_Address" data-uid="EventsCore.Domain.Entities.Event.Address">Address</h4>
+  <div class="markdown level1 summary"><p>A <a class="xref" href="EventsCore.Domain.ValueObjects.Address.html">Address</a> containing the Event&apos;s Address</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Address Address { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="EventsCore.Domain.ValueObjects.Address.html">Address</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="EventsCore_Domain_Entities_Event_Address_remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>This uses the <a class="xref" href="EventsCore.Domain.ValueObjects.Address.html">Address</a> value object to store an event&apos;s address</p>
+</div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/stringly/EventsCore/new/master/apiSpec/new?filename=EventsCore_Domain_Entities_Event_Attendance.md&amp;value=---%0Auid%3A%20EventsCore.Domain.Entities.Event.Attendance%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/stringly/EventsCore/blob/master/src/Domain/Entities/Event.cs/#L495">View Source</a>
+  </span>
+  <a id="EventsCore_Domain_Entities_Event_Attendance_" data-uid="EventsCore.Domain.Entities.Event.Attendance*"></a>
+  <h4 id="EventsCore_Domain_Entities_Event_Attendance" data-uid="EventsCore.Domain.Entities.Event.Attendance">Attendance</h4>
+  <div class="markdown level1 summary"><p>A list of <a class="xref" href="EventsCore.Domain.Entities.Event.html#EventsCore_Domain_Entities_Event_Attendance">Attendance</a> records associated with this event.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public IEnumerable&lt;Attendance&gt; Attendance { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.IEnumerable</span>&lt;<a class="xref" href="EventsCore.Domain.Entities.Attendance.html">Attendance</a>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/stringly/EventsCore/new/master/apiSpec/new?filename=EventsCore_Domain_Entities_Event_CurrentAttendeesCount.md&amp;value=---%0Auid%3A%20EventsCore.Domain.Entities.Event.CurrentAttendeesCount%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/stringly/EventsCore/blob/master/src/Domain/Entities/Event.cs/#L504">View Source</a>
+  </span>
+  <a id="EventsCore_Domain_Entities_Event_CurrentAttendeesCount_" data-uid="EventsCore.Domain.Entities.Event.CurrentAttendeesCount*"></a>
+  <h4 id="EventsCore_Domain_Entities_Event_CurrentAttendeesCount" data-uid="EventsCore.Domain.Entities.Event.CurrentAttendeesCount">CurrentAttendeesCount</h4>
+  <div class="markdown level1 summary"><p>Count of &quot;Accepted&quot; registrations in the Event._registrations Collection</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int CurrentAttendeesCount { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/stringly/EventsCore/new/master/apiSpec/new?filename=EventsCore_Domain_Entities_Event_CurrentStandbyCount.md&amp;value=---%0Auid%3A%20EventsCore.Domain.Entities.Event.CurrentStandbyCount%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/stringly/EventsCore/blob/master/src/Domain/Entities/Event.cs/#L508">View Source</a>
+  </span>
+  <a id="EventsCore_Domain_Entities_Event_CurrentStandbyCount_" data-uid="EventsCore.Domain.Entities.Event.CurrentStandbyCount*"></a>
+  <h4 id="EventsCore_Domain_Entities_Event_CurrentStandbyCount" data-uid="EventsCore.Domain.Entities.Event.CurrentStandbyCount">CurrentStandbyCount</h4>
+  <div class="markdown level1 summary"><p>Count of &quot;Standby&quot; registrations in the Event._registrations collection</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int CurrentStandbyCount { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
     <a href="https://github.com/stringly/EventsCore/new/master/apiSpec/new?filename=EventsCore_Domain_Entities_Event_Dates.md&amp;value=---%0Auid%3A%20EventsCore.Domain.Entities.Event.Dates%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/stringly/EventsCore/blob/master/src/Domain/Entities/Event.cs/#L83">View Source</a>
+    <a href="https://github.com/stringly/EventsCore/blob/master/src/Domain/Entities/Event.cs/#L486">View Source</a>
   </span>
   <a id="EventsCore_Domain_Entities_Event_Dates_" data-uid="EventsCore.Domain.Entities.Event.Dates*"></a>
   <h4 id="EventsCore_Domain_Entities_Event_Dates" data-uid="EventsCore.Domain.Entities.Event.Dates">Dates</h4>
@@ -227,7 +1372,7 @@ Registration Period Start Date/Time, and Registration Period End Date/Time.</p>
     <a href="https://github.com/stringly/EventsCore/new/master/apiSpec/new?filename=EventsCore_Domain_Entities_Event_Description.md&amp;value=---%0Auid%3A%20EventsCore.Domain.Entities.Event.Description%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/stringly/EventsCore/blob/master/src/Domain/Entities/Event.cs/#L59">View Source</a>
+    <a href="https://github.com/stringly/EventsCore/blob/master/src/Domain/Entities/Event.cs/#L432">View Source</a>
   </span>
   <a id="EventsCore_Domain_Entities_Event_Description_" data-uid="EventsCore.Domain.Entities.Event.Description*"></a>
   <h4 id="EventsCore_Domain_Entities_Event_Description" data-uid="EventsCore.Domain.Entities.Event.Description">Description</h4>
@@ -255,72 +1400,10 @@ Registration Period Start Date/Time, and Registration Period End Date/Time.</p>
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/stringly/EventsCore/new/master/apiSpec/new?filename=EventsCore_Domain_Entities_Event_EndDate.md&amp;value=---%0Auid%3A%20EventsCore.Domain.Entities.Event.EndDate%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/stringly/EventsCore/blob/master/src/Domain/Entities/Event.cs/#L91">View Source</a>
-  </span>
-  <a id="EventsCore_Domain_Entities_Event_EndDate_" data-uid="EventsCore.Domain.Entities.Event.EndDate*"></a>
-  <h4 id="EventsCore_Domain_Entities_Event_EndDate" data-uid="EventsCore.Domain.Entities.Event.EndDate">EndDate</h4>
-  <div class="markdown level1 summary"><p>The Event&apos;s End Date, obtained from the Event.Dates ruleset.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public DateTime EndDate { get; }</code></pre>
-  </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.DateTime</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/stringly/EventsCore/new/master/apiSpec/new?filename=EventsCore_Domain_Entities_Event_EventAttendance.md&amp;value=---%0Auid%3A%20EventsCore.Domain.Entities.Event.EventAttendance%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/stringly/EventsCore/blob/master/src/Domain/Entities/Event.cs/#L111">View Source</a>
-  </span>
-  <a id="EventsCore_Domain_Entities_Event_EventAttendance_" data-uid="EventsCore.Domain.Entities.Event.EventAttendance*"></a>
-  <h4 id="EventsCore_Domain_Entities_Event_EventAttendance" data-uid="EventsCore.Domain.Entities.Event.EventAttendance">EventAttendance</h4>
-  <div class="markdown level1 summary"><p>The <a class="xref" href="EventsCore.Domain.Entities.EventAttendanceAggregate.EventAttendance.html">EventAttendance</a> aggregate built from this event</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public EventAttendance EventAttendance { get; }</code></pre>
-  </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="EventsCore.Domain.Entities.EventAttendanceAggregate.EventAttendance.html">EventAttendance</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
     <a href="https://github.com/stringly/EventsCore/new/master/apiSpec/new?filename=EventsCore_Domain_Entities_Event_EventSeries.md&amp;value=---%0Auid%3A%20EventsCore.Domain.Entities.Event.EventSeries%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/stringly/EventsCore/blob/master/src/Domain/Entities/Event.cs/#L67">View Source</a>
+    <a href="https://github.com/stringly/EventsCore/blob/master/src/Domain/Entities/Event.cs/#L440">View Source</a>
   </span>
   <a id="EventsCore_Domain_Entities_Event_EventSeries_" data-uid="EventsCore.Domain.Entities.Event.EventSeries*"></a>
   <h4 id="EventsCore_Domain_Entities_Event_EventSeries" data-uid="EventsCore.Domain.Entities.Event.EventSeries">EventSeries</h4>
@@ -351,7 +1434,7 @@ Registration Period Start Date/Time, and Registration Period End Date/Time.</p>
     <a href="https://github.com/stringly/EventsCore/new/master/apiSpec/new?filename=EventsCore_Domain_Entities_Event_EventSeriesId.md&amp;value=---%0Auid%3A%20EventsCore.Domain.Entities.Event.EventSeriesId%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/stringly/EventsCore/blob/master/src/Domain/Entities/Event.cs/#L63">View Source</a>
+    <a href="https://github.com/stringly/EventsCore/blob/master/src/Domain/Entities/Event.cs/#L436">View Source</a>
   </span>
   <a id="EventsCore_Domain_Entities_Event_EventSeriesId_" data-uid="EventsCore.Domain.Entities.Event.EventSeriesId*"></a>
   <h4 id="EventsCore_Domain_Entities_Event_EventSeriesId" data-uid="EventsCore.Domain.Entities.Event.EventSeriesId">EventSeriesId</h4>
@@ -382,7 +1465,7 @@ Registration Period Start Date/Time, and Registration Period End Date/Time.</p>
     <a href="https://github.com/stringly/EventsCore/new/master/apiSpec/new?filename=EventsCore_Domain_Entities_Event_EventType.md&amp;value=---%0Auid%3A%20EventsCore.Domain.Entities.Event.EventType%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/stringly/EventsCore/blob/master/src/Domain/Entities/Event.cs/#L75">View Source</a>
+    <a href="https://github.com/stringly/EventsCore/blob/master/src/Domain/Entities/Event.cs/#L448">View Source</a>
   </span>
   <a id="EventsCore_Domain_Entities_Event_EventType_" data-uid="EventsCore.Domain.Entities.Event.EventType*"></a>
   <h4 id="EventsCore_Domain_Entities_Event_EventType" data-uid="EventsCore.Domain.Entities.Event.EventType">EventType</h4>
@@ -413,7 +1496,7 @@ Registration Period Start Date/Time, and Registration Period End Date/Time.</p>
     <a href="https://github.com/stringly/EventsCore/new/master/apiSpec/new?filename=EventsCore_Domain_Entities_Event_EventTypeId.md&amp;value=---%0Auid%3A%20EventsCore.Domain.Entities.Event.EventTypeId%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/stringly/EventsCore/blob/master/src/Domain/Entities/Event.cs/#L71">View Source</a>
+    <a href="https://github.com/stringly/EventsCore/blob/master/src/Domain/Entities/Event.cs/#L444">View Source</a>
   </span>
   <a id="EventsCore_Domain_Entities_Event_EventTypeId_" data-uid="EventsCore.Domain.Entities.Event.EventTypeId*"></a>
   <h4 id="EventsCore_Domain_Entities_Event_EventTypeId" data-uid="EventsCore.Domain.Entities.Event.EventTypeId">EventTypeId</h4>
@@ -441,19 +1524,19 @@ Registration Period Start Date/Time, and Registration Period End Date/Time.</p>
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/stringly/EventsCore/new/master/apiSpec/new?filename=EventsCore_Domain_Entities_Event_MaxRegistrations.md&amp;value=---%0Auid%3A%20EventsCore.Domain.Entities.Event.MaxRegistrations%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/stringly/EventsCore/new/master/apiSpec/new?filename=EventsCore_Domain_Entities_Event_IsStandByAvailable.md&amp;value=---%0Auid%3A%20EventsCore.Domain.Entities.Event.IsStandByAvailable%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/stringly/EventsCore/blob/master/src/Domain/Entities/Event.cs/#L107">View Source</a>
+    <a href="https://github.com/stringly/EventsCore/blob/master/src/Domain/Entities/Event.cs/#L572">View Source</a>
   </span>
-  <a id="EventsCore_Domain_Entities_Event_MaxRegistrations_" data-uid="EventsCore.Domain.Entities.Event.MaxRegistrations*"></a>
-  <h4 id="EventsCore_Domain_Entities_Event_MaxRegistrations" data-uid="EventsCore.Domain.Entities.Event.MaxRegistrations">MaxRegistrations</h4>
-  <div class="markdown level1 summary"><p>The Maximum number of registrations, obtained from the Event.Rules ruleset.</p>
+  <a id="EventsCore_Domain_Entities_Event_IsStandByAvailable_" data-uid="EventsCore.Domain.Entities.Event.IsStandByAvailable*"></a>
+  <h4 id="EventsCore_Domain_Entities_Event_IsStandByAvailable" data-uid="EventsCore.Domain.Entities.Event.IsStandByAvailable">IsStandByAvailable</h4>
+  <div class="markdown level1 summary"><p>Returns whether registrations can be placed on &quot;Stanby&quot; for the event</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public uint MaxRegistrations { get; }</code></pre>
+    <pre><code class="lang-csharp hljs">public bool IsStandByAvailable { get; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -465,7 +1548,41 @@ Registration Period Start Date/Time, and Registration Period End Date/Time.</p>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.UInt32</span></td>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="EventsCore_Domain_Entities_Event_IsStandByAvailable_remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>Returns true if the Maximum Standby registrations count has not been reached, otherwise false.</p>
+</div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/stringly/EventsCore/new/master/apiSpec/new?filename=EventsCore_Domain_Entities_Event_Location.md&amp;value=---%0Auid%3A%20EventsCore.Domain.Entities.Event.Location%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/stringly/EventsCore/blob/master/src/Domain/Entities/Event.cs/#L467">View Source</a>
+  </span>
+  <a id="EventsCore_Domain_Entities_Event_Location_" data-uid="EventsCore.Domain.Entities.Event.Location*"></a>
+  <h4 id="EventsCore_Domain_Entities_Event_Location" data-uid="EventsCore.Domain.Entities.Event.Location">Location</h4>
+  <div class="markdown level1 summary"><p>Returns a string with the Event&apos;s Address, or &quot;None&quot; if no address exists.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string Location { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
         <td></td>
       </tr>
     </tbody>
@@ -475,16 +1592,16 @@ Registration Period Start Date/Time, and Registration Period End Date/Time.</p>
     <a href="https://github.com/stringly/EventsCore/new/master/apiSpec/new?filename=EventsCore_Domain_Entities_Event_Modules.md&amp;value=---%0Auid%3A%20EventsCore.Domain.Entities.Event.Modules%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/stringly/EventsCore/blob/master/src/Domain/Entities/Event.cs/#L119">View Source</a>
+    <a href="https://github.com/stringly/EventsCore/blob/master/src/Domain/Entities/Event.cs/#L579">View Source</a>
   </span>
   <a id="EventsCore_Domain_Entities_Event_Modules_" data-uid="EventsCore.Domain.Entities.Event.Modules*"></a>
   <h4 id="EventsCore_Domain_Entities_Event_Modules" data-uid="EventsCore.Domain.Entities.Event.Modules">Modules</h4>
-  <div class="markdown level1 summary"><p>THe <a class="xref" href="EventsCore.Domain.Entities.EventModulesAggregate.EventModules.html">EventModules</a> aggregate built from this event.</p>
+  <div class="markdown level1 summary"><p>A list of <a class="xref" href="EventsCore.Domain.Entities.Module.html">Module</a> associated with this event.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public EventModules Modules { get; }</code></pre>
+    <pre><code class="lang-csharp hljs">public IEnumerable&lt;Module&gt; Modules { get; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -496,26 +1613,26 @@ Registration Period Start Date/Time, and Registration Period End Date/Time.</p>
     </thead>
     <tbody>
       <tr>
-        <td><a class="xref" href="EventsCore.Domain.Entities.EventModulesAggregate.EventModules.html">EventModules</a></td>
+        <td><span class="xref">System.Collections.Generic.IEnumerable</span>&lt;<a class="xref" href="EventsCore.Domain.Entities.Module.html">Module</a>&gt;</td>
         <td></td>
       </tr>
     </tbody>
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/stringly/EventsCore/new/master/apiSpec/new?filename=EventsCore_Domain_Entities_Event_RegistrationEndDate.md&amp;value=---%0Auid%3A%20EventsCore.Domain.Entities.Event.RegistrationEndDate%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/stringly/EventsCore/new/master/apiSpec/new?filename=EventsCore_Domain_Entities_Event_Owner.md&amp;value=---%0Auid%3A%20EventsCore.Domain.Entities.Event.Owner%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/stringly/EventsCore/blob/master/src/Domain/Entities/Event.cs/#L99">View Source</a>
+    <a href="https://github.com/stringly/EventsCore/blob/master/src/Domain/Entities/Event.cs/#L456">View Source</a>
   </span>
-  <a id="EventsCore_Domain_Entities_Event_RegistrationEndDate_" data-uid="EventsCore.Domain.Entities.Event.RegistrationEndDate*"></a>
-  <h4 id="EventsCore_Domain_Entities_Event_RegistrationEndDate" data-uid="EventsCore.Domain.Entities.Event.RegistrationEndDate">RegistrationEndDate</h4>
-  <div class="markdown level1 summary"><p>The Event&apos;s Registration Period End Date, obtained from the Event.Dates ruleset.</p>
+  <a id="EventsCore_Domain_Entities_Event_Owner_" data-uid="EventsCore.Domain.Entities.Event.Owner*"></a>
+  <h4 id="EventsCore_Domain_Entities_Event_Owner" data-uid="EventsCore.Domain.Entities.Event.Owner">Owner</h4>
+  <div class="markdown level1 summary"><p>Navigation property to the <a class="xref" href="EventsCore.Domain.Entities.User.html">User</a> who owns the Event.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public DateTime RegistrationEndDate { get; }</code></pre>
+    <pre><code class="lang-csharp hljs">public User Owner { get; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -527,7 +1644,38 @@ Registration Period Start Date/Time, and Registration Period End Date/Time.</p>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.DateTime</span></td>
+        <td><a class="xref" href="EventsCore.Domain.Entities.User.html">User</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/stringly/EventsCore/new/master/apiSpec/new?filename=EventsCore_Domain_Entities_Event_OwnerId.md&amp;value=---%0Auid%3A%20EventsCore.Domain.Entities.Event.OwnerId%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/stringly/EventsCore/blob/master/src/Domain/Entities/Event.cs/#L452">View Source</a>
+  </span>
+  <a id="EventsCore_Domain_Entities_Event_OwnerId_" data-uid="EventsCore.Domain.Entities.Event.OwnerId*"></a>
+  <h4 id="EventsCore_Domain_Entities_Event_OwnerId" data-uid="EventsCore.Domain.Entities.Event.OwnerId">OwnerId</h4>
+  <div class="markdown level1 summary"><p>The Id of the <a class="xref" href="EventsCore.Domain.Entities.User.html">User</a> who owns the event.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int OwnerId { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
         <td></td>
       </tr>
     </tbody>
@@ -537,16 +1685,16 @@ Registration Period Start Date/Time, and Registration Period End Date/Time.</p>
     <a href="https://github.com/stringly/EventsCore/new/master/apiSpec/new?filename=EventsCore_Domain_Entities_Event_Registrations.md&amp;value=---%0Auid%3A%20EventsCore.Domain.Entities.Event.Registrations%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/stringly/EventsCore/blob/master/src/Domain/Entities/Event.cs/#L115">View Source</a>
+    <a href="https://github.com/stringly/EventsCore/blob/master/src/Domain/Entities/Event.cs/#L500">View Source</a>
   </span>
   <a id="EventsCore_Domain_Entities_Event_Registrations_" data-uid="EventsCore.Domain.Entities.Event.Registrations*"></a>
   <h4 id="EventsCore_Domain_Entities_Event_Registrations" data-uid="EventsCore.Domain.Entities.Event.Registrations">Registrations</h4>
-  <div class="markdown level1 summary"><p>The <a class="xref" href="EventsCore.Domain.Entities.EventRegistrationsAggregate.EventRegistrations.html">EventRegistrations</a> aggregate built from this event</p>
+  <div class="markdown level1 summary"><p>A list of <a class="xref" href="EventsCore.Domain.Entities.Registration.html">Registration</a> records associated with this event.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public EventRegistrations Registrations { get; }</code></pre>
+    <pre><code class="lang-csharp hljs">public IEnumerable&lt;Registration&gt; Registrations { get; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -558,38 +1706,7 @@ Registration Period Start Date/Time, and Registration Period End Date/Time.</p>
     </thead>
     <tbody>
       <tr>
-        <td><a class="xref" href="EventsCore.Domain.Entities.EventRegistrationsAggregate.EventRegistrations.html">EventRegistrations</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/stringly/EventsCore/new/master/apiSpec/new?filename=EventsCore_Domain_Entities_Event_RegistrationStartDate.md&amp;value=---%0Auid%3A%20EventsCore.Domain.Entities.Event.RegistrationStartDate%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/stringly/EventsCore/blob/master/src/Domain/Entities/Event.cs/#L95">View Source</a>
-  </span>
-  <a id="EventsCore_Domain_Entities_Event_RegistrationStartDate_" data-uid="EventsCore.Domain.Entities.Event.RegistrationStartDate*"></a>
-  <h4 id="EventsCore_Domain_Entities_Event_RegistrationStartDate" data-uid="EventsCore.Domain.Entities.Event.RegistrationStartDate">RegistrationStartDate</h4>
-  <div class="markdown level1 summary"><p>The Event&apos;s Registration Period Start Date, obtained from the Event.Dates ruleset.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public DateTime RegistrationStartDate { get; }</code></pre>
-  </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.DateTime</span></td>
+        <td><span class="xref">System.Collections.Generic.IEnumerable</span>&lt;<a class="xref" href="EventsCore.Domain.Entities.Registration.html">Registration</a>&gt;</td>
         <td></td>
       </tr>
     </tbody>
@@ -599,7 +1716,7 @@ Registration Period Start Date/Time, and Registration Period End Date/Time.</p>
     <a href="https://github.com/stringly/EventsCore/new/master/apiSpec/new?filename=EventsCore_Domain_Entities_Event_Rules.md&amp;value=---%0Auid%3A%20EventsCore.Domain.Entities.Event.Rules%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/stringly/EventsCore/blob/master/src/Domain/Entities/Event.cs/#L103">View Source</a>
+    <a href="https://github.com/stringly/EventsCore/blob/master/src/Domain/Entities/Event.cs/#L490">View Source</a>
   </span>
   <a id="EventsCore_Domain_Entities_Event_Rules_" data-uid="EventsCore.Domain.Entities.Event.Rules*"></a>
   <h4 id="EventsCore_Domain_Entities_Event_Rules" data-uid="EventsCore.Domain.Entities.Event.Rules">Rules</h4>
@@ -627,41 +1744,10 @@ Registration Period Start Date/Time, and Registration Period End Date/Time.</p>
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/stringly/EventsCore/new/master/apiSpec/new?filename=EventsCore_Domain_Entities_Event_StartDate.md&amp;value=---%0Auid%3A%20EventsCore.Domain.Entities.Event.StartDate%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/stringly/EventsCore/blob/master/src/Domain/Entities/Event.cs/#L87">View Source</a>
-  </span>
-  <a id="EventsCore_Domain_Entities_Event_StartDate_" data-uid="EventsCore.Domain.Entities.Event.StartDate*"></a>
-  <h4 id="EventsCore_Domain_Entities_Event_StartDate" data-uid="EventsCore.Domain.Entities.Event.StartDate">StartDate</h4>
-  <div class="markdown level1 summary"><p>The Event&apos;s Start Date, obtained from the Event.Dates ruleset.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public DateTime StartDate { get; }</code></pre>
-  </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.DateTime</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
     <a href="https://github.com/stringly/EventsCore/new/master/apiSpec/new?filename=EventsCore_Domain_Entities_Event_Title.md&amp;value=---%0Auid%3A%20EventsCore.Domain.Entities.Event.Title%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/stringly/EventsCore/blob/master/src/Domain/Entities/Event.cs/#L48">View Source</a>
+    <a href="https://github.com/stringly/EventsCore/blob/master/src/Domain/Entities/Event.cs/#L421">View Source</a>
   </span>
   <a id="EventsCore_Domain_Entities_Event_Title_" data-uid="EventsCore.Domain.Entities.Event.Title*"></a>
   <h4 id="EventsCore_Domain_Entities_Event_Title" data-uid="EventsCore.Domain.Entities.Event.Title">Title</h4>
@@ -691,10 +1777,134 @@ Registration Period Start Date/Time, and Registration Period End Date/Time.</p>
   </h3>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
+    <a href="https://github.com/stringly/EventsCore/new/master/apiSpec/new?filename=EventsCore_Domain_Entities_Event_AcceptRegistrationByRegistrationId_System_Int32_EventsCore_Common_IDateTime_.md&amp;value=---%0Auid%3A%20EventsCore.Domain.Entities.Event.AcceptRegistrationByRegistrationId(System.Int32%2CEventsCore.Common.IDateTime)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/stringly/EventsCore/blob/master/src/Domain/Entities/Event.cs/#L1071">View Source</a>
+  </span>
+  <a id="EventsCore_Domain_Entities_Event_AcceptRegistrationByRegistrationId_" data-uid="EventsCore.Domain.Entities.Event.AcceptRegistrationByRegistrationId*"></a>
+  <h4 id="EventsCore_Domain_Entities_Event_AcceptRegistrationByRegistrationId_System_Int32_EventsCore_Common_IDateTime_" data-uid="EventsCore.Domain.Entities.Event.AcceptRegistrationByRegistrationId(System.Int32,EventsCore.Common.IDateTime)">AcceptRegistrationByRegistrationId(Int32, IDateTime)</h4>
+  <div class="markdown level1 summary"><p>Updates the <a class="xref" href="EventsCore.Domain.Entities.RegistrationStatus.html">RegistrationStatus</a> of a Registration to &quot;Accepted&quot; by the RegistrationId associated with the <a class="xref" href="EventsCore.Domain.Entities.Registration.html">Registration</a></p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void AcceptRegistrationByRegistrationId(int regId, IDateTime _dateTime)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">regId</span></td>
+        <td><p>The RegistrationId of the <a class="xref" href="EventsCore.Domain.Entities.Registration.html">Registration</a></p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">EventsCore.Common.IDateTime</span></td>
+        <td><span class="parametername">_dateTime</span></td>
+        <td><p>An implementation of <span class="xref">EventsCore.Common.IDateTime</span></p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="EventsCore.Domain.Exceptions.Event.EventInvalidOperationException.html">EventInvalidOperationException</a></td>
+        <td><p>Thrown when 
+<ul><li>the <a class="xref" href="EventsCore.Domain.Entities.Event.html">Event</a> is expired.</li><li>the <a class="xref" href="EventsCore.Domain.Entities.Event.html">Event</a> is at Maximum allowed &quot;Accepted&quot; registrations.</li></ul></p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="EventsCore.Domain.Exceptions.Event.EventArgumentException.html">EventArgumentException</a></td>
+        <td><p>Thrown when no Registration with the given UserId parameter could be found in the <span class="xref">EventsCore.Domain.Entities.Event._registrations</span> collection.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/stringly/EventsCore/new/master/apiSpec/new?filename=EventsCore_Domain_Entities_Event_AcceptRegistrationByUserId_System_Int32_EventsCore_Common_IDateTime_.md&amp;value=---%0Auid%3A%20EventsCore.Domain.Entities.Event.AcceptRegistrationByUserId(System.Int32%2CEventsCore.Common.IDateTime)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/stringly/EventsCore/blob/master/src/Domain/Entities/Event.cs/#L1041">View Source</a>
+  </span>
+  <a id="EventsCore_Domain_Entities_Event_AcceptRegistrationByUserId_" data-uid="EventsCore.Domain.Entities.Event.AcceptRegistrationByUserId*"></a>
+  <h4 id="EventsCore_Domain_Entities_Event_AcceptRegistrationByUserId_System_Int32_EventsCore_Common_IDateTime_" data-uid="EventsCore.Domain.Entities.Event.AcceptRegistrationByUserId(System.Int32,EventsCore.Common.IDateTime)">AcceptRegistrationByUserId(Int32, IDateTime)</h4>
+  <div class="markdown level1 summary"><p>Updates the <a class="xref" href="EventsCore.Domain.Entities.RegistrationStatus.html">RegistrationStatus</a> of a Registration to &quot;Accepted&quot; by the UserId associated with the <a class="xref" href="EventsCore.Domain.Entities.Registration.html">Registration</a></p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void AcceptRegistrationByUserId(int userId, IDateTime _dateTime)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">userId</span></td>
+        <td><p>The UserId of the <a class="xref" href="EventsCore.Domain.Entities.User.html">User</a> associated with the <a class="xref" href="EventsCore.Domain.Entities.Registration.html">Registration</a></p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">EventsCore.Common.IDateTime</span></td>
+        <td><span class="parametername">_dateTime</span></td>
+        <td><p>An implementation of <span class="xref">EventsCore.Common.IDateTime</span></p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="EventsCore.Domain.Exceptions.Event.EventInvalidOperationException.html">EventInvalidOperationException</a></td>
+        <td><p>Thrown when 
+<ul><li>the <a class="xref" href="EventsCore.Domain.Entities.Event.html">Event</a> is expired.</li><li>the <a class="xref" href="EventsCore.Domain.Entities.Event.html">Event</a> is at Maximum allowed &quot;Accepted&quot; registrations.</li></ul></p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="EventsCore.Domain.Exceptions.Event.EventArgumentException.html">EventArgumentException</a></td>
+        <td><p>Thrown when no Registration with the given UserId parameter could be found in the <span class="xref">EventsCore.Domain.Entities.Event._registrations</span> collection.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
     <a href="https://github.com/stringly/EventsCore/new/master/apiSpec/new?filename=EventsCore_Domain_Entities_Event_AddEventToSeries_System_Int32_.md&amp;value=---%0Auid%3A%20EventsCore.Domain.Entities.Event.AddEventToSeries(System.Int32)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/stringly/EventsCore/blob/master/src/Domain/Entities/Event.cs/#L150">View Source</a>
+    <a href="https://github.com/stringly/EventsCore/blob/master/src/Domain/Entities/Event.cs/#L610">View Source</a>
   </span>
   <a id="EventsCore_Domain_Entities_Event_AddEventToSeries_" data-uid="EventsCore.Domain.Entities.Event.AddEventToSeries*"></a>
   <h4 id="EventsCore_Domain_Entities_Event_AddEventToSeries_System_Int32_" data-uid="EventsCore.Domain.Entities.Event.AddEventToSeries(System.Int32)">AddEventToSeries(Int32)</h4>
@@ -725,10 +1935,844 @@ Registration Period Start Date/Time, and Registration Period End Date/Time.</p>
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
+    <a href="https://github.com/stringly/EventsCore/new/master/apiSpec/new?filename=EventsCore_Domain_Entities_Event_AddModule_System_String_System_String_.md&amp;value=---%0Auid%3A%20EventsCore.Domain.Entities.Event.AddModule(System.String%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/stringly/EventsCore/blob/master/src/Domain/Entities/Event.cs/#L761">View Source</a>
+  </span>
+  <a id="EventsCore_Domain_Entities_Event_AddModule_" data-uid="EventsCore.Domain.Entities.Event.AddModule*"></a>
+  <h4 id="EventsCore_Domain_Entities_Event_AddModule_System_String_System_String_" data-uid="EventsCore.Domain.Entities.Event.AddModule(System.String,System.String)">AddModule(String, String)</h4>
+  <div class="markdown level1 summary"><p>Creates a new <a class="xref" href="EventsCore.Domain.Entities.Module.html">Module</a> and adds it to the aggregate&apos;s <a class="xref" href="EventsCore.Domain.Entities.Event.html#EventsCore_Domain_Entities_Event_Modules">Modules</a> collection.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void AddModule(string moduleName, string moduleDescription)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">moduleName</span></td>
+        <td><p>A string containing the name of the module to be added.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">moduleDescription</span></td>
+        <td><p>A string containing the description of the module to be added.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="EventsCore.Domain.Exceptions.Event.EventArgumentException.html">EventArgumentException</a></td>
+        <td><p>Thrown when a Module already exists with the given moduleName parameter.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/stringly/EventsCore/new/master/apiSpec/new?filename=EventsCore_Domain_Entities_Event_DeleteRegistrationByRegistrationId_System_Int32_.md&amp;value=---%0Auid%3A%20EventsCore.Domain.Entities.Event.DeleteRegistrationByRegistrationId(System.Int32)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/stringly/EventsCore/blob/master/src/Domain/Entities/Event.cs/#L1019">View Source</a>
+  </span>
+  <a id="EventsCore_Domain_Entities_Event_DeleteRegistrationByRegistrationId_" data-uid="EventsCore.Domain.Entities.Event.DeleteRegistrationByRegistrationId*"></a>
+  <h4 id="EventsCore_Domain_Entities_Event_DeleteRegistrationByRegistrationId_System_Int32_" data-uid="EventsCore.Domain.Entities.Event.DeleteRegistrationByRegistrationId(System.Int32)">DeleteRegistrationByRegistrationId(Int32)</h4>
+  <div class="markdown level1 summary"><p>Removes a Registration with the provided UserId from the Event&apos;s registration collection </p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void DeleteRegistrationByRegistrationId(int regId)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">regId</span></td>
+        <td><p>The integer ID for the User to whom the registration belongs</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="EventsCore.Domain.Exceptions.Event.EventArgumentException.html">EventArgumentException</a></td>
+        <td><p>Thrown when no <a class="xref" href="EventsCore.Domain.Entities.Registration.html">Registration</a> for the given RegistrationId was found in the Event&apos;s Registration collection.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/stringly/EventsCore/new/master/apiSpec/new?filename=EventsCore_Domain_Entities_Event_DeleteRegistrationByUserId_System_Int32_.md&amp;value=---%0Auid%3A%20EventsCore.Domain.Entities.Event.DeleteRegistrationByUserId(System.Int32)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/stringly/EventsCore/blob/master/src/Domain/Entities/Event.cs/#L1002">View Source</a>
+  </span>
+  <a id="EventsCore_Domain_Entities_Event_DeleteRegistrationByUserId_" data-uid="EventsCore.Domain.Entities.Event.DeleteRegistrationByUserId*"></a>
+  <h4 id="EventsCore_Domain_Entities_Event_DeleteRegistrationByUserId_System_Int32_" data-uid="EventsCore.Domain.Entities.Event.DeleteRegistrationByUserId(System.Int32)">DeleteRegistrationByUserId(Int32)</h4>
+  <div class="markdown level1 summary"><p>Removes a Registration with the provided UserId from the Event&apos;s registration collection </p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void DeleteRegistrationByUserId(int userId)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">userId</span></td>
+        <td><p>The integer ID for the User to whom the registration belongs</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="EventsCore.Domain.Exceptions.Event.EventArgumentException.html">EventArgumentException</a></td>
+        <td><p>Thrown when no <a class="xref" href="EventsCore.Domain.Entities.Registration.html">Registration</a> for the given UserId was found in the Event&apos;s Registration collection.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/stringly/EventsCore/new/master/apiSpec/new?filename=EventsCore_Domain_Entities_Event_IsAcceptingRegistrations_EventsCore_Common_IDateTime_.md&amp;value=---%0Auid%3A%20EventsCore.Domain.Entities.Event.IsAcceptingRegistrations(EventsCore.Common.IDateTime)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/stringly/EventsCore/blob/master/src/Domain/Entities/Event.cs/#L527">View Source</a>
+  </span>
+  <a id="EventsCore_Domain_Entities_Event_IsAcceptingRegistrations_" data-uid="EventsCore.Domain.Entities.Event.IsAcceptingRegistrations*"></a>
+  <h4 id="EventsCore_Domain_Entities_Event_IsAcceptingRegistrations_EventsCore_Common_IDateTime_" data-uid="EventsCore.Domain.Entities.Event.IsAcceptingRegistrations(EventsCore.Common.IDateTime)">IsAcceptingRegistrations(IDateTime)</h4>
+  <div class="markdown level1 summary"><p>Returns true if the Event is accepting new Registrations</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool IsAcceptingRegistrations(IDateTime _dateTime)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">EventsCore.Common.IDateTime</span></td>
+        <td><span class="parametername">_dateTime</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="EventsCore_Domain_Entities_Event_IsAcceptingRegistrations_EventsCore_Common_IDateTime__remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>This property will test the following conditions:
+<ul><li>
+Will return false if the Event&apos;s Start Date is in the Past.
+</li><li>
+Will return false if the number of &quot;Accepted&quot; registrations in the Event&apos;s collection is not less than the MaxRegistrations in the Event.Rules.
+</li></ul></p>
+</div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/stringly/EventsCore/new/master/apiSpec/new?filename=EventsCore_Domain_Entities_Event_IsActive_EventsCore_Common_IDateTime_.md&amp;value=---%0Auid%3A%20EventsCore.Domain.Entities.Event.IsActive(EventsCore.Common.IDateTime)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/stringly/EventsCore/blob/master/src/Domain/Entities/Event.cs/#L562">View Source</a>
+  </span>
+  <a id="EventsCore_Domain_Entities_Event_IsActive_" data-uid="EventsCore.Domain.Entities.Event.IsActive*"></a>
+  <h4 id="EventsCore_Domain_Entities_Event_IsActive_EventsCore_Common_IDateTime_" data-uid="EventsCore.Domain.Entities.Event.IsActive(EventsCore.Common.IDateTime)">IsActive(IDateTime)</h4>
+  <div class="markdown level1 summary"><p>Returns the event&apos;s active status</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool IsActive(IDateTime _dateTime)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">EventsCore.Common.IDateTime</span></td>
+        <td><span class="parametername">_dateTime</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="EventsCore_Domain_Entities_Event_IsActive_EventsCore_Common_IDateTime__remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>Returns true if the event&apos;s StartDate is in the past, but the event&apos;s end date is in the future.</p>
+</div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/stringly/EventsCore/new/master/apiSpec/new?filename=EventsCore_Domain_Entities_Event_IsExpired_EventsCore_Common_IDateTime_.md&amp;value=---%0Auid%3A%20EventsCore.Domain.Entities.Event.IsExpired(EventsCore.Common.IDateTime)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/stringly/EventsCore/blob/master/src/Domain/Entities/Event.cs/#L552">View Source</a>
+  </span>
+  <a id="EventsCore_Domain_Entities_Event_IsExpired_" data-uid="EventsCore.Domain.Entities.Event.IsExpired*"></a>
+  <h4 id="EventsCore_Domain_Entities_Event_IsExpired_EventsCore_Common_IDateTime_" data-uid="EventsCore.Domain.Entities.Event.IsExpired(EventsCore.Common.IDateTime)">IsExpired(IDateTime)</h4>
+  <div class="markdown level1 summary"><p>Returns the event&apos;s expiration status</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool IsExpired(IDateTime _dateTime)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">EventsCore.Common.IDateTime</span></td>
+        <td><span class="parametername">_dateTime</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="EventsCore_Domain_Entities_Event_IsExpired_EventsCore_Common_IDateTime__remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>Returns true if the Event&apos;s End Date is in the past, otherwise false.</p>
+</div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/stringly/EventsCore/new/master/apiSpec/new?filename=EventsCore_Domain_Entities_Event_MarkUserAbsent_System_Int32_System_Nullable_System_Int32__.md&amp;value=---%0Auid%3A%20EventsCore.Domain.Entities.Event.MarkUserAbsent(System.Int32%2CSystem.Nullable%7BSystem.Int32%7D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/stringly/EventsCore/blob/master/src/Domain/Entities/Event.cs/#L828">View Source</a>
+  </span>
+  <a id="EventsCore_Domain_Entities_Event_MarkUserAbsent_" data-uid="EventsCore.Domain.Entities.Event.MarkUserAbsent*"></a>
+  <h4 id="EventsCore_Domain_Entities_Event_MarkUserAbsent_System_Int32_System_Nullable_System_Int32__" data-uid="EventsCore.Domain.Entities.Event.MarkUserAbsent(System.Int32,System.Nullable{System.Int32})">MarkUserAbsent(Int32, Nullable&lt;Int32&gt;)</h4>
+  <div class="markdown level1 summary"><p>Creates or updates an existing user attendance record to <a class="xref" href="EventsCore.Domain.Entities.AttendanceStatus.html#EventsCore_Domain_Entities_AttendanceStatus_Absent">Absent</a></p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void MarkUserAbsent(int userId, int? moduleId = default(int? ))</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">userId</span></td>
+        <td><p>The Id of the User to mark absent</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Nullable</span>&lt;<span class="xref">System.Int32</span>&gt;</td>
+        <td><span class="parametername">moduleId</span></td>
+        <td><p>The Id of the Module. This is required if the Event has modules</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="EventsCore.Domain.Exceptions.Event.EventArgumentException.html">EventArgumentException</a></td>
+        <td><p>Thrown when the userId parameter is 0 or out of range.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="EventsCore.Domain.Exceptions.Event.EventInvalidOperationException.html">EventInvalidOperationException</a></td>
+        <td><p>Thrown when the Event has modules, but no moduleId parameter is provided.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/stringly/EventsCore/new/master/apiSpec/new?filename=EventsCore_Domain_Entities_Event_MarkUserExcused_System_Int32_System_Nullable_System_Int32__.md&amp;value=---%0Auid%3A%20EventsCore.Domain.Entities.Event.MarkUserExcused(System.Int32%2CSystem.Nullable%7BSystem.Int32%7D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/stringly/EventsCore/blob/master/src/Domain/Entities/Event.cs/#L860">View Source</a>
+  </span>
+  <a id="EventsCore_Domain_Entities_Event_MarkUserExcused_" data-uid="EventsCore.Domain.Entities.Event.MarkUserExcused*"></a>
+  <h4 id="EventsCore_Domain_Entities_Event_MarkUserExcused_System_Int32_System_Nullable_System_Int32__" data-uid="EventsCore.Domain.Entities.Event.MarkUserExcused(System.Int32,System.Nullable{System.Int32})">MarkUserExcused(Int32, Nullable&lt;Int32&gt;)</h4>
+  <div class="markdown level1 summary"><p>Creates or updates an existing user attendance record to <a class="xref" href="EventsCore.Domain.Entities.AttendanceStatus.html#EventsCore_Domain_Entities_AttendanceStatus_Excused">Excused</a></p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void MarkUserExcused(int userId, int? moduleId = default(int? ))</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">userId</span></td>
+        <td><p>The Id of the User to mark excused.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Nullable</span>&lt;<span class="xref">System.Int32</span>&gt;</td>
+        <td><span class="parametername">moduleId</span></td>
+        <td><p>The Id of the Module. This is required if the Event has modules</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="EventsCore.Domain.Exceptions.Event.EventArgumentException.html">EventArgumentException</a></td>
+        <td><p>Thrown when the userId parameter is 0 or out of range.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="EventsCore.Domain.Exceptions.Event.EventInvalidOperationException.html">EventInvalidOperationException</a></td>
+        <td><p>Thrown when the Event has modules, but no moduleId parameter is provided.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/stringly/EventsCore/new/master/apiSpec/new?filename=EventsCore_Domain_Entities_Event_MarkUserFail_System_Int32_System_Nullable_System_Int32__System_Double_.md&amp;value=---%0Auid%3A%20EventsCore.Domain.Entities.Event.MarkUserFail(System.Int32%2CSystem.Nullable%7BSystem.Int32%7D%2CSystem.Double)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/stringly/EventsCore/blob/master/src/Domain/Entities/Event.cs/#L926">View Source</a>
+  </span>
+  <a id="EventsCore_Domain_Entities_Event_MarkUserFail_" data-uid="EventsCore.Domain.Entities.Event.MarkUserFail*"></a>
+  <h4 id="EventsCore_Domain_Entities_Event_MarkUserFail_System_Int32_System_Nullable_System_Int32__System_Double_" data-uid="EventsCore.Domain.Entities.Event.MarkUserFail(System.Int32,System.Nullable{System.Int32},System.Double)">MarkUserFail(Int32, Nullable&lt;Int32&gt;, Double)</h4>
+  <div class="markdown level1 summary"><p>Creates or updates an existing user attendance record to <a class="xref" href="EventsCore.Domain.Entities.AttendanceStatus.html#EventsCore_Domain_Entities_AttendanceStatus_Fail">Fail</a></p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void MarkUserFail(int userId, int? moduleId = default(int? ), double score = 0)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">userId</span></td>
+        <td><p>The Id of the User to mark present</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Nullable</span>&lt;<span class="xref">System.Int32</span>&gt;</td>
+        <td><span class="parametername">moduleId</span></td>
+        <td><p>The Id of the Module. This is required if the Event has modules</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Double</span></td>
+        <td><span class="parametername">score</span></td>
+        <td><p>The score attained by the user on any exam associated with the Event/Module. This parameter will default to 0.0</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="EventsCore.Domain.Exceptions.Event.EventArgumentException.html">EventArgumentException</a></td>
+        <td><p>Thrown when the userId parameter is 0 or out of range.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="EventsCore.Domain.Exceptions.Event.EventInvalidOperationException.html">EventInvalidOperationException</a></td>
+        <td><p>Thrown when the Event has modules, but no moduleId parameter is provided.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/stringly/EventsCore/new/master/apiSpec/new?filename=EventsCore_Domain_Entities_Event_MarkUserPass_System_Int32_System_Nullable_System_Int32__System_Double_.md&amp;value=---%0Auid%3A%20EventsCore.Domain.Entities.Event.MarkUserPass(System.Int32%2CSystem.Nullable%7BSystem.Int32%7D%2CSystem.Double)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/stringly/EventsCore/blob/master/src/Domain/Entities/Event.cs/#L893">View Source</a>
+  </span>
+  <a id="EventsCore_Domain_Entities_Event_MarkUserPass_" data-uid="EventsCore.Domain.Entities.Event.MarkUserPass*"></a>
+  <h4 id="EventsCore_Domain_Entities_Event_MarkUserPass_System_Int32_System_Nullable_System_Int32__System_Double_" data-uid="EventsCore.Domain.Entities.Event.MarkUserPass(System.Int32,System.Nullable{System.Int32},System.Double)">MarkUserPass(Int32, Nullable&lt;Int32&gt;, Double)</h4>
+  <div class="markdown level1 summary"><p>Creates or updates an existing user attendance record to <a class="xref" href="EventsCore.Domain.Entities.AttendanceStatus.html#EventsCore_Domain_Entities_AttendanceStatus_Pass">Pass</a></p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void MarkUserPass(int userId, int? moduleId = default(int? ), double score = 100)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">userId</span></td>
+        <td><p>The Id of the User to mark Passed.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Nullable</span>&lt;<span class="xref">System.Int32</span>&gt;</td>
+        <td><span class="parametername">moduleId</span></td>
+        <td><p>The Id of the Module. This is required if the Event has modules</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Double</span></td>
+        <td><span class="parametername">score</span></td>
+        <td><p>The score attained by the user on any exam associated with the Event/Module. This parameter will default to 100.0</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="EventsCore.Domain.Exceptions.Event.EventArgumentException.html">EventArgumentException</a></td>
+        <td><p>Thrown when the userId parameter is 0 or out of range.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="EventsCore.Domain.Exceptions.Event.EventInvalidOperationException.html">EventInvalidOperationException</a></td>
+        <td><p>Thrown when the Event has modules, but no moduleId parameter is provided.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/stringly/EventsCore/new/master/apiSpec/new?filename=EventsCore_Domain_Entities_Event_MarkUserPresent_System_Int32_System_Nullable_System_Int32__.md&amp;value=---%0Auid%3A%20EventsCore.Domain.Entities.Event.MarkUserPresent(System.Int32%2CSystem.Nullable%7BSystem.Int32%7D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/stringly/EventsCore/blob/master/src/Domain/Entities/Event.cs/#L795">View Source</a>
+  </span>
+  <a id="EventsCore_Domain_Entities_Event_MarkUserPresent_" data-uid="EventsCore.Domain.Entities.Event.MarkUserPresent*"></a>
+  <h4 id="EventsCore_Domain_Entities_Event_MarkUserPresent_System_Int32_System_Nullable_System_Int32__" data-uid="EventsCore.Domain.Entities.Event.MarkUserPresent(System.Int32,System.Nullable{System.Int32})">MarkUserPresent(Int32, Nullable&lt;Int32&gt;)</h4>
+  <div class="markdown level1 summary"><p>Creates or updates an existing user attendance record to <a class="xref" href="EventsCore.Domain.Entities.AttendanceStatus.html#EventsCore_Domain_Entities_AttendanceStatus_Present">Present</a></p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void MarkUserPresent(int userId, int? moduleId = default(int? ))</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">userId</span></td>
+        <td><p>The Id of the User to mark present</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Nullable</span>&lt;<span class="xref">System.Int32</span>&gt;</td>
+        <td><span class="parametername">moduleId</span></td>
+        <td><p>The Id of the Module. This is required if the Event has modules</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="EventsCore.Domain.Exceptions.Event.EventArgumentException.html">EventArgumentException</a></td>
+        <td><p>Thrown when the userId parameter is 0 or out of range.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="EventsCore.Domain.Exceptions.Event.EventInvalidOperationException.html">EventInvalidOperationException</a></td>
+        <td><p>Thrown when the Event has modules, but no moduleId parameter is provided.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/stringly/EventsCore/new/master/apiSpec/new?filename=EventsCore_Domain_Entities_Event_RegisterUser_System_Int32_System_String_System_String_System_String_EventsCore_Common_IDateTime_.md&amp;value=---%0Auid%3A%20EventsCore.Domain.Entities.Event.RegisterUser(System.Int32%2CSystem.String%2CSystem.String%2CSystem.String%2CEventsCore.Common.IDateTime)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/stringly/EventsCore/blob/master/src/Domain/Entities/Event.cs/#L970">View Source</a>
+  </span>
+  <a id="EventsCore_Domain_Entities_Event_RegisterUser_" data-uid="EventsCore.Domain.Entities.Event.RegisterUser*"></a>
+  <h4 id="EventsCore_Domain_Entities_Event_RegisterUser_System_Int32_System_String_System_String_System_String_EventsCore_Common_IDateTime_" data-uid="EventsCore.Domain.Entities.Event.RegisterUser(System.Int32,System.String,System.String,System.String,EventsCore.Common.IDateTime)">RegisterUser(Int32, String, String, String, IDateTime)</h4>
+  <div class="markdown level1 summary"><p>Creates a new <a class="xref" href="EventsCore.Domain.Entities.Registration.html">Registration</a> and adds it to the Event&apos;s Registrations collection.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void RegisterUser(int userId, string userName, string email, string contact, IDateTime _dateTime)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">userId</span></td>
+        <td><p>The integer Id of the User.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">userName</span></td>
+        <td><p>A string containing the Display Name of the User.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">email</span></td>
+        <td><p>A string containing the User&apos;s email address.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">contact</span></td>
+        <td><p>A string containing the User&apos;s primary contact phone number.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">EventsCore.Common.IDateTime</span></td>
+        <td><span class="parametername">_dateTime</span></td>
+        <td><p>An implementation of <span class="xref">EventsCore.Common.IDateTime</span></p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="EventsCore.Domain.Exceptions.Event.EventArgumentException.html">EventArgumentException</a></td>
+        <td><p>Thrown when:
+<ul><li>Event is not accepting registrations</li></ul> </p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="EventsCore.Domain.Exceptions.Event.EventInvalidOperationException.html">EventInvalidOperationException</a></td>
+        <td><p>Thrown when:
+<ul><li>The userId parameter is 0 or out of range</li><li>The userName parameter is empty/whitespace string</li><li>The email parameter is empty/whitespace string</li></ul></p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/stringly/EventsCore/new/master/apiSpec/new?filename=EventsCore_Domain_Entities_Event_RejectRegistrationByRegistrationId_System_Int32_EventsCore_Common_IDateTime_.md&amp;value=---%0Auid%3A%20EventsCore.Domain.Entities.Event.RejectRegistrationByRegistrationId(System.Int32%2CEventsCore.Common.IDateTime)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/stringly/EventsCore/blob/master/src/Domain/Entities/Event.cs/#L1129">View Source</a>
+  </span>
+  <a id="EventsCore_Domain_Entities_Event_RejectRegistrationByRegistrationId_" data-uid="EventsCore.Domain.Entities.Event.RejectRegistrationByRegistrationId*"></a>
+  <h4 id="EventsCore_Domain_Entities_Event_RejectRegistrationByRegistrationId_System_Int32_EventsCore_Common_IDateTime_" data-uid="EventsCore.Domain.Entities.Event.RejectRegistrationByRegistrationId(System.Int32,EventsCore.Common.IDateTime)">RejectRegistrationByRegistrationId(Int32, IDateTime)</h4>
+  <div class="markdown level1 summary"><p>Updates the <a class="xref" href="EventsCore.Domain.Entities.RegistrationStatus.html">RegistrationStatus</a> of a Registration to &quot;Rejected&quot; by the RegistrationId associated with the <a class="xref" href="EventsCore.Domain.Entities.Registration.html">Registration</a></p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void RejectRegistrationByRegistrationId(int registrationId, IDateTime _dateTime)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">registrationId</span></td>
+        <td><p>The UserId of the <a class="xref" href="EventsCore.Domain.Entities.Registration.html">Registration</a></p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">EventsCore.Common.IDateTime</span></td>
+        <td><span class="parametername">_dateTime</span></td>
+        <td><p>An implementation of <span class="xref">EventsCore.Common.IDateTime</span></p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="EventsCore.Domain.Exceptions.Event.EventInvalidOperationException.html">EventInvalidOperationException</a></td>
+        <td><p>Thrown when the associated Event has expired.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="EventsCore.Domain.Exceptions.Event.EventArgumentException.html">EventArgumentException</a></td>
+        <td><p>Thrown when no Registration with the provided UserId parameter was found in the <span class="xref">EventsCore.Domain.Entities.Event._registrations</span></p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/stringly/EventsCore/new/master/apiSpec/new?filename=EventsCore_Domain_Entities_Event_RejectRegistrationByUserId_System_Int32_EventsCore_Common_IDateTime_.md&amp;value=---%0Auid%3A%20EventsCore.Domain.Entities.Event.RejectRegistrationByUserId(System.Int32%2CEventsCore.Common.IDateTime)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/stringly/EventsCore/blob/master/src/Domain/Entities/Event.cs/#L1099">View Source</a>
+  </span>
+  <a id="EventsCore_Domain_Entities_Event_RejectRegistrationByUserId_" data-uid="EventsCore.Domain.Entities.Event.RejectRegistrationByUserId*"></a>
+  <h4 id="EventsCore_Domain_Entities_Event_RejectRegistrationByUserId_System_Int32_EventsCore_Common_IDateTime_" data-uid="EventsCore.Domain.Entities.Event.RejectRegistrationByUserId(System.Int32,EventsCore.Common.IDateTime)">RejectRegistrationByUserId(Int32, IDateTime)</h4>
+  <div class="markdown level1 summary"><p>Updates the <a class="xref" href="EventsCore.Domain.Entities.RegistrationStatus.html">RegistrationStatus</a> of a Registration to &quot;Rejected&quot; by the id UserId associated with the <a class="xref" href="EventsCore.Domain.Entities.Registration.html">Registration</a></p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void RejectRegistrationByUserId(int userId, IDateTime _dateTime)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">userId</span></td>
+        <td><p>The UserId of the <a class="xref" href="EventsCore.Domain.Entities.User.html">User</a> associated with the <a class="xref" href="EventsCore.Domain.Entities.Registration.html">Registration</a></p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">EventsCore.Common.IDateTime</span></td>
+        <td><span class="parametername">_dateTime</span></td>
+        <td><p>An implementation of <span class="xref">EventsCore.Common.IDateTime</span></p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="EventsCore.Domain.Exceptions.Event.EventInvalidOperationException.html">EventInvalidOperationException</a></td>
+        <td><p>Thrown when the associated Event has expired.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="EventsCore.Domain.Exceptions.Event.EventArgumentException.html">EventArgumentException</a></td>
+        <td><p>Thrown when no Registration with the provided UserId parameter was found in the <span class="xref">EventsCore.Domain.Entities.Event._registrations</span></p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
     <a href="https://github.com/stringly/EventsCore/new/master/apiSpec/new?filename=EventsCore_Domain_Entities_Event_RemoveEventFromSeries.md&amp;value=---%0Auid%3A%20EventsCore.Domain.Entities.Event.RemoveEventFromSeries%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/stringly/EventsCore/blob/master/src/Domain/Entities/Event.cs/#L164">View Source</a>
+    <a href="https://github.com/stringly/EventsCore/blob/master/src/Domain/Entities/Event.cs/#L624">View Source</a>
   </span>
   <a id="EventsCore_Domain_Entities_Event_RemoveEventFromSeries_" data-uid="EventsCore.Domain.Entities.Event.RemoveEventFromSeries*"></a>
   <h4 id="EventsCore_Domain_Entities_Event_RemoveEventFromSeries" data-uid="EventsCore.Domain.Entities.Event.RemoveEventFromSeries">RemoveEventFromSeries()</h4>
@@ -741,10 +2785,196 @@ Registration Period Start Date/Time, and Registration Period End Date/Time.</p>
   </div>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
+    <a href="https://github.com/stringly/EventsCore/new/master/apiSpec/new?filename=EventsCore_Domain_Entities_Event_RemoveModuleById_System_Int32_.md&amp;value=---%0Auid%3A%20EventsCore.Domain.Entities.Event.RemoveModuleById(System.Int32)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/stringly/EventsCore/blob/master/src/Domain/Entities/Event.cs/#L775">View Source</a>
+  </span>
+  <a id="EventsCore_Domain_Entities_Event_RemoveModuleById_" data-uid="EventsCore.Domain.Entities.Event.RemoveModuleById*"></a>
+  <h4 id="EventsCore_Domain_Entities_Event_RemoveModuleById_System_Int32_" data-uid="EventsCore.Domain.Entities.Event.RemoveModuleById(System.Int32)">RemoveModuleById(Int32)</h4>
+  <div class="markdown level1 summary"><p>Removes a module by Id</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void RemoveModuleById(int moduleId)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">moduleId</span></td>
+        <td><p>The Id of the module to be removed.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="EventsCore.Domain.Exceptions.Event.EventArgumentException.html">EventArgumentException</a></td>
+        <td><p>Thrown when no module with the given moduleId parameter exists in the aggregate&apos;s <a class="xref" href="EventsCore.Domain.Entities.Event.html#EventsCore_Domain_Entities_Event_Modules">Modules</a> collection.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/stringly/EventsCore/new/master/apiSpec/new?filename=EventsCore_Domain_Entities_Event_StandbyRegistrationByUserId_System_Int32_EventsCore_Common_IDateTime_.md&amp;value=---%0Auid%3A%20EventsCore.Domain.Entities.Event.StandbyRegistrationByUserId(System.Int32%2CEventsCore.Common.IDateTime)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/stringly/EventsCore/blob/master/src/Domain/Entities/Event.cs/#L1163">View Source</a>
+  </span>
+  <a id="EventsCore_Domain_Entities_Event_StandbyRegistrationByUserId_" data-uid="EventsCore.Domain.Entities.Event.StandbyRegistrationByUserId*"></a>
+  <h4 id="EventsCore_Domain_Entities_Event_StandbyRegistrationByUserId_System_Int32_EventsCore_Common_IDateTime_" data-uid="EventsCore.Domain.Entities.Event.StandbyRegistrationByUserId(System.Int32,EventsCore.Common.IDateTime)">StandbyRegistrationByUserId(Int32, IDateTime)</h4>
+  <div class="markdown level1 summary"><p>Updates the <a class="xref" href="EventsCore.Domain.Entities.RegistrationStatus.html">RegistrationStatus</a> of a Registration to &quot;Standby&quot; by the id UserId associated with the <a class="xref" href="EventsCore.Domain.Entities.Registration.html">Registration</a></p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void StandbyRegistrationByUserId(int userId, IDateTime _dateTime)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">userId</span></td>
+        <td><p>The UserId of the <a class="xref" href="EventsCore.Domain.Entities.User.html">User</a> associated with the <a class="xref" href="EventsCore.Domain.Entities.Registration.html">Registration</a></p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">EventsCore.Common.IDateTime</span></td>
+        <td><span class="parametername">_dateTime</span></td>
+        <td><p>An implementation of <span class="xref">EventsCore.Common.IDateTime</span></p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="EventsCore.Domain.Exceptions.Event.EventInvalidOperationException.html">EventInvalidOperationException</a></td>
+        <td><p>Thrown when:
+<ul><li>The associated Event has expired.</li><li>The associated Event has reached its maximum number of Standby Registrations.</li></ul></p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="EventsCore.Domain.Exceptions.Event.EventArgumentException.html">EventArgumentException</a></td>
+        <td><p>Thrown when no Registration with the provided UserId parameter was found in the <span class="xref">EventsCore.Domain.Entities.Event._registrations</span></p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/stringly/EventsCore/new/master/apiSpec/new?filename=EventsCore_Domain_Entities_Event_UpdateAddress_System_String_System_String_System_String_System_String_System_String_.md&amp;value=---%0Auid%3A%20EventsCore.Domain.Entities.Event.UpdateAddress(System.String%2CSystem.String%2CSystem.String%2CSystem.String%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/stringly/EventsCore/blob/master/src/Domain/Entities/Event.cs/#L661">View Source</a>
+  </span>
+  <a id="EventsCore_Domain_Entities_Event_UpdateAddress_" data-uid="EventsCore.Domain.Entities.Event.UpdateAddress*"></a>
+  <h4 id="EventsCore_Domain_Entities_Event_UpdateAddress_System_String_System_String_System_String_System_String_System_String_" data-uid="EventsCore.Domain.Entities.Event.UpdateAddress(System.String,System.String,System.String,System.String,System.String)">UpdateAddress(String, String, String, String, String)</h4>
+  <div class="markdown level1 summary"><p>Updates the event&apos;s <a class="xref" href="EventsCore.Domain.Entities.Event.html#EventsCore_Domain_Entities_Event_Address">Address</a></p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void UpdateAddress(string street = &quot;&quot;, string suite = &quot;&quot;, string city = &quot;&quot;, string state = &quot;&quot;, string zip = &quot;&quot;)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">street</span></td>
+        <td><p>A string containing the street address, i.e &quot;123 Anywhere St.&quot;</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">suite</span></td>
+        <td><p>A string containing an optional suite, apt, room number, or other detail, i.e. &quot;Suite #4&quot;</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">city</span></td>
+        <td><p>A string containing the name of the city in which the address is located.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">state</span></td>
+        <td><p>A string containing the 2-digit state postal code for the address.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">zip</span></td>
+        <td><p>A strubg containing the 5-digit ZIP code for the address.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="EventsCore.Domain.Exceptions.Event.EventArgumentException.html">EventArgumentException</a></td>
+        <td><p>Thrown when one of the parameters is invalid and the <a class="xref" href="EventsCore.Domain.ValueObjects.Address.html">Address</a> constructor throws an error.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
     <a href="https://github.com/stringly/EventsCore/new/master/apiSpec/new?filename=EventsCore_Domain_Entities_Event_UpdateDescription_System_String_.md&amp;value=---%0Auid%3A%20EventsCore.Domain.Entities.Event.UpdateDescription(System.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/stringly/EventsCore/blob/master/src/Domain/Entities/Event.cs/#L138">View Source</a>
+    <a href="https://github.com/stringly/EventsCore/blob/master/src/Domain/Entities/Event.cs/#L598">View Source</a>
   </span>
   <a id="EventsCore_Domain_Entities_Event_UpdateDescription_" data-uid="EventsCore.Domain.Entities.Event.UpdateDescription*"></a>
   <h4 id="EventsCore_Domain_Entities_Event_UpdateDescription_System_String_" data-uid="EventsCore.Domain.Entities.Event.UpdateDescription(System.String)">UpdateDescription(String)</h4>
@@ -791,19 +3021,19 @@ Registration Period Start Date/Time, and Registration Period End Date/Time.</p>
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/stringly/EventsCore/new/master/apiSpec/new?filename=EventsCore_Domain_Entities_Event_UpdateEventDates_EventsCore_Domain_ValueObjects_EventDates_.md&amp;value=---%0Auid%3A%20EventsCore.Domain.Entities.Event.UpdateEventDates(EventsCore.Domain.ValueObjects.EventDates)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/stringly/EventsCore/new/master/apiSpec/new?filename=EventsCore_Domain_Entities_Event_UpdateEventDates_System_Nullable_System_DateTime__System_Nullable_System_DateTime__System_Nullable_System_DateTime__System_Nullable_System_DateTime__.md&amp;value=---%0Auid%3A%20EventsCore.Domain.Entities.Event.UpdateEventDates(System.Nullable%7BSystem.DateTime%7D%2CSystem.Nullable%7BSystem.DateTime%7D%2CSystem.Nullable%7BSystem.DateTime%7D%2CSystem.Nullable%7BSystem.DateTime%7D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/stringly/EventsCore/blob/master/src/Domain/Entities/Event.cs/#L182">View Source</a>
+    <a href="https://github.com/stringly/EventsCore/blob/master/src/Domain/Entities/Event.cs/#L696">View Source</a>
   </span>
   <a id="EventsCore_Domain_Entities_Event_UpdateEventDates_" data-uid="EventsCore.Domain.Entities.Event.UpdateEventDates*"></a>
-  <h4 id="EventsCore_Domain_Entities_Event_UpdateEventDates_EventsCore_Domain_ValueObjects_EventDates_" data-uid="EventsCore.Domain.Entities.Event.UpdateEventDates(EventsCore.Domain.ValueObjects.EventDates)">UpdateEventDates(EventDates)</h4>
-  <div class="markdown level1 summary"><p>Updates the Event&apos;s Dates property.</p>
+  <h4 id="EventsCore_Domain_Entities_Event_UpdateEventDates_System_Nullable_System_DateTime__System_Nullable_System_DateTime__System_Nullable_System_DateTime__System_Nullable_System_DateTime__" data-uid="EventsCore.Domain.Entities.Event.UpdateEventDates(System.Nullable{System.DateTime},System.Nullable{System.DateTime},System.Nullable{System.DateTime},System.Nullable{System.DateTime})">UpdateEventDates(Nullable&lt;DateTime&gt;, Nullable&lt;DateTime&gt;, Nullable&lt;DateTime&gt;, Nullable&lt;DateTime&gt;)</h4>
+  <div class="markdown level1 summary"><p>Updates the Event&apos;s <a class="xref" href="EventsCore.Domain.Entities.Event.html#EventsCore_Domain_Entities_Event_Dates">Dates</a></p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public void UpdateEventDates(EventDates newDates)</code></pre>
+    <pre><code class="lang-csharp hljs">public void UpdateEventDates(DateTime? startDate = default(DateTime? ), DateTime? endDate = default(DateTime? ), DateTime? regStart = default(DateTime? ), DateTime? regEnd = default(DateTime? ))</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -816,26 +3046,25 @@ Registration Period Start Date/Time, and Registration Period End Date/Time.</p>
     </thead>
     <tbody>
       <tr>
-        <td><a class="xref" href="EventsCore.Domain.ValueObjects.EventDates.html">EventDates</a></td>
-        <td><span class="parametername">newDates</span></td>
-        <td><p>A <a class="xref" href="EventsCore.Domain.ValueObjects.EventDates.html">EventDates</a> containing the new Date set.</p>
+        <td><span class="xref">System.Nullable</span>&lt;<span class="xref">System.DateTime</span>&gt;</td>
+        <td><span class="parametername">startDate</span></td>
+        <td><p>A nullable DateTime containing the Event&apos;s start date.</p>
 </td>
       </tr>
-    </tbody>
-  </table>
-  <h5 class="exceptions">Exceptions</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
       <tr>
-        <th>Type</th>
-        <th>Condition</th>
+        <td><span class="xref">System.Nullable</span>&lt;<span class="xref">System.DateTime</span>&gt;</td>
+        <td><span class="parametername">endDate</span></td>
+        <td></td>
       </tr>
-    </thead>
-    <tbody>
       <tr>
-        <td><a class="xref" href="EventsCore.Domain.Exceptions.Event.EventArgumentException.html">EventArgumentException</a></td>
-        <td><p>Thrown when the newDates parameter is null.</p>
-</td>
+        <td><span class="xref">System.Nullable</span>&lt;<span class="xref">System.DateTime</span>&gt;</td>
+        <td><span class="parametername">regStart</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Nullable</span>&lt;<span class="xref">System.DateTime</span>&gt;</td>
+        <td><span class="parametername">regEnd</span></td>
+        <td></td>
       </tr>
     </tbody>
   </table>
@@ -844,7 +3073,7 @@ Registration Period Start Date/Time, and Registration Period End Date/Time.</p>
     <a href="https://github.com/stringly/EventsCore/new/master/apiSpec/new?filename=EventsCore_Domain_Entities_Event_UpdateEventType_System_Int32_.md&amp;value=---%0Auid%3A%20EventsCore.Domain.Entities.Event.UpdateEventType(System.Int32)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/stringly/EventsCore/blob/master/src/Domain/Entities/Event.cs/#L173">View Source</a>
+    <a href="https://github.com/stringly/EventsCore/blob/master/src/Domain/Entities/Event.cs/#L633">View Source</a>
   </span>
   <a id="EventsCore_Domain_Entities_Event_UpdateEventType_" data-uid="EventsCore.Domain.Entities.Event.UpdateEventType*"></a>
   <h4 id="EventsCore_Domain_Entities_Event_UpdateEventType_System_Int32_" data-uid="EventsCore.Domain.Entities.Event.UpdateEventType(System.Int32)">UpdateEventType(Int32)</h4>
@@ -891,19 +3120,19 @@ Registration Period Start Date/Time, and Registration Period End Date/Time.</p>
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/stringly/EventsCore/new/master/apiSpec/new?filename=EventsCore_Domain_Entities_Event_UpdateRegistrationRules_EventsCore_Domain_ValueObjects_EventRegistrationRules_.md&amp;value=---%0Auid%3A%20EventsCore.Domain.Entities.Event.UpdateRegistrationRules(EventsCore.Domain.ValueObjects.EventRegistrationRules)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/stringly/EventsCore/new/master/apiSpec/new?filename=EventsCore_Domain_Entities_Event_UpdateOwner_System_Int32_.md&amp;value=---%0Auid%3A%20EventsCore.Domain.Entities.Event.UpdateOwner(System.Int32)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/stringly/EventsCore/blob/master/src/Domain/Entities/Event.cs/#L191">View Source</a>
+    <a href="https://github.com/stringly/EventsCore/blob/master/src/Domain/Entities/Event.cs/#L644">View Source</a>
   </span>
-  <a id="EventsCore_Domain_Entities_Event_UpdateRegistrationRules_" data-uid="EventsCore.Domain.Entities.Event.UpdateRegistrationRules*"></a>
-  <h4 id="EventsCore_Domain_Entities_Event_UpdateRegistrationRules_EventsCore_Domain_ValueObjects_EventRegistrationRules_" data-uid="EventsCore.Domain.Entities.Event.UpdateRegistrationRules(EventsCore.Domain.ValueObjects.EventRegistrationRules)">UpdateRegistrationRules(EventRegistrationRules)</h4>
-  <div class="markdown level1 summary"><p>Updates the Event&apos;s <a class="xref" href="EventsCore.Domain.ValueObjects.EventRegistrationRules.html">EventRegistrationRules</a> ruleset.</p>
+  <a id="EventsCore_Domain_Entities_Event_UpdateOwner_" data-uid="EventsCore.Domain.Entities.Event.UpdateOwner*"></a>
+  <h4 id="EventsCore_Domain_Entities_Event_UpdateOwner_System_Int32_" data-uid="EventsCore.Domain.Entities.Event.UpdateOwner(System.Int32)">UpdateOwner(Int32)</h4>
+  <div class="markdown level1 summary"><p>Updates the Event&apos;s Owner</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public void UpdateRegistrationRules(EventRegistrationRules newRules)</code></pre>
+    <pre><code class="lang-csharp hljs">public void UpdateOwner(int ownerUserId)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -916,9 +3145,9 @@ Registration Period Start Date/Time, and Registration Period End Date/Time.</p>
     </thead>
     <tbody>
       <tr>
-        <td><a class="xref" href="EventsCore.Domain.ValueObjects.EventRegistrationRules.html">EventRegistrationRules</a></td>
-        <td><span class="parametername">newRules</span></td>
-        <td><p>An <a class="xref" href="EventsCore.Domain.ValueObjects.EventRegistrationRules.html">EventRegistrationRules</a> object containing the new rules to assign to the Event.</p>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">ownerUserId</span></td>
+        <td><p>The Id of the <a class="xref" href="EventsCore.Domain.Entities.User.html">User</a> to assign as the event&apos;s owner.</p>
 </td>
       </tr>
     </tbody>
@@ -934,7 +3163,74 @@ Registration Period Start Date/Time, and Registration Period End Date/Time.</p>
     <tbody>
       <tr>
         <td><a class="xref" href="EventsCore.Domain.Exceptions.Event.EventArgumentException.html">EventArgumentException</a></td>
-        <td><p>Thrown when the newRules parameter is null.</p>
+        <td><p>Thrown when the ownerUserId parameter is 0.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/stringly/EventsCore/new/master/apiSpec/new?filename=EventsCore_Domain_Entities_Event_UpdateRegistrationRules_System_Nullable_System_Int32__System_Nullable_System_Int32__System_Nullable_System_Int32__.md&amp;value=---%0Auid%3A%20EventsCore.Domain.Entities.Event.UpdateRegistrationRules(System.Nullable%7BSystem.Int32%7D%2CSystem.Nullable%7BSystem.Int32%7D%2CSystem.Nullable%7BSystem.Int32%7D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/stringly/EventsCore/blob/master/src/Domain/Entities/Event.cs/#L735">View Source</a>
+  </span>
+  <a id="EventsCore_Domain_Entities_Event_UpdateRegistrationRules_" data-uid="EventsCore.Domain.Entities.Event.UpdateRegistrationRules*"></a>
+  <h4 id="EventsCore_Domain_Entities_Event_UpdateRegistrationRules_System_Nullable_System_Int32__System_Nullable_System_Int32__System_Nullable_System_Int32__" data-uid="EventsCore.Domain.Entities.Event.UpdateRegistrationRules(System.Nullable{System.Int32},System.Nullable{System.Int32},System.Nullable{System.Int32})">UpdateRegistrationRules(Nullable&lt;Int32&gt;, Nullable&lt;Int32&gt;, Nullable&lt;Int32&gt;)</h4>
+  <div class="markdown level1 summary"><p>Updates the Event&apos;s <a class="xref" href="EventsCore.Domain.Entities.Event.html#EventsCore_Domain_Entities_Event_Rules">Rules</a></p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void UpdateRegistrationRules(int? maxRegs = default(int? ), int? minRegs = default(int? ), int? maxStandbyRegs = default(int? ))</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Nullable</span>&lt;<span class="xref">System.Int32</span>&gt;</td>
+        <td><span class="parametername">maxRegs</span></td>
+        <td><p>Nullable int containing the max registration count.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Nullable</span>&lt;<span class="xref">System.Int32</span>&gt;</td>
+        <td><span class="parametername">minRegs</span></td>
+        <td><p>Nullable int containing the min registration count.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Nullable</span>&lt;<span class="xref">System.Int32</span>&gt;</td>
+        <td><span class="parametername">maxStandbyRegs</span></td>
+        <td><p>Nullable int containing the max standby registration count.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="EventsCore_Domain_Entities_Event_UpdateRegistrationRules_System_Nullable_System_Int32__System_Nullable_System_Int32__System_Nullable_System_Int32___remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>This method&apos;s parameters are defaulted to null, but if no parameters are provided, an error will be thrown.
+If at least one parameter is provided, the method will attempt to update the Rules to reflect the updated values.</p>
+</div>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="EventsCore.Domain.Exceptions.Event.EventArgumentException.html">EventArgumentException</a></td>
+        <td><p>Thrown when:
+<ul><li>No parameters are provided.</li><li>One of the provided parameters violated a constraint in the <a class="xref" href="EventsCore.Domain.ValueObjects.EventRegistrationRules.html">EventRegistrationRules</a> constructor. Most commonly, this will be when the MaxRegistration count is less than the MinRegistraitonCount </li></ul></p>
 </td>
       </tr>
     </tbody>
@@ -944,7 +3240,7 @@ Registration Period Start Date/Time, and Registration Period End Date/Time.</p>
     <a href="https://github.com/stringly/EventsCore/new/master/apiSpec/new?filename=EventsCore_Domain_Entities_Event_UpdateTitle_System_String_.md&amp;value=---%0Auid%3A%20EventsCore.Domain.Entities.Event.UpdateTitle(System.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/stringly/EventsCore/blob/master/src/Domain/Entities/Event.cs/#L125">View Source</a>
+    <a href="https://github.com/stringly/EventsCore/blob/master/src/Domain/Entities/Event.cs/#L585">View Source</a>
   </span>
   <a id="EventsCore_Domain_Entities_Event_UpdateTitle_" data-uid="EventsCore.Domain.Entities.Event.UpdateTitle*"></a>
   <h4 id="EventsCore_Domain_Entities_Event_UpdateTitle_System_String_" data-uid="EventsCore.Domain.Entities.Event.UpdateTitle(System.String)">UpdateTitle(String)</h4>
@@ -1004,7 +3300,7 @@ Registration Period Start Date/Time, and Registration Period End Date/Time.</p>
                     <a href="https://github.com/stringly/EventsCore/new/master/apiSpec/new?filename=EventsCore_Domain_Entities_Event.md&amp;value=---%0Auid%3A%20EventsCore.Domain.Entities.Event%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
                   </li>
                   <li>
-                    <a href="https://github.com/stringly/EventsCore/blob/master/src/Domain/Entities/Event.cs/#L14" class="contribution-link">View Source</a>
+                    <a href="https://github.com/stringly/EventsCore/blob/master/src/Domain/Entities/Event.cs/#L15" class="contribution-link">View Source</a>
                   </li>
                 </ul>
               </div>

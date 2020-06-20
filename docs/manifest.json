@@ -5,6 +5,18 @@
   "files": [
     {
       "type": "ManagedReference",
+      "source_relative_path": "api/Application/EventsCore.Application.Common.Behaviours.RequestAuthorizationBehavior-2.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Application/EventsCore.Application.Common.Behaviours.RequestAuthorizationBehavior-2.html",
+          "hash": "VxqzeNAjpoTzqvznx4s7+A=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
       "source_relative_path": "api/Application/EventsCore.Application.Common.Behaviours.RequestLogger-1.yml",
       "output": {
         ".html": {
@@ -12,7 +24,7 @@
           "hash": "Mz0Zk0TQIMifhFhPcAKY7g=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -24,7 +36,7 @@
           "hash": "D4UpqsWUbN2DEzJwLSEF0Q=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -36,7 +48,7 @@
           "hash": "A8BUD+6VEV7fCwPmtJJ6QQ=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -45,10 +57,22 @@
       "output": {
         ".html": {
           "relative_path": "api/Application/EventsCore.Application.Common.Behaviours.html",
-          "hash": "84MLoDj1MyxV2/AKWkJR0A=="
+          "hash": "+OYVfSrGXam9zZTlVZZfgA=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Application/EventsCore.Application.Common.Exceptions.BadRequestException.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Application/EventsCore.Application.Common.Exceptions.BadRequestException.html",
+          "hash": "NuJxabc6XVV8dca0bgQR7Q=="
+        }
+      },
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -60,7 +84,7 @@
           "hash": "cGUI27EO++ot2qp0HDgxOA=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -72,7 +96,19 @@
           "hash": "ZvaMFd0NV3LZukuRqA/LBQ=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Application/EventsCore.Application.Common.Exceptions.UnauthorizedException.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Application/EventsCore.Application.Common.Exceptions.UnauthorizedException.html",
+          "hash": "qyiYXBE9Do3wTg1cUEUSOw=="
+        }
+      },
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -84,7 +120,7 @@
           "hash": "LbQBok7OIuHLSyT/u+7TTA=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -93,10 +129,10 @@
       "output": {
         ".html": {
           "relative_path": "api/Application/EventsCore.Application.Common.Exceptions.html",
-          "hash": "B57PPLk6tE5z4tI+8dbg+g=="
+          "hash": "YWODTXuz7ACR8M3RMwo3tA=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -108,7 +144,19 @@
           "hash": "pR7NiZfWfk0Q7GFpW+AGyw=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Application/EventsCore.Application.Common.Interfaces.IAuthorizer-1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Application/EventsCore.Application.Common.Interfaces.IAuthorizer-1.html",
+          "hash": "hnVdKnNAKfwYTvhVVNlrBg=="
+        }
+      },
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -117,10 +165,10 @@
       "output": {
         ".html": {
           "relative_path": "api/Application/EventsCore.Application.Common.Interfaces.ICurrentUserService.html",
-          "hash": "iR/zZsfUc93psDXU0n4gXw=="
+          "hash": "UkhFnJUyY0sjyXNPrpRonA=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -129,10 +177,10 @@
       "output": {
         ".html": {
           "relative_path": "api/Application/EventsCore.Application.Common.Interfaces.IEventsCoreDbContext.html",
-          "hash": "a5fRW9yKpwvlIyhaL+wPyg=="
+          "hash": "Z4MoBmpyCbk58UYgiluQ5w=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -144,7 +192,7 @@
           "hash": "pQSOMY5kBXkdFSZhbMxALw=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -156,7 +204,7 @@
           "hash": "5r5T2K4ExfacqXtJ/Oxxjw=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -168,7 +216,7 @@
           "hash": "tna38cbqzsusrSngcILwXw=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -177,10 +225,10 @@
       "output": {
         ".html": {
           "relative_path": "api/Application/EventsCore.Application.Common.Interfaces.html",
-          "hash": "ShDUXJ86QePWzgyN0rUJLA=="
+          "hash": "pmb5FSAhgsab1C/h2ul3kg=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -192,7 +240,7 @@
           "hash": "HD4GGLxsO8HFItDN7FW2DA=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -204,7 +252,7 @@
           "hash": "dgrg+9PKCd+3SRSTTR8s2Q=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -216,7 +264,79 @@
           "hash": "ISD1xeegu0eBZSFH7tnbsg=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Application/EventsCore.Application.Common.Models.AddAuthorizers.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Application/EventsCore.Application.Common.Models.AddAuthorizers.html",
+          "hash": "NapFieH2LBg3yCHk14A/mw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Application/EventsCore.Application.Common.Models.Authorization.CanDeleteEventAuthorizer.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Application/EventsCore.Application.Common.Models.Authorization.CanDeleteEventAuthorizer.html",
+          "hash": "4/Y4zNPfLKhrBfCBLZj3kg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Application/EventsCore.Application.Common.Models.Authorization.CanEditEventAuthorizer.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Application/EventsCore.Application.Common.Models.Authorization.CanEditEventAuthorizer.html",
+          "hash": "zbdZGBZ/z2uxeu52HRdAMQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Application/EventsCore.Application.Common.Models.Authorization.CanGetEditEventAuthorizer.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Application/EventsCore.Application.Common.Models.Authorization.CanGetEditEventAuthorizer.html",
+          "hash": "98+ukbRspyjbkC25S0m4XA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Application/EventsCore.Application.Common.Models.Authorization.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Application/EventsCore.Application.Common.Models.Authorization.html",
+          "hash": "qiUbrc2mvH2s1kmozinwig=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Application/EventsCore.Application.Common.Models.AuthorizationResult.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Application/EventsCore.Application.Common.Models.AuthorizationResult.html",
+          "hash": "LSEWQsA0nSAkGDFOwgesHw=="
+        }
+      },
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -228,7 +348,7 @@
           "hash": "5RJUqE68+MPLu1tvwAEDIQ=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -237,10 +357,10 @@
       "output": {
         ".html": {
           "relative_path": "api/Application/EventsCore.Application.Common.Models.html",
-          "hash": "09dZ7/0zwY6Fm5XqF6r3VQ=="
+          "hash": "/RSN+TnF1Ps1nfJoUU1d+Q=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -249,10 +369,10 @@
       "output": {
         ".html": {
           "relative_path": "api/Application/EventsCore.Application.DependencyInjection.html",
-          "hash": "eWc0Zm0N6vbHKek3/kafew=="
+          "hash": "TOLeIKLb4pDFhk0TqSP5SQ=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -264,7 +384,7 @@
           "hash": "i7H8Q+1JCrhZQHjYGVy2VQ=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -276,7 +396,7 @@
           "hash": "YJIaXkDBs/iC0HmunT0MwQ=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -288,7 +408,7 @@
           "hash": "RALdjDp8AbYaPiQxgtbBLQ=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -300,7 +420,7 @@
           "hash": "kbjFGoILnZ+/VWyLwcxCSQ=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -312,7 +432,7 @@
           "hash": "7Vl9DwHFnH3M1fp/YAu1Gg=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -324,7 +444,7 @@
           "hash": "ySXS4cYY0dDJCDrvJK62tw=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -336,7 +456,7 @@
           "hash": "l9JB+d1D7GqeZ73rbTdRJg=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -348,7 +468,7 @@
           "hash": "qpB8xV/E3//ZRRRexMyBYw=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -360,7 +480,7 @@
           "hash": "KE6UzCbv4XsBed3rAaeJDA=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -372,7 +492,7 @@
           "hash": "VNa5YcMGzn4WyqVuesNIXg=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -384,7 +504,7 @@
           "hash": "PfW9mgqPuxvyg5owWvSPkg=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -396,7 +516,7 @@
           "hash": "fOZwZ0XI4ycS6uHmZ20hJQ=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -408,7 +528,7 @@
           "hash": "aTG1ojgjX3PnedZ7ftieqw=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -420,7 +540,7 @@
           "hash": "XcCQsIiVzFlcsD2cA2P3BA=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -429,10 +549,10 @@
       "output": {
         ".html": {
           "relative_path": "api/Application/EventsCore.Application.EventSerieses.Queries.GetEventSeriesesList.GetEventSeriesesListQuery.html",
-          "hash": "bUgG7Q0qgDrxVdNvsHSdMg=="
+          "hash": "0sVkIJf1EWrsi0Bg0fBngA=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -444,7 +564,7 @@
           "hash": "3GuzvXXwfPROfTIJ69jKSQ=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -456,7 +576,7 @@
           "hash": "BXsyyI5YRb0mQRGV/joD+g=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -468,7 +588,7 @@
           "hash": "F7cnWM+WuqTYC7g6qhcnUQ=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -480,7 +600,7 @@
           "hash": "c0nXe0rb1RH0g9f8chKkWA=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -492,7 +612,7 @@
           "hash": "d8YqIJvDo7ELQOKGYiwQyw=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -504,7 +624,7 @@
           "hash": "dkGjlArItIHeADCQZG+9HA=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -516,7 +636,7 @@
           "hash": "N6J2LXW8y+mZm5N2Y+UtjA=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -528,7 +648,7 @@
           "hash": "DoEeF+iF/8jSqSIxIW7UGg=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -540,7 +660,7 @@
           "hash": "vz7J5VYtMPu9JUYldwh56w=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -552,7 +672,7 @@
           "hash": "LJVHdXT3RJrktQHXx6ogSA=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -564,7 +684,7 @@
           "hash": "1t6DoN0jQw/cc1hc4ZFogw=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -576,7 +696,7 @@
           "hash": "iPNxaKbxym28zLJTZh+8DQ=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -588,7 +708,7 @@
           "hash": "gNqVeHgF/H7N3oOI0IcWGA=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -600,7 +720,7 @@
           "hash": "M9xyyIOkyTxA4Eain9JLEg=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -609,10 +729,10 @@
       "output": {
         ".html": {
           "relative_path": "api/Application/EventsCore.Application.Events.Commands.CreateEvent.CreateEventCommand.html",
-          "hash": "4n7su4MeCSWvlO3C1SLJew=="
+          "hash": "ELNSuj5CJS6wTtwFVGl7DA=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -621,10 +741,10 @@
       "output": {
         ".html": {
           "relative_path": "api/Application/EventsCore.Application.Events.Commands.CreateEvent.CreateEventCommandHandler.html",
-          "hash": "quuPQQ15/r4gHk0pJ8+tig=="
+          "hash": "z+8pLEj0P5a2dEY4Ifx1ng=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -633,10 +753,10 @@
       "output": {
         ".html": {
           "relative_path": "api/Application/EventsCore.Application.Events.Commands.CreateEvent.CreateEventCommandValidator.html",
-          "hash": "oU/V7/RrNtlAROMbarhSFA=="
+          "hash": "cJVuVEJ6OFTjhHLNJeklwA=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -645,10 +765,274 @@
       "output": {
         ".html": {
           "relative_path": "api/Application/EventsCore.Application.Events.Commands.CreateEvent.html",
-          "hash": "yk6BGp++ylB3XD1fifhivg=="
+          "hash": "fKha3M5TR2Q2mI/E9dFyGw=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Application/EventsCore.Application.Events.Commands.DeleteEvent.DeleteEventCommand.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Application/EventsCore.Application.Events.Commands.DeleteEvent.DeleteEventCommand.html",
+          "hash": "RcEFPg6tBv1UADTrH894TA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Application/EventsCore.Application.Events.Commands.DeleteEvent.DeleteEventCommandHandler.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Application/EventsCore.Application.Events.Commands.DeleteEvent.DeleteEventCommandHandler.html",
+          "hash": "hmF4iaLMXrA6Jd+GixNRWw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Application/EventsCore.Application.Events.Commands.DeleteEvent.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Application/EventsCore.Application.Events.Commands.DeleteEvent.html",
+          "hash": "S/7WJiZ2TcRKcUvC+i6ifw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Application/EventsCore.Application.Events.Commands.UpdateEvent.UpdateEventCommand.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Application/EventsCore.Application.Events.Commands.UpdateEvent.UpdateEventCommand.html",
+          "hash": "xLWZsoEHS68iiAhVpR9bdg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Application/EventsCore.Application.Events.Commands.UpdateEvent.UpdateEventCommandHandler.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Application/EventsCore.Application.Events.Commands.UpdateEvent.UpdateEventCommandHandler.html",
+          "hash": "rNYCj5ebZGJ7JR6kc6c/9Q=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Application/EventsCore.Application.Events.Commands.UpdateEvent.UpdateEventCommandValidator.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Application/EventsCore.Application.Events.Commands.UpdateEvent.UpdateEventCommandValidator.html",
+          "hash": "ZeHDTyrPYKBDJER9NIU2AA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Application/EventsCore.Application.Events.Commands.UpdateEvent.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Application/EventsCore.Application.Events.Commands.UpdateEvent.html",
+          "hash": "7Ww9Lrs+oa53z1Q1mZmOXg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Application/EventsCore.Application.Events.Queries.GetCanEditEvent.GetCanEditEventQuery.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Application/EventsCore.Application.Events.Queries.GetCanEditEvent.GetCanEditEventQuery.html",
+          "hash": "/FCoioU86yZsvLEYkl1W0Q=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Application/EventsCore.Application.Events.Queries.GetCanEditEvent.GetCanEditEventQueryHandler.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Application/EventsCore.Application.Events.Queries.GetCanEditEvent.GetCanEditEventQueryHandler.html",
+          "hash": "6zVpS2C3cZAbdfkcsTqWcg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Application/EventsCore.Application.Events.Queries.GetCanEditEvent.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Application/EventsCore.Application.Events.Queries.GetCanEditEvent.html",
+          "hash": "vmmygqQ3Q3qr6njTJq+ssg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Application/EventsCore.Application.Events.Queries.GetEventDetail.EventDetailDto.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Application/EventsCore.Application.Events.Queries.GetEventDetail.EventDetailDto.html",
+          "hash": "vrLG23UXCCbZ0xR8LnmiFw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Application/EventsCore.Application.Events.Queries.GetEventDetail.GetEventDetailQuery.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Application/EventsCore.Application.Events.Queries.GetEventDetail.GetEventDetailQuery.html",
+          "hash": "67LePhBtfF7Im9g2aM43FQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Application/EventsCore.Application.Events.Queries.GetEventDetail.GetEventDetailQueryHandler.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Application/EventsCore.Application.Events.Queries.GetEventDetail.GetEventDetailQueryHandler.html",
+          "hash": "EV8ozYfXfAyQKUmxZ66W9g=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Application/EventsCore.Application.Events.Queries.GetEventDetail.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Application/EventsCore.Application.Events.Queries.GetEventDetail.html",
+          "hash": "W6qiDLUfe9SzpCeoYDvDOw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Application/EventsCore.Application.Events.Queries.GetEventEdit.EventEditDto.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Application/EventsCore.Application.Events.Queries.GetEventEdit.EventEditDto.html",
+          "hash": "XsMPZ6HVxWONPzJWmnlMmw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Application/EventsCore.Application.Events.Queries.GetEventEdit.GetEventEditQuery.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Application/EventsCore.Application.Events.Queries.GetEventEdit.GetEventEditQuery.html",
+          "hash": "BW4PQGIYyrqemcXt21gAJA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Application/EventsCore.Application.Events.Queries.GetEventEdit.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Application/EventsCore.Application.Events.Queries.GetEventEdit.html",
+          "hash": "SJGawcAaa7OofQ63IePCdA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Application/EventsCore.Application.Events.Queries.GetEventsList.EventDto.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Application/EventsCore.Application.Events.Queries.GetEventsList.EventDto.html",
+          "hash": "Sz7xcZ7gXxvO6x6dTBvFyg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Application/EventsCore.Application.Events.Queries.GetEventsList.EventListVm.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Application/EventsCore.Application.Events.Queries.GetEventsList.EventListVm.html",
+          "hash": "/TI0Vbs169b5Gwde9TIRBw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Application/EventsCore.Application.Events.Queries.GetEventsList.GetEventListQuery.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Application/EventsCore.Application.Events.Queries.GetEventsList.GetEventListQuery.html",
+          "hash": "atOo6iB8KkbtVlnPKV4xUQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Application/EventsCore.Application.Events.Queries.GetEventsList.GetEventListQueryHandler.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Application/EventsCore.Application.Events.Queries.GetEventsList.GetEventListQueryHandler.html",
+          "hash": "uhivgYDnH8RjRsRMDk4faA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Application/EventsCore.Application.Events.Queries.GetEventsList.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Application/EventsCore.Application.Events.Queries.GetEventsList.html",
+          "hash": "sFVyhoIB1uWvQi2lmIsmRg=="
+        }
+      },
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -660,7 +1044,7 @@
           "hash": "bY7ZSOTj6/Xf0O+rXjhhPg=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -672,7 +1056,7 @@
           "hash": "J+sYrlzHEnjTC5P96T18bg=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -684,7 +1068,7 @@
           "hash": "a3lVl+5Vvn1s7EteaWaMXg=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -696,7 +1080,7 @@
           "hash": "I5tZtjgWhFwtW9yjyz7aLA=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -708,7 +1092,7 @@
           "hash": "11bDAcf6DjV+gbgtRehypw=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -720,7 +1104,7 @@
           "hash": "Unp8rlCi/IYcS+uaCOq+Dw=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -732,7 +1116,7 @@
           "hash": "YatpCQW965aNYMDGu2f0uA=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -744,7 +1128,7 @@
           "hash": "ZakARwCe6MWSuKemEyFQ0w=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -756,7 +1140,7 @@
           "hash": "ukH2to39CqLtxJl6iAdNHw=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -768,7 +1152,7 @@
           "hash": "Q8wWyKDLHZDy2ZdEDOR6RA=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -780,7 +1164,7 @@
           "hash": "t7LjclcBqKMXuQ633BGKyA=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -792,7 +1176,7 @@
           "hash": "zQ54wkxt5vjBHbpypEwaGw=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -804,7 +1188,7 @@
           "hash": "66SfI+Zz5x/rMkfCPcnNyA=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -816,7 +1200,151 @@
           "hash": "4Sop9AhQukdyt52ko2V3qQ=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Application/EventsCore.Application.Registrations.Commands.AcceptRegistration.AcceptRegistrationCommand.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Application/EventsCore.Application.Registrations.Commands.AcceptRegistration.AcceptRegistrationCommand.html",
+          "hash": "rZvNgTpLuVMGP91ZJyAGFA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Application/EventsCore.Application.Registrations.Commands.AcceptRegistration.AcceptRegistrationCommandHandler.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Application/EventsCore.Application.Registrations.Commands.AcceptRegistration.AcceptRegistrationCommandHandler.html",
+          "hash": "OdOXIQSHrIigLrs3uNNF+w=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Application/EventsCore.Application.Registrations.Commands.AcceptRegistration.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Application/EventsCore.Application.Registrations.Commands.AcceptRegistration.html",
+          "hash": "/9TQdebrY9k/zYdz1snwTQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Application/EventsCore.Application.Registrations.Commands.CreateRegistration.CreateRegistrationCommand.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Application/EventsCore.Application.Registrations.Commands.CreateRegistration.CreateRegistrationCommand.html",
+          "hash": "jOSuK6YzUGmGt9IulFwzxA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Application/EventsCore.Application.Registrations.Commands.CreateRegistration.CreateRegistrationCommandHandler.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Application/EventsCore.Application.Registrations.Commands.CreateRegistration.CreateRegistrationCommandHandler.html",
+          "hash": "JuSZidpNp6kAgyJi//71Xg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Application/EventsCore.Application.Registrations.Commands.CreateRegistration.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Application/EventsCore.Application.Registrations.Commands.CreateRegistration.html",
+          "hash": "cnp6ld6KdpTxoSqrl7zCGQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Application/EventsCore.Application.Registrations.Commands.DeleteRegistration.DeleteRegistrationCommand.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Application/EventsCore.Application.Registrations.Commands.DeleteRegistration.DeleteRegistrationCommand.html",
+          "hash": "78FMSh+h0ZZEwCQ2nR9nEw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Application/EventsCore.Application.Registrations.Commands.DeleteRegistration.DeleteRegistrationCommandHandler.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Application/EventsCore.Application.Registrations.Commands.DeleteRegistration.DeleteRegistrationCommandHandler.html",
+          "hash": "HZ03FgLT39QjZgpp0exYyA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Application/EventsCore.Application.Registrations.Commands.DeleteRegistration.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Application/EventsCore.Application.Registrations.Commands.DeleteRegistration.html",
+          "hash": "jw2Jf8ko1o1eNl8LzlEQSw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Application/EventsCore.Application.Registrations.Commands.RejectRegistration.RejectRegistrationCommand.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Application/EventsCore.Application.Registrations.Commands.RejectRegistration.RejectRegistrationCommand.html",
+          "hash": "hntsEePnYlHwkDKYxKVtyw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Application/EventsCore.Application.Registrations.Commands.RejectRegistration.RejectRegistrationCommandHandler.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Application/EventsCore.Application.Registrations.Commands.RejectRegistration.RejectRegistrationCommandHandler.html",
+          "hash": "ECYQ616DIj3qXuvlytkp+A=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Application/EventsCore.Application.Registrations.Commands.RejectRegistration.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Application/EventsCore.Application.Registrations.Commands.RejectRegistration.html",
+          "hash": "LXuld+98y0O2BPXOmg+HzQ=="
+        }
+      },
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -828,7 +1356,7 @@
           "hash": "64mZZR1VTub7iAsLiYmr4w=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -840,7 +1368,7 @@
           "hash": "V1FrhP4Db4LKgRSTVXPeEA=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -849,7 +1377,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Application/toc.html",
-          "hash": "st/KkGW+Jkb8CJjEy1X4RQ=="
+          "hash": "KfPpUutpV105pq8Ls9PKCw=="
         }
       },
       "is_incremental": false,
@@ -864,7 +1392,7 @@
           "hash": "30+1TOgtCxIaTBoDoN7F1A=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -873,22 +1401,10 @@
       "output": {
         ".html": {
           "relative_path": "api/Domain/EventsCore.Domain.Common.BaseEntity.html",
-          "hash": "6fE1F2nlscLGgmeBnLztMg=="
+          "hash": "6nBFaw0JiuNzfgsPsn6GHw=="
         }
       },
-      "is_incremental": true,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/Domain/EventsCore.Domain.Common.DateTimeProvider.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/Domain/EventsCore.Domain.Common.DateTimeProvider.html",
-          "hash": "C1TvECZoFjv8noFkG53dbw=="
-        }
-      },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -900,19 +1416,7 @@
           "hash": "TlONpga+6WSjWMrecSvOHw=="
         }
       },
-      "is_incremental": true,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/Domain/EventsCore.Domain.Common.IDateTime.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/Domain/EventsCore.Domain.Common.IDateTime.html",
-          "hash": "MUtkr8JFVUvrcs0gbCsHzA=="
-        }
-      },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -924,7 +1428,7 @@
           "hash": "mDkM9WdKYo5wsw7FLHy0XQ=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -933,10 +1437,34 @@
       "output": {
         ".html": {
           "relative_path": "api/Domain/EventsCore.Domain.Common.html",
-          "hash": "To3OIodO/c7s2h3qQL9KHQ=="
+          "hash": "fE1BPfzdNtP/Rs8BzfeEcw=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Domain/EventsCore.Domain.Entities.Attendance.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Domain/EventsCore.Domain.Entities.Attendance.html",
+          "hash": "tNHuFXrM+ImYKsACai+kuw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Domain/EventsCore.Domain.Entities.AttendanceStatus.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Domain/EventsCore.Domain.Entities.AttendanceStatus.html",
+          "hash": "pG6oRDOvZF5E+NovmKvcVQ=="
+        }
+      },
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -945,130 +1473,10 @@
       "output": {
         ".html": {
           "relative_path": "api/Domain/EventsCore.Domain.Entities.Event.html",
-          "hash": "kul5LryxKrJf4oJCR0cU3g=="
+          "hash": "l2VS+pi1Pk8gyXvzZVLMCA=="
         }
       },
-      "is_incremental": true,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/Domain/EventsCore.Domain.Entities.EventAttendanceAggregate.Attendance.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/Domain/EventsCore.Domain.Entities.EventAttendanceAggregate.Attendance.html",
-          "hash": "xTF3nc6qs0lVC3bo7JX6Yw=="
-        }
-      },
-      "is_incremental": true,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/Domain/EventsCore.Domain.Entities.EventAttendanceAggregate.AttendanceStatus.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/Domain/EventsCore.Domain.Entities.EventAttendanceAggregate.AttendanceStatus.html",
-          "hash": "zjqQ7PdzP+3HByQ5ewQ+tg=="
-        }
-      },
-      "is_incremental": true,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/Domain/EventsCore.Domain.Entities.EventAttendanceAggregate.EventAttendance.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/Domain/EventsCore.Domain.Entities.EventAttendanceAggregate.EventAttendance.html",
-          "hash": "l686H4NKyaE4ZGkcI4xEdQ=="
-        }
-      },
-      "is_incremental": true,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/Domain/EventsCore.Domain.Entities.EventAttendanceAggregate.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/Domain/EventsCore.Domain.Entities.EventAttendanceAggregate.html",
-          "hash": "NVw6CC1JAgY54hmo/avLxA=="
-        }
-      },
-      "is_incremental": true,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/Domain/EventsCore.Domain.Entities.EventModulesAggregate.EventModules.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/Domain/EventsCore.Domain.Entities.EventModulesAggregate.EventModules.html",
-          "hash": "JLVTNtMwLA2i8iaR3iqZMw=="
-        }
-      },
-      "is_incremental": true,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/Domain/EventsCore.Domain.Entities.EventModulesAggregate.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/Domain/EventsCore.Domain.Entities.EventModulesAggregate.html",
-          "hash": "SBrX9SAVS5P02HjcFC1ZQA=="
-        }
-      },
-      "is_incremental": true,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/Domain/EventsCore.Domain.Entities.EventRegistrationsAggregate.EventRegistrations.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/Domain/EventsCore.Domain.Entities.EventRegistrationsAggregate.EventRegistrations.html",
-          "hash": "E0KX1mzujVQESP593wdxGQ=="
-        }
-      },
-      "is_incremental": true,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/Domain/EventsCore.Domain.Entities.EventRegistrationsAggregate.Registration.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/Domain/EventsCore.Domain.Entities.EventRegistrationsAggregate.Registration.html",
-          "hash": "GTLHgxrSwBf8aKKMGUhUzw=="
-        }
-      },
-      "is_incremental": true,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/Domain/EventsCore.Domain.Entities.EventRegistrationsAggregate.RegistrationStatus.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/Domain/EventsCore.Domain.Entities.EventRegistrationsAggregate.RegistrationStatus.html",
-          "hash": "pLsS9YL8g8fhAyK9rCEE7A=="
-        }
-      },
-      "is_incremental": true,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/Domain/EventsCore.Domain.Entities.EventRegistrationsAggregate.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/Domain/EventsCore.Domain.Entities.EventRegistrationsAggregate.html",
-          "hash": "hsuAxTIKrNrThu55W4o3tA=="
-        }
-      },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -1080,7 +1488,7 @@
           "hash": "ZrETbYnOjt5ImpDo35cVqw=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -1092,7 +1500,7 @@
           "hash": "dH2SH12zjmJiyr5zasSs2Q=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -1101,10 +1509,10 @@
       "output": {
         ".html": {
           "relative_path": "api/Domain/EventsCore.Domain.Entities.Module.html",
-          "hash": "PJtYBp+Vk/kMH5nPKYvklQ=="
+          "hash": "CoUMjIceU+b/rpbR/s/d/A=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -1116,7 +1524,31 @@
           "hash": "QDKT88OlDtUQLckUnn04FA=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Domain/EventsCore.Domain.Entities.Registration.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Domain/EventsCore.Domain.Entities.Registration.html",
+          "hash": "nztPpDjp6eGY2PAlZsALEg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Domain/EventsCore.Domain.Entities.RegistrationStatus.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Domain/EventsCore.Domain.Entities.RegistrationStatus.html",
+          "hash": "6b3vrrH93ivlL201tKeqbg=="
+        }
+      },
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -1125,10 +1557,34 @@
       "output": {
         ".html": {
           "relative_path": "api/Domain/EventsCore.Domain.Entities.User.html",
-          "hash": "ryfZW6E4r2SeQDeGB5f4BA=="
+          "hash": "pDu+SN43ADGBnikxlsW2OQ=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Domain/EventsCore.Domain.Entities.UserRole.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Domain/EventsCore.Domain.Entities.UserRole.html",
+          "hash": "Uznbs603a7yJ8/DVo35R/A=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Domain/EventsCore.Domain.Entities.UserRoleType.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Domain/EventsCore.Domain.Entities.UserRoleType.html",
+          "hash": "FouBbPWS8E2/RhYU9Yp+3g=="
+        }
+      },
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -1137,10 +1593,46 @@
       "output": {
         ".html": {
           "relative_path": "api/Domain/EventsCore.Domain.Entities.html",
-          "hash": "lyLjd8ee/0TPjiFf+cfHAw=="
+          "hash": "oh9Iu6s91ej7jS7muyOHyw=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Domain/EventsCore.Domain.Exceptions.Attendance.AttendanceArgumentException.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Domain/EventsCore.Domain.Exceptions.Attendance.AttendanceArgumentException.html",
+          "hash": "ln+ECiLz/JH9jiDvS72WKA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Domain/EventsCore.Domain.Exceptions.Attendance.AttendanceInvalidOperationException.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Domain/EventsCore.Domain.Exceptions.Attendance.AttendanceInvalidOperationException.html",
+          "hash": "GY++gWbioH3TdKNOw4Gr0A=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Domain/EventsCore.Domain.Exceptions.Attendance.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Domain/EventsCore.Domain.Exceptions.Attendance.html",
+          "hash": "4Rd2ZuMOlhCr/R8dErtbew=="
+        }
+      },
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -1152,7 +1644,7 @@
           "hash": "L24P5ORFwAYJwzKEYA/ykQ=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -1164,7 +1656,7 @@
           "hash": "PMgZ7vh3TH/VZbR4NbKrAQ=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -1176,115 +1668,7 @@
           "hash": "0Rr7s4u2CCAq9cDTO46m2Q=="
         }
       },
-      "is_incremental": true,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/Domain/EventsCore.Domain.Exceptions.EventAttendanceAggregate.EventAttendanceAggregateArgumentException.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/Domain/EventsCore.Domain.Exceptions.EventAttendanceAggregate.EventAttendanceAggregateArgumentException.html",
-          "hash": "nlPpnAZczOnJD+BsGMkvJA=="
-        }
-      },
-      "is_incremental": true,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/Domain/EventsCore.Domain.Exceptions.EventAttendanceAggregate.EventAttendanceAggregateInvalidOperationException.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/Domain/EventsCore.Domain.Exceptions.EventAttendanceAggregate.EventAttendanceAggregateInvalidOperationException.html",
-          "hash": "feRYi7SqQMGQR5Zh3ky3ug=="
-        }
-      },
-      "is_incremental": true,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/Domain/EventsCore.Domain.Exceptions.EventAttendanceAggregate.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/Domain/EventsCore.Domain.Exceptions.EventAttendanceAggregate.html",
-          "hash": "nrIpUwPfo948elelZu888g=="
-        }
-      },
-      "is_incremental": true,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/Domain/EventsCore.Domain.Exceptions.EventModulesAggregate.EventModulesAggregateArgumentException.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/Domain/EventsCore.Domain.Exceptions.EventModulesAggregate.EventModulesAggregateArgumentException.html",
-          "hash": "h0GF4wpkFDLqzmujXIoxtQ=="
-        }
-      },
-      "is_incremental": true,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/Domain/EventsCore.Domain.Exceptions.EventModulesAggregate.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/Domain/EventsCore.Domain.Exceptions.EventModulesAggregate.html",
-          "hash": "6B7PFuIGKiVJCtbAVLhVLA=="
-        }
-      },
-      "is_incremental": true,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/Domain/EventsCore.Domain.Exceptions.EventRegistrationsAggregate.EventRegistrationAggregateArgumentException.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/Domain/EventsCore.Domain.Exceptions.EventRegistrationsAggregate.EventRegistrationAggregateArgumentException.html",
-          "hash": "tRGAVFafa24sFmhSbaGScA=="
-        }
-      },
-      "is_incremental": true,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/Domain/EventsCore.Domain.Exceptions.EventRegistrationsAggregate.EventRegistrationAggregateInvalidOperationException.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/Domain/EventsCore.Domain.Exceptions.EventRegistrationsAggregate.EventRegistrationAggregateInvalidOperationException.html",
-          "hash": "VAETBlRl/1Qk2EpTEtOKjA=="
-        }
-      },
-      "is_incremental": true,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/Domain/EventsCore.Domain.Exceptions.EventRegistrationsAggregate.EventRegistrationAggregateInvalidRegistrantException.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/Domain/EventsCore.Domain.Exceptions.EventRegistrationsAggregate.EventRegistrationAggregateInvalidRegistrantException.html",
-          "hash": "0NnDSY62MNg/VAjpSPIVCA=="
-        }
-      },
-      "is_incremental": true,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/Domain/EventsCore.Domain.Exceptions.EventRegistrationsAggregate.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/Domain/EventsCore.Domain.Exceptions.EventRegistrationsAggregate.html",
-          "hash": "SlLuWFDx/VC71tawL6ijcw=="
-        }
-      },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -1296,7 +1680,7 @@
           "hash": "U9kmEGbfC8N8A6/UvUp+gw=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -1308,7 +1692,7 @@
           "hash": "A/O5ScjQR13WwGwemy3eGw=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -1320,7 +1704,7 @@
           "hash": "LRfs23bUfvxQaoPlLtQzVg=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -1332,7 +1716,7 @@
           "hash": "bcoms2MFREP6nV30HR+huw=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -1344,7 +1728,7 @@
           "hash": "iRsYJBuCQ76AF/Qe9Mk88w=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -1356,7 +1740,7 @@
           "hash": "IIPnAkc576ZsWs8ronxMOA=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -1368,7 +1752,7 @@
           "hash": "lhEuqSsIMOgpPyjiV8KNgQ=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -1380,7 +1764,7 @@
           "hash": "B9nR4SOhh1Mg+9BN0JcSQA=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -1392,7 +1776,7 @@
           "hash": "4SuUxrDOUVGlNQhDPlNBqg=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -1404,7 +1788,7 @@
           "hash": "ezDVCg3iCKbhg9CRx5rAfg=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -1416,7 +1800,7 @@
           "hash": "594s6yuLMu6BEjfUadgRQg=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -1428,7 +1812,43 @@
           "hash": "jYqnEDv7qUPTzpbdAreI8A=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Domain/EventsCore.Domain.Exceptions.Registration.RegistrationArgumentException.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Domain/EventsCore.Domain.Exceptions.Registration.RegistrationArgumentException.html",
+          "hash": "QQepjr4eLWRQP/FxnkOvhQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Domain/EventsCore.Domain.Exceptions.Registration.RegistrationInvalidOperationException.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Domain/EventsCore.Domain.Exceptions.Registration.RegistrationInvalidOperationException.html",
+          "hash": "Ku5HBWjs5jlq9feTwDoJcA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Domain/EventsCore.Domain.Exceptions.Registration.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Domain/EventsCore.Domain.Exceptions.Registration.html",
+          "hash": "XqvJwIeEIe2EljTJgOH/Ng=="
+        }
+      },
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -1440,7 +1860,7 @@
           "hash": "/k88Ox+McWSORlUXP4KW+Q=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -1452,7 +1872,7 @@
           "hash": "16T0fHLcuQylSBu/0LZpFQ=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -1464,7 +1884,7 @@
           "hash": "7kpbWCn1CUYjmkY+qI/W4g=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -1476,7 +1896,7 @@
           "hash": "tyrXQKTdGbgJCobPc7hVIw=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -1488,7 +1908,7 @@
           "hash": "f40T6UhRsPnZ1vdEpTsxqA=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -1497,10 +1917,10 @@
       "output": {
         ".html": {
           "relative_path": "api/Domain/EventsCore.Domain.Exceptions.ValueObjects.EventRegistrationRulesArgumentException.html",
-          "hash": "UUL3loXqjqMSgM83DHbIHQ=="
+          "hash": "aaxl+urDTtpEgENTBdB5HA=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -1512,7 +1932,7 @@
           "hash": "jnxHcP7XxTWZm8dNzpjYMQ=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -1524,7 +1944,7 @@
           "hash": "nGXSnwUwoBVtj76wp63gLQ=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -1536,7 +1956,7 @@
           "hash": "S0jvCGRicTWKDek2TptT1Q=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -1545,10 +1965,10 @@
       "output": {
         ".html": {
           "relative_path": "api/Domain/EventsCore.Domain.ValueObjects.EventDates.html",
-          "hash": "pZpU+JUi6QVQYFMrfrVhpQ=="
+          "hash": "8XHgGRHHItv4USMCnzq0Vg=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -1560,7 +1980,7 @@
           "hash": "RTe/k8zM2GWxRoruxXAj6A=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -1572,7 +1992,7 @@
           "hash": "GeYWHR0cUFi1aHrHt6VhrQ=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -1584,7 +2004,7 @@
           "hash": "lUDQpw95i3jU7uHRLh5Hbw=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -1596,7 +2016,7 @@
           "hash": "Z50eSMqLpnzqT7q7n+Y8ag=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -1605,7 +2025,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Domain/toc.html",
-          "hash": "3FysXfspxsZ4pY6/h+kDvg=="
+          "hash": "Tz430BA8VP0IQn08FyJgEw=="
         }
       },
       "is_incremental": false,
@@ -1644,7 +2064,7 @@
           "hash": "jQ2aOTB4J5llKf89TUqlvw=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -1725,8 +2145,8 @@
         "ManagedReferenceDocumentProcessor": {
           "can_incremental": true,
           "incrementalPhase": "build",
-          "total_file_count": 130,
-          "skipped_file_count": 130
+          "total_file_count": 165,
+          "skipped_file_count": 68
         },
         "ResourceDocumentProcessor": {
           "can_incremental": false,
