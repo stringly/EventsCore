@@ -23,5 +23,7 @@ namespace EventsCore.WebUI.IntegrationTests.Controllers.Home
             response.EnsureSuccessStatusCode();
             Assert.Equal("text/html; charset=utf-8", response.Content.Headers.ContentType.ToString());
         }
+
+        // TODO: Test ViewComponent methods: GetUpcomingEvents, GetMyRegistrations, GetMyOwnedEvents
     }
 }

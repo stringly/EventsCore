@@ -9,7 +9,10 @@ using System.Threading.Tasks;
 
 namespace EventsCore.Application.Events.Queries.GetEventEdit
 {
-    class GetEventEditQueryHandler : IRequestHandler<GetEventEditQuery, EventEditDto>
+    /// <summary>
+    /// Implementation of <see cref="IRequestHandler{TRequest, TResponse}"/> that returns Event detail for editing.
+    /// </summary>
+    public class GetEventEditQueryHandler : IRequestHandler<GetEventEditQuery, EventEditDto>
     {
         private readonly IEventsCoreDbContext _context;
         private readonly IMapper _mapper;

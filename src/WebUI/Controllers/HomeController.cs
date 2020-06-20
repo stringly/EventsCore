@@ -44,5 +44,6 @@ namespace WebUI.Controllers
             return ViewComponent("UpcomingEvents", vm);
 
         }
+
     }
 }
