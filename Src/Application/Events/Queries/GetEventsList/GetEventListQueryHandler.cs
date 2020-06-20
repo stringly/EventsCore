@@ -15,7 +15,7 @@ namespace EventsCore.Application.Events.Queries.GetEventsList
     /// </summary>
     public class GetEventListQueryHandler : IRequestHandler<GetEventListQuery, EventListVm>
     {
-        private IEventsCoreDbContext _context;
+        private readonly IEventsCoreDbContext _context;
         private readonly IMapper _mapper;
         /// <summary>
         /// Creates a new instance of the Handler

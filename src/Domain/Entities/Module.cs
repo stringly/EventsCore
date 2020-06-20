@@ -27,6 +27,7 @@ namespace EventsCore.Domain.Entities
         {
             _moduleName = !string.IsNullOrWhiteSpace(moduleName) ? moduleName : throw new ModuleArgumentException("Cannot create Event Module: parameter cannot be null/whitespace string.", nameof(moduleName));
             _description = !string.IsNullOrWhiteSpace(moduleDescription) ? moduleDescription : throw new ModuleArgumentException("Cannot create Event Module: parameter cannot be null/whitespace string.", nameof(moduleName));
+            _attendance = new List<Attendance>();
         }
         /// <summary>
         /// The Id of the <see cref="Event"></see>

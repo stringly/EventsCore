@@ -31,7 +31,7 @@ namespace EventsCore.Application.UnitTests.Events.Queries
 
             // Assert
 
-            result.ShouldBeOfType<EventDetailVm>();
+            result.ShouldBeOfType<EventDetailDto>();
             result.Id.ShouldBe(1);
             Assert.Equal("Training", result.EventTypeTitle);
         }

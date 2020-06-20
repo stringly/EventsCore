@@ -23,7 +23,6 @@
     <ProjectReference Include="..\Domain\Domain.csproj" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Registrations\Commands\DeleteRegistration\" />
     <Folder Include="Registrations\Queries\" />
   </ItemGroup>
 </Project>

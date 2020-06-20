@@ -1,10 +1,10 @@
-﻿using EventsCore.Domain.Common;
+﻿using EventsCore.Common;
 using EventsCore.Domain.Entities;
-using EventsCore.Domain.ValueObjects;
+using EventsCore.Domain.Exceptions.Event;
 using EventsCore.Domain.UnitTests.Common;
+using EventsCore.Domain.ValueObjects;
 using System;
 using Xunit;
-using EventsCore.Domain.Exceptions.Event;
 
 namespace EventsCore.Domain.UnitTests.Entities
 {
@@ -106,7 +106,7 @@ namespace EventsCore.Domain.UnitTests.Entities
             var ev = new Event(newTitle, newDescription, validEventTypeId, eventStart, eventEnd, regStart, regEnd, maxRegs);
            
             // Act
-            DateTime value = ev.StartDate;
+            DateTime value = ev.Dates.StartDate;
 
             // Assert
             Assert.Equal(eventStart, value);
@@ -126,7 +126,7 @@ namespace EventsCore.Domain.UnitTests.Entities
             var ev = new Event(newTitle, newDescription, validEventTypeId, eventStart, eventEnd, regStart, regEnd, maxRegs);
 
             // Act
-            DateTime value = ev.EndDate;
+            DateTime value = ev.Dates.EndDate;
 
             // Assert
             Assert.Equal(eventEnd, value);
@@ -146,7 +146,7 @@ namespace EventsCore.Domain.UnitTests.Entities
             var ev = new Event(newTitle, newDescription, validEventTypeId, eventStart, eventEnd, regStart, regEnd, maxRegs);
 
             // Act
-            DateTime value = ev.RegistrationStartDate;
+            DateTime value = ev.Dates.RegistrationStartDate;
 
             // Assert
             Assert.Equal(regStart, value);
@@ -166,7 +166,7 @@ namespace EventsCore.Domain.UnitTests.Entities
             var ev = new Event(newTitle, newDescription, validEventTypeId, eventStart, eventEnd, regStart, regEnd, maxRegs);
 
             // Act
-            DateTime value = ev.RegistrationEndDate;
+            DateTime value = ev.Dates.RegistrationEndDate;
 
             // Assert
             Assert.Equal(regEnd, value);
@@ -186,7 +186,7 @@ namespace EventsCore.Domain.UnitTests.Entities
             var ev = new Event(newTitle, newDescription, validEventTypeId, eventStart, eventEnd, regStart, regEnd, maxRegs);
 
             // Act
-            uint value = ev.MaxRegistrations;
+            uint value = ev.Rules.MaxRegistrations;
 
             // Assert
             Assert.Equal(maxRegs, (int)value);        
@@ -313,10 +313,10 @@ namespace EventsCore.Domain.UnitTests.Entities
             int maxRegs = 10;
             var ev = new Event(newTitle, newDescription, validEventTypeId, eventStart, eventEnd, regStart, regEnd, maxRegs);
 
-            Assert.Equal(eventStart, ev.StartDate);
-            Assert.Equal(eventEnd, ev.EndDate);
-            Assert.Equal(regStart, ev.RegistrationStartDate);
-            Assert.Equal(regEnd, ev.RegistrationEndDate);
+            Assert.Equal(eventStart, ev.Dates.StartDate);
+            Assert.Equal(eventEnd, ev.Dates.EndDate);
+            Assert.Equal(regStart, ev.Dates.RegistrationStartDate);
+            Assert.Equal(regEnd, ev.Dates.RegistrationEndDate);
 
             DateTime newStart = new DateTime(3000, 3, 1);
             DateTime newEnd = new DateTime(3000, 3, 2);
@@ -328,10 +328,10 @@ namespace EventsCore.Domain.UnitTests.Entities
             ev.UpdateEventDates(newStart, newEnd, newRegStart, newRegEnd);
 
             // Assert
-            Assert.Equal(newStart, ev.StartDate);
-            Assert.Equal(newEnd, ev.EndDate);
-            Assert.Equal(newRegStart, ev.RegistrationStartDate);
-            Assert.Equal(newRegEnd, ev.RegistrationEndDate);
+            Assert.Equal(newStart, ev.Dates.StartDate);
+            Assert.Equal(newEnd, ev.Dates.EndDate);
+            Assert.Equal(newRegStart, ev.Dates.RegistrationStartDate);
+            Assert.Equal(newRegEnd, ev.Dates.RegistrationEndDate);
         }
         [Fact]
         public void Can_Update_StartDate()
@@ -347,10 +347,10 @@ namespace EventsCore.Domain.UnitTests.Entities
             int maxRegs = 10;
             var ev = new Event(newTitle, newDescription, validEventTypeId, eventStart, eventEnd, regStart, regEnd, maxRegs);
 
-            Assert.Equal(eventStart, ev.StartDate);
-            Assert.Equal(eventEnd, ev.EndDate);
-            Assert.Equal(regStart, ev.RegistrationStartDate);
-            Assert.Equal(regEnd, ev.RegistrationEndDate);
+            Assert.Equal(eventStart, ev.Dates.StartDate);
+            Assert.Equal(eventEnd, ev.Dates.EndDate);
+            Assert.Equal(regStart, ev.Dates.RegistrationStartDate);
+            Assert.Equal(regEnd, ev.Dates.RegistrationEndDate);
 
             DateTime validNewStartDate = new DateTime(3000, 1, 30);
 
@@ -358,10 +358,10 @@ namespace EventsCore.Domain.UnitTests.Entities
             ev.UpdateEventDates(validNewStartDate);
 
             // Assert
-            Assert.Equal(validNewStartDate, ev.StartDate);
-            Assert.Equal(eventEnd, ev.EndDate);
-            Assert.Equal(regStart, ev.RegistrationStartDate);
-            Assert.Equal(regEnd, ev.RegistrationEndDate);
+            Assert.Equal(validNewStartDate, ev.Dates.StartDate);
+            Assert.Equal(eventEnd, ev.Dates.EndDate);
+            Assert.Equal(regStart, ev.Dates.RegistrationStartDate);
+            Assert.Equal(regEnd, ev.Dates.RegistrationEndDate);
         }
         [Fact]
         public void Can_Update_EndDate()
@@ -377,10 +377,10 @@ namespace EventsCore.Domain.UnitTests.Entities
             int maxRegs = 10;
             var ev = new Event(newTitle, newDescription, validEventTypeId, eventStart, eventEnd, regStart, regEnd, maxRegs);
 
-            Assert.Equal(eventStart, ev.StartDate);
-            Assert.Equal(eventEnd, ev.EndDate);
-            Assert.Equal(regStart, ev.RegistrationStartDate);
-            Assert.Equal(regEnd, ev.RegistrationEndDate);
+            Assert.Equal(eventStart, ev.Dates.StartDate);
+            Assert.Equal(eventEnd, ev.Dates.EndDate);
+            Assert.Equal(regStart, ev.Dates.RegistrationStartDate);
+            Assert.Equal(regEnd, ev.Dates.RegistrationEndDate);
 
             DateTime validNewEndDate = new DateTime(3000, 2, 3);
 
@@ -388,10 +388,10 @@ namespace EventsCore.Domain.UnitTests.Entities
             ev.UpdateEventDates(null, validNewEndDate);
 
             // Assert
-            Assert.Equal(eventStart, ev.StartDate);
-            Assert.Equal(validNewEndDate, ev.EndDate);
-            Assert.Equal(regStart, ev.RegistrationStartDate);
-            Assert.Equal(regEnd, ev.RegistrationEndDate);
+            Assert.Equal(eventStart, ev.Dates.StartDate);
+            Assert.Equal(validNewEndDate, ev.Dates.EndDate);
+            Assert.Equal(regStart, ev.Dates.RegistrationStartDate);
+            Assert.Equal(regEnd, ev.Dates.RegistrationEndDate);
         }
         [Fact]
         public void Can_Update_RegistrationStartDate()
@@ -407,10 +407,10 @@ namespace EventsCore.Domain.UnitTests.Entities
             int maxRegs = 10;
             var ev = new Event(newTitle, newDescription, validEventTypeId, eventStart, eventEnd, regStart, regEnd, maxRegs);
 
-            Assert.Equal(eventStart, ev.StartDate);
-            Assert.Equal(eventEnd, ev.EndDate);
-            Assert.Equal(regStart, ev.RegistrationStartDate);
-            Assert.Equal(regEnd, ev.RegistrationEndDate);
+            Assert.Equal(eventStart, ev.Dates.StartDate);
+            Assert.Equal(eventEnd, ev.Dates.EndDate);
+            Assert.Equal(regStart, ev.Dates.RegistrationStartDate);
+            Assert.Equal(regEnd, ev.Dates.RegistrationEndDate);
 
             DateTime validNewRegStartDate = new DateTime(3000, 1, 2);
 
@@ -418,10 +418,10 @@ namespace EventsCore.Domain.UnitTests.Entities
             ev.UpdateEventDates(null, null, validNewRegStartDate);
 
             // Assert
-            Assert.Equal(eventStart, ev.StartDate);
-            Assert.Equal(eventEnd, ev.EndDate);
-            Assert.Equal(validNewRegStartDate, ev.RegistrationStartDate);
-            Assert.Equal(regEnd, ev.RegistrationEndDate);
+            Assert.Equal(eventStart, ev.Dates.StartDate);
+            Assert.Equal(eventEnd, ev.Dates.EndDate);
+            Assert.Equal(validNewRegStartDate, ev.Dates.RegistrationStartDate);
+            Assert.Equal(regEnd, ev.Dates.RegistrationEndDate);
         }
         [Fact]
         public void Can_Update_RegistrationEndDate()
@@ -437,10 +437,10 @@ namespace EventsCore.Domain.UnitTests.Entities
             int maxRegs = 10;
             var ev = new Event(newTitle, newDescription, validEventTypeId, eventStart, eventEnd, regStart, regEnd, maxRegs);
 
-            Assert.Equal(eventStart, ev.StartDate);
-            Assert.Equal(eventEnd, ev.EndDate);
-            Assert.Equal(regStart, ev.RegistrationStartDate);
-            Assert.Equal(regEnd, ev.RegistrationEndDate);
+            Assert.Equal(eventStart, ev.Dates.StartDate);
+            Assert.Equal(eventEnd, ev.Dates.EndDate);
+            Assert.Equal(regStart, ev.Dates.RegistrationStartDate);
+            Assert.Equal(regEnd, ev.Dates.RegistrationEndDate);
 
             DateTime validNewRegEndDate = new DateTime(3000, 1, 2);
 
@@ -448,10 +448,10 @@ namespace EventsCore.Domain.UnitTests.Entities
             ev.UpdateEventDates(null, null, null, validNewRegEndDate);
 
             // Assert
-            Assert.Equal(eventStart, ev.StartDate);
-            Assert.Equal(eventEnd, ev.EndDate);
-            Assert.Equal(regStart, ev.RegistrationStartDate);
-            Assert.Equal(validNewRegEndDate, ev.RegistrationEndDate);
+            Assert.Equal(eventStart, ev.Dates.StartDate);
+            Assert.Equal(eventEnd, ev.Dates.EndDate);
+            Assert.Equal(regStart, ev.Dates.RegistrationStartDate);
+            Assert.Equal(validNewRegEndDate, ev.Dates.RegistrationEndDate);
         }
         [Fact]
         public void Can_Update_EventRegistrationRules()
@@ -494,13 +494,13 @@ namespace EventsCore.Domain.UnitTests.Entities
 
             var ev = new Event(newTitle, newDescription, validEventTypeId, eventStart, eventEnd, regStart, regEnd, maxRegs);
 
-            Assert.Equal(maxRegs, (int)ev.MaxRegistrations);
+            Assert.Equal(maxRegs, (int)ev.Rules.MaxRegistrations);
             int newValidMaxRegs = 20;
             // Act
             ev.UpdateRegistrationRules(20);
 
             // Assert
-            Assert.Equal(newValidMaxRegs, (int)ev.MaxRegistrations);
+            Assert.Equal(newValidMaxRegs, (int)ev.Rules.MaxRegistrations);
 
         }
         [Fact]

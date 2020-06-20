@@ -29,8 +29,8 @@ namespace EventsCore.Application.UnitTests.Ranks.Commands
         public async Task Handle_Given_No_Id_And_Valid_Values_Creates_Rank()
         {
             // Arrange
-            var validAbbrev = "Sgt.";
-            var validFullName = "Sergeant";
+            var validAbbrev = "TEST";
+            var validFullName = "TEST RANK";
             var command = new UpsertRankCommand { Abbrev = validAbbrev, FullName = validFullName };
 
             // Act
@@ -82,8 +82,8 @@ namespace EventsCore.Application.UnitTests.Ranks.Commands
         public async Task Handle_Given_ValidId_And_Taken_Abbrev_Throws_ValidationException()
         {
             // Arrange
-            var validId = 1; // 1 Should be the "Pvt."
-            var takenAbbrev = "PFC"; // should be the abbrev for rank id = 2
+            var validId = 1; // 1 Should be the "P/O"
+            var takenAbbrev = "POFC"; // should be the abbrev for rank id = 2
             var validFullName = "Police Officer";
             var command = new UpsertRankCommand { Id = validId, Abbrev = takenAbbrev, FullName = validFullName };
 
@@ -96,7 +96,7 @@ namespace EventsCore.Application.UnitTests.Ranks.Commands
             // Arrange
             var validId = 1;
             var validAbbrev = "P/O";
-            var takenFullName = "Private First Class";
+            var takenFullName = "Police Officer First Class";
             var command = new UpsertRankCommand { Id = validId, Abbrev = validAbbrev, FullName = takenFullName };
 
             // Act/Assert

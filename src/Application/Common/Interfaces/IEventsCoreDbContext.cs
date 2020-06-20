@@ -31,6 +31,10 @@ namespace EventsCore.Application.Common.Interfaces
         /// </summary>
         DbSet<User> Users { get; set; }
         /// <summary>
+        /// A <see cref="DbSet{UserRoleType}"/>
+        /// </summary>
+        DbSet<UserRoleType> UserRoleTypes { get;set;}
+        /// <summary>
         /// Saves the changes to the Context
         /// </summary>
         /// <param name="cancellationToken">A <see cref="CancellationToken"></see></param>

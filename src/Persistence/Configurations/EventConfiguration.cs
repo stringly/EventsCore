@@ -1,6 +1,7 @@
 ﻿using EventsCore.Domain.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
+using System.Security.Cryptography.X509Certificates;
 
 namespace EventsCore.Persistence.Configurations
 {
@@ -28,7 +29,8 @@ namespace EventsCore.Persistence.Configurations
             builder.HasOne(typeof(EventType), "EventType").WithMany();
             builder.OwnsOne(p => p.Dates);
             builder.OwnsOne(a => a.Address);
-            builder.HasOne(typeof(EventSeries), "EventSeries").WithMany();
+            builder.HasOne(typeof(EventSeries), "EventSeries").WithMany();            
+            builder.HasOne(u => u.Owner).WithMany(o => o.OwnedEvents).HasForeignKey(e => e.OwnerId);
             builder.OwnsOne(p => p.Rules);
             builder.HasMany<Registration>().WithOne().HasForeignKey("EventId");
             builder.HasMany<Attendance>().WithOne().HasForeignKey("EventId");

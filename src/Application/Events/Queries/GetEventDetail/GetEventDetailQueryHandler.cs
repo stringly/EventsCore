@@ -3,9 +3,7 @@ using EventsCore.Application.Common.Exceptions;
 using EventsCore.Application.Common.Interfaces;
 using EventsCore.Domain.Entities;
 using MediatR;
-using System;
-using System.Collections.Generic;
-using System.Text;
+using Microsoft.EntityFrameworkCore;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -14,7 +12,7 @@ namespace EventsCore.Application.Events.Queries.GetEventDetail
     /// <summary>
     /// Implementation of <see cref="IRequestHandler{TRequest, TResponse}"></see> that handles requests for a list of <see cref="Event"></see>
     /// </summary>
-    public class GetEventDetailQueryHandler : IRequestHandler<GetEventDetailQuery, EventDetailVm>
+    public class GetEventDetailQueryHandler : IRequestHandler<GetEventDetailQuery, EventDetailDto>
     {
         private readonly IEventsCoreDbContext _context;
         private readonly IMapper _mapper;
@@ -33,15 +31,21 @@ namespace EventsCore.Application.Events.Queries.GetEventDetail
         /// </summary>
         /// <param name="request">A <see cref="GetEventDetailQuery"></see> request object.</param>
         /// <param name="cancellationToken">A <see cref="CancellationToken"></see></param>
-        /// <returns>A <see cref="EventDetailVm"></see> containing the details for a <see cref="Event"></see></returns>
-        public async Task<EventDetailVm> Handle(GetEventDetailQuery request, CancellationToken cancellationToken)
+        /// <returns>A <see cref="EventDetailDto"></see> containing the details for a <see cref="Event"></see></returns>
+        public async Task<EventDetailDto> Handle(GetEventDetailQuery request, CancellationToken cancellationToken)
         {
-            var entity = await _context.Events.FindAsync(request.Id);
+            var entity = await _context.Events
+                
+                .Include(x => x.EventType)
+                .Include(x => x.EventSeries)
+                .Include(x => x.Owner)
+                    .ThenInclude(x => x.Rank)
+                .FirstOrDefaultAsync(x => x.Id == request.Id);
             if (entity == null)
             {
                 throw new NotFoundException(nameof(Event), request.Id);
             }
-            var vm = _mapper.Map<EventDetailVm>(entity);
+            var vm = _mapper.Map<EventDetailDto>(entity);
             return vm;
                 
                 

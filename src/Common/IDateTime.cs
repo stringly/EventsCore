@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace EventsCore.Domain.Common
+namespace EventsCore.Common
 {
     /// <summary>
     /// Interface that defines a DateTime provider

@@ -50,8 +50,8 @@ namespace EventsCore.Application.Events.Queries.GetEventsList
                 .ForMember(e => e.SeriesName, opt => opt.MapFrom(s => s.EventSeries == null ? "None" : s.EventSeries.Title))
                 .ForMember(e => e.SeriesId, opt => opt.MapFrom(s => s.EventSeriesId))
                 .ForMember(e => e.Title, opt => opt.MapFrom(s => s.Title))
-                .ForMember(e => e.StartDate, opt => opt.MapFrom(s => s.StartDate.ToString()))
-                .ForMember(e => e.EndDate, opt => opt.MapFrom(s => s.EndDate.ToString()));
+                .ForMember(e => e.StartDate, opt => opt.MapFrom(s => s.Dates.StartDate.ToString("MM/dd/yy HH:MM")))
+                .ForMember(e => e.EndDate, opt => opt.MapFrom(s => s.Dates.EndDate.ToString("MM/dd/yy HH:MM")));
         }
     }
 }

@@ -31,7 +31,7 @@ namespace EventsCore.Application.UnitTests.Ranks.Queries
 
             // Assert
             result.ShouldBeOfType<RankListVm>();
-            result.Ranks.Count.ShouldBe(3);
+            result.Ranks.Count.ShouldBe(10);
         }
     }
 }

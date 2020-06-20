@@ -9,6 +9,19 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
     <DocumentationFile>bin\$(Configuration)\EventsCore.Persistence.xml</DocumentationFile>
   </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Migrations\20200617204029_initialData.cs" />
+    <Compile Remove="Migrations\20200617204029_initialData.Designer.cs" />
+    <Compile Remove="Migrations\20200618164637_addUserRole.cs" />
+    <Compile Remove="Migrations\20200618164637_addUserRole.Designer.cs" />
+    <Compile Remove="Migrations\20200618164941_addUserRole.cs" />
+    <Compile Remove="Migrations\20200618164941_addUserRole.Designer.cs" />
+    <Compile Remove="Migrations\20200619012618_addOwnerToEvent.cs" />
+    <Compile Remove="Migrations\20200619012618_addOwnerToEvent.Designer.cs" />
+    <Compile Remove="Migrations\20200619013259_addOwnerToEvent.cs" />
+    <Compile Remove="Migrations\20200619013259_addOwnerToEvent.Designer.cs" />
+  </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="3.0.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="3.0.0">

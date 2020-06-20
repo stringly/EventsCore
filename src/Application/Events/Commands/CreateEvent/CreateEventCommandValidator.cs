@@ -1,4 +1,5 @@
-﻿using EventsCore.Domain.Common;
+﻿using EventsCore.Common;
+using EventsCore.Domain.Common;
 using FluentValidation;
 using System.Security.Cryptography.X509Certificates;
 

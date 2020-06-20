@@ -73,6 +73,9 @@ namespace EventsCore.Persistence.Migrations
                     b.Property<int>("EventTypeId")
                         .HasColumnType("int");
 
+                    b.Property<int>("OwnerId")
+                        .HasColumnType("int");
+
                     b.Property<string>("Title")
                         .IsRequired()
                         .HasColumnType("nvarchar(50)")
@@ -83,6 +86,8 @@ namespace EventsCore.Persistence.Migrations
                     b.HasIndex("EventSeriesId");
 
                     b.HasIndex("EventTypeId");
+
+                    b.HasIndex("OwnerId");
 
                     b.ToTable("Events");
                 });
@@ -125,6 +130,23 @@ namespace EventsCore.Persistence.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("EventTypes");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Name = "Training"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Name = "Overtime"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Name = "Assignment"
+                        });
                 });
 
             modelBuilder.Entity("EventsCore.Domain.Entities.Module", b =>
@@ -170,12 +192,74 @@ namespace EventsCore.Persistence.Migrations
 
                     b.Property<string>("FullName")
                         .IsRequired()
-                        .HasColumnType("nvarchar(25)")
-                        .HasMaxLength(25);
+                        .HasColumnType("nvarchar(50)")
+                        .HasMaxLength(50);
 
                     b.HasKey("Id");
 
                     b.ToTable("Ranks");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Abbreviation = "P/O",
+                            FullName = "Police Officer"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Abbreviation = "POFC",
+                            FullName = "Police Officer First Class"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Abbreviation = "Cpl.",
+                            FullName = "Corporal"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            Abbreviation = "Sgt.",
+                            FullName = "Sergeant"
+                        },
+                        new
+                        {
+                            Id = 5,
+                            Abbreviation = "Lt.",
+                            FullName = "Lieutenant"
+                        },
+                        new
+                        {
+                            Id = 6,
+                            Abbreviation = "Capt.",
+                            FullName = "Captain"
+                        },
+                        new
+                        {
+                            Id = 7,
+                            Abbreviation = "Maj.",
+                            FullName = "Major"
+                        },
+                        new
+                        {
+                            Id = 8,
+                            Abbreviation = "D/Chief",
+                            FullName = "Deputy Chief"
+                        },
+                        new
+                        {
+                            Id = 9,
+                            Abbreviation = "A/Chief",
+                            FullName = "Assistant Chief"
+                        },
+                        new
+                        {
+                            Id = 10,
+                            Abbreviation = "Chief",
+                            FullName = "Chief of Police"
+                        });
                 });
 
             modelBuilder.Entity("EventsCore.Domain.Entities.Registration", b =>
@@ -260,6 +344,70 @@ namespace EventsCore.Persistence.Migrations
                     b.HasIndex("RankId");
 
                     b.ToTable("Users");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            BlueDeckId = 1L,
+                            ContactNumber = "3016483444",
+                            Email = "jcs3082@hotmail.com",
+                            IdNumber = "3134",
+                            LDAPName = "jcs30",
+                            RankId = 5
+                        });
+                });
+
+            modelBuilder.Entity("EventsCore.Domain.Entities.UserRole", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("UserId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("UserRoleTypeId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("UserId");
+
+                    b.HasIndex("UserRoleTypeId");
+
+                    b.ToTable("UserRole");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            UserId = 1,
+                            UserRoleTypeId = 1
+                        });
+                });
+
+            modelBuilder.Entity("EventsCore.Domain.Entities.UserRoleType", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("UserRoleTypes");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Name = "Administrator"
+                        });
                 });
 
             modelBuilder.Entity("EventsCore.Domain.Entities.Attendance", b =>
@@ -288,6 +436,12 @@ namespace EventsCore.Persistence.Migrations
                     b.HasOne("EventsCore.Domain.Entities.EventType", "EventType")
                         .WithMany()
                         .HasForeignKey("EventTypeId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("EventsCore.Domain.Entities.User", "Owner")
+                        .WithMany("OwnedEvents")
+                        .HasForeignKey("OwnerId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -424,7 +578,30 @@ namespace EventsCore.Persistence.Migrations
 
                             b1.WithOwner()
                                 .HasForeignKey("UserId");
+
+                            b1.HasData(
+                                new
+                                {
+                                    UserId = 1,
+                                    First = "Jason",
+                                    Last = "Smith"
+                                });
                         });
+                });
+
+            modelBuilder.Entity("EventsCore.Domain.Entities.UserRole", b =>
+                {
+                    b.HasOne("EventsCore.Domain.Entities.User", "User")
+                        .WithMany("Roles")
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("EventsCore.Domain.Entities.UserRoleType", "UserRoleType")
+                        .WithMany()
+                        .HasForeignKey("UserRoleTypeId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 #pragma warning restore 612, 618
         }

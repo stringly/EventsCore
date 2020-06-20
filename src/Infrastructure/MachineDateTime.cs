@@ -1,5 +1,5 @@
-﻿using System;
-using EventsCore.Domain.Common;
+﻿using EventsCore.Common;
+using System;
 
 namespace EventsCore.Infrastructure
 {

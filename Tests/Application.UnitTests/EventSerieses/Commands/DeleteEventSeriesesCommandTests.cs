@@ -18,7 +18,7 @@ namespace EventsCore.Application.UnitTests.EventSerieses.Commands
         [Fact]
         public async Task Handle_Given_InvalidId_Throws_NotFoundException()
         {
-            // Arrange
+            // Arrange 
             var invalidId = 0;
             var command = new DeleteEventSeriesesCommand { Id = invalidId };
 

@@ -1,4 +1,4 @@
-﻿using EventsCore.Domain.Common;
+﻿using EventsCore.Common;
 using System;
 namespace EventsCore.Application.UnitTests.Common
 {

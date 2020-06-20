@@ -1,4 +1,5 @@
-﻿using EventsCore.Domain.Common;
+﻿using EventsCore.Common;
+using EventsCore.Domain.Common;
 using EventsCore.Domain.Exceptions.Registration;
 using System;
 

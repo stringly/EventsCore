@@ -1,11 +1,10 @@
 ﻿using EventsCore.Application.Common.Exceptions;
 using EventsCore.Application.Common.Interfaces;
-using EventsCore.Domain.Common;
+using EventsCore.Common;
 using FluentValidation.Results;
 using MediatR;
 using System;
 using System.Collections.Generic;
-using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 

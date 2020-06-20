@@ -21,7 +21,7 @@ namespace EventsCore.Application.UnitTests.Registrations.Commands
         {
             // Arrange
             var validEventId = 3;
-            var validUserId = 1;
+            var validUserId = 2;
             var command = new CreateRegistrationCommand
             {
                 EventId = validEventId,
@@ -33,7 +33,7 @@ namespace EventsCore.Application.UnitTests.Registrations.Commands
             var entity = _context.Events.Find(validEventId);
             // Assert
             Assert.Contains(entity.Registrations, x => x.UserId == validUserId);
-            Assert.Single(entity.Registrations);
+            Assert.Equal(2, entity.Registrations.Count());
         }
         [Fact]
         public async Task Handle_Given_Invalid_UserId_Throws_NotFoundException()

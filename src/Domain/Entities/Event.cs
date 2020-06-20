@@ -5,6 +5,7 @@ using System;
 using EventsCore.Domain.Exceptions.ValueObjects;
 using System.Collections.Generic;
 using System.Linq;
+using EventsCore.Common;
 
 namespace EventsCore.Domain.Entities
 {
@@ -13,7 +14,12 @@ namespace EventsCore.Domain.Entities
     /// </summary>
     public class Event : BaseEntity, IAggregateRoot
     {
-        private Event() { }
+        private Event()
+        {
+            _modules = new List<Module>();
+            _attendance = new List<Attendance>();
+            _registrations = new List<Registration>();
+        }
         /// <summary>
         /// Minimum constructor to create a valid instance of an Event
         /// </summary>
@@ -441,6 +447,14 @@ namespace EventsCore.Domain.Entities
         /// </summary>
         public EventType EventType { get; private set; }
         /// <summary>
+        /// The Id of the <see cref="User"/> who owns the event.
+        /// </summary>
+        public int OwnerId { get; private set; }
+        /// <summary>
+        /// Navigation property to the <see cref="User"/> who owns the Event.
+        /// </summary>
+        public User Owner { get; private set;}
+        /// <summary>
         /// A <see cref="ValueObjects.Address"/> containing the Event's Address
         /// </summary>
         /// <remarks>
@@ -471,35 +485,15 @@ namespace EventsCore.Domain.Entities
         /// </remarks>
         public EventDates Dates { get; private set;}
         /// <summary>
-        /// The Event's Start Date, obtained from the Event.Dates ruleset.
-        /// </summary>
-        public DateTime StartDate => Dates.StartDate;
-        /// <summary>
-        /// The Event's End Date, obtained from the Event.Dates ruleset.
-        /// </summary>
-        public DateTime EndDate => Dates.EndDate;
-        /// <summary>
-        /// The Event's Registration Period Start Date, obtained from the Event.Dates ruleset.
-        /// </summary>
-        public DateTime RegistrationStartDate => Dates.RegistrationStartDate;
-        /// <summary>
-        /// The Event's Registration Period End Date, obtained from the Event.Dates ruleset.
-        /// </summary>
-        public DateTime RegistrationEndDate => Dates.RegistrationEndDate;
-        /// <summary>
         /// The Event's Registration Rules ruleset.
         /// </summary>
         public EventRegistrationRules Rules { get; private set;}        
-        /// <summary>
-        /// The Maximum number of registrations, obtained from the Event.Rules ruleset.
-        /// </summary>
-        public uint MaxRegistrations => Rules.MaxRegistrations;
-        private List<Attendance> _attendance;
+        private readonly List<Attendance> _attendance;
         /// <summary>
         /// A list of <see cref="Attendance"></see> records associated with this event.
         /// </summary>
         public IEnumerable<Attendance> Attendance => _attendance.AsReadOnly();
-        private List<Registration> _registrations;
+        private readonly List<Registration> _registrations;
         /// <summary>
         /// A list of <see cref="Registration"></see> records associated with this event.
         /// </summary>
@@ -536,11 +530,11 @@ namespace EventsCore.Domain.Entities
             {
                 return false;
             }
-            else if (RegistrationStartDate > _dateTime.Now || RegistrationEndDate < _dateTime.Now)
+            else if (Dates.RegistrationStartDate > _dateTime.Now || Dates.RegistrationEndDate < _dateTime.Now)
             {
                 return false;
             }
-            else if (CurrentAttendeesCount >= MaxRegistrations)
+            else if (CurrentAttendeesCount >= Rules.MaxRegistrations)
             {
                 return false;
             }
@@ -557,7 +551,7 @@ namespace EventsCore.Domain.Entities
         /// </remarks>
         public bool IsExpired (IDateTime _dateTime)
         {
-            return EndDate < _dateTime.Now; 
+            return Dates.EndDate < _dateTime.Now; 
         }
         /// <summary>
         /// Returns the event's active status
@@ -567,7 +561,7 @@ namespace EventsCore.Domain.Entities
         /// </remarks>
         public bool IsActive (IDateTime _dateTime)
         {
-            return StartDate <= _dateTime.Now && EndDate >= _dateTime.Now;
+            return Dates.StartDate <= _dateTime.Now && Dates.EndDate >= _dateTime.Now;
         }
         /// <summary>
         /// Returns whether registrations can be placed on "Stanby" for the event
@@ -578,7 +572,7 @@ namespace EventsCore.Domain.Entities
         public bool IsStandByAvailable {
             get { return Rules.MaxStandbyRegistrations > 0 && CurrentStandbyCount < Rules.MaxStandbyRegistrations; }
         }
-        private List<Module> _modules;
+        private readonly List<Module> _modules;
         /// <summary>
         /// A list of <see cref="Module"></see> associated with this event.
         /// </summary>
@@ -639,6 +633,21 @@ namespace EventsCore.Domain.Entities
         public void UpdateEventType(int newEventTypeId)
         {
             EventTypeId = newEventTypeId != 0 ? newEventTypeId : throw new EventArgumentException("Cannot update Event Type: parameter cannot be 0.", nameof(newEventTypeId));
+        }
+        /// <summary>
+        /// Updates the Event's Owner
+        /// </summary>
+        /// <param name="ownerUserId">The Id of the <see cref="User"/> to assign as the event's owner.</param>
+        /// <exception cref="EventArgumentException">
+        /// Thrown when the ownerUserId parameter is 0.
+        /// </exception>
+        public void UpdateOwner(int ownerUserId)
+        {
+            if (ownerUserId <= 0)
+            {
+                throw new EventArgumentException("Cannot update Event: Owner user Id cannot be 0.", nameof(ownerUserId));
+            }
+            OwnerId = ownerUserId;
         }
         /// <summary>
         /// Updates the event's <see cref="Address"/>
@@ -1001,6 +1010,22 @@ namespace EventsCore.Domain.Entities
             _registrations.Remove(registrationForUser);
         }
         /// <summary>
+        /// Removes a Registration with the provided UserId from the Event's registration collection 
+        /// </summary>
+        /// <param name="regId">The integer ID for the User to whom the registration belongs</param>
+        /// <exception cref="EventArgumentException">
+        /// Thrown when no <see cref="Registration">Registration</see> for the given RegistrationId was found in the Event's Registration collection.
+        /// </exception>
+        public void DeleteRegistrationByRegistrationId(int regId)
+        {
+            var registrationForId = _registrations.FirstOrDefault(x => x.Id == regId);
+            if (registrationForId == null)
+            {
+                throw new EventArgumentException("Cannot remove registration: no registration with provided id found.", nameof(regId));
+            }
+            _registrations.Remove(registrationForId);
+        }
+        /// <summary>
         /// Updates the <see cref="RegistrationStatus"></see> of a Registration to "Accepted" by the UserId associated with the <see cref="Registration"></see>
         /// </summary>
         /// <param name="userId">The UserId of the <see cref="User"></see> associated with the <see cref="Registration"></see></param>
@@ -1019,7 +1044,7 @@ namespace EventsCore.Domain.Entities
             {
                 throw new EventInvalidOperationException("Cannot accept registration: Event has expired.");
             }
-            else if (CurrentAttendeesCount >= MaxRegistrations)
+            else if (CurrentAttendeesCount >= Rules.MaxRegistrations)
             {
                 throw new EventInvalidOperationException("Cannot accept registration: Event is at Max Registrations");
             }
@@ -1049,7 +1074,7 @@ namespace EventsCore.Domain.Entities
             {
                 throw new EventInvalidOperationException("Cannot accept registration: Event has expired.");
             }
-            else if (CurrentAttendeesCount >= MaxRegistrations)
+            else if (CurrentAttendeesCount >= Rules.MaxRegistrations)
             {
                 throw new EventInvalidOperationException("Cannot accept registration: Event is at Max Registrations");
             }

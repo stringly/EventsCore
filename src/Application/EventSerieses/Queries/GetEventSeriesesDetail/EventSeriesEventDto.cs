@@ -30,7 +30,7 @@ namespace EventsCore.Application.EventSerieses.Queries.GetEventSeriesesDetail
             profile.CreateMap<Event, EventSeriesEventDto>()
                 .ForMember(d => d.Id, opt => opt.MapFrom(s => s.Id))
                 .ForMember(d => d.Title, opt => opt.MapFrom(s => s.Title))
-                .ForMember(d => d.StartDate, opt => opt.MapFrom(s => s.StartDate.ToString()));
+                .ForMember(d => d.StartDate, opt => opt.MapFrom(s => s.Dates.StartDate.ToString()));
         }
     }
 }

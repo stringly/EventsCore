@@ -51,11 +51,11 @@ namespace EventsCore.Application.UnitTests.Events.Commands
             Assert.NotNull(e);
             Assert.Equal(e.Title, newValidTitle);
             Assert.Equal(e.Description, newValidDescription);
-            Assert.Equal(e.StartDate, newValidStartDate);
-            Assert.Equal(e.EndDate, newValidEndDate);
-            Assert.Equal(e.RegistrationStartDate, newValidRegStartDate);
-            Assert.Equal(e.RegistrationEndDate, newValidRegEndDate);
-            Assert.Equal((int)e.MaxRegistrations, newValidMaxRegs);
+            Assert.Equal(e.Dates.StartDate, newValidStartDate);
+            Assert.Equal(e.Dates.EndDate, newValidEndDate);
+            Assert.Equal(e.Dates.RegistrationStartDate, newValidRegStartDate);
+            Assert.Equal(e.Dates.RegistrationEndDate, newValidRegEndDate);
+            Assert.Equal((int)e.Rules.MaxRegistrations, newValidMaxRegs);
             Assert.Equal(e.EventTypeId, newValidEventTypeId);
         }
         [Fact]
@@ -107,11 +107,11 @@ namespace EventsCore.Application.UnitTests.Events.Commands
             Assert.NotNull(e);
             Assert.Equal(e.Title, validTitle);
             Assert.Equal(e.Description, validDescription);
-            Assert.Equal(e.StartDate, validStartDate);
-            Assert.Equal(e.EndDate, validEndDate);
-            Assert.Equal(e.RegistrationStartDate, validRegStartDate);
-            Assert.Equal(e.RegistrationEndDate, validRegEndDate);
-            Assert.Equal((int)e.MaxRegistrations, validMaxRegs);
+            Assert.Equal(e.Dates.StartDate, validStartDate);
+            Assert.Equal(e.Dates.EndDate, validEndDate);
+            Assert.Equal(e.Dates.RegistrationStartDate, validRegStartDate);
+            Assert.Equal(e.Dates.RegistrationEndDate, validRegEndDate);
+            Assert.Equal((int)e.Rules.MaxRegistrations, validMaxRegs);
             Assert.Equal((int)e.Rules.MinRegistrations, validMinRegs);
             Assert.Equal((int)e.Rules.MaxStandbyRegistrations, validMaxStandbyCount);
             Assert.Equal(e.EventSeriesId, validEventSeriesId);

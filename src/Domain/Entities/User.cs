@@ -2,6 +2,8 @@
 using EventsCore.Domain.Exceptions.User;
 using EventsCore.Domain.ValueObjects;
 using System;
+using System.Collections.Generic;
+using System.Security.Cryptography.X509Certificates;
 
 namespace EventsCore.Domain.Entities
 {
@@ -10,7 +12,7 @@ namespace EventsCore.Domain.Entities
     /// </summary>
     public class User : BaseEntity, IAggregateRoot
     {
-        private User() { }
+        private User() { _roles = new List<UserRole>(); }
         /// <summary>
         /// Creates a new instance of the User object
         /// </summary>
@@ -31,6 +33,8 @@ namespace EventsCore.Domain.Entities
             UpdateEmail(email);
             UpdateContactNumber(contactNumber);
             UpdateRank(rankId);
+            _roles = new List<UserRole>();
+            _ownedEvents = new List<Event>();
         }
 
         private string _LDAPName;
@@ -78,6 +82,16 @@ namespace EventsCore.Domain.Entities
         /// Returns a string containing the User's Display Name
         /// </summary>
         public string DisplayName => $"{(Rank?.Abbreviation != null ? Rank.Abbreviation + " " : "")}{Name} {(String.IsNullOrEmpty(IdNumber) ? "" : $"#{IdNumber}")}";
+        private readonly List<UserRole> _roles;
+        /// <summary>
+        /// Returns a list of <see cref="UserRole"/> to which the User is assigned.
+        /// </summary>
+        public IEnumerable<UserRole> Roles => _roles.AsReadOnly();
+        private readonly List<Event> _ownedEvents;
+        /// <summary>
+        /// Returns a list of <see cref="Event"/> owned by this user.
+        /// </summary>
+        public IEnumerable<Event> OwnedEvents => _ownedEvents.AsReadOnly();
         /// <summary>
         /// Updates the User's LDAP Name
         /// </summary>
@@ -161,6 +175,30 @@ namespace EventsCore.Domain.Entities
         public void UpdateRank(int rankId)
         {
             RankId = rankId != 0 ? rankId : throw new UserArgumentException("Cannot update User Rank: parameter must not be 0.", nameof(rankId));
+        }
+        /// <summary>
+        /// Adds a <see cref="UserRoleType"/> to the User's Role collection.
+        /// </summary>
+        /// <param name="roleType">A <see cref="UserRoleType"/></param>
+        public void AddToRole(UserRoleType roleType)
+        {
+            _roles.Add(new UserRole { UserRoleType = roleType });
+        }
+        /// <summary>
+        /// Removes a <see cref="UserRoleType"></see> from the User's Role collection.
+        /// </summary>
+        /// <param name="roleType">A <see cref="UserRoleType"></see></param>
+        /// <exception cref="UserArgumentException">
+        /// Thrown when the provided RoleType parameter is not in the User's existing roles.
+        /// </exception>
+        public void RemoveFromRole(UserRoleType roleType)
+        {
+            var userRole = _roles.Find(x => x.UserRoleTypeId == roleType.Id);
+            if (userRole == null)
+            {
+                throw new UserArgumentException($"Cannot remove User from Role: no Role with id {roleType.Id} found in User's Roles.", nameof(roleType));
+            }
+            _roles.Remove(userRole);
         }
     }
 }

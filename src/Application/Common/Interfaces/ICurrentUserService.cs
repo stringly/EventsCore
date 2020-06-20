@@ -8,7 +8,7 @@
         /// <summary>
         /// The current User's Id
         /// </summary>
-        int UserId { get;}
+        string UserId { get;}
         /// <summary>
         /// Whether the current user is authenticated.
         /// </summary>

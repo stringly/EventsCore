@@ -1,6 +1,6 @@
 ﻿using EventsCore.Application.Common.Exceptions;
 using EventsCore.Application.Common.Interfaces;
-using EventsCore.Domain.Common;
+using EventsCore.Common;
 using FluentValidation.Results;
 using MediatR;
 using System;
@@ -28,13 +28,13 @@ namespace EventsCore.Application.Registrations.Commands.AcceptRegistration
             _dateTime = dateTime;
         }
         /// <summary>
-        /// Handles the request to insert the <see cref="Domain.Entities.Registration"></see>
+        /// Handles the request to accept the <see cref="Domain.Entities.Registration"></see>
         /// </summary>
         /// <param name="request">The command</param>
         /// <param name="cancellationToken">The cancellationToken</param>
-        /// <returns>A <see cref="Task"> containing the Integer Id of the newly inserted entity.</see></returns>
+        /// <returns>A <see cref="Task"> containing the Integer Id of the Event to which the Registration belongs.</see></returns>
         /// <exception cref="ValidationException">
-        /// Throw when the Registration status could not be changed in the Event internal method.
+        /// Thrown when the Registration status could not be changed in the Event internal method.
         /// </exception>
         public async Task<int> Handle(AcceptRegistrationCommand request, CancellationToken cancellationToken)
         {
@@ -51,7 +51,7 @@ namespace EventsCore.Application.Registrations.Commands.AcceptRegistration
             }
             catch(Exception ex)
             {
-                throw new ValidationException(new List<ValidationFailure>() { new ValidationFailure(nameof(entity.AcceptRegistrationByUserId), $"Cannot accept registration: {ex.Message}") });
+                throw new ValidationException(new List<ValidationFailure>() { new ValidationFailure(nameof(entity.AcceptRegistrationByRegistrationId), $"Cannot accept registration: {ex.Message}") });
             }            
         }
     }

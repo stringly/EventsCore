@@ -23,7 +23,7 @@ namespace EventsCore.Persistence.Configurations
             builder.Property(e => e.FullName)
                 .HasField("_fullName")
                 .IsRequired()
-                .HasMaxLength(25);
+                .HasMaxLength(50);
         }
     }
 }

@@ -2,6 +2,7 @@
 using EventsCore.Domain.Exceptions.User;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using Xunit;
 
@@ -452,6 +453,67 @@ namespace EventsCore.Domain.UnitTests.Entities
 
             // Assert
             Assert.Equal(newRankId, user.RankId);
+        }
+        [Fact]
+        public void Can_Add_User_To_Role()
+        {
+            // Arrange
+            string ldapName = "User123";
+            uint blueDeckId = 1;
+            string firstName = "Bob";
+            string lastName = "Jones";
+            string idNumber = "1234";
+            string email = "bob@test.mail";
+            string contactNumber = "1234567890";
+            int rankId = 1;
+            var user = new User(ldapName, blueDeckId, firstName, lastName, idNumber, email, contactNumber, rankId);
+            var role = new UserRoleType { Name = "Administrator" };
+
+            // Act
+            user.AddToRole(role);
+
+            // Assert
+            Assert.Single(user.Roles);
+        }
+        [Fact]
+        public void Can_Remove_User_From_Role()
+        {
+            // Arrange
+            string ldapName = "User123";
+            uint blueDeckId = 1;
+            string firstName = "Bob";
+            string lastName = "Jones";
+            string idNumber = "1234";
+            string email = "bob@test.mail";
+            string contactNumber = "1234567890";
+            int rankId = 1;
+            var user = new User(ldapName, blueDeckId, firstName, lastName, idNumber, email, contactNumber, rankId);
+            var role = new UserRoleType { Name = "Administrator" };
+            user.AddToRole(role);
+            Assert.Single(user.Roles);
+            // Act
+            user.RemoveFromRole(role);
+
+            // Assert
+            Assert.Empty(user.Roles);
+        }
+        [Fact]
+        public void Should_Throw_UserArgumentException_When_Removing_User_From_NonExisting_Role()
+        {
+            // Arrange
+            string ldapName = "User123";
+            uint blueDeckId = 1;
+            string firstName = "Bob";
+            string lastName = "Jones";
+            string idNumber = "1234";
+            string email = "bob@test.mail";
+            string contactNumber = "1234567890";
+            int rankId = 1;
+            var user = new User(ldapName, blueDeckId, firstName, lastName, idNumber, email, contactNumber, rankId);
+            var role = new UserRoleType { Name = "Administrator" };
+
+            // Act/Assert
+            Assert.Throws<UserArgumentException>(() => user.RemoveFromRole(role));
         }
     }
 }

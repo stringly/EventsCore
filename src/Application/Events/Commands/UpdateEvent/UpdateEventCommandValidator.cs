@@ -1,4 +1,4 @@
-﻿using EventsCore.Domain.Common;
+﻿using EventsCore.Common;
 using FluentValidation;
 
 namespace EventsCore.Application.Events.Commands.UpdateEvent

@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using EventsCore.Application.Common.Behaviours;
+using EventsCore.Application.Common.Models;
 using MediatR;
 using Microsoft.Extensions.DependencyInjection;
 using System.Reflection;
@@ -22,6 +23,8 @@ namespace EventsCore.Application
             services.AddMediatR(Assembly.GetExecutingAssembly());
             services.AddTransient(typeof(IPipelineBehavior<,>), typeof(RequestPerformanceBehaviour<,>));
             services.AddTransient(typeof(IPipelineBehavior<,>), typeof(RequestValidationBehavior<,>));
+            services.AddTransient(typeof(IPipelineBehavior<,>), typeof(RequestAuthorizationBehavior<,>));
+            services.AddAuthorizersFromAssembly(Assembly.GetAssembly(typeof(Authorization)));
             return services;
         }
     }

@@ -1,15 +1,32 @@
 ﻿/* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
 for details on configuring this project to bundle and minify static web assets. */
+:root{
+    --grey1: #404659;
+    --grey2: #4d5366;
+    --grey3: #bac3d4;
+    --highlightgrey: #dee2eb;
+    --greyBackground1: #f1f2f4;
+    --greyBackground2: #f4f4f7;
+    --buttonBlue: #00abeb;
+    --buttonGreen: #00be65;
 
+}
+.mainNav {
+    background-color: var(--grey1);
+    color: var(--greyBackground2);
+}
 a.navbar-brand {
-  white-space: normal;
-  text-align: center;
-  word-break: break-all;
+    white-space: normal;
+    text-align: center;
+    word-break: break-all;
+    font-size: 20px;
+    color: #f8f9fa;
+    font-variant-caps:petite-caps;
 }
 
 /* Provide sufficient contrast against white background */
 a {
-  color: #0366d6;
+  color: var(--buttonBlue);
 }
 
 .btn-primary {
@@ -27,11 +44,16 @@ a {
 /* Sticky footer styles
 -------------------------------------------------- */
 html {
-  font-size: 14px;
+    font-size: 12px;
+    background-color: var(--greyBackground1);
+}
+body {
+    background-color: var(--greyBackground1);
 }
 @media (min-width: 768px) {
   html {
-    font-size: 16px;
+    font-size: 14px;
+    
   }
 }
 
@@ -59,8 +81,8 @@ html {
 }
 
 body {
-  /* Margin bottom by footer height */
-  margin-bottom: 60px;
+    /* Margin bottom by footer height */
+    margin-bottom: 60px;
 }
 .footer {
   position: absolute;
@@ -68,4 +90,106 @@ body {
   width: 100%;
   white-space: nowrap;
   line-height: 60px; /* Vertically center the text there */
+  background-color: var(--greyBackground2);
 }
+
+.card .card-header {
+    background-color: var(--grey3);
+    font-size: 1.25rem;
+    color: #495057;
+    border: 1px solid rgba(0,0,0,.125);
+}
+.indexTableCard {
+    background-color: var(--greyBackground1);
+}
+.indexTableCard thead {
+    background-color: var(--greyBackground1);
+}
+.indexTableCard thead th {
+    border: none;
+}
+.indexTableCard td {
+    border-top: 1px solid rgba(0,0,0,.125);
+    border-bottom: 1px solid rgba(0,0,0,.125);
+}
+.nav-tabs .nav-link.active {
+    border-bottom: 3px solid var(--buttonBlue);
+    background-color: transparent;
+}
+.nav-tabs .nav-item.dropdown a {
+    color: #495057;
+}
+
+/* Bootstrap form overrides */
+.btn {
+    font-size: 0.700rem;
+    font-weight: 500;
+    font-variant-caps: normal;
+}
+.btn-primary {
+    background-color: var(--buttonBlue);
+}
+.btn-success {
+    background-color: var(--buttonGreen);
+}
+/* Start Form Control Overrides */
+.form-control {
+    display: block;
+    width: 100%;
+    height: 30px;
+    padding: 4px 8px;
+    font-size: 12px;
+    line-height: 1.42857143;
+    color: #555;
+    background-color: #fafbfc;
+    background-image: none;
+    border: 1px solid #d1d5da;
+    border-radius: 3px;
+    box-shadow: inset 0 1px 2px rgba(27,31,35,.075);
+}
+
+select.form-control {
+    background-color: #eff3f6;
+    background-image: linear-gradient(-180deg,#fafbfc,#eff3f6 90%);
+    color: #24292e;
+    box-shadow: none;
+    cursor: pointer;
+}
+
+    select.form-control:hover {
+        background-color: #e6ebf1;
+        background-image: linear-gradient(-180deg,#f0f3f6,#e6ebf1 90%);
+        background-position: -.5em;
+        border-color: rgba(27,31,35,.35);
+    }
+
+.form-checkbox {
+    margin: 15px 0;
+    padding-left: 20px;
+    vertical-align: middle;
+}
+
+    .form-checkbox input[type=checkbox] {
+        float: left;
+        margin: 5px 0 0 -20px;
+        vertical-align: middle;
+    }
+
+    .form-checkbox label {
+        margin-bottom: 2px;
+    }
+
+    .form-checkbox .note {
+        color: #586069;
+        display: block;
+        font-size: 10px;
+        font-weight: 400;
+        margin: 0;
+    }
+
+    .form-checkbox i {
+        float: left;
+        margin-right: 5px;
+        font-size: 20px;
+    }
+/* END FORM CONTROL OVERRIDES*/

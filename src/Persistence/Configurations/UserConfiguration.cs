@@ -36,7 +36,10 @@ namespace EventsCore.Persistence.Configurations
                 .HasField("_contactNumber")
                 .HasMaxLength(10);
             builder.HasOne(typeof(Rank),"Rank").WithMany();
-
+            var navigation1 = builder.Metadata.FindNavigation(nameof(User.Roles));
+            navigation1.SetPropertyAccessMode(PropertyAccessMode.Field);
+            var navigation2 = builder.Metadata.FindNavigation(nameof(User.OwnedEvents));
+            navigation2.SetPropertyAccessMode(PropertyAccessMode.Field);
         }
     }
 }
