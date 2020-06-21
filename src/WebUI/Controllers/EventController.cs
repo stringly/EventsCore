@@ -1,5 +1,6 @@
 ﻿using EventsCore.Application.Common.Exceptions;
 using EventsCore.Application.Events.Commands.CreateEvent;
+using EventsCore.Application.Events.Commands.DeleteEvent;
 using EventsCore.Application.Events.Commands.UpdateEvent;
 using EventsCore.Application.Events.Queries.GetEventDetail;
 using EventsCore.Application.Events.Queries.GetEventEdit;
@@ -16,6 +17,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using System;
 using System.Linq;
 using System.Threading.Tasks;
+using WebUI.Models;
 
 namespace EventsCore.WebUI.Controllers
 {
@@ -165,6 +167,7 @@ namespace EventsCore.WebUI.Controllers
             return View(vm);
         }
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind(
             "Id," +
             "EventTypeId," +
@@ -247,6 +250,54 @@ namespace EventsCore.WebUI.Controllers
                 ViewData["Title"] = "Create Event: Error";
                 return View(form);
             }
+        }
+        [HttpGet]
+        public async Task<IActionResult> Delete(int? id, string returnUrl)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+            var result = await _mediator.Send(new GetEventDetailQuery { Id = (Int32)id });
+            if (result == null)
+            {
+                return NotFound();
+            }
+            EventDetailViewModel vm = new EventDetailViewModel(result);
+            ViewData["Title"] = "Delete Event";
+            ViewBag.ReturnUrl = returnUrl;
+            return View(vm);
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> DeleteConfirmed(int? id, int Id, string returnUrl)
+        {
+            if (id == null || id != Id)
+            {
+                return NotFound();
+            }
+            var command = new DeleteEventCommand { Id = Id };
+            try
+            {
+                await _mediator.Send(command);
+                if (!string.IsNullOrEmpty(returnUrl))
+                {
+                    return Redirect(returnUrl);
+                }
+                else
+                {
+                    return RedirectToAction(nameof(Index));
+                }
+            }
+            catch(ValidationException ex)
+            {
+                ViewData["exception"] = ex.Message;
+                ErrorViewModel vm = new ErrorViewModel();
+                return RedirectToAction("Error","Home");
+            }
+            
+            
+            
         }
     }
 }
