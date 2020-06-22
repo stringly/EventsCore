@@ -38,9 +38,22 @@ namespace EventsCore.Application.Events.Queries.GetUpcomingEvents
         /// The Event's StartDate
         /// </summary>
         public string Date { get; set; }
+        /// <summary>
+        /// The Date that the event's registration period ends.
+        /// </summary>
         public string RegistrationClosedDate { get; set; }
+        /// <summary>
+        /// The number of vacancies.
+        /// </summary>
         public int SlotsAvailable { get; set; }
+        /// <summary>
+        /// The Email address of the Event's owner.
+        /// </summary>
         public string OwnerEmail { get; set; }
+        /// <summary>
+        /// The Description of the Event.
+        /// </summary>
+        public string Description { get; set; }
 
         /// <summary>
         /// Creates a mapping between the base <see cref="Event"/> and the Dto <see cref="UpcomingEventDto"/>
@@ -57,8 +70,8 @@ namespace EventsCore.Application.Events.Queries.GetUpcomingEvents
                 .ForMember(e => e.Date, opt => opt.MapFrom(s => $"{s.Dates.StartDate:ddd, MM/dd/yy} {s.Dates.StartDate:H:mm tt} - {s.Dates.EndDate:H:mm tt}"))
                 .ForMember(e => e.SlotsAvailable, opt => opt.MapFrom(s => s.GetAvailableSlotsCount()))
                 .ForMember(e => e.RegistrationClosedDate, opt => opt.MapFrom(s => s.Dates.RegistrationEndDate.ToString("ddd, MM/dd/yy")))
-                .ForMember(e => e.OwnerEmail, opt => opt.MapFrom(s => s.Owner.Email));
-
+                .ForMember(e => e.OwnerEmail, opt => opt.MapFrom(s => s.Owner.Email))
+                .ForMember(e => e.Description, opt => opt.MapFrom(s => s.Description));
         }
     }
 }

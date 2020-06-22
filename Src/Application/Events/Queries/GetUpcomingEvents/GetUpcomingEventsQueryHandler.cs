@@ -58,7 +58,7 @@ namespace EventsCore.Application.Events.Queries.GetUpcomingEvents
                 .Include(x => x.Owner)
                     .ThenInclude(x => x.Rank)
                 .Include(x => x.Registrations)
-                .Where(x => (x.Dates.RegistrationStartDate > startOfRange && x.Dates.RegistrationEndDate < endOfRange)
+                .Where(x => (x.Dates.RegistrationStartDate < startOfRange && x.Dates.RegistrationEndDate > startOfRange)
                     && x.Rules.MaxRegistrations > x.Registrations.Count(x => x.Status == Domain.Entities.RegistrationStatus.Accepted)
                     && x.Registrations.Any(x => x.UserId == currentUserId) == false
                 )
