@@ -498,10 +498,8 @@ namespace EventsCore.Domain.Entities
         /// A list of <see cref="Registration"></see> records associated with this event.
         /// </summary>
         public IEnumerable<Registration> Registrations => _registrations.AsReadOnly();
-        /// <summary>
-        /// Count of "Accepted" registrations in the Event._registrations Collection
-        /// </summary>
-        public int CurrentAttendeesCount => _registrations.Count(x => x.Status == RegistrationStatus.Accepted);
+
+
         /// <summary>
         /// Count of "Standby" registrations in the Event._registrations collection
         /// </summary>
@@ -534,7 +532,7 @@ namespace EventsCore.Domain.Entities
             {
                 return false;
             }
-            else if (CurrentAttendeesCount >= Rules.MaxRegistrations)
+            else if (CurrentAttendeesCount() >= Rules.MaxRegistrations)
             {
                 return false;
             }
@@ -562,6 +560,25 @@ namespace EventsCore.Domain.Entities
         public bool IsActive (IDateTime _dateTime)
         {
             return Dates.StartDate <= _dateTime.Now && Dates.EndDate >= _dateTime.Now;
+        }
+        /// <summary>
+        /// Count of "Accepted" registrations in the Event._registrations Collection
+        /// </summary>
+        public int CurrentAttendeesCount()
+        {
+            if(_registrations == null)
+            {
+                throw new EventInvalidOperationException("You must load the Event's registration collection before attempting to retrieve the count of current attendees.");
+            }
+            return _registrations.Count(x => x.Status == RegistrationStatus.Accepted);
+        }
+        public int GetAvailableSlotsCount()
+        {
+            if (_registrations == null || Rules == null)
+            {
+                throw new EventInvalidOperationException("You must load the Event's registration collection before attempting to retrieve the count of Available slots.");
+            }
+            return Convert.ToInt32(Rules.MaxRegistrations) - CurrentAttendeesCount();
         }
         /// <summary>
         /// Returns whether registrations can be placed on "Stanby" for the event
@@ -1044,7 +1061,7 @@ namespace EventsCore.Domain.Entities
             {
                 throw new EventInvalidOperationException("Cannot accept registration: Event has expired.");
             }
-            else if (CurrentAttendeesCount >= Rules.MaxRegistrations)
+            else if (CurrentAttendeesCount() >= Rules.MaxRegistrations)
             {
                 throw new EventInvalidOperationException("Cannot accept registration: Event is at Max Registrations");
             }
@@ -1074,7 +1091,7 @@ namespace EventsCore.Domain.Entities
             {
                 throw new EventInvalidOperationException("Cannot accept registration: Event has expired.");
             }
-            else if (CurrentAttendeesCount >= Rules.MaxRegistrations)
+            else if (CurrentAttendeesCount() >= Rules.MaxRegistrations)
             {
                 throw new EventInvalidOperationException("Cannot accept registration: Event is at Max Registrations");
             }

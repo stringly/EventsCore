@@ -1,11 +1,11 @@
-﻿using EventsCore.Application.Events.Queries.GetEventsList;
+﻿using EventsCore.Application.Events.Queries.GetUpcomingEvents;
 using Microsoft.AspNetCore.Mvc;
 
 namespace EventsCore.WebUI.ViewComponents
 {
     public class UpcomingEventsViewComponent : ViewComponent
     {
-        public IViewComponentResult Invoke(EventListVm vm)
+        public IViewComponentResult Invoke(UpcomingEventListVm vm)
         {
             return View(vm);
         }

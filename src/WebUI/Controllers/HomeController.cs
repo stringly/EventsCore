@@ -1,4 +1,4 @@
-﻿using EventsCore.Application.Events.Queries.GetEventsList;
+﻿using EventsCore.Application.Events.Queries.GetUpcomingEvents;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -36,14 +36,14 @@ namespace WebUI.Controllers
         [HttpGet]
         public async Task<IActionResult> GetUpcomingEvents()
         {
-            var vm = await _mediator.Send(new GetEventListQuery());
+            var vm = await _mediator.Send(new GetUpcomingEventsQuery());
             if (vm == null)
             {
                 return NotFound();
             }
             return ViewComponent("UpcomingEvents", vm);
-
         }
+        
 
     }
 }

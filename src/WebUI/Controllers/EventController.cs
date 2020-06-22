@@ -60,6 +60,7 @@ namespace EventsCore.WebUI.Controllers
             return View(vm);
         }
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind(
             "EventTypeId," +
             "EventSeriesId," +
@@ -294,10 +295,7 @@ namespace EventsCore.WebUI.Controllers
                 ViewData["exception"] = ex.Message;
                 ErrorViewModel vm = new ErrorViewModel();
                 return RedirectToAction("Error","Home");
-            }
-            
-            
-            
+            }      
         }
     }
 }

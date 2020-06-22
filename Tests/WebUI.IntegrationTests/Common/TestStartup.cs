@@ -34,6 +34,11 @@ namespace EventsCore.WebUI.IntegrationTests.Common
                 options.UseInternalServiceProvider(serviceProvider);
             });            
             services.AddScoped<IEventsCoreDbContext, EventsCoreDbContext>();
+            services.AddAntiforgery(t =>
+            {
+                t.Cookie.Name = AntiForgeryTokenExtractor.AntiForgeryCookieName;
+                t.FormFieldName = AntiForgeryTokenExtractor.AntiForgeryFieldName;
+            });
             SeedData(services);
         }
         protected override void ConfigureDependencies(IServiceCollection services)

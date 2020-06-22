@@ -1,27 +1,25 @@
-﻿@model EventsCore.Application.Events.Queries.GetEventsList.EventListVm
+﻿@model EventsCore.Application.Events.Queries.GetUpcomingEvents.UpcomingEventListVm
 
     <div class="card mt-3 mb-3">
         <div class="card-header">
             <div>
                 <span class="float-left align-middle">Upcoming Events</span>
-                <button class="btn btn-sm btn-primary float-right" id="refreshUpcomingEventsButton">Refresh</button>
+                <button class="btn btn-sm btn-primary float-right" id="refreshUpcomingEventsButton"><i class="fas fa-sync"></i> REFRESH</button>
             </div>
         </div>
         <div class="card-body">
             @if (Model.Events.Count > 0)
             {
-                <div class="table-responsive-sm">
-                    <table class="table table-striped table-sm table-light">
+                <div class="table-responsive-md">
+                    <table class="table table-sm table-light cardTable">
                         <thead>
                             <tr>
-                                <th>
-                                    Start Date
-                                </th>
-                                <th>
-                                    End Date
-                                </th>
+                                <th></th>
                                 <th>
                                     Title
+                                </th>
+                                <th>
+                                    Date
                                 </th>
                                 <th>
                                     Type
@@ -30,33 +28,58 @@
                                     Series
                                 </th>
                                 <th>
+                                    Vacancies
+                                </th>
+                                <th>
 
                                 </th>
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach (EventsCore.Application.Events.Queries.GetEventsList.EventDto e in Model.Events)
+                            @foreach (EventsCore.Application.Events.Queries.GetUpcomingEvents.UpcomingEventDto e in Model.Events)
                             {
-                                <tr>
+                            <tr data-toggle="collapse" data-target="#details@($"{e.Id}")" class="collapsed">
+                                <td class="toggleCell" title="Click to Show/Hide details">
+                                    <i class="fas fa-caret-right"></i>
+                                    <i class="fas fa-caret-down" sstyle="display:none;"></i>
+                                </td>
+                                <td>
+                                    @e.Title
+                                </td>
+                                <td>
+                                    @e.Date
+                                </td>
 
-                                    <td>
-                                        @e.StartDate
-                                    </td>
-                                    <td>
-                                        @e.EndDate
-                                    </td>
-                                    <td>
-                                        @e.Title
-                                    </td>
-                                    <td>
-                                        @e.TypeName
-                                    </td>
-                                    <td>
-                                        @e.SeriesName
-                                    </td>
-                                    <td>
-                                        <a class="btn btn-sm btn-success float-right" asp-route-returnUrl="/Index"><i class="fas fa-plus"></i> REGISTER</a>
-                                    </td>
+                                <td>
+                                    @e.TypeName
+                                </td>
+                                <td>
+                                    @e.SeriesName
+                                </td>
+                                <td>
+                                    @e.SlotsAvailable
+                                </td>
+                                <td>
+                                    <a class="btn btn-sm btn-success float-right" asp-route-returnUrl="/Index"><i class="fas fa-plus"></i> REGISTER</a>
+                                </td>
+                            </tr>
+                                <tr id="details@($"{e.Id}")" class="collapse no-transition">
+                                    <td></td>
+                                    <td colspan="6">
+                                        <div class="row">
+                                            <div class="col-auto">
+                                                <strong>Registration Closes:</strong><br />
+                                                @e.RegistrationClosedDate
+                                            </div>
+                                            <div class="col-auto">
+                                                <strong>Contact Person:</strong><br />
+                                                <a href="mailto:@e.OwnerEmail">@e.OwnerEmail</a>
+                                            </div>
+                                            <div class="col-auto">
+                                                <strong>Description:</strong>
+                                            </div>
+                                        </div>
+                                    </td>                 
                                 </tr>
                             }
                         </tbody>

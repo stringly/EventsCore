@@ -3,7 +3,7 @@
 namespace EventsCore.Application.Events.Queries.GetEventsList
 {
     /// <summary>
-    /// Class that serves as a Viewmodel for a list of <see cref="Domain.Entities.Event"></see> entities
+    /// Class that serves as a Viewmodel used in the <see cref="GetEventListQuery"/>
     /// </summary>
     public class EventListVm
     {

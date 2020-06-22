@@ -1,6 +1,6 @@
 ﻿/* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
 for details on configuring this project to bundle and minify static web assets. */
-:root{
+:root {
     --grey1: #404659;
     --grey2: #4d5366;
     --grey3: #bac3d4;
@@ -9,7 +9,8 @@ for details on configuring this project to bundle and minify static web assets. 
     --greyBackground2: #f4f4f7;
     --buttonBlue: #00abeb;
     --buttonGreen: #00be65;
-
+    --buttonBlueDecimalRGB: 0, 171, 235;
+    --buttonGreenDecimalRGB: 0, 190, 101;
 }
 .mainNav {
     background-color: var(--grey1);
@@ -193,3 +194,49 @@ select.form-control {
         font-size: 20px;
     }
 /* END FORM CONTROL OVERRIDES*/
+
+/* CARDTABLE FORMATS */
+
+.table.cardTable {
+    font-size: 0.80rem;
+}
+.table.cardTable th {
+    background-color: var(--highlightgrey);
+}
+.table.cardTable tbody tr.collapsed:hover {
+    background-color: rgba(var(--buttonBlueDecimalRGB), 0.3);
+}
+.table.cardTable tbody tr:not(.collapsed):hover {
+    background-color: rgba(var(--buttonGreenDecimalRGB), 0.3);
+}
+.table.cardTable tbody tr:not(.collapsed) {
+    background-color: rgba(var(--buttonGreenDecimalRGB), 0.3);
+}
+.table.cardTable tr.collapse {
+    background-color: rgba(var(--buttonGreenDecimalRGB), 0.1);
+}
+.table.cardTable td.toggleCell i {
+    font-size: 1.2rem;
+}
+.table.cardTable tr.collapsed td.toggleCell i.fa-caret-right {
+    color: var(--buttonBlue);
+    display: block;
+}
+.table.cardTable tr.collapsed td.toggleCell i.fa-caret-down {    
+    display: none;
+}
+.table.cardTable tr:not(.collapsed) td.toggleCell i.fa-caret-right {
+    display: none;
+}
+
+.table.cardTable tr:not(.collapsed) td.toggleCell i.fa-caret-down {
+    color: var(--buttonGreen);
+    display: block;
+}
+.no-transition {
+    -webkit-transition: height 0.01s;
+    -moz-transition: height 0.01s;
+    -ms-transition: height 0.01s;
+    -o-transition: height 0.01s;
+    transition: height 0.01s;
+}
