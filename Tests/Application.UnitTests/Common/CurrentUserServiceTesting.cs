@@ -4,8 +4,18 @@ namespace EventsCore.Application.UnitTests.Common
 {
     public class CurrentUserServiceTesting : ICurrentUserService
     {
-        public string UserId => "user123";
+        public CurrentUserServiceTesting()
+        {
+            UserId = "user123";
+            IsAuthenticated = true;
+        }
+        public CurrentUserServiceTesting(string LDAPName, bool isAuthenticated)
+        {
+            UserId = LDAPName;
+            IsAuthenticated = isAuthenticated;
+        }
+        public string UserId {get; private set; }
 
-        public bool IsAuthenticated => true;
+        public bool IsAuthenticated {get; private set; }
     }
 }

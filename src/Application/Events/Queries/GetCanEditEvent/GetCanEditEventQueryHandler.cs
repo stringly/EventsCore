@@ -37,6 +37,10 @@ namespace EventsCore.Application.Events.Queries.GetCanEditEvent
                 .Include(x => x.Roles)
                     .ThenInclude(x => x.UserRoleType)
                 .FirstOrDefaultAsync(x => x.LDAPName == _currentUserService.UserId, cancellationToken);
+            if (user == null)
+            {
+                return false;
+            }
             var e = await _context.Events.FindAsync(request.EventId);
             if (e.OwnerId == user.Id || user.Roles.Any(x => x.UserRoleType.Name == "Administrator"))
             {
