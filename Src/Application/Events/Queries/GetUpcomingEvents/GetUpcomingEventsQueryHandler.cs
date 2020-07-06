@@ -1,5 +1,4 @@
 ﻿using AutoMapper;
-using AutoMapper.Configuration.Conventions;
 using AutoMapper.QueryableExtensions;
 using EventsCore.Application.Common.Interfaces;
 using EventsCore.Common;
@@ -7,7 +6,6 @@ using MediatR;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Linq;
-using System.Security.Cryptography.X509Certificates;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -58,7 +56,7 @@ namespace EventsCore.Application.Events.Queries.GetUpcomingEvents
                 .Include(x => x.Owner)
                     .ThenInclude(x => x.Rank)
                 .Include(x => x.Registrations)
-                .Where(x => (x.Dates.RegistrationStartDate < startOfRange && x.Dates.RegistrationEndDate > startOfRange)
+                .Where(x => (x.Dates.RegistrationStartDate <= startOfRange && x.Dates.RegistrationEndDate > startOfRange)
                     && x.Rules.MaxRegistrations > x.Registrations.Count(x => x.Status == Domain.Entities.RegistrationStatus.Accepted)
                     && x.Registrations.Any(x => x.UserId == currentUserId) == false
                 )

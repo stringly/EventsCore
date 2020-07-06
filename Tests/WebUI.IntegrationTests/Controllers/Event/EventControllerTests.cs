@@ -39,15 +39,15 @@ namespace EventsCore.WebUI.IntegrationTests.Controllers.Event
         {
             // Arrange
             var initResponse = await _client.GetAsync("/Event/Create");
-            var antiForgeryValues = await AntiForgeryTokenExtractor.ExtractAntiForgeryValues(initResponse);
+            var (fieldValue, cookieValue) = await AntiForgeryTokenExtractor.ExtractAntiForgeryValues(initResponse);
 
             var postRequest = new HttpRequestMessage(HttpMethod.Post, "/Event/Create");
 
-            postRequest.Headers.Add("Cookie", new CookieHeaderValue(AntiForgeryTokenExtractor.AntiForgeryCookieName, antiForgeryValues.cookieValue).ToString());
+            postRequest.Headers.Add("Cookie", new CookieHeaderValue(AntiForgeryTokenExtractor.AntiForgeryCookieName, cookieValue).ToString());
 
             var formModel = new Dictionary<string, string>
             {
-                [AntiForgeryTokenExtractor.AntiForgeryFieldName] = antiForgeryValues.fieldValue,
+                [AntiForgeryTokenExtractor.AntiForgeryFieldName] = fieldValue,
                 ["Title"] = "Test Created Event",
                 ["Description"] = "This is a test event description",
                 ["StartDate"] = "07/01/3000 1:07 PM",
@@ -73,9 +73,6 @@ namespace EventsCore.WebUI.IntegrationTests.Controllers.Event
 
             var response = await _client.SendAsync(postRequest);
 
-
-            var responseString = await response.Content.ReadAsStringAsync();
-
             // Assert
             Assert.Equal(HttpStatusCode.OK, initResponse.StatusCode);
             Assert.Equal(HttpStatusCode.Redirect, response.StatusCode);
@@ -85,15 +82,15 @@ namespace EventsCore.WebUI.IntegrationTests.Controllers.Event
         public async Task Post_Create_Invalid_Returns_Edit()
         {
             var initResponse = await _client.GetAsync("/Event/Create");
-            var antiForgeryValues = await AntiForgeryTokenExtractor.ExtractAntiForgeryValues(initResponse);
+            var (fieldValue, cookieValue) = await AntiForgeryTokenExtractor.ExtractAntiForgeryValues(initResponse);
 
             var postRequest = new HttpRequestMessage(HttpMethod.Post, "/Event/Create");
 
-            postRequest.Headers.Add("Cookie", new CookieHeaderValue(AntiForgeryTokenExtractor.AntiForgeryCookieName, antiForgeryValues.cookieValue).ToString());
+            postRequest.Headers.Add("Cookie", new CookieHeaderValue(AntiForgeryTokenExtractor.AntiForgeryCookieName, cookieValue).ToString());
 
             var formModel = new Dictionary<string, string>
             {
-                [AntiForgeryTokenExtractor.AntiForgeryFieldName] = antiForgeryValues.fieldValue,
+                [AntiForgeryTokenExtractor.AntiForgeryFieldName] = fieldValue,
                 ["Title"] = "", // empty string title should cause invalid
                 ["Description"] = "This is a test event description",
                 ["StartDate"] = "07/01/3000 1:07 PM",
@@ -154,15 +151,15 @@ namespace EventsCore.WebUI.IntegrationTests.Controllers.Event
         public async Task Post_Edit_Returns_Redirect_To_Root()
         {
             var initResponse = await _client.GetAsync("/Event/Edit/1");
-            var antiForgeryValues = await AntiForgeryTokenExtractor.ExtractAntiForgeryValues(initResponse);
+            var (fieldValue, cookieValue) = await AntiForgeryTokenExtractor.ExtractAntiForgeryValues(initResponse);
 
             var postRequest = new HttpRequestMessage(HttpMethod.Post, "/Event/Edit/1");
 
-            postRequest.Headers.Add("Cookie", new CookieHeaderValue(AntiForgeryTokenExtractor.AntiForgeryCookieName, antiForgeryValues.cookieValue).ToString());
+            postRequest.Headers.Add("Cookie", new CookieHeaderValue(AntiForgeryTokenExtractor.AntiForgeryCookieName, cookieValue).ToString());
 
             var formModel = new Dictionary<string, string>
             {
-                [AntiForgeryTokenExtractor.AntiForgeryFieldName] = antiForgeryValues.fieldValue,
+                [AntiForgeryTokenExtractor.AntiForgeryFieldName] = fieldValue,
                 ["Id"] = "1",
                 ["Title"] = "Test Event 1",
                 ["Description"] = "This is a test event description",
@@ -188,9 +185,6 @@ namespace EventsCore.WebUI.IntegrationTests.Controllers.Event
 
             var response = await _client.SendAsync(postRequest);
             
-
-            var responseString = await response.Content.ReadAsStringAsync();
-
             // Assert
             Assert.Equal(HttpStatusCode.OK, initResponse.StatusCode);
             Assert.Equal(HttpStatusCode.Redirect, response.StatusCode);
@@ -200,15 +194,15 @@ namespace EventsCore.WebUI.IntegrationTests.Controllers.Event
         public async Task Post_Edit_Invalid_Returns_Edit()
         {
             var initResponse = await _client.GetAsync("/Event/Edit/1");
-            var antiForgeryValues = await AntiForgeryTokenExtractor.ExtractAntiForgeryValues(initResponse);
+            var (fieldValue, cookieValue) = await AntiForgeryTokenExtractor.ExtractAntiForgeryValues(initResponse);
 
             var postRequest = new HttpRequestMessage(HttpMethod.Post, "/Event/Edit/1");
 
-            postRequest.Headers.Add("Cookie", new CookieHeaderValue(AntiForgeryTokenExtractor.AntiForgeryCookieName, antiForgeryValues.cookieValue).ToString());
+            postRequest.Headers.Add("Cookie", new CookieHeaderValue(AntiForgeryTokenExtractor.AntiForgeryCookieName, cookieValue).ToString());
 
             var formModel = new Dictionary<string, string>
             {
-                [AntiForgeryTokenExtractor.AntiForgeryFieldName] = antiForgeryValues.fieldValue,
+                [AntiForgeryTokenExtractor.AntiForgeryFieldName] = fieldValue,
                 ["Id"] = "1",
                 ["Title"] = "", // empty string title should cause invalid
                 ["Description"] = "This is a test event description",
@@ -258,20 +252,19 @@ namespace EventsCore.WebUI.IntegrationTests.Controllers.Event
         {
             // Arrange
             var initResponse = await _client.GetAsync("/Event/Delete/1");
-            var antiForgeryValues = await AntiForgeryTokenExtractor.ExtractAntiForgeryValues(initResponse);
+            var (fieldValue, cookieValue) = await AntiForgeryTokenExtractor.ExtractAntiForgeryValues(initResponse);
             var postRequest = new HttpRequestMessage(HttpMethod.Post, "/Event/DeleteConfirmed/1");
 
-            postRequest.Headers.Add("Cookie", new CookieHeaderValue(AntiForgeryTokenExtractor.AntiForgeryCookieName, antiForgeryValues.cookieValue).ToString());
+            postRequest.Headers.Add("Cookie", new CookieHeaderValue(AntiForgeryTokenExtractor.AntiForgeryCookieName, cookieValue).ToString());
             var formModel = new Dictionary<string, string>
             {
-                [AntiForgeryTokenExtractor.AntiForgeryFieldName] = antiForgeryValues.fieldValue,
+                [AntiForgeryTokenExtractor.AntiForgeryFieldName] = fieldValue,
                 ["Id"] = "1"
             };
 
             //Act
             postRequest.Content = new FormUrlEncodedContent(formModel);
             var response = await _client.SendAsync(postRequest);
-            var responseString = await response.Content.ReadAsStringAsync();
 
             // Assert
             Assert.Equal(HttpStatusCode.OK, initResponse.StatusCode);
